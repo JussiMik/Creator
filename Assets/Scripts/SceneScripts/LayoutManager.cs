@@ -6,6 +6,7 @@ public class LayoutManager : MonoBehaviour
 {
 
     public GameObject[,] positions;
+    public List<GameObject> lakes;
 
     public int gridWidth;
     public int gridHeigth;
@@ -17,6 +18,7 @@ public class LayoutManager : MonoBehaviour
     public float tileCap;
 
     public GameObject emptyGo;
+    public GameObject lakeGo;
 
     //https://docs.unity3d.com/ScriptReference/GL.html
 
@@ -36,7 +38,7 @@ public class LayoutManager : MonoBehaviour
         positions = new GameObject[gridWidth, gridHeigth];
 
         float centerOffsetX = gridWidth * tileWidth/2 - tileWidth/2;
-        float centerOffsetY = gridHeigth * tileWidth/2 - tileWidth/2;
+        float centerOffsetY = 0;
 
         for (int y = 0; y < gridHeigth; y++)
         {
@@ -45,7 +47,7 @@ public class LayoutManager : MonoBehaviour
             {
                 //positions[x, y] = Instantiate(emptyGo, new Vector3(transform.position.x - centerOffsetX + x * (tileWidth/2), transform.position.y - centerOffsetY + y * (tileWidth/2), 0), Quaternion.identity);
 
-                positions[x, y] = Instantiate(emptyGo, new Vector3(transform.position.x + (1f * y) + (currentWidth * 1f), transform.position.y + (0.5f * y) - (currentWidth * 0.5f)), Quaternion.identity);
+                positions[x, y] = Instantiate(emptyGo, new Vector3(transform.position.x - centerOffsetX + (1f * y) + (currentWidth * 1f), transform.position.y - centerOffsetY + (0.5f * y) - (currentWidth * 0.5f)), Quaternion.identity);
 
                 if (currentWidth < gridWidth -1)
                 {
@@ -57,12 +59,7 @@ public class LayoutManager : MonoBehaviour
                 }
             }
         }
-
-        //RANDOM GENE
-
-
-
-
+        RandomGen();
     }
 
     // Update is called once per frame
@@ -75,6 +72,26 @@ public class LayoutManager : MonoBehaviour
         if (tileCap <= 0.01f)
         {
             tileCap = 0;
+        }
+
+        //NEW GRID SEED
+        if(Input.GetKeyDown("space"))
+        {
+            for (int i = 0; i < lakes.Count; i++)
+            {
+                Destroy(lakes[i]);
+                RandomGen();
+            }
+        }
+    }
+
+    private void RandomGen()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            int rndfloat = Random.Range(0, gridWidth);
+            int rndfloat2 = Random.Range(0, gridHeigth);
+            lakes.Add(Instantiate(lakeGo, positions[rndfloat, rndfloat2].transform.position, Quaternion.identity));
         }
     }
 
