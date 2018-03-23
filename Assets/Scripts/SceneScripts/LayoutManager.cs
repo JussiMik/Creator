@@ -5,8 +5,7 @@ using UnityEngine;
 public class LayoutManager : MonoBehaviour
 {
 
-    public List<Vector2> positions;
-    public List<int> positionSit = new List<int>();
+    public Vector3[,] positions;
     [SerializeField]
     bool emptyGridDone = false;
 
@@ -24,6 +23,7 @@ public class LayoutManager : MonoBehaviour
 
     public GameObject emptyGo;
     public GameObject lakeGo;
+    public GameObject centerGo;
 
     //https://docs.unity3d.com/ScriptReference/GL.html
 
@@ -40,6 +40,7 @@ public class LayoutManager : MonoBehaviour
 
     void CreateGrid()
     {
+        positions = new Vector3[gridWidth, gridHeigth];
 
         float centerOffsetX = gridWidth * tileWidth / 2 - tileWidth / 2;
         float centerOffsetY = 0;
@@ -49,11 +50,12 @@ public class LayoutManager : MonoBehaviour
 
             for (int x = 0; x < gridWidth; x++)
             {
-                //positions[x, y] = Instantiate(emptyGo, new Vector3(transform.position.x - centerOffsetX + x * (tileWidth/2), transform.position.y - centerOffsetY + y * (tileWidth/2), 0), Quaternion.identity);
 
+                //positions[x, y] = Instantiate(emptyGo, new Vector3(transform.position.x - centerOffsetX + x * (tileWidth/2), transform.position.y - centerOffsetY + y * (tileWidth/2), 0), Quaternion.identity);
+                
                 //positions.Add(Instantiate(emptyGo, new Vector3(transform.position.x - centerOffsetX + (1f * y) + (currentWidth * 1f), transform.position.y - centerOffsetY + (0.5f * y) - (currentWidth * 0.5f)), Quaternion.identity));
-                positions.Add(new Vector2(transform.position.x - centerOffsetX + (1f * y) + (currentWidth * 1f), transform.position.y - centerOffsetY + (0.5f * y) - (currentWidth * 0.5f)));
-                positionSit.Add(0);
+                positions[x,y] = new Vector3(transform.position.x - centerOffsetX + (1f * y) + (currentWidth * 1f), transform.position.y - centerOffsetY + (0.5f * y) - (currentWidth * 0.5f), 0);
+                //positionSit.Add(0);
 
                 if (currentWidth < gridWidth - 1)
                 {
@@ -65,6 +67,7 @@ public class LayoutManager : MonoBehaviour
                 }
             }
         }
+        SpawnStructure(centerGo, new Vector2(0,0));
         RandomGen();
     }
 
@@ -95,12 +98,30 @@ public class LayoutManager : MonoBehaviour
     {
         for (int i = 0; i < rndLakes; i++)
         {
-            int rndInt = Random.Range(0, positions.Count);
-            
-            lakes.Add(Instantiate(lakeGo, positions[rndInt], Quaternion.identity));
+
+            int rnd1 = Random.Range(0, positions.GetLength(0));
+            int rnd2 = Random.Range(0, positions.GetLength(1));
+            lakes.Add(Instantiate(lakeGo, positions[rnd1,rnd2], Quaternion.identity));
         }
     }
+    private void SpawnStructure(GameObject structure, Vector2 structPos)
+    {
+        //SPAWN THE OBJECT
+        GameObject obj = Instantiate(centerGo, structPos, Quaternion.identity) as GameObject;
+        //GET THE SIZE THAT STRUCTURE NEEDS
+        Vector2 size = new Vector2(2,2);
+        //Vector2 size = obj.GetComponent<HouseScript>().sizeOnGrid;
+        
+        //SET TILES TO TAKEN
+        for (int i = 0; i < size.x * size.y; i++)
+        {
+            int freeToTaken1 = Mathf.RoundToInt(structPos.x - (size.x / 2) + i);
+            int freeToTaken2 = Mathf.RoundToInt(structPos.y - (size.y / 2) + i);
+            positions[freeToTaken1, freeToTaken2] = new Vector3(positions[freeToTaken1, freeToTaken2].x, positions[freeToTaken1, freeToTaken2].y, 1);
+        }
 
+
+    }
     static void CreateLineMaterial()
     {
         if (!lineMaterial)
@@ -140,41 +161,41 @@ public class LayoutManager : MonoBehaviour
 
             // One vertex at transform position
 
-            if (emptyGridDone)
-            {
+            //if (emptyGridDone)
+            //{
 
-                for (int i = 0; i < positions.Count; i++)
-                {
-                    float gap = tileWidth / 2 - tileCap;
-                    if (positionSit[i] == 0)
-                    {
-                        GL.Color(new Color(1, 1, 0, 0.8F));
-                    }
-                    else if (positionSit[i] == 1)
-                    {
-                        GL.Color(new Color(1, 1, 0, 0.8F));
-                    }
-                    else
-                    {
-                        GL.Color(new Color(1, 1, 0, 0.8F));
-                    }
+            //    for (int i = 0; i < positions.Count; i++)
+            //    {
+            //        float gap = tileWidth / 2 - tileCap;
+            //        if (positionSit[i] == 0)
+            //        {
+            //            GL.Color(new Color(1, 1, 0, 0.8F));
+            //        }
+            //        else if (positionSit[i] == 1)
+            //        {
+            //            GL.Color(new Color(1, 1, 0, 0.8F));
+            //        }
+            //        else
+            //        {
+            //            GL.Color(new Color(1, 1, 0, 0.8F));
+            //        }
 
-                    //Dot1
-                    GL.Vertex3(positions[i].x - gap, positions[i].y, transform.position.z);
-                    //Dot2
-                    GL.Vertex3(positions[i].x, positions[i].y - gap / 2, transform.position.z);
-                    GL.Vertex3(positions[i].x, positions[i].y - gap / 2, transform.position.z);
-                    //Dot3
-                    GL.Vertex3(positions[i].x + gap, positions[i].y, transform.position.z);
-                    GL.Vertex3(positions[i].x + gap, positions[i].y, transform.position.z);
-                    //Dot4
-                    GL.Vertex3(positions[i].x, positions[i].y + gap / 2, transform.position.z);
-                    GL.Vertex3(positions[i].x, positions[i].y + gap / 2, transform.position.z);
-                    //Back To Dot1
-                    GL.Vertex3(positions[i].x - gap, positions[i].y, transform.position.z);
-                }
+            //        //Dot1
+            //        GL.Vertex3(positions[i].x - gap, positions[i].y, transform.position.z);
+            //        //Dot2
+            //        GL.Vertex3(positions[i].x, positions[i].y - gap / 2, transform.position.z);
+            //        GL.Vertex3(positions[i].x, positions[i].y - gap / 2, transform.position.z);
+            //        //Dot3
+            //        GL.Vertex3(positions[i].x + gap, positions[i].y, transform.position.z);
+            //        GL.Vertex3(positions[i].x + gap, positions[i].y, transform.position.z);
+            //        //Dot4
+            //        GL.Vertex3(positions[i].x, positions[i].y + gap / 2, transform.position.z);
+            //        GL.Vertex3(positions[i].x, positions[i].y + gap / 2, transform.position.z);
+            //        //Back To Dot1
+            //        GL.Vertex3(positions[i].x - gap, positions[i].y, transform.position.z);
+            //    }
 
-            }
+            //}
 
             //GL.Vertex3(positions[0,0].transform.position.x, positions[0, 0].transform.position.y, positions[0, 0].transform.position.z);
             // Another vertex at edge of circle
