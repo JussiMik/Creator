@@ -48,16 +48,17 @@ public class LayoutManager : MonoBehaviour
         for (int y = 0; y < gridHeigth; y++)
         {
 
-            for (int x = 0; x < gridWidth; x++)
+            for (int x = 0; x < gridHeigth; x++)
             {
 
                 //positions[x, y] = Instantiate(emptyGo, new Vector3(transform.position.x - centerOffsetX + x * (tileWidth/2), transform.position.y - centerOffsetY + y * (tileWidth/2), 0), Quaternion.identity);
-                
+
                 //positions.Add(Instantiate(emptyGo, new Vector3(transform.position.x - centerOffsetX + (1f * y) + (currentWidth * 1f), transform.position.y - centerOffsetY + (0.5f * y) - (currentWidth * 0.5f)), Quaternion.identity));
-                positions[x,y] = new Vector3(transform.position.x - centerOffsetX + (1f * y) + (currentWidth * 1f), transform.position.y - centerOffsetY + (0.5f * y) - (currentWidth * 0.5f), 0);
+                positions[x, y] = new Vector3(transform.position.x - centerOffsetX + (1f * y) + (currentWidth * 1f), transform.position.y - centerOffsetY + (0.5f * y) - (currentWidth * 0.5f), 0);
                 //positionSit.Add(0);
 
-                if (currentWidth < gridWidth - 1)
+
+                if (currentWidth < gridHeigth)
                 {
                     currentWidth += 1;
                 }
@@ -67,7 +68,7 @@ public class LayoutManager : MonoBehaviour
                 }
             }
         }
-        SpawnStructure(centerGo, new Vector2(0,0));
+        SpawnStructure(centerGo, gridWidth / 2, gridHeigth / 2, new Vector2(2,2));
         RandomGen();
     }
 
@@ -82,6 +83,8 @@ public class LayoutManager : MonoBehaviour
         {
             tileCap = 0;
         }
+
+
 
         //NEW GRID SEED
         if (Input.GetKeyDown("space"))
@@ -101,27 +104,52 @@ public class LayoutManager : MonoBehaviour
 
             int rnd1 = Random.Range(0, positions.GetLength(0));
             int rnd2 = Random.Range(0, positions.GetLength(1));
-            lakes.Add(Instantiate(lakeGo, positions[rnd1,rnd2], Quaternion.identity));
+            lakes.Add(Instantiate(lakeGo, positions[rnd1, rnd2], Quaternion.identity));
         }
     }
-    private void SpawnStructure(GameObject structure, Vector2 structPos)
+    private void SpawnStructure(GameObject structure, int posX, int posY, Vector2 size)
     {
         //SPAWN THE OBJECT
-        GameObject obj = Instantiate(centerGo, structPos, Quaternion.identity) as GameObject;
+        Vector3 newPosition = new Vector3(positions[posX, posY].x, positions[posX, posY].y - size.y/4, transform.position.z);
+        GameObject obj = Instantiate(centerGo, newPosition, Quaternion.identity) as GameObject;
         //GET THE SIZE THAT STRUCTURE NEEDS
-        Vector2 size = new Vector2(2,2);
+   
         //Vector2 size = obj.GetComponent<HouseScript>().sizeOnGrid;
-        
+
         //SET TILES TO TAKEN
-        for (int i = 0; i < size.x * size.y; i++)
+
+
+        for (int x = 0; x < size.x; x++)
+
         {
-            int freeToTaken1 = Mathf.RoundToInt(structPos.x - (size.x / 2) + i);
-            int freeToTaken2 = Mathf.RoundToInt(structPos.y - (size.y / 2) + i);
-            positions[freeToTaken1, freeToTaken2] = new Vector3(positions[freeToTaken1, freeToTaken2].x, positions[freeToTaken1, freeToTaken2].y, 1);
+            for (int y = 0; y < size.y; y++)
+            {
+
+                int freeToTaken1 = Mathf.RoundToInt(posX - (size.x / 2) + x);
+                int freeToTaken2 = Mathf.RoundToInt(posY - (size.y / 2) + y);
+                positions[freeToTaken1, freeToTaken2] = new Vector3(positions[freeToTaken1, freeToTaken2].x, positions[freeToTaken1, freeToTaken2].y, 1);
+            }
         }
-
-
+        UpdateTakens();
     }
+
+    private void UpdateTakens()
+    {
+        for (int y = 0; y < gridHeigth; y++)
+        {
+
+            for (int x = 0; x < gridWidth; x++)
+            {
+                if (positions[x, y].z == 1)
+                {
+                    Vector3 newPos = new Vector3(positions[x, y].x, positions[x, y].y, transform.position.z);
+                    Instantiate(emptyGo, newPos, Quaternion.identity);
+                }
+
+            }
+        }
+    }
+
     static void CreateLineMaterial()
     {
         if (!lineMaterial)
