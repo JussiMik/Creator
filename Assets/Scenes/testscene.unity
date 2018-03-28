@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emptyGridDone: 0
+  cantBuild: {r: 1, g: 0, b: 0, a: 1}
   lakes: []
   rndLakes: 5
   gridWidth: 10
@@ -235,6 +236,7 @@ MonoBehaviour:
   tileCap: 0.1
   emptyGo: {fileID: 1354137680948214, guid: 17f97aeff80b5df47ad053263e4722f2, type: 2}
   lakeGo: {fileID: 1354137680948214, guid: ef994d6472f08bb45bbadad0d0aa2ff0, type: 2}
+  treeGo: {fileID: 1354137680948214, guid: ed80e251ca308ea4b9c6c70a0bddfd62, type: 2}
   centerGo: {fileID: 1071149037440394, guid: c3ff45ff8b4e51440a3fbbc83c52154c, type: 2}
   lineCount: 10
   radius: 3
