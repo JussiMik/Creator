@@ -225,6 +225,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emptyGridDone: 0
+  roundCorners: 1
+  roundCornerBy: 1
   cantBuild: {r: 1, g: 0, b: 0, a: 1}
   lakes: []
   rndLakes: 5
