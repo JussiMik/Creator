@@ -224,11 +224,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f05825fc7467ce42ba0bf15219abc9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positions: []
-  positionSit: 
   emptyGridDone: 0
   lakes: []
-  rndLakes: 20
+  rndLakes: 5
   gridWidth: 10
   gridHeigth: 10
   currentWidth: 5
