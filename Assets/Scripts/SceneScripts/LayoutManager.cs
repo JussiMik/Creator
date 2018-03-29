@@ -27,6 +27,9 @@ public class LayoutManager : MonoBehaviour
 
     public float tileHeight = 0.5f;
     public float tileWidth = 1;
+    [SerializeField]
+    private float gridAnle;
+
     public float tileCap;
 
     public GameObject emptyGo;
