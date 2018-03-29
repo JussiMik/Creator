@@ -25,7 +25,8 @@ public class LayoutManager : MonoBehaviour
 
     public bool renderGrid = true;
 
-    public int tileWidth;
+    public float tileHeight = 0.5f;
+    public float tileWidth = 1;
     public float tileCap;
 
     public GameObject emptyGo;
@@ -51,25 +52,41 @@ public class LayoutManager : MonoBehaviour
         positions = new Vector3[gridWidth, gridHeigth];
         testGrid = new GameObject[gridWidth, gridHeigth];
 
-        float centerOffsetX = gridWidth * tileWidth / 2 - tileWidth / 2;
+        //CALCULATE CENTER OFFSET
+        float centerOffsetX = ((gridWidth * gridHeigth)/4 * tileWidth )/ 2;
         float centerOffsetY = 0;
 
+        //CREATE GRID ITSELF
         for (int x = 0; x < gridWidth; x++)
         {
 
             for (int y = 0; y < gridHeigth; y++)
             {
 
-                positions[x, y] = new Vector3(transform.position.x - centerOffsetX + (1f * x) + (1f * y), transform.position.y - centerOffsetY + (0.5f * x) - (0.5f * y), 0);
+                positions[x, y] = new Vector3(transform.position.x - centerOffsetX + (tileWidth * x) + (tileWidth * y), transform.position.y - centerOffsetY + (tileHeight * x) - (tileHeight * y), 0);
             }
         }
-        if(roundCorners)
+
+        //"REMOVE" CORNER POSITIONS
+        if (roundCorners)
         {
-            positions[0, 0] = nullVector3;
-            positions[0, positions.GetLength(1) -1] = nullVector3;
-            positions[positions.GetLength(0) -1, 0] = nullVector3;
-            positions[positions.GetLength(0) - 1, positions.GetLength(1) -1] = nullVector3;
+            for (int i1 = 0; i1 < roundCornerBy; i1++)
+            {
+                for (int i2 = 0; i2 < roundCornerBy; i2++)
+                {
+                    if(!(i1 == i2 && i1 == roundCornerBy -1) || (i1 == 0 && i2 == 0))
+                    {
+                        positions[i1, i2] = nullVector3;
+                        positions[i1, positions.GetLength(1) - 1 - i2] = nullVector3;
+                        positions[positions.GetLength(0) - 1 - i1, i2] = nullVector3;
+                        positions[positions.GetLength(0) - 1 - i1, positions.GetLength(1) - 1 -i2] = nullVector3;
+                    }
+                }
+                
+            }
         }
+
+        //CREATE TEST GRID
         for (int x = 0; x < gridWidth; x++)
         {
 
@@ -83,17 +100,17 @@ public class LayoutManager : MonoBehaviour
                     Vector3 newPos = new Vector3(positions[x, y].x, positions[x, y].y, transform.position.z);
                     testGrid[x, y] = Instantiate(emptyGo, newPos, Quaternion.identity);
                     testGrid[x, y].name = x + " , " + y;
+                    testGrid[x, y].transform.localScale = new Vector3(tileWidth * 0.35f, (tileHeight*2) * 0.35f, testGrid[x, y].transform.localScale.z);
                 }
             }
         }
-
         SpawnStructure(centerGo, gridWidth / 2, gridHeigth / 2, new Vector2(2, 2));
         RandomGen();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //CALCULATE CAP BETWEEN TILES(UNUSED)
         if (tileCap >= (float)tileWidth / 4 + 0.01f)
         {
             tileCap = (float)tileWidth / 4;
@@ -129,14 +146,14 @@ public class LayoutManager : MonoBehaviour
 
     private void RandomGen()
     {
-        //KAATUU TÄHÄN FOR LOOPPIIN----------------------------------------------------------------
+        //RANDOMIZE LAKES
         for (int i = 0; i < rndLakes; i++)
         {
 
             int rnd1 = Random.Range(0, positions.GetLength(0));
             int rnd2 = Random.Range(0, positions.GetLength(1));
 
-            while (positions[rnd1, rnd2].z == 1 && !(positions[rnd1, rnd2] == nullVector3))
+            while (positions[rnd1, rnd2].z == 1 || (positions[rnd1, rnd2] == nullVector3))
             {
                 rnd1 = Random.Range(0, positions.GetLength(0));
                 rnd2 = Random.Range(0, positions.GetLength(1));
@@ -152,15 +169,11 @@ public class LayoutManager : MonoBehaviour
     private void SpawnStructure(GameObject structure, int posX, int posY, Vector2 size)
     {
         //SPAWN THE OBJECT
-        Vector3 newPosition = new Vector3(positions[posX, posY].x, positions[posX, posY].y, transform.position.z);
-        GameObject obj = Instantiate(centerGo, newPosition, Quaternion.identity) as GameObject;
+        
         //GET THE SIZE THAT STRUCTURE NEEDS
 
-        //Vector2 size = obj.GetComponent<HouseScript>().sizeOnGrid;
-
-        //SET TILES TO TAKE
+        //SET TILES TO TAKEN
         for (int x = 0; x < size.x; x++)
-
         {
             for (int y = 0; y < size.y; y++)
             {
@@ -169,25 +182,7 @@ public class LayoutManager : MonoBehaviour
                 positions[freeToTaken1, freeToTaken2] = new Vector3(positions[freeToTaken1, freeToTaken2].x, positions[freeToTaken1, freeToTaken2].y, 1);
             }
         }
-        UpdateTakens();
-    }
-
-    private void UpdateTakens()
-    {
-        for (int y = 0; y < gridHeigth; y++)
-        {
-
-            for (int x = 0; x < gridWidth; x++)
-            {
-                if (positions[x, y].z == 1)
-                {
-                    Vector3 newPos = new Vector3(positions[x, y].x, positions[x, y].y, transform.position.z);
-                    //Instantiate(emptyGo, newPos, Quaternion.identity);
-                }
-
-            }
-        }
+        Vector3 newPosition = new Vector3(positions[posX, posY].x, positions[posX, posY].y, transform.position.z);
+        GameObject obj = Instantiate(centerGo, newPosition, Quaternion.identity) as GameObject;
     }
 }
-
-

@@ -226,7 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emptyGridDone: 0
   roundCorners: 1
-  roundCornerBy: 1
+  roundCornerBy: 2
   cantBuild: {r: 1, g: 0, b: 0, a: 1}
   lakes: []
   rndLakes: 5
@@ -234,7 +234,8 @@ MonoBehaviour:
   gridHeigth: 10
   currentWidth: 5
   renderGrid: 1
-  tileWidth: 2
+  tileHeight: 0.5
+  tileWidth: 0.85
   tileCap: 0.1
   emptyGo: {fileID: 1354137680948214, guid: 17f97aeff80b5df47ad053263e4722f2, type: 2}
   lakeGo: {fileID: 1354137680948214, guid: ef994d6472f08bb45bbadad0d0aa2ff0, type: 2}

@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CenterHouse : MonoBehaviour {
-    [SerializeField]
-    public Vector2 sizeOnGrid = new Vector2(2,2);
+public class HouseScript : MonoBehaviour {
+
+    public Vector2 sizeOnGrid;
+    public Vector2 pivot;
 
 	// Use this for initialization
 	void Start () {
