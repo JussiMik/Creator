@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -224,13 +224,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f05825fc7467ce42ba0bf15219abc9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emptyGridDone: 0
+  roundCorners: 1
+  roundCornerBy: 2
+  cantBuild: {r: 1, g: 0.09411766, b: 0.275, a: 1}
+  lakes: []
+  rndLakes: 10
   gridWidth: 10
   gridHeigth: 10
   currentWidth: 5
   renderGrid: 0
-  tileWidth: 2
+  tileHeight: 0.72
+  tileWidth: 1
+  gridAngle: 0
   tileCap: 0.1
   emptyGo: {fileID: 1354137680948214, guid: 17f97aeff80b5df47ad053263e4722f2, type: 2}
+  lakeGo: {fileID: 1354137680948214, guid: ef994d6472f08bb45bbadad0d0aa2ff0, type: 2}
+  treeGo: {fileID: 1354137680948214, guid: ed80e251ca308ea4b9c6c70a0bddfd62, type: 2}
+  centerGo: {fileID: 1071149037440394, guid: c3ff45ff8b4e51440a3fbbc83c52154c, type: 2}
   lineCount: 10
   radius: 3
 --- !u!4 &593138772
@@ -359,15 +370,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 895bc812747393645982bae17e7426e0, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Color: {r: 0.09877813, g: 0.46323532, b: 0.116372645, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
 --- !u!4 &1607796120
 Transform:
   m_ObjectHideFlags: 0
@@ -376,7 +387,7 @@ Transform:
   m_GameObject: {fileID: 1607796118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 221.65, y: 177.84, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2

@@ -27,6 +27,9 @@ public class LayoutManager : MonoBehaviour
 
     public float tileHeight = 0.5f;
     public float tileWidth = 1;
+    [SerializeField]
+    private float gridAngle;
+
     public float tileCap;
 
     public GameObject emptyGo;
@@ -44,6 +47,7 @@ public class LayoutManager : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
+        gridAngle = 45 * (tileHeight / tileWidth);
         CreateGrid();
     }
 
