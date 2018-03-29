@@ -7,14 +7,22 @@ public class GameManager : MonoBehaviour
     public GameObject building;
     public GameObject monk;
 
-    public float faith;
-    public float devotion = 100f;
+    [SerializeField]
+    private float faith;
+
+    [SerializeField]
+    private float devotion;
+    public bool devotionDecrease;
+
+    public bool devotionDecreaseMp1;
+    public bool devotionDecreaseMp2;
+    public bool devotionDecreaseMp3;
 
     public bool buildingActive;
 
-    public bool faithTimerActive;
-    
-    public float faithTimerTargetTime;
+    public bool faithTimerActive;    
+    [SerializeField]
+    private float faithTargetTime;
     private float originalFaithTargetTime;
 
     public List<GameObject> faithBuildings = new List<GameObject>();
@@ -25,13 +33,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        originalFaithTargetTime = faithTimerTargetTime;
+        originalFaithTargetTime = faithTargetTime;
 
-        for (int i = 0; i < 4; i++)
-        {
-            GameObject spawnedMonk = Instantiate(monk, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-            monks.Add(spawnedMonk);
-        }
+        devotionDecrease = true;
+        devotionDecreaseMp1 = false;
     }
 
     void Update()
@@ -40,13 +45,44 @@ public class GameManager : MonoBehaviour
 
         if (faithTimerActive == true)
         {
-            faithTimerTargetTime -= Time.deltaTime;
+            faithTargetTime -= Time.deltaTime;
 
-            if (faithTimerTargetTime <= 0)
+            if (faithTargetTime <= 0)
             {
                 TimerEnd();
             }
         }
+
+        /*
+        if (devotionBuildings.Count < monks.Count)
+        {
+            devotionDecrease = true;
+            devotionDecreaseMp1 = true;
+        }
+        */
+
+        else if (devotionBuildings.Count > monks.Count)
+        {
+            devotionDecrease = false;
+        }
+
+        if (devotionDecrease == true)
+        {
+            devotion -= Time.deltaTime;
+
+            if (devotionDecreaseMp1 == true)
+            {
+                devotion -= Time.deltaTime * 2;
+            }
+            else if (devotionDecreaseMp2 == true)
+            {
+                devotion -= Time.deltaTime * 3;
+            }
+            else if (devotionDecreaseMp3 == true)
+            {
+                devotion -= Time.deltaTime * 4;
+            }
+        }  
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -69,7 +105,7 @@ public class GameManager : MonoBehaviour
         if (faithTimerActive == false)
         {
             faithTimerActive = true;
-            faithTimerTargetTime = originalFaithTargetTime;
+            faithTargetTime = originalFaithTargetTime;
         }   
     }
 
@@ -87,6 +123,6 @@ public class GameManager : MonoBehaviour
     public void SpawnNewObject()
     {
         GameObject spawned = Instantiate(building, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-        faithBuildings.Add(spawned);
+        devotionBuildings.Add(spawned);
     }
 }
