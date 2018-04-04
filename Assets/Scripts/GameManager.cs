@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ public class GameManager : MonoBehaviour
     public GameObject building;
     public GameObject monk;
 
+    [SerializeField]
+    private float generatedFaith;
     [SerializeField]
     private float faith;
 
@@ -18,7 +21,9 @@ public class GameManager : MonoBehaviour
     public bool devotionDecreaseMp2;
     public bool devotionDecreaseMp3;
 
-    public bool buildingActive;
+    public bool sanctity;
+
+    public bool activeBuildings;
 
     public bool faithTimerActive;    
     [SerializeField]
@@ -53,19 +58,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        /*
-        if (devotionBuildings.Count < monks.Count)
-        {
-            devotionDecrease = true;
-            devotionDecreaseMp1 = true;
-        }
-        */
-
-        else if (devotionBuildings.Count > monks.Count)
-        {
-            devotionDecrease = false;
-        }
-
         if (devotionDecrease == true)
         {
             devotion -= Time.deltaTime;
@@ -86,7 +78,12 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SpawnNewObject();
+            SpawnNewBuilding();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            CollectFaith();
         }
     }
 
@@ -111,18 +108,30 @@ public class GameManager : MonoBehaviour
 
     public void GenerateFaith()
     {
-        if (buildingActive == true)
+        if (activeBuildings == true)
         {
             if (gameObject )
             {
-                faith += 2f * monks.Count;
+                generatedFaith += 2f * monks.Count;
             }
         }
     }
 
-    public void SpawnNewObject()
+    public void CollectFaith()
+    {
+        faith += generatedFaith;
+        generatedFaith = 0f;
+    }
+
+    public void SpawnNewBuilding()
     {
         GameObject spawned = Instantiate(building, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
         devotionBuildings.Add(spawned);
+
+
+        if (devotionBuildings.Count >= monks.Count)
+        {
+            devotionDecrease = false;
+        }
     }
 }

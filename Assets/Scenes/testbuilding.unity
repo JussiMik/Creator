@@ -248,6 +248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1206880186}
   - component: {fileID: 1206880185}
+  - component: {fileID: 1206880187}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -268,13 +269,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   building: {fileID: 1562972897823358, guid: 096b69b713f61a04aab182f609a7db38, type: 2}
   monk: {fileID: 0}
-  faith: 0
+  generatedFaith: 0
+  faith: 10
   devotion: 1000
   devotionDecrease: 0
   devotionDecreaseMp1: 0
   devotionDecreaseMp2: 0
   devotionDecreaseMp3: 0
-  buildingActive: 0
+  sanctity: 0
+  activeBuildings: 0
   faithTimerActive: 0
   faithTargetTime: 5
   faithBuildings: []
@@ -294,3 +297,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1206880187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1206880184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68b5571d8ea4444e9bfb17a18990571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constructingTimer: 0
+  constructingTime: 0
