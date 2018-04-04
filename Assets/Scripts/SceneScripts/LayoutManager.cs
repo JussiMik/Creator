@@ -8,9 +8,11 @@ public class LayoutManager : MonoBehaviour
     public Vector3[,] positions;
     public GameObject[,] testGrid;
     [SerializeField]
-    bool emptyGridDone = false;
+    bool gridDone = false;
     public bool roundCorners = false;
     public int roundCornerBy = 1;
+
+    public bool showGrid;
 
     private Vector3 nullVector3 = new Vector3(666, 666, 666);
 
@@ -25,6 +27,7 @@ public class LayoutManager : MonoBehaviour
 
     public bool renderGrid = true;
 
+    public bool tileByAngle;
     public float tileHeight = 0.5f;
     public float tileWidth = 1;
     [SerializeField]
@@ -57,7 +60,8 @@ public class LayoutManager : MonoBehaviour
         testGrid = new GameObject[gridWidth, gridHeigth];
 
         //CALCULATE CENTER OFFSET
-        float centerOffsetX = ((gridWidth * gridHeigth)/4 * tileWidth )/ 2;
+        //float centerOffsetX = ((gridWidth * gridHeigth)/4 * tileWidth )/ 2;
+        float centerOffsetX = 10;
         float centerOffsetY = 0;
 
         //CREATE GRID ITSELF
@@ -110,10 +114,35 @@ public class LayoutManager : MonoBehaviour
         }
         SpawnStructure(centerGo, gridWidth / 2, gridHeigth / 2, new Vector2(2, 2));
         RandomGen();
+        gridDone = true;
     }
 
     void Update()
     {
+        if(gridDone)
+        {
+            //if (showGrid)
+            //{
+            //    for (int x = 0; x < testGrid.GetLength(0); x++)
+            //    {
+            //        for (int y = 0; y < testGrid.GetLength(1); y++)
+            //        {
+            //            testGrid[x, y].GetComponent<SpriteRenderer>().enabled = true;
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    for (int x = 0; x < testGrid.GetLength(0); x++)
+            //    {
+            //        for (int y = 0; y < testGrid.GetLength(1); y++)
+            //        {
+            //            testGrid[x, y].GetComponent<SpriteRenderer>().enabled = false;
+            //        }
+            //    }
+            //}
+        }
+
         //CALCULATE CAP BETWEEN TILES(UNUSED)
         if (tileCap >= (float)tileWidth / 4 + 0.01f)
         {
@@ -186,7 +215,8 @@ public class LayoutManager : MonoBehaviour
                 positions[freeToTaken1, freeToTaken2] = new Vector3(positions[freeToTaken1, freeToTaken2].x, positions[freeToTaken1, freeToTaken2].y, 1);
             }
         }
-        Vector3 newPosition = new Vector3(positions[posX, posY].x, positions[posX, posY].y, transform.position.z);
+        //CALCULATE HOUSE POSITION
+        Vector3 newPosition = new Vector3(positions[posX, posY].x - size.x/2, positions[posX, posY].y, transform.position.z);
         GameObject obj = Instantiate(centerGo, newPosition, Quaternion.identity) as GameObject;
     }
 }
