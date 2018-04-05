@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -224,13 +224,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f05825fc7467ce42ba0bf15219abc9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emptyGridDone: 0
+  roundCorners: 0
+  roundCornerBy: 1
+  cantBuild: {r: 0, g: 0, b: 0, a: 0}
+  lakes: []
+  rndLakes: 1
   gridWidth: 10
   gridHeigth: 10
   currentWidth: 5
   renderGrid: 0
+  tileHeight: 0.5
   tileWidth: 2
   tileCap: 0.1
   emptyGo: {fileID: 1354137680948214, guid: 17f97aeff80b5df47ad053263e4722f2, type: 2}
+  lakeGo: {fileID: 0}
+  treeGo: {fileID: 0}
+  centerGo: {fileID: 0}
   lineCount: 10
   radius: 3
 --- !u!4 &593138772
