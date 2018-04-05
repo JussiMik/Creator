@@ -95,6 +95,9 @@ public class LayoutManager : MonoBehaviour
         }
 
         //CREATE TEST GRID
+        GameObject testGridFolder = Instantiate(new GameObject(), Vector3.zero, transform.rotation);
+        testGridFolder.name = "Test Grid";
+
         for (int x = 0; x < gridWidth; x++)
         {
 
@@ -107,6 +110,7 @@ public class LayoutManager : MonoBehaviour
                 {
                     Vector3 newPos = new Vector3(positions[x, y].x, positions[x, y].y, transform.position.z);
                     testGrid[x, y] = Instantiate(emptyGo, newPos, Quaternion.identity);
+                    testGrid[x, y].transform.parent = testGridFolder.transform;
                     testGrid[x, y].name = x + " , " + y;
                     testGrid[x, y].transform.localScale = new Vector3(tileWidth * 0.35f, (tileHeight*2) * 0.35f, testGrid[x, y].transform.localScale.z);
                 }
@@ -180,6 +184,9 @@ public class LayoutManager : MonoBehaviour
     private void RandomGen()
     {
         //RANDOMIZE LAKES
+        GameObject lakesFolder = Instantiate(new GameObject(), Vector3.zero, transform.rotation);
+        lakesFolder.name = "Lakes";
+
         for (int i = 0; i < rndLakes; i++)
         {
 
@@ -192,7 +199,9 @@ public class LayoutManager : MonoBehaviour
                 rnd2 = Random.Range(0, positions.GetLength(1));
             }
 
-            lakes.Add(Instantiate(lakeGo, positions[rnd1, rnd2], Quaternion.identity));
+            GameObject newLake = Instantiate(lakeGo, positions[rnd1, rnd2], Quaternion.identity);
+            lakes.Add(newLake);
+            newLake.transform.parent = lakesFolder.transform;
             positions[rnd1, rnd2].z = 1;
         }
     }
