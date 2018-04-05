@@ -268,7 +268,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   building: {fileID: 1562972897823358, guid: 096b69b713f61a04aab182f609a7db38, type: 2}
-  monk: {fileID: 0}
+  shrine: {fileID: 1381583842728158, guid: e2216061516bcb64c87cfa73ca805702, type: 2}
+  statue: {fileID: 1688829533608878, guid: 4834998f4aa0fef428a789e704a1989b, type: 2}
+  temple: {fileID: 1223688103337692, guid: f5c0f300b4a854849a1e68dc29dc4212, type: 2}
   generatedFaith: 0
   faith: 10
   devotion: 1000
@@ -277,13 +279,12 @@ MonoBehaviour:
   devotionDecreaseMp2: 0
   devotionDecreaseMp3: 0
   sanctity: 0
-  activeBuildings: 0
   faithTimerActive: 0
   faithTargetTime: 5
   faithBuildings: []
   devotionBuildings: []
   monks: []
-  sizeOfMonkList: 0
+  faithMultipliers: 
 --- !u!4 &1206880186
 Transform:
   m_ObjectHideFlags: 0
@@ -309,4 +310,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   constructingTimer: 0
-  constructingTime: 0
+  constructingTime: 5
+  constructingDone: 0
+  faithAmount: 0

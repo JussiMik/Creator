@@ -6,7 +6,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject building;
-    public GameObject monk;
+    public GameObject shrine;
+    public GameObject statue;
+    public GameObject temple;
 
     [SerializeField]
     private float generatedFaith;
@@ -23,9 +25,7 @@ public class GameManager : MonoBehaviour
 
     public bool sanctity;
 
-    public bool activeBuildings;
-
-    public bool faithTimerActive;    
+    public bool faithTimerActive;
     [SerializeField]
     private float faithTargetTime;
     private float originalFaithTargetTime;
@@ -33,8 +33,9 @@ public class GameManager : MonoBehaviour
     public List<GameObject> faithBuildings = new List<GameObject>();
     public List<GameObject> devotionBuildings = new List<GameObject>();
     public List<GameObject> monks = new List<GameObject>();
+    public List<int> faithMultipliers = new List<int>();
 
-    public int sizeOfMonkList;
+    //public int sizeOfMonkList;
 
     void Start()
     {
@@ -46,7 +47,12 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        sizeOfMonkList = monks.Count;
+        //sizeOfMonkList = monks.Count;
+
+        if (faithBuildings.Count > 0)
+        {
+            FaithTimer();
+        }
 
         if (faithTimerActive == true)
         {
@@ -74,7 +80,22 @@ public class GameManager : MonoBehaviour
             {
                 devotion -= Time.deltaTime * 4;
             }
-        }  
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            SpawnShrine();
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            SpawnStatue();
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            SpawnTemple();
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -103,24 +124,42 @@ public class GameManager : MonoBehaviour
         {
             faithTimerActive = true;
             faithTargetTime = originalFaithTargetTime;
-        }   
+        }
     }
 
     public void GenerateFaith()
     {
-        if (activeBuildings == true)
+        //generatedFaith = (faithBuildings.Count + faithMultipliers.Count) * monks.Count;
+
+        for (int i = 0; i < faithMultipliers.Count; i++)
         {
-            if (gameObject )
-            {
-                generatedFaith += 2f * monks.Count;
-            }
+            generatedFaith += faithMultipliers[i];
         }
+        generatedFaith += monks.Count;
     }
 
     public void CollectFaith()
     {
         faith += generatedFaith;
         generatedFaith = 0f;
+    }
+
+    public void SpawnShrine()
+    {
+        GameObject spawnedShrine = Instantiate(shrine, new Vector3(transform.position.x + 3, transform.position.y + 4, transform.position.z), transform.rotation);
+        //faithBuildings.Add(spawnedShrine);
+    }
+
+    public void SpawnStatue()
+    {
+        GameObject spawnedStatue = Instantiate(statue, new Vector3(transform.position.x + 2, transform.position.y - 2, transform.position.z), transform.rotation);
+        //faithBuildings.Add(spawnedStatue);
+    }
+
+    public void SpawnTemple()
+    {
+        GameObject spawned = Instantiate(temple, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+        //faithBuildings.Add(spawned);
     }
 
     public void SpawnNewBuilding()
@@ -131,7 +170,7 @@ public class GameManager : MonoBehaviour
 
         if (devotionBuildings.Count >= monks.Count)
         {
-            devotionDecrease = false;
+            devotionDecreaseMp1 = false;
         }
     }
 }

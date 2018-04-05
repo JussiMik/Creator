@@ -10,14 +10,19 @@ public class Structure : MonoBehaviour
     [SerializeField]
     private float constructingTime;
 
+    public bool constructingDone;
+
+    public int faithAmount;
+    //public int faithMultiplier;
+
     // Use this for initialization
     void Start()
     {
-
+        constructingDone = false;
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if (constructingTimer == true)
         {
@@ -26,6 +31,8 @@ public class Structure : MonoBehaviour
             if (constructingTime <= 0)
             {
                 constructingTime = 0f;
+                constructingTimer = false;
+                constructingDone = true;
             }
         }
     }
