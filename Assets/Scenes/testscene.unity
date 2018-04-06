@@ -294,8 +294,8 @@ MonoBehaviour:
   cantBuild: {r: 1, g: 0.09411766, b: 0.275, a: 1}
   lakes: []
   rndLakes: 10
-  gridWidth: 10
-  gridHeigth: 10
+  gridWidth: 20
+  gridHeigth: 20
   currentWidth: 5
   renderGrid: 0
   tileByAngle: 0
@@ -335,6 +335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragging: 0
   toDrag: {fileID: 0}
+  layoutManager: {fileID: 0}
 --- !u!1 &757949110
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,7 +614,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 208, y: -160}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1627295992
 MonoBehaviour:
@@ -718,6 +719,7 @@ MonoBehaviour:
   buildingMenuBlockPre: {fileID: 1686200574875558, guid: 38715dbc82d816f4eb82a9928a99c3d6,
     type: 2}
   buildingMenu: {fileID: 1627295990}
+  dragNDrop: {fileID: 0}
   menuVisible: 0
 --- !u!1 &1934308050
 GameObject:

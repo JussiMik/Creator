@@ -228,4 +228,5 @@ public class LayoutManager : MonoBehaviour
         Vector3 newPosition = new Vector3(positions[posX, posY].x - size.x/2, positions[posX, posY].y, transform.position.z);
         GameObject obj = Instantiate(centerGo, newPosition, Quaternion.identity) as GameObject;
     }
+
 }

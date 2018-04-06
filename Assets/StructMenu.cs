@@ -10,6 +10,8 @@ public class StructMenu : MonoBehaviour {
     public GameObject buildingMenuBlockPre;
     public GameObject buildingMenu;
 
+    public DragNDrop dragNDrop;
+
     public bool menuVisible = false;
 
     void Awake()
@@ -25,26 +27,44 @@ public class StructMenu : MonoBehaviour {
             structButtons[i].transform.parent = buildingMenu.transform;
             structButtons[i].SetActive(false);
             structButtons[i].GetComponent<Image>().sprite = structures[i].GetComponent<SpriteRenderer>().sprite;
+            structButtons[i].name = "StructButton " + i;
+            structButtons[i].GetComponent<StructMenuBlock>().blockNo = i;
+            structButtons[i].GetComponent<StructMenuBlock>().structMenu = this;
         }
-        
+        dragNDrop = GameObject.Find("LevelManager").GetComponent<DragNDrop>();
+
     }
     public void PressStructureMenu()
     {
         if(menuVisible)
         {
-            for (int i = 0; i < structButtons.Length; i++)
-            {
-                structButtons[i].active = false;
-            }
-            menuVisible = false;
+            HideStructMenu();
         }
         else
         {
-            for (int i = 0; i < structButtons.Length; i++)
-            {
-                structButtons[i].active = true;
-            }
-            menuVisible = true;
+            ShowStructMenu();
         }
+        
+    }
+    public void SelectToDrag(int blockNo)
+    {
+        dragNDrop.StartDragging(structures[blockNo]);
+        HideStructMenu();
+    }
+    public void HideStructMenu()
+    {
+        for (int i = 0; i < structButtons.Length; i++)
+        {
+            structButtons[i].active = false;
+        }
+        menuVisible = false;
+    }
+    public void ShowStructMenu()
+    {
+        for (int i = 0; i < structButtons.Length; i++)
+        {
+            structButtons[i].active = true;
+        }
+        menuVisible = true;
     }
 }
