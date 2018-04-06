@@ -16,8 +16,6 @@ public class StatueCS : Structure
         ConstructingStructures();
 
         addedToList = false;
-
-        faithAmount = 1;
     }
 
     // Update is called once per frame
@@ -34,7 +32,8 @@ public class StatueCS : Structure
     private void AddToList()
     {
         gameManager.faithBuildings.Add(gameObject);
+        //gameManager.faithAmounts.Add(faithAmount);
+        gameManager.faithMultipliers.Add(faithMultiplier);
         addedToList = true;
-        gameManager.faithMultipliers.Add(faithAmount);
     }
 }

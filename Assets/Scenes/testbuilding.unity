@@ -267,6 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c66a93416e89a4891e8e0ed33f4cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  structure: {fileID: 0}
   building: {fileID: 1562972897823358, guid: 096b69b713f61a04aab182f609a7db38, type: 2}
   shrine: {fileID: 1381583842728158, guid: e2216061516bcb64c87cfa73ca805702, type: 2}
   statue: {fileID: 1688829533608878, guid: 4834998f4aa0fef428a789e704a1989b, type: 2}
@@ -280,11 +281,12 @@ MonoBehaviour:
   devotionDecreaseMp3: 0
   sanctity: 0
   faithTimerActive: 0
-  faithTargetTime: 5
+  faithTargetTime: 10
   faithBuildings: []
   devotionBuildings: []
   monks: []
-  faithMultipliers: 
+  faithMultipliers: []
+  monkFaithMultiplier: 1.4
 --- !u!4 &1206880186
 Transform:
   m_ObjectHideFlags: 0
@@ -312,4 +314,9 @@ MonoBehaviour:
   constructingTimer: 0
   constructingTime: 5
   constructingDone: 0
-  faithAmount: 0
+  lvlChange: 0
+  level: 0
+  maxLevelAmount: 3
+  faithAmount: 2
+  maxFaithAmount: 4
+  faithMultiplier: 0

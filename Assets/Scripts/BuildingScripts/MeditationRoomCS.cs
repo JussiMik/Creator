@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TempleCS : Structure
+public class MeditationRoomCS : Structure
 {
     public GameManager gameManager;
 
@@ -29,11 +29,13 @@ public class TempleCS : Structure
         }
     }
 
-    private void AddToList()
+    public void AddToList()
     {
+        gameManager.devotionBuildings.Add(gameObject);
         gameManager.faithBuildings.Add(gameObject);
         //gameManager.faithAmounts.Add(faithAmount);
         gameManager.faithMultipliers.Add(faithMultiplier);
         addedToList = true;
+
     }
 }

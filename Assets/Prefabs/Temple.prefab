@@ -52,6 +52,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc620cea7a31086439303571c7733882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  constructingTimer: 0
+  constructingTime: 20
+  constructingDone: 0
+  faithMultiplier: 1.5
   gameManager: {fileID: 0}
 --- !u!212 &212453876958438364
 SpriteRenderer:

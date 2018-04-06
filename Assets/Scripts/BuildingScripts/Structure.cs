@@ -12,16 +12,22 @@ public class Structure : MonoBehaviour
 
     public bool constructingDone;
 
-    public int faithAmount;
-    //public int faithMultiplier;
+    public bool lvlChange;
+    public int level;
+    public int maxLevelAmount;
 
-    // Use this for initialization
+    public int faithAmount;
+    public int maxFaithAmount;
+    public double faithMultiplier;
+
     void Start()
     {
+        level = 1;
+        lvlChange = false;
+
         constructingDone = false;
     }
 
-    // Update is called once per frame
     protected virtual void Update()
     {
         if (constructingTimer == true)
@@ -35,10 +41,32 @@ public class Structure : MonoBehaviour
                 constructingDone = true;
             }
         }
+
+        if (lvlChange == true)
+        {
+            ChangeLevel();
+        }
     }
 
     public void ConstructingStructures()
     {
         constructingTimer = true;
+    }
+
+    public void ChangeLevel()
+    {
+        if (level >= 1)
+        {
+            faithAmount += 1;
+            level += 1;
+
+            if (faithAmount >= maxFaithAmount && level >= maxLevelAmount)
+            {
+                faithAmount = maxFaithAmount;
+                level = maxLevelAmount;
+            }
+        }
+
+        lvlChange = false;
     }
 }

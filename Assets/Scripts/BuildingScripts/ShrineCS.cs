@@ -16,8 +16,6 @@ public class ShrineCS : Structure
         ConstructingStructures();
 
         addedToList = false;
-
-        faithAmount = 2;
     }
 
     // Update is called once per frame
@@ -34,8 +32,8 @@ public class ShrineCS : Structure
     private void AddToList()
     {
         gameManager.faithBuildings.Add(gameObject);
+        //gameManager.faithAmounts.Add(faithAmount);
+        gameManager.faithMultipliers.Add(faithMultiplier);
         addedToList = true;
-        gameManager.faithMultipliers.Add(faithAmount);
     }
-
 }

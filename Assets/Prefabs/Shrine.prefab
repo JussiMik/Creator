@@ -55,7 +55,7 @@ MonoBehaviour:
   constructingTimer: 0
   constructingTime: 15
   constructingDone: 0
-  faithAmount: 0
+  faithMultiplier: 1.2
   gameManager: {fileID: 0}
 --- !u!212 &212371718832185772
 SpriteRenderer:

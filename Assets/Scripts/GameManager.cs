@@ -5,15 +5,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public Structure structure;
+
     public GameObject building;
     public GameObject shrine;
     public GameObject statue;
     public GameObject temple;
 
     [SerializeField]
-    private float generatedFaith;
+    private double generatedFaith;
     [SerializeField]
-    private float faith;
+    private double faith;
 
     [SerializeField]
     private float devotion;
@@ -33,12 +35,14 @@ public class GameManager : MonoBehaviour
     public List<GameObject> faithBuildings = new List<GameObject>();
     public List<GameObject> devotionBuildings = new List<GameObject>();
     public List<GameObject> monks = new List<GameObject>();
-    public List<int> faithMultipliers = new List<int>();
+    public List<double> faithMultipliers = new List<double>();
 
-    //public int sizeOfMonkList;
+    public double monkFaithMultiplier;
 
     void Start()
     {
+        structure = gameObject.GetComponent<Structure>();
+
         originalFaithTargetTime = faithTargetTime;
 
         devotionDecrease = true;
@@ -47,8 +51,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        //sizeOfMonkList = monks.Count;
-
         if (faithBuildings.Count > 0)
         {
             FaithTimer();
@@ -129,19 +131,18 @@ public class GameManager : MonoBehaviour
 
     public void GenerateFaith()
     {
-        //generatedFaith = (faithBuildings.Count + faithMultipliers.Count) * monks.Count;
-
         for (int i = 0; i < faithMultipliers.Count; i++)
         {
-            generatedFaith += faithMultipliers[i];
+            generatedFaith += (structure.faithAmount * faithMultipliers[i]);
         }
-        generatedFaith += monks.Count;
+
+        generatedFaith += (monks.Count * monkFaithMultiplier);
     }
 
     public void CollectFaith()
     {
         faith += generatedFaith;
-        generatedFaith = 0f;
+        generatedFaith = 0;
     }
 
     public void SpawnShrine()
