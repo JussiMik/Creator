@@ -20,8 +20,12 @@ public class Structure : MonoBehaviour
     public int maxFaithAmount;
     public double faithMultiplier;
 
+    public GameManager gameManager;
+
     void Start()
     {
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
         level = 1;
         lvlChange = false;
 
@@ -51,6 +55,8 @@ public class Structure : MonoBehaviour
     public void ConstructingStructures()
     {
         constructingTimer = true;
+
+        gameManager.devotionDecreaseChunk = true;
     }
 
     public void ChangeLevel()

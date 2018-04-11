@@ -19,7 +19,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private float devotion;
+    public float maxDevotionAmount;
     public bool devotionDecrease;
+    public bool allowDevotionDecreaseInChunks;
+    public bool devotionDecreaseChunk;
+    public float devotionChunkDecreaseAmount;
+    public bool devotionIncrease;
 
     public bool devotionDecreaseMp1;
     public bool devotionDecreaseMp2;
@@ -45,8 +50,10 @@ public class GameManager : MonoBehaviour
 
         originalFaithTargetTime = faithTargetTime;
 
-        devotionDecrease = true;
+        devotionDecrease = false;
         devotionDecreaseMp1 = false;
+        devotionDecreaseChunk = false;
+        allowDevotionDecreaseInChunks = true;
     }
 
     void Update()
@@ -66,22 +73,46 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        if (generatedFaith > 0)
+        {
+            allowDevotionDecreaseInChunks = true;
+        }
+
         if (devotionDecrease == true)
         {
-            devotion -= Time.deltaTime;
+            devotionIncrease = false;
 
-            if (devotionDecreaseMp1 == true)
-            {
-                devotion -= Time.deltaTime * 2;
-            }
-            else if (devotionDecreaseMp2 == true)
-            {
-                devotion -= Time.deltaTime * 3;
-            }
-            else if (devotionDecreaseMp3 == true)
-            {
-                devotion -= Time.deltaTime * 4;
-            }
+            DevotionDecrease();
+        }
+
+        if (devotionDecreaseChunk == true && allowDevotionDecreaseInChunks == true)
+        {
+            DevotionDecreaseChunk();
+        }
+
+        if (devotion <= 0)
+        {
+            devotion = 0;
+            //devotionDecreaseChunk = false;
+            allowDevotionDecreaseInChunks = false;
+        }
+
+        if (devotion < 10 && devotion > 0)
+        {
+            allowDevotionDecreaseInChunks = false;
+        }
+
+        if (devotion >= 10)
+        {
+            allowDevotionDecreaseInChunks = true;
+        }
+
+        if (devotionIncrease == true)
+        {
+            devotionDecrease = false;
+            //devotionDecreaseChunk = false;
+
+            DevotionIncrease();
         }
 
         if (Input.GetKeyDown(KeyCode.A))
@@ -104,12 +135,13 @@ public class GameManager : MonoBehaviour
             SpawnNewBuilding();
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse1) && generatedFaith > 0 && devotion >= 10)
         {
             CollectFaith();
         }
     }
 
+    //Faithtimer before faithgeneration starts
     public void FaithTimer()
     {
         faithTimerActive = true;
@@ -129,6 +161,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Generates faith resource that player can later extract and use
     public void GenerateFaith()
     {
         for (int i = 0; i < faithMultipliers.Count; i++)
@@ -139,28 +172,65 @@ public class GameManager : MonoBehaviour
         generatedFaith += (monks.Count * monkFaithMultiplier);
     }
 
+    //Player can collect generated faith for later use
     public void CollectFaith()
     {
+        devotionDecreaseChunk = true;
+
         faith += generatedFaith;
         generatedFaith = 0;
+    }
+
+    //Devotion decreases slowly
+    void DevotionDecrease()
+    {
+        devotion -= Time.deltaTime;
+
+        if (devotionDecreaseMp1 == true)
+        {
+            devotion -= Time.deltaTime * 2;
+        }
+        else if (devotionDecreaseMp2 == true)
+        {
+            devotion -= Time.deltaTime * 3;
+        }
+        else if (devotionDecreaseMp3 == true)
+        {
+            devotion -= Time.deltaTime * 4;
+        }
+    }
+
+    //Devotion decreases in chunks
+    void DevotionDecreaseChunk()
+    {
+        devotion -= devotionChunkDecreaseAmount;
+        devotionDecreaseChunk = false;
+    }
+
+    //Devotion increases slowly
+    void DevotionIncrease()
+    {
+        devotion += Time.deltaTime;
+
+        if (devotion >= maxDevotionAmount)
+        {
+            devotion = maxDevotionAmount;
+        }
     }
 
     public void SpawnShrine()
     {
         GameObject spawnedShrine = Instantiate(shrine, new Vector3(transform.position.x + 3, transform.position.y + 4, transform.position.z), transform.rotation);
-        //faithBuildings.Add(spawnedShrine);
     }
 
     public void SpawnStatue()
     {
         GameObject spawnedStatue = Instantiate(statue, new Vector3(transform.position.x + 2, transform.position.y - 2, transform.position.z), transform.rotation);
-        //faithBuildings.Add(spawnedStatue);
     }
 
     public void SpawnTemple()
     {
         GameObject spawned = Instantiate(temple, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-        //faithBuildings.Add(spawned);
     }
 
     public void SpawnNewBuilding()
@@ -171,7 +241,9 @@ public class GameManager : MonoBehaviour
 
         if (devotionBuildings.Count >= monks.Count)
         {
+            devotionDecrease = false;
             devotionDecreaseMp1 = false;
+            devotionIncrease = true;
         }
     }
 }

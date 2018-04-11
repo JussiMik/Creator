@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class ShrineCS : Structure
 {
-    public GameManager gameManager;
+    //public GameManager gameManager;
 
     private bool addedToList;
 
-    // Use this for initialization
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
@@ -18,7 +17,6 @@ public class ShrineCS : Structure
         addedToList = false;
     }
 
-    // Update is called once per frame
     protected override void Update()
     {
         base.Update();

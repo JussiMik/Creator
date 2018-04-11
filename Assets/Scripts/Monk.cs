@@ -27,10 +27,27 @@ public class Monk : MonoBehaviour
         GameObject spawnedMonk = Instantiate(monk, new Vector3(transform.position.x + 2, transform.position.y + 2, transform.position.z), transform.rotation);
         gameManager.monks.Add(spawnedMonk);
 
+        if (gameManager.monks.Count == gameManager.devotionBuildings.Count)
+        {
+            gameManager.devotionIncrease = true;
+            gameManager.devotionDecrease = false;
+            gameManager.devotionDecreaseMp1 = false;
+        }
+
         if (gameManager.monks.Count > gameManager.devotionBuildings.Count)
         {
+            gameManager.devotionIncrease = false;
+            gameManager.devotionDecrease = true;
+            gameManager.devotionDecreaseMp1 = false;
+        }
+
+        /*
+        if (gameManager.monks.Count * 1.3 > gameManager.devotionBuildings.Count)
+        {
+            gameManager.devotionIncrease = false;
             gameManager.devotionDecrease = true;
             gameManager.devotionDecreaseMp1 = true;
         }
+        */
     }
 }
