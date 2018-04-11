@@ -15,6 +15,7 @@ public class StructMenuBlock : MonoBehaviour {
         Button btn = gameObject.GetComponent<Button>();
 
         btn.onClick.AddListener(TaskOnClick);
+
     }
 	
 	void TaskOnClick()

@@ -105,6 +105,7 @@ public class LayoutManager : MonoBehaviour
             {
                 if (positions[x, y] == nullVector3)
                 {
+                    testGrid[x, y] = null;
                 }
                 else
                 {
@@ -116,7 +117,7 @@ public class LayoutManager : MonoBehaviour
                 }
             }
         }
-        SpawnStructure(centerGo, gridWidth / 2, gridHeigth / 2, new Vector2(2, 2));
+        //SpawnStructure(centerGo, , new Vector2(0,0), new Vector2(2, 2));
         RandomGen();
         gridDone = true;
     }
@@ -208,25 +209,30 @@ public class LayoutManager : MonoBehaviour
 
 
 
-    private void SpawnStructure(GameObject structure, int posX, int posY, Vector2 size)
+    public void SpawnStructure(GameObject structure, List<Vector2> tiles, Vector2 worldPos, Vector2 size)
     {
         //SPAWN THE OBJECT
-        
+
         //GET THE SIZE THAT STRUCTURE NEEDS
 
         //SET TILES TO TAKEN
-        for (int x = 0; x < size.x; x++)
+        //for (int x = 0; x < size.x; x++)
+        //{
+        //    for (int y = 0; y < size.y; y++)
+        //    {
+        //        int freeToTaken1 = Mathf.RoundToInt(posX - (size.x / 2) + x);
+        //        int freeToTaken2 = Mathf.RoundToInt(posY - (size.y / 2) + y);
+        //        positions[freeToTaken1, freeToTaken2] = new Vector3(positions[freeToTaken1, freeToTaken2].x, positions[freeToTaken1, freeToTaken2].y, 1);
+        //    }
+        //}
+
+        for (int i = 0; i < tiles.Count; i++)
         {
-            for (int y = 0; y < size.y; y++)
-            {
-                int freeToTaken1 = Mathf.RoundToInt(posX - (size.x / 2) + x);
-                int freeToTaken2 = Mathf.RoundToInt(posY - (size.y / 2) + y);
-                positions[freeToTaken1, freeToTaken2] = new Vector3(positions[freeToTaken1, freeToTaken2].x, positions[freeToTaken1, freeToTaken2].y, 1);
-            }
+            positions[(int)tiles[i].x, (int)tiles[i].y] = new Vector3(positions[(int)tiles[i].x, (int)tiles[i].y].x, positions[(int)tiles[i].x, (int)tiles[i].y].y, 1);
         }
+
         //CALCULATE HOUSE POSITION
-        Vector3 newPosition = new Vector3(positions[posX, posY].x - size.x/2, positions[posX, posY].y, transform.position.z);
-        GameObject obj = Instantiate(centerGo, newPosition, Quaternion.identity) as GameObject;
+        GameObject obj = Instantiate(structure, new Vector3(worldPos.x, worldPos.y, transform.position.z), Quaternion.identity) as GameObject;
     }
 
 }

@@ -291,7 +291,7 @@ MonoBehaviour:
   roundCorners: 1
   roundCornerBy: 2
   showGrid: 1
-  cantBuild: {r: 1, g: 0.09411766, b: 0.275, a: 1}
+  cantBuild: {r: 0.6838235, g: 0.1005623, b: 0.21702531, a: 1}
   lakes: []
   rndLakes: 10
   gridWidth: 20
@@ -299,7 +299,7 @@ MonoBehaviour:
   currentWidth: 5
   renderGrid: 0
   tileByAngle: 0
-  tileHeight: 0.5
+  tileHeight: 0.333333
   tileWidth: 1
   gridAngle: 0
   tileCap: 0.1
@@ -333,9 +333,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366d554c6a53f0749a7e13fec36b19b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  v3: {x: 0, y: 0, z: 0}
   dragging: 0
   toDrag: {fileID: 0}
   layoutManager: {fileID: 0}
+  firstRound: 0
+  currentColored: {x: 0, y: 0, z: 0}
+  currentColoredXY: []
+  draCanBuildColor: {r: 0, g: 1, b: 0.08965516, a: 0}
+  draCantBuildColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!1 &757949110
 GameObject:
   m_ObjectHideFlags: 0
