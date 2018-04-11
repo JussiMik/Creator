@@ -7,30 +7,34 @@ public class _TempMonk : MonoBehaviour
     public Transform targetTransform;
     public GameObject targetObject;
     public bool checkForNewDestination;
+    public bool startNewPathTimer;
+    public bool reachedDestination;
     public float speed = 20;
-    Vector2[] path;
+    public Vector2[] path;
     int targetIndex;
 
     void Start()
     {
-        //  StartCoroutine(RefreshPath());
+        // StartCoroutine(RefreshPath());
         InvokeRepeating("CheckForNewDestination", 0.5f, 1.5f);
+        startNewPathTimer = targetObject.GetComponent<PathfindingTargetLocation>().startNewTargetTimer;
     }
 
     void Update()
     {
         if (checkForNewDestination == true)
         {
-            RefreshPath();
+            StartCoroutine("RefreshPath");
             checkForNewDestination = false;
         }
+        
     }
     void CheckForNewDestination()
     {
         checkForNewDestination = targetObject.GetComponent<PathfindingTargetLocation>().moveToPosition;
     }
 
-    private void RefreshPath()
+    IEnumerator RefreshPath()
     {
         Vector2 targetPositionOld = (Vector2)targetTransform.position + Vector2.up; // ensure != to target.position initially
 
@@ -44,6 +48,8 @@ public class _TempMonk : MonoBehaviour
                 StopCoroutine("FollowPath");
                 StartCoroutine("FollowPath");
             }
+            StopCoroutine("RefreshPath");
+            yield return new WaitForSeconds(.25f);
         }
     }
 
@@ -59,13 +65,14 @@ public class _TempMonk : MonoBehaviour
                 if ((Vector2)transform.position == currentWaypoint)
                 {
                     targetIndex++;
-                    if (targetIndex >= path.Length)
+                    while (targetIndex >= path.Length)
                     {
-                        yield break;
+                        targetObject.GetComponent<PathfindingTargetLocation>().startNewTargetTimer = true;
+                        Debug.Log("Hellou");
+                        yield return new WaitForSeconds(.25f);
                     }
                     currentWaypoint = path[targetIndex];
                 }
-
                 transform.position = Vector2.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
                 yield return null;
 

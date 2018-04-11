@@ -127,7 +127,6 @@ public class Pathfinding : MonoBehaviour
         Vector2[] waypoints = SimplifyPath(path);
         Array.Reverse(waypoints);
         return waypoints;
-
     }
 
     Vector2[] SimplifyPath(List<Node> path)
@@ -140,7 +139,7 @@ public class Pathfinding : MonoBehaviour
             Vector2 directionNew = new Vector2(path[i - 1].gridX - path[i].gridX, path[i - 1].gridY - path[i].gridY);
             if (directionNew != directionOld)
             {
-                waypoints.Add(path[i].worldPosition);
+                waypoints.Add(path[i - 1].worldPosition);
             }
             directionOld = directionNew;
         }
@@ -153,7 +152,7 @@ public class Pathfinding : MonoBehaviour
         int dstY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
 
         if (dstX > dstY)
-            return 14 * dstY + 10 * (dstX - dstY);
+        return 14 * dstY + 10 * (dstX - dstY);
         return 14 * dstX + 10 * (dstY - dstX);
     }
 

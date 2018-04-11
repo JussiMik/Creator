@@ -5,11 +5,15 @@ using UnityEngine;
 public class PathfindingTargetLocation : MonoBehaviour
 {
     public bool moveToPosition;
+    public bool startNewTargetTimer;
+    // public Transform monk;
     public LayerMask unwalkable;
     int layer;
-    float xPosition;
-    float yPosition;
-    Vector2 pos;
+    public int unwalkableLocationCount;
+    float newHorizontalPosition;
+    float newVerticalPosition;
+    Vector2 position;
+    Vector2 oldPosition;
     [SerializeField]
     float newTargetLocationTimer;
 
@@ -17,39 +21,62 @@ public class PathfindingTargetLocation : MonoBehaviour
     void Start()
     {
         unwalkable = LayerMask.GetMask("Unwalkable");
-        newTargetLocationTimer = Random.Range(5f, 15f);
+        //  monk = transform.parent.Find("Sprite");
+       // startNewTargetTimer = transform.parent.GetComponentInChildren<_TempMonk>().reachedDestination;
+        newTargetLocationTimer = Random.Range(2.5f, 5f);
+        oldPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //  newTargetLocationTimer -= Time.deltaTime;
-
-        if (newTargetLocationTimer <= 0)
+        if (startNewTargetTimer == true)
         {
-            MoveToNewLocation();
+            FindNewTargetTimer();
         }
+    }
+    void StartTimer()
+    {
+
     }
 
     void MoveToNewLocation()
     {
-        xPosition = Random.Range(-5f, 5f);
-        yPosition = Random.Range(-5f, 5f);
-        pos = new Vector2(xPosition, yPosition);
-        transform.position = pos;
-        newTargetLocationTimer = Random.Range(5f, 15f);
-        moveToPosition = true;
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag =="Building")
+        newHorizontalPosition = Random.Range(-15f, 15f);
+        newVerticalPosition = Random.Range(-15f, 15f);
+        oldPosition = transform.position;
+        position = new Vector2(transform.position.x + newHorizontalPosition, transform.position.y + newVerticalPosition);
+        transform.position = position;
+        newTargetLocationTimer = Random.Range(2.5f, 5f);
+        if(unwalkableLocationCount >= 5)
         {
+            position = new Vector2(0,0);
+            transform.position = position;
+        }
+    }
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Building")
+        {
+            unwalkableLocationCount++;
+            Debug.Log("Hit unwalkable terrain");
             moveToPosition = false;
-            Debug.Log("Pathfinding target on unwalkable area");
+            transform.position = oldPosition;
+            MoveToNewLocation();
         }
         else
         {
             moveToPosition = true;
+        }
+    }
+    void FindNewTargetTimer()
+    {
+        newTargetLocationTimer -= Time.deltaTime;
+
+        if (newTargetLocationTimer <= 0)
+        {
+            MoveToNewLocation();
+            startNewTargetTimer = false;
         }
     }
 }
