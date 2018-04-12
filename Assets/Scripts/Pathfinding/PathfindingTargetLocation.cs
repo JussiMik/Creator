@@ -6,63 +6,76 @@ public class PathfindingTargetLocation : MonoBehaviour
 {
     public bool moveToPosition;
     public bool startNewTargetTimer;
-    // public Transform monk;
-    public LayerMask unwalkable;
+    bool useBoundaryTimer;
     int layer;
-    public int unwalkableLocationCount;
-    float newHorizontalPosition;
-    float newVerticalPosition;
     Vector2 position;
-    Vector2 oldPosition;
-    [SerializeField]
-    float newTargetLocationTimer;
+    public LayerMask unwalkable;
 
-    // Use this for initialization
+   /* [Space(10)]
+    [Range(-15, 0f)]
+    [SerializeField]
+    float MinMovementRange;
+    */
+
+    [Range(0, 15f)]
+    [SerializeField]
+    float MovementRange;
+    float newPosition;
+
+    [Space(10)]
+    [Range(0, 10f)]
+    [SerializeField]
+    float newPathTimerMin;
+    [Range(0, 30f)]
+    [SerializeField]
+    float newPathTimerMax;
+
+    [Space(10)]
+    float newTargetLocationTimer;
+    [SerializeField]
+    float boundaryTimer;
+    float setBoundaryTimer;
+
     void Start()
     {
+        setBoundaryTimer = boundaryTimer;
         unwalkable = LayerMask.GetMask("Unwalkable");
-        //  monk = transform.parent.Find("Sprite");
-       // startNewTargetTimer = transform.parent.GetComponentInChildren<_TempMonk>().reachedDestination;
-        newTargetLocationTimer = Random.Range(2.5f, 5f);
-        oldPosition = transform.position;
+        newTargetLocationTimer = Random.Range(newPathTimerMin, newPathTimerMax);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (startNewTargetTimer == true)
         {
             FindNewTargetTimer();
         }
+        if (useBoundaryTimer == true)
+        {
+            BoundaryTimer();
+        }
     }
-    void StartTimer()
-    {
-
-    }
-
+    // Randomize position and timer
     void MoveToNewLocation()
     {
-        newHorizontalPosition = Random.Range(-15f, 15f);
-        newVerticalPosition = Random.Range(-15f, 15f);
-        oldPosition = transform.position;
-        position = new Vector2(transform.position.x + newHorizontalPosition, transform.position.y + newVerticalPosition);
+        newPosition = Random.Range(-MovementRange, MovementRange);
+        position = new Vector2(transform.position.x + newPosition, transform.position.y + newPosition);
         transform.position = position;
-        newTargetLocationTimer = Random.Range(2.5f, 5f);
-        if(unwalkableLocationCount >= 5)
-        {
-            position = new Vector2(0,0);
-            transform.position = position;
-        }
+        newTargetLocationTimer = Random.Range(newPathTimerMin, newPathTimerMax);
     }
     void OnTriggerStay2D(Collider2D other)
     {
+        // If target moves on building randomize new position
         if (other.gameObject.tag == "Building")
         {
-            unwalkableLocationCount++;
-            Debug.Log("Hit unwalkable terrain");
             moveToPosition = false;
-            transform.position = oldPosition;
             MoveToNewLocation();
+        }
+        // If target moves on boundary set position to 0,0 and start faster timer for new position
+        else if (other.gameObject.tag == "Boundary")
+        {
+            useBoundaryTimer = true;
+            position = new Vector2(0,0);
+            transform.position = position;
         }
         else
         {
@@ -72,11 +85,21 @@ public class PathfindingTargetLocation : MonoBehaviour
     void FindNewTargetTimer()
     {
         newTargetLocationTimer -= Time.deltaTime;
-
         if (newTargetLocationTimer <= 0)
         {
             MoveToNewLocation();
             startNewTargetTimer = false;
+        }
+    }
+    void BoundaryTimer()
+    {
+        boundaryTimer -= Time.deltaTime;
+        if (boundaryTimer <= 0)
+        {
+            MoveToNewLocation();
+            startNewTargetTimer = false;
+            useBoundaryTimer = false;
+            boundaryTimer = setBoundaryTimer;
         }
     }
 }

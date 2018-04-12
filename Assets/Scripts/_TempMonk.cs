@@ -9,14 +9,15 @@ public class _TempMonk : MonoBehaviour
     public bool checkForNewDestination;
     public bool startNewPathTimer;
     public bool reachedDestination;
-    public float speed = 20;
-    public Vector2[] path;
+    public float speed = 20f;
+    public float movementCheckDistance;
+    Vector2[] path;
     int targetIndex;
 
     void Start()
     {
-        // StartCoroutine(RefreshPath());
         InvokeRepeating("CheckForNewDestination", 0.5f, 1.5f);
+        InvokeRepeating("CheckDistanceFromTarget", 1f, 2.5f);
         startNewPathTimer = targetObject.GetComponent<PathfindingTargetLocation>().startNewTargetTimer;
     }
 
@@ -52,7 +53,6 @@ public class _TempMonk : MonoBehaviour
             yield return new WaitForSeconds(.25f);
         }
     }
-
     IEnumerator FollowPath()
     {
         if (path.Length > 0)
@@ -67,8 +67,6 @@ public class _TempMonk : MonoBehaviour
                     targetIndex++;
                     while (targetIndex >= path.Length)
                     {
-                        targetObject.GetComponent<PathfindingTargetLocation>().startNewTargetTimer = true;
-                        Debug.Log("Hellou");
                         yield return new WaitForSeconds(.25f);
                     }
                     currentWaypoint = path[targetIndex];
@@ -79,7 +77,15 @@ public class _TempMonk : MonoBehaviour
             }
         }
     }
-
+    // Starts new pathfinding timer if distance between monk and movement target is small enough
+    void CheckDistanceFromTarget()
+    {
+        if (Vector2.Distance(transform.position, targetTransform.position) < movementCheckDistance)
+        {
+            targetObject.GetComponent<PathfindingTargetLocation>().startNewTargetTimer = true;
+        }
+    }
+    // Draws movement path in editor
     public void OnDrawGizmos()
     {
         if (path != null)

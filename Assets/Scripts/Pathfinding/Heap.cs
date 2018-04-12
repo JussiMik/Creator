@@ -5,6 +5,11 @@ using System;
 public class Heap<T> where T : IHeapItem<T>
 {
 
+    /* 
+     * Pathfinding.cs, Grid.cs, Heap,cs and Node.cs use Sebastian Lague's Pathfinding-2D (https://github.com/SebLague/Pathfinding-2D) as source.
+     * Video tutorial for Lague's 3D pathfinding can be found at https://www.youtube.com/watch?v=-L-WgKMFuhE 
+     */
+
     T[] items;
     int currentItemCount;
 

@@ -5,6 +5,11 @@ using UnityEngine;
 public class Grid : MonoBehaviour
 {
 
+    /* 
+     * Pathfinding.cs, Grid.cs, Heap,cs and Node.cs use Sebastian Lague's Pathfinding-2D (https://github.com/SebLague/Pathfinding-2D) as source.
+     * Video tutorial for Lague's 3D pathfinding can be found at https://www.youtube.com/watch?v=-L-WgKMFuhE 
+     */
+
     public bool displayGridGizmos;
 
     public LayerMask unwalkableMask;
@@ -24,15 +29,16 @@ public class Grid : MonoBehaviour
         CreateGrid();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown("g"))
-        {
-            CreateGrid();
-            Debug.Log("Create new grid");
-        }
-    }
-    
+    /* private void Update()
+     {
+         if (Input.GetKeyDown("g"))
+         {
+             CreateGrid();
+             Debug.Log("Create new grid");
+         }
+     }
+     */
+
 
     public int MaxSize
     {

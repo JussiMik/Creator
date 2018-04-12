@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1642679442656560}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 63.4, y: -24, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4559867508256176}
@@ -81,7 +81,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1593562265877594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.6, y: 32.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4819038318157348}
@@ -96,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1601578867070062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -21.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4559867508256176}
@@ -163,7 +163,10 @@ MonoBehaviour:
   unwalkable:
     serializedVersion: 2
     m_Bits: 1024
-  newTargetLocationTimer: 0
+  MovementRange: 10
+  newPathTimerMin: 4
+  newPathTimerMax: 10
+  boundaryTimer: 2
 --- !u!114 &114510126755378382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -181,7 +184,7 @@ MonoBehaviour:
   startNewPathTimer: 0
   reachedDestination: 0
   speed: 10
-  path: []
+  movementCheckDistance: 4
 --- !u!212 &212391985801830276
 SpriteRenderer:
   m_ObjectHideFlags: 1
