@@ -268,18 +268,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   structure: {fileID: 0}
-  building: {fileID: 1562972897823358, guid: 096b69b713f61a04aab182f609a7db38, type: 2}
   shrine: {fileID: 1381583842728158, guid: e2216061516bcb64c87cfa73ca805702, type: 2}
   statue: {fileID: 1688829533608878, guid: 4834998f4aa0fef428a789e704a1989b, type: 2}
   temple: {fileID: 1223688103337692, guid: f5c0f300b4a854849a1e68dc29dc4212, type: 2}
+  farm: {fileID: 1562972897823358, guid: 096b69b713f61a04aab182f609a7db38, type: 2}
+  garden: {fileID: 1942373733342142, guid: 3386bf59851fad24dabca9d64916893b, type: 2}
+  meditationRoom: {fileID: 1507489764547042, guid: 72817227a19a6d64695753084697baa5,
+    type: 2}
   generatedFaith: 0
   faith: 10
   devotion: 1000
   maxDevotionAmount: 1000
   devotionDecrease: 0
+  allowDevotionDecreaseInChunks: 0
   devotionDecreaseChunk: 0
   devotionChunkDecreaseAmount: 100
   devotionIncrease: 0
+  devotionIncreaseMp1: 0
   devotionDecreaseMp1: 0
   devotionDecreaseMp2: 0
   devotionDecreaseMp3: 0
@@ -287,7 +292,9 @@ MonoBehaviour:
   faithTimerActive: 0
   faithTargetTime: 10
   faithBuildings: []
-  devotionBuildings: []
+  farms: []
+  gardens: []
+  meditationRooms: []
   monks: []
   faithMultipliers: []
   monkFaithMultiplier: 1.4
@@ -324,3 +331,4 @@ MonoBehaviour:
   faithAmount: 2
   maxFaithAmount: 4
   faithMultiplier: 0
+  gameManager: {fileID: 0}

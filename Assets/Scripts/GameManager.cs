@@ -7,10 +7,12 @@ public class GameManager : MonoBehaviour
 {
     public Structure structure;
 
-    public GameObject building;
     public GameObject shrine;
     public GameObject statue;
     public GameObject temple;
+    public GameObject farm;
+    public GameObject garden;
+    public GameObject meditationRoom;
 
     [SerializeField]
     private double generatedFaith;
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
     public bool devotionDecreaseChunk;
     public float devotionChunkDecreaseAmount;
     public bool devotionIncrease;
+    public bool devotionIncreaseMp1;
 
     public bool devotionDecreaseMp1;
     public bool devotionDecreaseMp2;
@@ -37,8 +40,11 @@ public class GameManager : MonoBehaviour
     private float faithTargetTime;
     private float originalFaithTargetTime;
 
+    //public Monk[] controllers;
     public List<GameObject> faithBuildings = new List<GameObject>();
-    public List<GameObject> devotionBuildings = new List<GameObject>();
+    public List<GameObject> farms = new List<GameObject>();
+    public List<GameObject> gardens = new List<GameObject>();
+    public List<GameObject> meditationRooms = new List<GameObject>();
     public List<GameObject> monks = new List<GameObject>();
     public List<double> faithMultipliers = new List<double>();
 
@@ -132,7 +138,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SpawnNewBuilding();
+            SpawnFarm();
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse1) && generatedFaith > 0 && devotion >= 10)
@@ -212,6 +218,11 @@ public class GameManager : MonoBehaviour
     {
         devotion += Time.deltaTime;
 
+        if (devotionIncreaseMp1 == true)
+        {
+            devotion += Time.deltaTime * 2;
+        }
+
         if (devotion >= maxDevotionAmount)
         {
             devotion = maxDevotionAmount;
@@ -233,17 +244,13 @@ public class GameManager : MonoBehaviour
         GameObject spawned = Instantiate(temple, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
     }
 
-    public void SpawnNewBuilding()
+    public void SpawnFarm()
     {
-        GameObject spawned = Instantiate(building, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-        devotionBuildings.Add(spawned);
+        GameObject spawned = Instantiate(farm, new Vector3(transform.position.x + 1, transform.position.y - 4, transform.position.z), transform.rotation);
+    }
 
-
-        if (devotionBuildings.Count >= monks.Count)
-        {
-            devotionDecrease = false;
-            devotionDecreaseMp1 = false;
-            devotionIncrease = true;
-        }
+    public void SpawnGarden()
+    {
+        GameObject spawned = Instantiate(garden, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
     }
 }

@@ -29,9 +29,8 @@ public class MeditationRoomCS : Structure
 
     public void AddToList()
     {
-        gameManager.devotionBuildings.Add(gameObject);
+        gameManager.meditationRooms.Add(gameObject);
         gameManager.faithBuildings.Add(gameObject);
-        //gameManager.faithAmounts.Add(faithAmount);
         gameManager.faithMultipliers.Add(faithMultiplier);
         addedToList = true;
 

@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShrineCS : Structure
+public class Farm : Structure
 {
-    //public GameManager gameManager;
-
     private bool addedToList;
 
     void Start()
@@ -27,10 +25,10 @@ public class ShrineCS : Structure
         }
     }
 
-    private void AddToList()
+    public void AddToList()
     {
-        gameManager.faithBuildings.Add(gameObject);
-        gameManager.faithMultipliers.Add(faithMultiplier);
+        gameManager.farms.Add(gameObject);
         addedToList = true;
+
     }
 }

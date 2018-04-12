@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GardenCS : Structure
 {
-    //public GameManager gameManager;
-
     private bool addedToList;
 
     void Start()
@@ -29,7 +27,7 @@ public class GardenCS : Structure
 
     public void AddToList()
     {
-        gameManager.devotionBuildings.Add(gameObject);
+        gameManager.gardens.Add(gameObject);
         addedToList = true;
     }
 }

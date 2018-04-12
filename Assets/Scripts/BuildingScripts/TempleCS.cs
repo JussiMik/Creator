@@ -30,7 +30,6 @@ public class TempleCS : Structure
     private void AddToList()
     {
         gameManager.faithBuildings.Add(gameObject);
-        //gameManager.faithAmounts.Add(faithAmount);
         gameManager.faithMultipliers.Add(faithMultiplier);
         addedToList = true;
     }
