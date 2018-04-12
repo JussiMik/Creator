@@ -79,16 +79,18 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (generatedFaith > 0)
-        {
-            allowDevotionDecreaseInChunks = true;
-        }
-
         if (devotionDecrease == true)
         {
-            devotionIncrease = false;
+            //devotionIncrease = false;
 
             DevotionDecrease();
+        }
+        else if (devotionIncrease == true)
+        {
+            //devotionDecrease = false;
+            //devotionDecreaseChunk = false;
+
+            DevotionIncrease();
         }
 
         if (devotionDecreaseChunk == true && allowDevotionDecreaseInChunks == true)
@@ -103,7 +105,7 @@ public class GameManager : MonoBehaviour
             allowDevotionDecreaseInChunks = false;
         }
 
-        if (devotion < 10 && devotion > 0)
+        if (devotion > 0 && devotion < 10)
         {
             allowDevotionDecreaseInChunks = false;
         }
@@ -113,13 +115,7 @@ public class GameManager : MonoBehaviour
             allowDevotionDecreaseInChunks = true;
         }
 
-        if (devotionIncrease == true)
-        {
-            devotionDecrease = false;
-            //devotionDecreaseChunk = false;
-
-            DevotionIncrease();
-        }
+        
 
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -176,6 +172,13 @@ public class GameManager : MonoBehaviour
         }
 
         generatedFaith += (monks.Count * monkFaithMultiplier);
+
+        /*
+        if (generatedFaith > 0)
+        {
+            allowDevotionDecreaseInChunks = true;
+        }
+        */
     }
 
     //Player can collect generated faith for later use
@@ -190,6 +193,8 @@ public class GameManager : MonoBehaviour
     //Devotion decreases slowly
     void DevotionDecrease()
     {
+        devotionIncrease = false;
+
         devotion -= Time.deltaTime;
 
         if (devotionDecreaseMp1 == true)
@@ -216,6 +221,8 @@ public class GameManager : MonoBehaviour
     //Devotion increases slowly
     void DevotionIncrease()
     {
+        devotionDecrease = false;
+
         devotion += Time.deltaTime;
 
         if (devotionIncreaseMp1 == true)

@@ -29,6 +29,5 @@ public class Farm : Structure
     {
         gameManager.farms.Add(gameObject);
         addedToList = true;
-
     }
 }

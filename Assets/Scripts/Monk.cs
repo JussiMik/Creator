@@ -32,24 +32,27 @@ public class Monk : MonoBehaviour
             }
         }
 
-        if ((gameManager.monks.Count / gameManager.farms.Count) <= 4)
+        if (gameManager.monks.Count > 0 && gameManager.farms.Count > 0)
         {
-            gameManager.devotionIncrease = true;
-
-            if (gameManager.gardens.Count > 0 || gameManager.meditationRooms.Count > 0)
+            if ((gameManager.monks.Count / gameManager.farms.Count) <= 4)
             {
-                gameManager.devotionIncreaseMp1 = true;
+                gameManager.devotionIncrease = true;
+
+                if (gameManager.gardens.Count > 0 || gameManager.meditationRooms.Count > 0)
+                {
+                    gameManager.devotionIncreaseMp1 = true;
+                }
             }
-        }
 
-        if ((gameManager.monks.Count / gameManager.farms.Count) > 4)
-        {
-            gameManager.devotionDecrease = true;
-        }
+            if (gameManager.monks.Count / gameManager.farms.Count > 4)
+            {
+                gameManager.devotionDecrease = true;
+            }
 
-        if ((gameManager.monks.Count / gameManager.farms.Count) >= 5.7)
-        {
-            gameManager.devotionDecreaseMp1 = true;
+            if (gameManager.monks.Count / gameManager.farms.Count >= 5.7)
+            {
+                gameManager.devotionDecreaseMp1 = true;
+            }
         }
     }
 
