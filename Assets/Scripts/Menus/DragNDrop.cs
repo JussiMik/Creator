@@ -14,14 +14,16 @@ public class DragNDrop : MonoBehaviour
     public Vector3 currentColored;
     public List<Vector2> currentColoredXY;
 
-    private Color emptyColor;
+    public Color emptyColor;
     public Color draCanBuildColor;
     public Color draCantBuildColor;
 
-    private Vector2 buildingSize = new Vector2(2, 2);
+    public Vector2 buildingSize;
 
     private GameObject curDraBuilding;
-    private Vector3 bestTarget;
+    public Vector3 bestTarget;
+
+    public List<Vector2> toBeColorized;
 
     // Use this for initialization
     void Start()
@@ -83,62 +85,57 @@ public class DragNDrop : MonoBehaviour
 
         //FIND CLOCEST TO CURSOR
         Vector3[,] positions = GameObject.Find("LevelManager").GetComponent<LayoutManager>().positions;
-        //float closestDistanceSqr = Mathf.Infinity;
-        foreach (Vector3 potentialTarget in positions)
-        {
-            if (Vector3.Distance(bestTarget, v3) > Vector3.Distance(potentialTarget, v3))
-            {
-                bestTarget = potentialTarget;
-            }
-        }
 
-        //
-        if (!(currentColored == bestTarget) && firstRound == false)
+        for (int x = 0; x < positions.GetLength(0); x++)
         {
-            SwipeToEmpty();
-        }
-
-        if (!(currentColored == bestTarget))
-        {
-            for (int x = 0; x < layoutManager.testGrid.GetLength(0); x++)
+            for (int y = 0; y < positions.GetLength(1); y++)
             {
-                for (int y = 0; y < layoutManager.testGrid.GetLength(1); y++)
+                Vector3 current = new Vector3(positions[x, y].x + layoutManager.tileWidth / 2, positions[x, y].y, transform.position.z);
+
+                if (Vector3.Distance(bestTarget, v3) > Vector3.Distance(current, v3))
                 {
-                    if (!(layoutManager.testGrid[x, y] == null))
+                    bestTarget = current;
+                    SwipeToEmpty();
+                    for (int bx = 0; bx < buildingSize.x; bx++)
                     {
-                        if (layoutManager.testGrid[x, y].transform.position.x == bestTarget.x && layoutManager.testGrid[x, y].transform.position.y == bestTarget.y)
+                        for (int by = 0; by < buildingSize.y; by++)
                         {
-                            for (int x2 = 0; x2 < buildingSize.x; x2++)
-                            {
-                                for (int y2 = 0; y2 < buildingSize.y; y2++)
-                                {
-                                    layoutManager.testGrid[x + x2, y + y2].GetComponent<SpriteRenderer>().color = draCanBuildColor;
-                                    currentColoredXY.Add(new Vector2(x + x2, y + y2));
-                                }
-                            }
-                            currentColored = bestTarget;
-                            firstRound = false;
+                            toBeColorized.Add(new Vector2(x + bx, y + by));
                         }
                     }
                 }
             }
         }
+
+
+        //COLORIZE CAN BUILD TILES
+        if (!(currentColored == bestTarget))
+        {
+            for (int i = 0; i < toBeColorized.Count; i++)
+            {
+                layoutManager.testGrid[(int)toBeColorized[i].x, (int)toBeColorized[i].y].GetComponent<SpriteRenderer>().color = draCanBuildColor;
+            }
+            currentColored = bestTarget;
+            firstRound = false;
+        }
     }
     private void PlaceBuilding()
     {
-        layoutManager.SpawnStructure(curDraBuilding, currentColoredXY, bestTarget, new Vector2(2, 2));
+        layoutManager.SpawnStructure(curDraBuilding, toBeColorized, bestTarget, new Vector2(2, 2));
         StopDragging();
         SwipeToEmpty();
     }
 
+    /// <summary>
+    /// SWIPES COLORIZED
+    /// </summary>
     private void SwipeToEmpty()
     {
 
-        for (int i = 0; i < currentColoredXY.Count; i++)
+        for (int i = 0; i < toBeColorized.Count; i++)
         {
-            layoutManager.testGrid[(int)currentColoredXY[i].x, (int)currentColoredXY[i].y].GetComponent<SpriteRenderer>().color = emptyColor;
+            layoutManager.testGrid[(int)toBeColorized[i].x, (int)toBeColorized[i].y].GetComponent<SpriteRenderer>().color = emptyColor;
         }
-        currentColoredXY.Clear();
-
+        toBeColorized.Clear();
     }
 }

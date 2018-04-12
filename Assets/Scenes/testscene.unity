@@ -291,7 +291,8 @@ MonoBehaviour:
   roundCorners: 1
   roundCornerBy: 2
   showGrid: 1
-  cantBuild: {r: 0.6838235, g: 0.1005623, b: 0.21702531, a: 1}
+  nullVector3: {x: 666, y: 666, z: 666}
+  cantBuild: {r: 0.6838235, g: 0.1005623, b: 0.21702531, a: 0.566}
   lakes: []
   rndLakes: 10
   gridWidth: 20
@@ -299,7 +300,7 @@ MonoBehaviour:
   currentWidth: 5
   renderGrid: 0
   tileByAngle: 0
-  tileHeight: 0.333333
+  tileHeight: 0.6666667
   tileWidth: 1
   gridAngle: 0
   tileCap: 0.1
@@ -340,8 +341,12 @@ MonoBehaviour:
   firstRound: 0
   currentColored: {x: 0, y: 0, z: 0}
   currentColoredXY: []
-  draCanBuildColor: {r: 0, g: 1, b: 0.08965516, a: 0}
-  draCantBuildColor: {r: 1, g: 0, b: 0, a: 0}
+  emptyColor: {r: 0.28676468, g: 0.28676468, b: 0.28676468, a: 0.559}
+  draCanBuildColor: {r: 0, g: 1, b: 0.95862055, a: 0.522}
+  draCantBuildColor: {r: 1, g: 0, b: 0, a: 0.503}
+  buildingSize: {x: 2, y: 3}
+  bestTarget: {x: 0, y: 0, z: 0}
+  toBeColorized: []
 --- !u!1 &757949110
 GameObject:
   m_ObjectHideFlags: 0

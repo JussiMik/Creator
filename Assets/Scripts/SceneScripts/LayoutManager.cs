@@ -7,6 +7,7 @@ public class LayoutManager : MonoBehaviour
 
     public Vector3[,] positions;
     public GameObject[,] testGrid;
+    public Vector3[,] gapPositions;
     [SerializeField]
     bool gridDone = false;
     public bool roundCorners = false;
@@ -14,7 +15,7 @@ public class LayoutManager : MonoBehaviour
 
     public bool showGrid;
 
-    private Vector3 nullVector3 = new Vector3(666, 666, 666);
+    public Vector3 nullVector3 = new Vector3(666, 666, 666);
 
     public Color cantBuild;
 
@@ -47,6 +48,8 @@ public class LayoutManager : MonoBehaviour
 
     static Material lineMaterial;
 
+   
+
     // Use this for initialization
     private void Start()
     {
@@ -70,7 +73,6 @@ public class LayoutManager : MonoBehaviour
 
             for (int y = 0; y < gridHeigth; y++)
             {
-
                 positions[x, y] = new Vector3(transform.position.x - centerOffsetX + (tileWidth * x) + (tileWidth * y), transform.position.y - centerOffsetY + (tileHeight * x) - (tileHeight * y), 0);
             }
         }
@@ -117,14 +119,16 @@ public class LayoutManager : MonoBehaviour
                 }
             }
         }
-        //SpawnStructure(centerGo, , new Vector2(0,0), new Vector2(2, 2));
+        TestGridUpdate();
+
         RandomGen();
         gridDone = true;
     }
 
     void Update()
     {
-        if(gridDone)
+        TestGridUpdate();
+        if (gridDone)
         {
             //if (showGrid)
             //{
@@ -169,6 +173,11 @@ public class LayoutManager : MonoBehaviour
             Application.LoadLevel("testscene");
 
         }
+        
+    }
+
+    void TestGridUpdate()
+    {
         //TEST GRID UPDATE
         for (int x = 0; x < positions.GetLength(0); x++)
         {
@@ -205,27 +214,13 @@ public class LayoutManager : MonoBehaviour
             newLake.transform.parent = lakesFolder.transform;
             positions[rnd1, rnd2].z = 1;
         }
+        TestGridUpdate();
     }
 
 
 
     public void SpawnStructure(GameObject structure, List<Vector2> tiles, Vector2 worldPos, Vector2 size)
     {
-        //SPAWN THE OBJECT
-
-        //GET THE SIZE THAT STRUCTURE NEEDS
-
-        //SET TILES TO TAKEN
-        //for (int x = 0; x < size.x; x++)
-        //{
-        //    for (int y = 0; y < size.y; y++)
-        //    {
-        //        int freeToTaken1 = Mathf.RoundToInt(posX - (size.x / 2) + x);
-        //        int freeToTaken2 = Mathf.RoundToInt(posY - (size.y / 2) + y);
-        //        positions[freeToTaken1, freeToTaken2] = new Vector3(positions[freeToTaken1, freeToTaken2].x, positions[freeToTaken1, freeToTaken2].y, 1);
-        //    }
-        //}
-
         for (int i = 0; i < tiles.Count; i++)
         {
             positions[(int)tiles[i].x, (int)tiles[i].y] = new Vector3(positions[(int)tiles[i].x, (int)tiles[i].y].x, positions[(int)tiles[i].x, (int)tiles[i].y].y, 1);
@@ -233,6 +228,8 @@ public class LayoutManager : MonoBehaviour
 
         //CALCULATE HOUSE POSITION
         GameObject obj = Instantiate(structure, new Vector3(worldPos.x, worldPos.y, transform.position.z), Quaternion.identity) as GameObject;
+
+        TestGridUpdate();
     }
 
 }
