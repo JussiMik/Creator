@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public Structure structure;
+    Structure structure;
+    public GameObject monk;
 
     /*
     public GameObject shrine;
@@ -15,12 +16,13 @@ public class GameManager : MonoBehaviour
     public GameObject garden;
     public GameObject meditationRoom;
     */
-
+    [Space (10)]
     [SerializeField]
     private double generatedFaith;
     public double faith;
     public float faithUseAmount;
 
+    [Space(10)]
     [SerializeField]
     private float devotion;
     public float maxDevotionAmount;
@@ -35,11 +37,13 @@ public class GameManager : MonoBehaviour
     public float devotionChunkIncreaseAmount;
     public bool devotionIncreaseMp1;
 
+    [Space(10)]
     public bool faithTimer;
     [SerializeField]
     private float faithTargetTime;
     private float originalFaithTargetTime;
 
+    [Space(10)]
     public List<GameObject> faithBuildings = new List<GameObject>();
     public List<GameObject> farms = new List<GameObject>();
     public List<GameObject> gardens = new List<GameObject>();
@@ -100,8 +104,18 @@ public class GameManager : MonoBehaviour
         {
             CollectFaith();
         }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            SpawnNewMonk();
+        }
     }
 
+    public void SpawnNewMonk()
+    {
+        GameObject spawnedMonk = Instantiate(monk, new Vector3(transform.position.x + 2, transform.position.y + 2, transform.position.z), transform.rotation);
+        monks.Add(spawnedMonk);
+    }
     //Faithtimer before faithgeneration starts
     public void FaithTimer()
     {

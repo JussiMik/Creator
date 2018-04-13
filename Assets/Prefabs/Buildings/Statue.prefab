@@ -9,44 +9,70 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1688829533608878}
+  m_RootGameObject: {fileID: 1957332227456408}
   m_IsPrefabParent: 1
---- !u!1 &1688829533608878
+--- !u!1 &1957332227456408
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4165304278155866}
-  - component: {fileID: 212723065566173110}
-  - component: {fileID: 114487419348560884}
-  m_Layer: 0
+  - component: {fileID: 4205692062986032}
+  - component: {fileID: 212648406609876690}
+  - component: {fileID: 114257290112293142}
+  - component: {fileID: 61608338079898600}
+  m_Layer: 10
   m_Name: Statue
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4165304278155866
+--- !u!4 &4205692062986032
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1688829533608878}
+  m_GameObject: {fileID: 1957332227456408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -37.94556, y: -31.815458, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114487419348560884
+--- !u!61 &61608338079898600
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1957332227456408}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.001705166}
+  m_SpriteTilingProperty:
+    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.14976901, y: 0.14294836}
+  m_EdgeRadius: 0
+--- !u!114 &114257290112293142
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1688829533608878}
+  m_GameObject: {fileID: 1957332227456408}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5ca7886a3247744c911fe8104efe1d7, type: 3}
@@ -55,14 +81,19 @@ MonoBehaviour:
   constructingTimer: 0
   constructingTime: 10
   constructingDone: 0
+  lvlChange: 0
+  level: 0
+  maxLevelAmount: 0
+  faithAmount: 0
+  maxFaithAmount: 0
   faithMultiplier: 1.1
   gameManager: {fileID: 0}
---- !u!212 &212723065566173110
+--- !u!212 &212648406609876690
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1688829533608878}
+  m_GameObject: {fileID: 1957332227456408}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4559867508256176}
   m_Layer: 0
-  m_Name: MonkPathfinding
+  m_Name: Monk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 212391985801830276}
   - component: {fileID: 114510126755378382}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: MonkSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,6 +185,7 @@ MonoBehaviour:
   reachedDestination: 0
   speed: 10
   movementCheckDistance: 4
+  gameManager: {fileID: 0}
 --- !u!212 &212391985801830276
 SpriteRenderer:
   m_ObjectHideFlags: 1

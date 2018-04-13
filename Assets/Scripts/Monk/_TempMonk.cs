@@ -14,8 +14,12 @@ public class _TempMonk : MonoBehaviour
     Vector2[] path;
     int targetIndex;
 
+    //  public GameObject monk;
+    public GameManager gameManager;
+
     void Start()
     {
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         InvokeRepeating("CheckForNewDestination", 0.5f, 1.5f);
         InvokeRepeating("CheckDistanceFromTarget", 1f, 2.5f);
         startNewPathTimer = targetObject.GetComponent<PathfindingTargetLocation>().startNewTargetTimer;
@@ -28,13 +32,57 @@ public class _TempMonk : MonoBehaviour
             StartCoroutine("RefreshPath");
             checkForNewDestination = false;
         }
-        
+        CheckFarmCount();
+    }
+    // DELET THIS when dormitory is done
+    public void SpawnNewMonk()
+    {
+        GameObject spawnedMonk = Instantiate(gameObject, new Vector3(transform.position.x + 2, transform.position.y + 2, transform.position.z), transform.rotation);
+        gameManager.monks.Add(spawnedMonk);
+    }
+    void CheckFarmCount()
+    {
+        if (gameManager.farms.Count == 0)
+        {
+            gameManager.devotionDecrease = true;
+            //gameManager.devotionDecreaseMp1 = true;
+
+            if (gameManager.monks.Count == 0)
+            {
+                gameManager.devotionDecrease = false;
+            }
+        }
+
+        if (gameManager.monks.Count > 0 && gameManager.farms.Count > 0)
+        {
+            if (gameManager.monks.Count / gameManager.farms.Count <= 4)
+            {
+                gameManager.devotionDecrease = false;
+                gameManager.devotionIncrease = true;
+
+                if (gameManager.gardens.Count > 0 || gameManager.meditationRooms.Count > 0)
+                {
+                    gameManager.devotionIncreaseMp1 = true;
+                }
+            }
+
+            if (gameManager.monks.Count / gameManager.farms.Count > 4)
+            {
+                gameManager.devotionIncrease = false;
+                gameManager.devotionDecrease = true;
+            }
+
+            if (gameManager.monks.Count / gameManager.farms.Count >= 5.7)
+            {
+                gameManager.devotionDecreaseMp1 = true;
+            }
+        }
+
     }
     void CheckForNewDestination()
     {
         checkForNewDestination = targetObject.GetComponent<PathfindingTargetLocation>().moveToPosition;
     }
-
     IEnumerator RefreshPath()
     {
         Vector2 targetPositionOld = (Vector2)targetTransform.position + Vector2.up; // ensure != to target.position initially
@@ -93,7 +141,7 @@ public class _TempMonk : MonoBehaviour
             for (int i = targetIndex; i < path.Length; i++)
             {
                 Gizmos.color = Color.black;
-                Gizmos.DrawCube((Vector3)path[i], Vector3.one *.5f);
+                Gizmos.DrawCube((Vector3)path[i], Vector3.one * .5f);
 
                 if (i == targetIndex)
                 {
