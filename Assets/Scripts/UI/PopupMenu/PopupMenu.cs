@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PopupMenu : MonoBehaviour
 {
-    void Start()
+    public GameObject popupMenu;
+    void Awake()
     {
-
+        popupMenu = GameObject.Find("PopupMenuCanvas");
     }
 
     void Update()
@@ -15,11 +16,14 @@ public class PopupMenu : MonoBehaviour
         {
             Vector2 pos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             RaycastHit2D hitInfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(pos), Vector2.zero);
-            
+
             if (hitInfo)
             {
                 Debug.Log(hitInfo.transform.gameObject.name);
-                
+            }
+            if(hitInfo == null)
+            {
+
             }
         }
 
