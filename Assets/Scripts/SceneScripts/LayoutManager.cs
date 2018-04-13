@@ -7,12 +7,15 @@ public class LayoutManager : MonoBehaviour
 
     public Vector3[,] positions;
     public GameObject[,] testGrid;
+    public Vector3[,] gapPositions;
     [SerializeField]
-    bool emptyGridDone = false;
+    bool gridDone = false;
     public bool roundCorners = false;
     public int roundCornerBy = 1;
 
-    private Vector3 nullVector3 = new Vector3(666, 666, 666);
+    public bool showGrid;
+
+    public Vector3 nullVector3 = new Vector3(666, 666, 666);
 
     public Color cantBuild;
 
@@ -25,8 +28,12 @@ public class LayoutManager : MonoBehaviour
 
     public bool renderGrid = true;
 
+    public bool tileByAngle;
     public float tileHeight = 0.5f;
     public float tileWidth = 1;
+    [SerializeField]
+    private float gridAngle;
+
     public float tileCap;
 
     public GameObject emptyGo;
@@ -41,9 +48,12 @@ public class LayoutManager : MonoBehaviour
 
     static Material lineMaterial;
 
+   
+
     // Use this for initialization
     private void Start()
     {
+        gridAngle = 45 * (tileHeight / tileWidth);
         CreateGrid();
     }
 
@@ -53,7 +63,8 @@ public class LayoutManager : MonoBehaviour
         testGrid = new GameObject[gridWidth, gridHeigth];
 
         //CALCULATE CENTER OFFSET
-        float centerOffsetX = ((gridWidth * gridHeigth)/4 * tileWidth )/ 2;
+        //float centerOffsetX = ((gridWidth * gridHeigth)/4 * tileWidth )/ 2;
+        float centerOffsetX = 10;
         float centerOffsetY = 0;
 
         //CREATE GRID ITSELF
@@ -62,7 +73,6 @@ public class LayoutManager : MonoBehaviour
 
             for (int y = 0; y < gridHeigth; y++)
             {
-
                 positions[x, y] = new Vector3(transform.position.x - centerOffsetX + (tileWidth * x) + (tileWidth * y), transform.position.y - centerOffsetY + (tileHeight * x) - (tileHeight * y), 0);
             }
         }
@@ -87,6 +97,9 @@ public class LayoutManager : MonoBehaviour
         }
 
         //CREATE TEST GRID
+        GameObject testGridFolder = Instantiate(new GameObject(), Vector3.zero, transform.rotation);
+        testGridFolder.name = "Test Grid";
+
         for (int x = 0; x < gridWidth; x++)
         {
 
@@ -94,22 +107,51 @@ public class LayoutManager : MonoBehaviour
             {
                 if (positions[x, y] == nullVector3)
                 {
+                    testGrid[x, y] = null;
                 }
                 else
                 {
                     Vector3 newPos = new Vector3(positions[x, y].x, positions[x, y].y, transform.position.z);
                     testGrid[x, y] = Instantiate(emptyGo, newPos, Quaternion.identity);
+                    testGrid[x, y].transform.parent = testGridFolder.transform;
                     testGrid[x, y].name = x + " , " + y;
                     testGrid[x, y].transform.localScale = new Vector3(tileWidth * 0.35f, (tileHeight*2) * 0.35f, testGrid[x, y].transform.localScale.z);
                 }
             }
         }
-        SpawnStructure(centerGo, gridWidth / 2, gridHeigth / 2, new Vector2(2, 2));
+        TestGridUpdate();
+
         RandomGen();
+        gridDone = true;
     }
 
     void Update()
     {
+        TestGridUpdate();
+        if (gridDone)
+        {
+            //if (showGrid)
+            //{
+            //    for (int x = 0; x < testGrid.GetLength(0); x++)
+            //    {
+            //        for (int y = 0; y < testGrid.GetLength(1); y++)
+            //        {
+            //            testGrid[x, y].GetComponent<SpriteRenderer>().enabled = true;
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    for (int x = 0; x < testGrid.GetLength(0); x++)
+            //    {
+            //        for (int y = 0; y < testGrid.GetLength(1); y++)
+            //        {
+            //            testGrid[x, y].GetComponent<SpriteRenderer>().enabled = false;
+            //        }
+            //    }
+            //}
+        }
+
         //CALCULATE CAP BETWEEN TILES(UNUSED)
         if (tileCap >= (float)tileWidth / 4 + 0.01f)
         {
@@ -131,6 +173,11 @@ public class LayoutManager : MonoBehaviour
             Application.LoadLevel("testscene");
 
         }
+        
+    }
+
+    void TestGridUpdate()
+    {
         //TEST GRID UPDATE
         for (int x = 0; x < positions.GetLength(0); x++)
         {
@@ -147,6 +194,9 @@ public class LayoutManager : MonoBehaviour
     private void RandomGen()
     {
         //RANDOMIZE LAKES
+        GameObject lakesFolder = Instantiate(new GameObject(), Vector3.zero, transform.rotation);
+        lakesFolder.name = "Lakes";
+
         for (int i = 0; i < rndLakes; i++)
         {
 
@@ -159,30 +209,27 @@ public class LayoutManager : MonoBehaviour
                 rnd2 = Random.Range(0, positions.GetLength(1));
             }
 
-            lakes.Add(Instantiate(lakeGo, positions[rnd1, rnd2], Quaternion.identity));
+            GameObject newLake = Instantiate(lakeGo, positions[rnd1, rnd2], Quaternion.identity);
+            lakes.Add(newLake);
+            newLake.transform.parent = lakesFolder.transform;
             positions[rnd1, rnd2].z = 1;
         }
+        TestGridUpdate();
     }
 
 
 
-    private void SpawnStructure(GameObject structure, int posX, int posY, Vector2 size)
+    public void SpawnStructure(GameObject structure, List<Vector2> tiles, Vector2 worldPos, Vector2 size)
     {
-        //SPAWN THE OBJECT
-        
-        //GET THE SIZE THAT STRUCTURE NEEDS
-
-        //SET TILES TO TAKEN
-        for (int x = 0; x < size.x; x++)
+        for (int i = 0; i < tiles.Count; i++)
         {
-            for (int y = 0; y < size.y; y++)
-            {
-                int freeToTaken1 = Mathf.RoundToInt(posX - (size.x / 2) + x);
-                int freeToTaken2 = Mathf.RoundToInt(posY - (size.y / 2) + y);
-                positions[freeToTaken1, freeToTaken2] = new Vector3(positions[freeToTaken1, freeToTaken2].x, positions[freeToTaken1, freeToTaken2].y, 1);
-            }
+            positions[(int)tiles[i].x, (int)tiles[i].y] = new Vector3(positions[(int)tiles[i].x, (int)tiles[i].y].x, positions[(int)tiles[i].x, (int)tiles[i].y].y, 1);
         }
-        Vector3 newPosition = new Vector3(positions[posX, posY].x, positions[posX, posY].y, transform.position.z);
-        GameObject obj = Instantiate(centerGo, newPosition, Quaternion.identity) as GameObject;
+
+        //CALCULATE HOUSE POSITION
+        GameObject obj = Instantiate(structure, new Vector3(worldPos.x, worldPos.y, transform.position.z), Quaternion.identity) as GameObject;
+
+        TestGridUpdate();
     }
+
 }

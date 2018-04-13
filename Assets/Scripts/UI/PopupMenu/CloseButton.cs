@@ -6,17 +6,17 @@ using UnityEngine.UI;
 public class CloseButton : MonoBehaviour
 {
     Button closeButton;
-    GameObject popupMenuCanvas;
+    GameObject popupMenuPanel;
     void Start()
     {
-        popupMenuCanvas = GameObject.Find("PopupMenuCanvas");
+        popupMenuPanel = GameObject.Find("PopupMenuPanel");
         closeButton = GetComponent<Button>();
         closeButton.onClick.AddListener(CloseWindow); 
     }
 
     public void CloseWindow()
     {
-        popupMenuCanvas.SetActive(false);
+        popupMenuPanel.SetActive(false);
     }
     private void OnDestroy()
     {
