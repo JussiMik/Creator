@@ -1,0 +1,261 @@
+[33mcommit 36e4dc3eee89a11253a4798d7cf1edd93906604b[m[33m ([m[1;36mHEAD -> [m[1;32mfeature/building_placement[m[33m, [m[1;31morigin/feature/building_placement[m[33m)[m
+Author: Kinnunen Eero TTK17SP <eerokinnunen@kamk.fi>
+Date:   Fri Apr 13 15:19:28 2018 +0300
+
+    Creating a new branch from current develop
+
+[33mcommit 0dcf823ca6ead054b97d8838495731f7c9e3cad3[m[33m ([m[1;31morigin/feature/devotion[m[33m, [m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m
+Author: Mikkonen Jussi TTK17SP <jussimikkonen1@kamk.fi>
+Date:   Fri Apr 13 14:44:48 2018 +0300
+
+    Renamed monk scripts for Touko
+
+[33mcommit 914aecd0ded1bbe1616be69d696344982e8e5de5[m
+Author: Mikkonen Jussi TTK17SP <jussimikkonen1@kamk.fi>
+Date:   Fri Apr 13 14:40:10 2018 +0300
+
+    Checked faith and devotion progress, merged monk scripts
+
+[33mcommit 53181e29d8010eb186b08087386470c655a8534d[m
+Merge: ceab7d3 16efc94
+Author: Mikkonen Jussi TTK17SP <jussimikkonen1@kamk.fi>
+Date:   Fri Apr 13 13:25:09 2018 +0300
+
+    Merging feature/building to develop
+
+[33mcommit 16efc943446a90dc87a58c35de6156fd2925fc98[m[33m ([m[1;31morigin/feature/building[m[33m)[m
+Author: Niininen Touko TTK17SP <toukoniininen@kamk.fi>
+Date:   Fri Apr 13 13:18:26 2018 +0300
+
+    Faith and devotion are done.
+
+[33mcommit ceab7d37c5ae174f302d0527966435dfdc347881[m
+Author: Mikkonen Jussi TTK17SP <jussimikkonen1@kamk.fi>
+Date:   Fri Apr 13 11:14:42 2018 +0300
+
+    Cleaned up the project somehwat
+
+[33mcommit 1ad7dd39b6e36f40279e12d05d464e2269259e44[m
+Author: Mikkonen Jussi TTK17SP <jussimikkonen1@kamk.fi>
+Date:   Fri Apr 13 10:20:19 2018 +0300
+
+    Added fps counter, pathfinding and grid works (magic)
+
+[33mcommit 5b80d13050e00d49f2ccbbdbd263afdb968e6b0b[m
+Author: Niininen Touko TTK17SP <toukoniininen@kamk.fi>
+Date:   Thu Apr 12 17:37:58 2018 +0300
+
+    gamemanager modified more, devotion doesnt work properly yet, but almost.
+
+[33mcommit f3f8ac06bd4e0fe41020569025ec441d1ad903c1[m
+Author: Niininen Touko TTK17SP <toukoniininen@kamk.fi>
+Date:   Thu Apr 12 16:05:49 2018 +0300
+
+    Added Farm script and devotion works better now, tho it's not perfect yet.
+
+[33mcommit e9b98a6421c521e3513235612182c2a4b5a4c506[m
+Merge: 0379b18 a7019ad
+Author: Mikkonen Jussi TTK17SP <jussimikkonen1@kamk.fi>
+Date:   Thu Apr 12 14:58:30 2018 +0300
+
+    Merging dragNdrop to develop
+
+[33mcommit a7019ad7abc13e90ecbf5c5321758d34791e76cd[m[33m ([m[1;31morigin/drag_n_drop[m[33m)[m
+Author: Kinnunen Eero TTK17SP <eerokinnunen@kamk.fi>
+Date:   Thu Apr 12 14:53:17 2018 +0300
+
+    Works. Doesn't notice taken places yet.
+
+[33mcommit 0379b186e546ac2a53eac0108ec493a7e8356bb9[m
+Merge: d11e629 a6366b6
+Author: Mikkonen Jussi TTK17SP <jussimikkonen1@kamk.fi>
+Date:   Thu Apr 12 12:32:52 2018 +0300
+
+    Merging pathfinding to develop
+
+[33mcommit a6366b60cad7fb3108f74f5a476cc55a6cdd238f[m[33m ([m[1;31morigin/feature/pathfinding[m[33m)[m
+Author: Mikkonen Jussi TTK17SP <jussimikkonen1@kamk.fi>
+Date:   Thu Apr 12 12:24:19 2018 +0300
+
+    Pathfinding for first playable done
+
+[33mcommit f6c54f323215c6dfb3549f95f63629322fc4e255[m
+Author: Kinnunen Eero TTK17SP <eerokinnunen@kamk.fi>
+Date:   Wed Apr 11 17:01:58 2018 +0300
+
+    Darg and drop progress. Set tiles taken
+
+[33mcommit 3a12a3435698f299cb0b4c028d50040fc55e3b5a[m
+Author: Mikkonen Jussi TTK17SP <jussimikkonen1@kamk.fi>
+Date:   Wed Apr 11 16:31:07 2018 +0300
+
+    Pathfinding fixed, monks have basic roaming ability
+
+[33mcommit b7384feb5741e56a424b76b856855635f7c04d0e[m
+Author: Niininen Touko TTK17SP <toukoniininen@kamk.fi>
+Date:   Wed Apr 11 16:11:21 2018 +0300
+
+    Constructing buildings and faith extracting now consumes one chunk of devotion. Devotion decrease is not yet fully working. Faith and devotion min and max values modified.
+
+[33mcommit a0b73248ef8e7d3229da31a28e3e5214f4b34857[m
+Author: Niininen Touko TTK17SP <toukoniininen@kamk.fi>
+Date:   Fri Apr 6 15:55:07 2018 +0300
+
+    Added scripts for garden and meditation room. Gamemanager modified more.
+
+[33mcommit 66d498ed068a363e01854bde12b7b034245fe477[m
+Author: Kinnunen Eero TTK17SP <eerokinnunen@kamk.fi>
+Date:   Fri Apr 6 15:46:13 2018 +0300
+
+    Drag and Drop progress. Buildind menu functioning atm.
+
+[33mcommit d3b6bd5390e9ac81a7f78864479c85973d749999[m
+Author: Mikkonen Jussi TTK17SP <jussimikkonen1@kamk.fi>
+Date:   Fri Apr 6 13:58:38 2018 +0300
+
+    Basic pathfinding done, roaming monks still WIP
+
+[33mcommit 34916d1a789c50b03e58ce0ba7fc9fae040f251f[m
+Author: Kinnunen Eero TTK17SP <eerokinnunen@kamk.fi>
+Date:   Thu Apr 5 16:56:59 2018 +0300
+
+    Drag and drop progress
+
+[33mcommit 1b30b1f410f981ee8844c69e9a043388d103b2cb[m
+Author: Niininen Touko TTK17SP <toukoniininen@kamk.fi>
+Date:   Thu Apr 5 16:03:06 2018 +0300
+
+    Added scripts for faith buildings (shrine, statue and temple) and gamemanager script modified.
+
+[33mcommit c24e18fce4f7781e303da35fd616fde71bc31b82[m
+Author: Mikkonen Jussi TTK17SP <jussimikkonen1@kamk.fi>
+Date:   Thu Apr 5 15:56:32 2018 +0300
+
+    Started implementing pathfinding
+
+[33mcommit 33ee0340ce105d453f1d72552ba5910f2cf1c651[m
+Author: Kinnunen Eero TTK17SP <eerokinnunen@kamk.fi>
+Date:   Wed Apr 4 15:51:18 2018 +0300
+
+    Started making Structure menu and Drag N Drop
+
+[33mcommit 96583bd8378369df4a4ee3b727b4e52e24aafadb[m
+Author: Niininen Touko TTK17SP <toukoniininen@kamk.fi>
+Date:   Wed Apr 4 15:22:07 2018 +0300
+
+    Structure script added and stuff cleaned a bit.
+
+[33mcommit 90beffbc384348bc1ebb1d95cf0dd794adc1d2c7[m
+Author: Niininen Touko TTK17SP <toukoniininen@kamk.fi>
+Date:   Thu Mar 29 15:18:20 2018 +0300
+
+    Monk script added. Too many monks are draining devotion faster now.
+
+[33mcommit a4ac37680396b4b389fe8eee6fe8ef15427657f8[m
+Author: Kinnunen Eero TTK17SP <eerokinnunen@kamk.fi>
+Date:   Thu Mar 29 14:28:28 2018 +0300
+
+    first commit to drag and drop
+
+[33mcommit d11e629b6b297f3f8a9ff3f6d7c4a79b1fcf035e[m
+Merge: b04b8ef 22461a3
+Author: Mikkonen Jussi TTK17SP <jussimikkonen1@kamk.fi>
+Date:   Thu Mar 29 13:04:21 2018 +0300
+
+    Merge feature/map_genereation to develop
+
+[33mcommit b04b8ef75bc10f2522ea5ebc062f104aa8e9df7b[m
+Author: Mikkonen Jussi TTK17SP <jussimikkonen1@kamk.fi>
+Date:   Thu Mar 29 12:51:49 2018 +0300
+
+    Merge map generation to develop
+
+[33mcommit b80635708374b9cbaf4b966a9638626f6b1a04bb[m
+Author: Mikkonen Jussi TTK17SP <jussimikkonen1@kamk.fi>
+Date:   Thu Mar 29 12:47:42 2018 +0300
+
+    Removed folder from repo
+
+[33mcommit 22461a3289add277249ab6195ece32da1ee9a1a7[m
+Author: Kinnunen Eero TTK17SP <eerokinnunen@kamk.fi>
+Date:   Thu Mar 29 11:43:57 2018 +0300
+
+    I'm done with grid, at least almost.
+
+[33mcommit 3bf810b7633f7b59f18bd3c238927e59355f92e3[m
+Author: Eero Kinnunen <ee.jo.ki@gmail.com>
+Date:   Wed Mar 28 23:27:20 2018 +0300
+
+    Grid roundness in dev
+
+[33mcommit 9f52b416d9e4f5f61f4dcf17a8040cf7ea954386[m
+Author: Niininen Touko TTK17SP <toukoniininen@kamk.fi>
+Date:   Wed Mar 28 17:12:38 2018 +0300
+
+    Scenemanager script added and buildings can give faith now.
+
+[33mcommit 60798bcdaef7d8161c634ca9d4d5830db2ef6d4c[m
+Author: Kinnunen Eero TTK17SP <eerokinnunen@kamk.fi>
+Date:   Wed Mar 28 17:06:52 2018 +0300
+
+    Grid still works.
+
+[33mcommit b23e1aa6db1ed016d8de59927ea4b595cca3cce6[m
+Author: Kinnunen Eero TTK17SP <eerokinnunen@kamk.fi>
+Date:   Wed Mar 28 14:08:07 2018 +0300
+
+    Grid itself works for now
+
+[33mcommit 46041fff83452c2e33d60f58984eefc4c60fdc38[m
+Author: Eero Kinnunen <ee.jo.ki@gmail.com>
+Date:   Mon Mar 26 09:30:24 2018 +0300
+
+    Grid is broken. Fix it.
+
+[33mcommit db4e1427160758c4ebffa8d47bfc35445ca91211[m
+Author: Kinnunen Eero TTK17SP <eerokinnunen@kamk.fi>
+Date:   Fri Mar 23 15:10:21 2018 +0200
+
+    map generation
+
+[33mcommit f7451ffc0763cb8e2a93115a9ca59461a4da67f2[m
+Author: Eero Kinnunen <ee.jo.ki@gmail.com>
+Date:   Fri Mar 23 02:23:28 2018 +0200
+
+    Map Generating Update(just emptys and lakes.)
+
+[33mcommit 60bb43d7440c6847b2505cbf45fcff0a066228e1[m
+Author: Eero Kinnunen <ee.jo.ki@gmail.com>
+Date:   Thu Mar 22 10:08:42 2018 +0200
+
+    Grid generating progress(Lakes)
+
+[33mcommit c61d85e8be6ff1f96d2a6da8a4cb5f1ec593b761[m
+Author: Mikkonen Jussi TTK17SP <jussimikkonen1@kamk.fi>
+Date:   Wed Mar 21 14:55:14 2018 +0200
+
+    Placeholder sprite, pathfinding WIP
+
+[33mcommit a56cb63f53c01e96a46eaf4e5eaa42d02c707435[m
+Author: Kinnunen Eero TTK17SP <eerokinnunen@kamk.fi>
+Date:   Wed Mar 21 14:26:20 2018 +0200
+
+    Added grid generator
+
+[33mcommit 076a094ef9f01d6c9632c17d9fb0090b534d9390[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Mikkonen Jussi TTK17SP <jussimikkonen1@kamk.fi>
+Date:   Wed Mar 21 10:50:49 2018 +0200
+
+    Initial commit 2.0
+
+[33mcommit d55409178698c918a27a90d724cd69aff3ec5d4d[m
+Author: Mikkonen Jussi TTK17SP <jussimikkonen1@kamk.fi>
+Date:   Wed Mar 21 10:32:22 2018 +0200
+
+    Initial commit
+
+[33mcommit f353b577bb14ae02e0dd6a86535f1d610aedd82f[m
+Author: Jussi Mikkonen <31926011+JussiMik@users.noreply.github.com>
+Date:   Wed Mar 21 10:24:26 2018 +0200
+
+    Initial commit

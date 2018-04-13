@@ -300,7 +300,7 @@ MonoBehaviour:
   currentWidth: 5
   renderGrid: 0
   tileByAngle: 0
-  tileHeight: 0.6666667
+  tileHeight: 0.5
   tileWidth: 1
   gridAngle: 0
   tileCap: 0.1
@@ -720,12 +720,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1627295990}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63c497f46bdec5e4f82bb6e6f7e6ff2f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0612f5b97c785c243953496640936fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   structures:
+  - {fileID: 1147585461023032, guid: 8e7a56d585de8cf419ac7fbf276cb402, type: 2}
   - {fileID: 1071149037440394, guid: c3ff45ff8b4e51440a3fbbc83c52154c, type: 2}
-  - {fileID: 1071149037440394, guid: 8e7a56d585de8cf419ac7fbf276cb402, type: 2}
+  - {fileID: 1689765370810492, guid: 096b69b713f61a04aab182f609a7db38, type: 2}
+  - {fileID: 1942373733342142, guid: 3386bf59851fad24dabca9d64916893b, type: 2}
+  - {fileID: 1507489764547042, guid: 72817227a19a6d64695753084697baa5, type: 2}
+  - {fileID: 1875117473056848, guid: e2216061516bcb64c87cfa73ca805702, type: 2}
+  - {fileID: 1957332227456408, guid: 4834998f4aa0fef428a789e704a1989b, type: 2}
+  - {fileID: 1604896122853608, guid: f5c0f300b4a854849a1e68dc29dc4212, type: 2}
   structButtons: []
   buildingMenuBlockPre: {fileID: 1686200574875558, guid: 38715dbc82d816f4eb82a9928a99c3d6,
     type: 2}

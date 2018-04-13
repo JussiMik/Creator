@@ -228,12 +228,12 @@ public class LayoutManager : MonoBehaviour
 
         //CALCULATE HOUSE POSITION
         GameObject obj = Instantiate(structure, new Vector3(worldPos.x, worldPos.y, transform.position.z), Quaternion.identity) as GameObject;
-        obj.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(new Vector2());
+        //obj.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(tiles, obj);
         TestGridUpdate();
     }
-    public int CalculateSortingLayer(Vector2 gridCrd)
+    public int CalculateSortingLayer(List<Vector2> tiles, GameObject house)
     {
-        int toReturn; 
+        int toReturn = 0; 
 
 
 
