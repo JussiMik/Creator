@@ -25,6 +25,21 @@ public class ShrineCS : Structure
         }
     }
 
+    public override void FaithTimer()
+    {
+        base.FaithTimer();
+    }
+
+    public override void TimerEnd()
+    {
+        base.TimerEnd();
+    }
+
+    public override void GenerateFaith()
+    {
+        base.GenerateFaith();
+    }
+
     private void AddToList()
     {
         gameManager.faithBuildings.Add(gameObject);

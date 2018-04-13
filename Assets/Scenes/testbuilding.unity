@@ -135,8 +135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc355cb78704e774c9545b70e916f2ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monk: {fileID: 1098248280188646, guid: 8ca50c7472bae464880483f4c41fa12e, type: 2}
-  gameManager: {fileID: 0}
 --- !u!4 &114418001
 Transform:
   m_ObjectHideFlags: 0
@@ -323,6 +321,28 @@ Prefab:
     - target: {fileID: 4629229567523938, guid: 52db2628f8d703648aea031082b57de4, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998486377728318, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: garden
+      value: 
+      objectReference: {fileID: 1942373733342142, guid: 3386bf59851fad24dabca9d64916893b,
+        type: 2}
+    - target: {fileID: 114998486377728318, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: shrine
+      value: 
+      objectReference: {fileID: 1875117473056848, guid: e2216061516bcb64c87cfa73ca805702,
+        type: 2}
+    - target: {fileID: 114863472694741006, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: faithTimer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114863472694741006, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: faithTargetTime
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52db2628f8d703648aea031082b57de4, type: 2}

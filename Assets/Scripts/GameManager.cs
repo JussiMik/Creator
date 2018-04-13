@@ -8,19 +8,20 @@ public class GameManager : MonoBehaviour
     Structure structure;
     public GameObject monk;
 
-    /*
+    
     public GameObject shrine;
+    /*
     public GameObject statue;
     public GameObject temple;
-    public GameObject farm;
+    public GameObject farm;*/
     public GameObject garden;
     public GameObject meditationRoom;
-    */
+    
     [Space (10)]
     [SerializeField]
     private double generatedFaith;
     public double faith;
-    public float faithUseAmount;
+    //public float faithUseAmount;
 
     [Space(10)]
     [SerializeField]
@@ -38,10 +39,13 @@ public class GameManager : MonoBehaviour
     public bool devotionIncreaseMp1;
 
     [Space(10)]
-    public bool faithTimer;
+    //public bool faithTimer;
     [SerializeField]
     private float faithTargetTime;
     private float originalFaithTargetTime;
+    public bool slowerFaithGeneration1;
+    public bool slowerFaithGeneration2;
+    public bool slowerFaithGeneration3;
 
     [Space(10)]
     public List<GameObject> faithBuildings = new List<GameObject>();
@@ -52,20 +56,23 @@ public class GameManager : MonoBehaviour
     public List<double> faithMultipliers = new List<double>();
 
     public double monkFaithMultiplier;
+    public double monkFaithMultiplierSlow1;
+    public double monkFaithMultiplierSlow2;
+    public double monkFaithMultiplierSlow3;
 
     void Start()
     {
         structure = gameObject.GetComponent<Structure>();
 
-        faithTimer = true;
+        //faithTimer = true;
         originalFaithTargetTime = faithTargetTime;
     }
 
     void Update()
     {
-        if (faithBuildings.Count > 0 && faithTimer == true)
+        if (faithBuildings.Count > 0 && structure.faithTimer == true)
         {
-            FaithTimer();
+            structure.FaithTimer();
         }
 
         if (devotionDecrease == true)
@@ -78,12 +85,12 @@ public class GameManager : MonoBehaviour
             DevotionIncrease();
         }
 
-        /*
+        
         if (Input.GetKeyDown(KeyCode.A))
         {
             SpawnShrine();
         }
-
+        /*
         if (Input.GetKeyDown(KeyCode.S))
         {
             SpawnStatue();
@@ -93,12 +100,12 @@ public class GameManager : MonoBehaviour
         {
             SpawnTemple();
         }
-
+        */
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SpawnFarm();
+            SpawnGarden();
         }
-        */
+        
 
         if (Input.GetKeyDown(KeyCode.Mouse1) && generatedFaith > 0 && devotion >= 10)
         {
@@ -116,31 +123,13 @@ public class GameManager : MonoBehaviour
         GameObject spawnedMonk = Instantiate(monk, new Vector3(transform.position.x + 2, transform.position.y + 2, transform.position.z), transform.rotation);
         monks.Add(spawnedMonk);
     }
-    //Faithtimer before faithgeneration starts
-    public void FaithTimer()
-    {
-        faithTargetTime -= Time.deltaTime;
 
-        if (faithTargetTime <= 0)
-        {
-            faithTimer = false;
-            TimerEnd();
-        }
-    }
+    
 
-    //Timer ends and starts faith generation
-    public void TimerEnd()
-    {
-        GenerateFaith();
 
-        if (faithTimer == false)
-        {
-            faithTargetTime = originalFaithTargetTime;
-            faithTimer = true;
-        }
-    }
 
     //Generates faith resource that player can later extract and use
+    /*
     public void GenerateFaith()
     {
         for (int i = 0; i < faithMultipliers.Count; i++)
@@ -149,7 +138,20 @@ public class GameManager : MonoBehaviour
         }
 
         generatedFaith += (monks.Count * monkFaithMultiplier);
-    }
+
+        if (slowerFaithGeneration1 == true)
+        {
+            generatedFaith += (monks.Count * monkFaithMultiplierSlow1);
+        }
+        if (slowerFaithGeneration2 == true)
+        {
+            generatedFaith += (monks.Count * monkFaithMultiplierSlow2);
+        }
+        if (slowerFaithGeneration3 == true)
+        {
+            generatedFaith += (monks.Count * monkFaithMultiplierSlow3);
+        }
+    }*/
 
     //Player can collect generated faith for later use
     public void CollectFaith()
@@ -160,7 +162,8 @@ public class GameManager : MonoBehaviour
         generatedFaith = 0;
     }
 
-    public void UseFaith()
+    //Use collected faith for constructing and leveling up buildings
+    public void UseFaith(float faithUseAmount)
     {
         faith -= faithUseAmount;
 
@@ -231,12 +234,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /*
+    
     public void SpawnShrine()
     {
         GameObject spawnedShrine = Instantiate(shrine, new Vector3(transform.position.x + 3, transform.position.y + 4, transform.position.z), transform.rotation);
     }
-
+    /*
     public void SpawnStatue()
     {
         GameObject spawnedStatue = Instantiate(statue, new Vector3(transform.position.x + 2, transform.position.y - 2, transform.position.z), transform.rotation);
@@ -250,16 +253,16 @@ public class GameManager : MonoBehaviour
 
     public void SpawnFarm()
     {
-        if (faith >= faithUseAmount && devotion >= devotionChunkDecreaseAmount)
+        //if (faith >= faithUseAmount && devotion >= devotionChunkDecreaseAmount)
         {
             //GameObject spawned = Instantiate(gameObject, new Vector3(transform.position.x + 1, transform.position.y - 4, transform.position.z), transform.rotation);
         }
     }
 
-    /*
+    
     public void SpawnGarden()
     {
         GameObject spawned = Instantiate(garden, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
     }
-    */
+    
 }
