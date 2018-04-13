@@ -610,7 +610,7 @@ GameObject:
   - component: {fileID: 1188629242}
   - component: {fileID: 1188629241}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: PopupPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -915,7 +915,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2083676030}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.2538755, y: -2.5705626, z: 0}
+  m_LocalPosition: {x: -1.84, y: 0.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -933,3 +933,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popupMenu: {fileID: 0}
+  xOffset: 140
+  yOffset: 100

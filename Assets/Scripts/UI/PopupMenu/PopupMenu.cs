@@ -5,9 +5,12 @@ using UnityEngine;
 public class PopupMenu : MonoBehaviour
 {
     public GameObject popupMenu;
+    GameObject panel;
+    public float xOffset, yOffset;
     void Awake()
     {
         popupMenu = GameObject.Find("PopupMenuCanvas");
+        panel = GameObject.Find("PopupPanel");
     }
 
     void Update()
@@ -20,11 +23,14 @@ public class PopupMenu : MonoBehaviour
             if (hitInfo)
             {
                 Debug.Log(hitInfo.transform.gameObject.name);
+                if (hitInfo.transform.gameObject.tag == "Building")
+                {
+                    popupMenu.SetActive(true);
+                    Vector3 offset = new Vector3(xOffset, yOffset, 0);
+                    panel.transform.position = Input.mousePosition + offset;
+                }
             }
-            if(hitInfo == null)
-            {
 
-            }
         }
 
     }
