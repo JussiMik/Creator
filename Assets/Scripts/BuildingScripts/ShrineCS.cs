@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ShrineCS : Structure
 {
-    //public GameManager gameManager;
-
     private bool addedToList;
 
     void Start()

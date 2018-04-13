@@ -54,13 +54,16 @@ public class Structure : MonoBehaviour
 
     public void ConstructingStructures()
     {
-        constructingTimer = true;
+        gameManager.UseFaith();
+        gameManager.DevotionDecreaseChunk();
 
-        gameManager.devotionDecreaseChunk = true;
+        constructingTimer = true;
     }
 
     public void ChangeLevel()
     {
+        gameManager.UseFaith();
+
         if (level >= 1)
         {
             faithAmount += 1;

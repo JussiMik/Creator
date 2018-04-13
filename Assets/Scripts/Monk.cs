@@ -7,13 +7,11 @@ public class Monk : MonoBehaviour
     public GameObject monk;
     public GameManager gameManager;
 
-    // Use this for initialization
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.W))
@@ -24,18 +22,19 @@ public class Monk : MonoBehaviour
         if (gameManager.farms.Count == 0)
         {
             gameManager.devotionDecrease = true;
-            gameManager.devotionDecreaseMp1 = true;
+            //gameManager.devotionDecreaseMp1 = true;
 
             if (gameManager.monks.Count == 0)
             {
                 gameManager.devotionDecrease = false;
             }
         }
-
+        
         if (gameManager.monks.Count > 0 && gameManager.farms.Count > 0)
         {
-            if ((gameManager.monks.Count / gameManager.farms.Count) <= 4)
+            if (gameManager.monks.Count / gameManager.farms.Count <= 4)
             {
+                gameManager.devotionDecrease = false;
                 gameManager.devotionIncrease = true;
 
                 if (gameManager.gardens.Count > 0 || gameManager.meditationRooms.Count > 0)
@@ -46,6 +45,7 @@ public class Monk : MonoBehaviour
 
             if (gameManager.monks.Count / gameManager.farms.Count > 4)
             {
+                gameManager.devotionIncrease = false;
                 gameManager.devotionDecrease = true;
             }
 

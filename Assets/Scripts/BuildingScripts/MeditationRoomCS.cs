@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MeditationRoomCS : Structure
 {
-    //public GameManager gameManager;
-
     private bool addedToList;
 
     void Start()

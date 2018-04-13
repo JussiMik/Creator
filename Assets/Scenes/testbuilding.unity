@@ -276,20 +276,19 @@ MonoBehaviour:
   meditationRoom: {fileID: 1507489764547042, guid: 72817227a19a6d64695753084697baa5,
     type: 2}
   generatedFaith: 0
-  faith: 10
+  faith: 20
+  faithUseAmount: 10
   devotion: 1000
   maxDevotionAmount: 1000
   devotionDecrease: 0
-  allowDevotionDecreaseInChunks: 0
-  devotionDecreaseChunk: 0
   devotionChunkDecreaseAmount: 100
-  devotionIncrease: 0
-  devotionIncreaseMp1: 0
   devotionDecreaseMp1: 0
   devotionDecreaseMp2: 0
   devotionDecreaseMp3: 0
-  sanctity: 0
-  faithTimerActive: 0
+  devotionIncrease: 0
+  devotionChunkIncreaseAmount: 50
+  devotionIncreaseMp1: 0
+  faithTimer: 0
   faithTargetTime: 10
   faithBuildings: []
   farms: []
