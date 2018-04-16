@@ -344,7 +344,7 @@ MonoBehaviour:
   emptyColor: {r: 0.28676468, g: 0.28676468, b: 0.28676468, a: 0.559}
   draCanBuildColor: {r: 0, g: 1, b: 0.95862055, a: 0.522}
   draCantBuildColor: {r: 1, g: 0, b: 0, a: 0.503}
-  buildingSize: {x: 2, y: 3}
+  buildingSize: {x: 2, y: 2}
   bestTarget: {x: 0, y: 0, z: 0}
   toBeColorized: []
 --- !u!1 &757949110
@@ -566,7 +566,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -50
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.09877813, g: 0.46323532, b: 0.116372645, a: 1}
   m_FlipX: 0

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LayoutManager : MonoBehaviour
 {
-
     public Vector3[,] positions;
     public GameObject[,] testGrid;
     public Vector3[,] gapPositions;
@@ -234,9 +233,7 @@ public class LayoutManager : MonoBehaviour
     public int CalculateSortingLayer(List<Vector2> tiles, GameObject house)
     {
         int toReturn = 0; 
-
-
-
+        
         return toReturn;
     }
 
