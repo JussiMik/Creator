@@ -18,21 +18,21 @@ public class Structure : MonoBehaviour
     public int maxLevelAmount;
 
     public int faithAmount;
-    public double generatedFaith;
     public int maxFaithAmount;
+
     public double faithMultiplier;
+    public double generatedFaith;
+    public double maxGeneratedFaith;
 
     public GameManager gameManager;
 
     public bool faithTimer;
     public float faithTargetTime;
-    private float originalFaithTargetTime;
+    public float originalFaithTargetTime;
 
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-
-        faithTimer = true;
 
         level = 1;
         lvlChange = false;
@@ -63,6 +63,11 @@ public class Structure : MonoBehaviour
         {
             ChangeLevel();
         }
+
+        if (faithTimer == true)
+        {
+            FaithTimer();
+        }
     }
 
     public void ConstructingStructures()
@@ -80,14 +85,15 @@ public class Structure : MonoBehaviour
 
         if (faithTargetTime <= 0)
         {
-            faithTimer = false;
+            faithTargetTime = 0;
             TimerEnd();
         }
     }
 
     //Timer ends and starts faith generation
-    public virtual void TimerEnd()
+    public void TimerEnd()
     {
+        faithTimer = false;
         GenerateFaith();
 
         if (faithTimer == false)
@@ -97,7 +103,7 @@ public class Structure : MonoBehaviour
         }
     }
 
-    public virtual void GenerateFaith()
+    public void GenerateFaith()
     {
         for (int i = 0; i < gameManager.faithMultipliers.Count; i++)
         {
@@ -118,6 +124,15 @@ public class Structure : MonoBehaviour
         {
             generatedFaith += (gameManager.monks.Count * gameManager.monkFaithMultiplierSlow3);
         }
+    }
+
+    //Player can collect generated faith for later use
+    public void CollectFaith()
+    {
+        gameManager.DevotionDecreaseChunk();
+
+        gameManager.faith += generatedFaith;
+        generatedFaith = 0;
     }
 
     public void ChangeLevel()

@@ -342,8 +342,29 @@ Prefab:
     - target: {fileID: 114863472694741006, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
       propertyPath: faithTargetTime
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114863472694741006, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: maxFaithAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114863472694741006, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: faithAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114863472694741006, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: constructingTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114998486377728318, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: statue
+      value: 
+      objectReference: {fileID: 1957332227456408, guid: 4834998f4aa0fef428a789e704a1989b,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52db2628f8d703648aea031082b57de4, type: 2}
   m_IsPrefabParent: 0

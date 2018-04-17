@@ -10,18 +10,16 @@ public class GameManager : MonoBehaviour
 
     
     public GameObject shrine;
-    /*
     public GameObject statue;
+
+    /*
     public GameObject temple;
     public GameObject farm;*/
     public GameObject garden;
     public GameObject meditationRoom;
     
     [Space (10)]
-    [SerializeField]
-    private double generatedFaith;
     public double faith;
-    //public float faithUseAmount;
 
     [Space(10)]
     [SerializeField]
@@ -39,10 +37,7 @@ public class GameManager : MonoBehaviour
     public bool devotionIncreaseMp1;
 
     [Space(10)]
-    //public bool faithTimer;
     [SerializeField]
-    private float faithTargetTime;
-    private float originalFaithTargetTime;
     public bool slowerFaithGeneration1;
     public bool slowerFaithGeneration2;
     public bool slowerFaithGeneration3;
@@ -63,17 +58,16 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         structure = gameObject.GetComponent<Structure>();
-
-        //faithTimer = true;
-        originalFaithTargetTime = faithTargetTime;
     }
 
     void Update()
     {
-        if (faithBuildings.Count > 0 && structure.faithTimer == true)
+        /*
+        if (faithBuildings.Count > 0)
         {
             structure.FaithTimer();
         }
+        */
 
         if (devotionDecrease == true)
         {
@@ -90,12 +84,13 @@ public class GameManager : MonoBehaviour
         {
             SpawnShrine();
         }
-        /*
+        
         if (Input.GetKeyDown(KeyCode.S))
         {
             SpawnStatue();
         }
 
+        /*
         if (Input.GetKeyDown(KeyCode.D))
         {
             SpawnTemple();
@@ -107,9 +102,9 @@ public class GameManager : MonoBehaviour
         }
         
 
-        if (Input.GetKeyDown(KeyCode.Mouse1) && generatedFaith > 0 && devotion >= 10)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && structure.generatedFaith > 0 && devotion >= 10)
         {
-            CollectFaith();
+            structure.CollectFaith();
         }
 
         if (Input.GetKeyDown(KeyCode.W))
@@ -153,14 +148,7 @@ public class GameManager : MonoBehaviour
         }
     }*/
 
-    //Player can collect generated faith for later use
-    public void CollectFaith()
-    {
-        DevotionDecreaseChunk();
-
-        faith += generatedFaith;
-        generatedFaith = 0;
-    }
+   
 
     //Use collected faith for constructing and leveling up buildings
     public void UseFaith(float faithUseAmount)
@@ -239,12 +227,12 @@ public class GameManager : MonoBehaviour
     {
         GameObject spawnedShrine = Instantiate(shrine, new Vector3(transform.position.x + 3, transform.position.y + 4, transform.position.z), transform.rotation);
     }
-    /*
+    
     public void SpawnStatue()
     {
         GameObject spawnedStatue = Instantiate(statue, new Vector3(transform.position.x + 2, transform.position.y - 2, transform.position.z), transform.rotation);
     }
-
+    /*
     public void SpawnTemple()
     {
         GameObject spawned = Instantiate(temple, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);

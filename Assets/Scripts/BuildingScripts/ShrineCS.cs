@@ -10,6 +10,8 @@ public class ShrineCS : Structure
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
+        originalFaithTargetTime = faithTargetTime;
+
         ConstructingStructures();
 
         addedToList = false;
@@ -22,22 +24,8 @@ public class ShrineCS : Structure
         if (constructingDone == true && addedToList == false)
         {
             AddToList();
+            faithTimer = true;
         }
-    }
-
-    public override void FaithTimer()
-    {
-        base.FaithTimer();
-    }
-
-    public override void TimerEnd()
-    {
-        base.TimerEnd();
-    }
-
-    public override void GenerateFaith()
-    {
-        base.GenerateFaith();
     }
 
     private void AddToList()

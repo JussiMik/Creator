@@ -70,14 +70,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   constructingTimer: 0
   constructingTime: 10
+  lowerSpeedConstructing: 0
   constructingDone: 0
   lvlChange: 0
   level: 0
   maxLevelAmount: 0
   faithAmount: 0
+  generatedFaith: 0
   maxFaithAmount: 0
-  faithMultiplier: 0
+  faithMultiplier: 1.1
   gameManager: {fileID: 0}
+  faithTimer: 0
+  faithTargetTime: 10
+  originalFaithTargetTime: 0
 --- !u!212 &212256963721403386
 SpriteRenderer:
   m_ObjectHideFlags: 1
