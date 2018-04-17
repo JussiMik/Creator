@@ -25,6 +25,8 @@ public class DragNDrop : MonoBehaviour
 
     public List<Vector2> toBeColorized;
 
+    [SerializeField] private bool allow; 
+
     // Use this for initialization
     void Start()
     {
@@ -56,7 +58,7 @@ public class DragNDrop : MonoBehaviour
             Dragging();
         }
 
-        if (Input.GetMouseButtonUp(1) && dragging && firstRound == false)
+        if (Input.GetMouseButtonUp(1) && dragging && firstRound == false && allow == true)
         {
             PlaceBuilding();
         }
@@ -111,17 +113,42 @@ public class DragNDrop : MonoBehaviour
         //COLORIZE CAN BUILD TILES
         if (!(currentColored == bestTarget))
         {
+            allow = true;
+            
+            //TEST IF SPACES ARE TAKEN
             for (int i = 0; i < toBeColorized.Count; i++)
             {
-                layoutManager.testGrid[(int)toBeColorized[i].x, (int)toBeColorized[i].y].GetComponent<SpriteRenderer>().color = draCanBuildColor;
+                if(layoutManager.positions[(int)toBeColorized[i].x, (int)toBeColorized[i].y].z == 1)
+                {
+                    allow = false;
+                }
             }
+
+            //IF SPACES ARE NOT TAKEN SET THEM GREEN
+            if(allow)
+            {
+                for (int i = 0; i < toBeColorized.Count; i++)
+                {
+                    layoutManager.testGrid[(int)toBeColorized[i].x, (int)toBeColorized[i].y].GetComponent<SpriteRenderer>().color = draCanBuildColor;
+                }
+            }
+            
+            //IF SPACES ARE TAKEN SET THEM RED
+            else
+            {
+                for (int i = 0; i < toBeColorized.Count; i++)
+                {
+                    layoutManager.testGrid[(int)toBeColorized[i].x, (int)toBeColorized[i].y].GetComponent<SpriteRenderer>().color = draCantBuildColor;
+                }
+            }
+
             currentColored = bestTarget;
             firstRound = false;
         }
     }
     private void PlaceBuilding()
     {
-        layoutManager.SpawnStructure(curDraBuilding, toBeColorized, bestTarget, new Vector2(2, 2));
+        layoutManager.SpawnStructure(curDraBuilding, toBeColorized, new Vector2(2, 2));
         StopDragging();
         SwipeToEmpty();
     }

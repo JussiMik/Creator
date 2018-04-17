@@ -218,7 +218,7 @@ public class LayoutManager : MonoBehaviour
 
 
 
-    public void SpawnStructure(GameObject structure, List<Vector2> tiles, Vector2 worldPos, Vector2 size)
+    public void SpawnStructure(GameObject structure, List<Vector2> tiles, Vector2 size)
     {
         for (int i = 0; i < tiles.Count; i++)
         {
@@ -226,14 +226,32 @@ public class LayoutManager : MonoBehaviour
         }
 
         //CALCULATE HOUSE POSITION
-        GameObject obj = Instantiate(structure, new Vector3(worldPos.x, worldPos.y, transform.position.z), Quaternion.identity) as GameObject;
-        //obj.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(tiles, obj);
+        //Calculate center of the first and last tile
+        Vector2 firstPos = new Vector2(positions[(int)tiles[0].x, (int)tiles[0].y].x, positions[(int)tiles[0].x, (int)tiles[0].y].y);
+        Vector2 lastPos = new Vector2(positions[(int)tiles[tiles.Count-1].x, (int)tiles[tiles.Count-1].y].x, positions[(int)tiles[tiles.Count-1].x,(int)tiles[tiles.Count-1].y].y);
+        Vector3 cenPos = new Vector3(firstPos.x + ((lastPos.x - firstPos.x) /2), firstPos.y + ((lastPos.y - firstPos.y) / 2), transform.position.z);
+
+        //INSTANTIATE HOUSE
+        GameObject obj = Instantiate(structure, new Vector3(cenPos.x, cenPos.y, transform.position.z), Quaternion.identity) as GameObject;
+        obj.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(tiles);
         TestGridUpdate();
     }
-    public int CalculateSortingLayer(List<Vector2> tiles, GameObject house)
+    public int CalculateSortingLayer(List<Vector2> tiles)
     {
-        int toReturn = 0; 
+        //FIND NEAREST CORNER TILE
+        //When X is smallest and Y is largest
+
+        int toReturn = 0;
+        Vector2 bestMatch = new Vector2(666,-666);
         
+        for (int i = 0; i < tiles.Count; i++)
+        {
+            if(tiles[i].x < bestMatch.x && tiles[i].y > bestMatch.y)
+            {
+                bestMatch = tiles[i];
+            }
+        }
+        toReturn = (int)(bestMatch.y - bestMatch.x);
         return toReturn;
     }
 
