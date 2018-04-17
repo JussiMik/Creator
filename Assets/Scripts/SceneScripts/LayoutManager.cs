@@ -209,6 +209,7 @@ public class LayoutManager : MonoBehaviour
             }
 
             GameObject newLake = Instantiate(lakeGo, positions[rnd1, rnd2], Quaternion.identity);
+            newLake.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(new Vector2(rnd1, rnd2));
             lakes.Add(newLake);
             newLake.transform.parent = lakesFolder.transform;
             positions[rnd1, rnd2].z = 1;
@@ -255,5 +256,14 @@ public class LayoutManager : MonoBehaviour
         return toReturn;
     }
 
+    public int CalculateSortingLayer(Vector2 tile)
+    {
+        //FIND NEAREST CORNER TILE
+        //When X is smallest and Y is largest
+
+        int toReturn = 0;
+        toReturn = (int)(tile.y - tile.x);
+        return toReturn;
+    }
 
 }
