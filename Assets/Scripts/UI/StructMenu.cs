@@ -25,6 +25,8 @@ public class StructMenu : MonoBehaviour {
 
     void Awake()
     {
+        dragNDrop = GameObject.Find("LevelManager").GetComponent<DragNDrop>();
+
         //INSTANTIATE STRUCTURE MENU
         structButtons = new GameObject[gridSizeX, gridSizeY];
         float blockWidth = buildingMenuBlockPre.GetComponent<RectTransform>().rect.width;
@@ -69,7 +71,7 @@ public class StructMenu : MonoBehaviour {
 
         }
 
-        dragNDrop = GameObject.Find("LevelManager").GetComponent<DragNDrop>();
+        
 
     }
     public void PressStructureMenu()

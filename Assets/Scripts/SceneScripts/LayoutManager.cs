@@ -5,6 +5,7 @@ using UnityEngine;
 public class LayoutManager : MonoBehaviour
 {
     public Vector3[,] positions;
+    GameObject testGridFolder;
     public GameObject[,] testGrid;
     public Vector3[,] gapPositions;
     [SerializeField]
@@ -96,7 +97,7 @@ public class LayoutManager : MonoBehaviour
         }
 
         //CREATE TEST GRID
-        GameObject testGridFolder = Instantiate(new GameObject(), Vector3.zero, transform.rotation);
+        testGridFolder = Instantiate(new GameObject(), Vector3.zero, transform.rotation);
         testGridFolder.name = "Test Grid";
 
         for (int x = 0; x < gridWidth; x++)
@@ -118,8 +119,7 @@ public class LayoutManager : MonoBehaviour
                 }
             }
         }
-        TestGridUpdate();
-
+        SetTestGridActive(false);
         RandomGen();
         gridDone = true;
     }
@@ -127,29 +127,6 @@ public class LayoutManager : MonoBehaviour
     void Update()
     {
         TestGridUpdate();
-        if (gridDone)
-        {
-            //if (showGrid)
-            //{
-            //    for (int x = 0; x < testGrid.GetLength(0); x++)
-            //    {
-            //        for (int y = 0; y < testGrid.GetLength(1); y++)
-            //        {
-            //            testGrid[x, y].GetComponent<SpriteRenderer>().enabled = true;
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    for (int x = 0; x < testGrid.GetLength(0); x++)
-            //    {
-            //        for (int y = 0; y < testGrid.GetLength(1); y++)
-            //        {
-            //            testGrid[x, y].GetComponent<SpriteRenderer>().enabled = false;
-            //        }
-            //    }
-            //}
-        }
 
         //CALCULATE CAP BETWEEN TILES(UNUSED)
         if (tileCap >= (float)tileWidth / 4 + 0.01f)
@@ -264,6 +241,10 @@ public class LayoutManager : MonoBehaviour
         int toReturn = 0;
         toReturn = (int)(tile.y - tile.x);
         return toReturn;
+    }
+    public void SetTestGridActive(bool active)
+    {
+        testGridFolder.SetActive(active);
     }
 
 }
