@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PopupMenu : MonoBehaviour
 {
-     //public GameObject popupMenu;
+    //public GameObject popupMenu;
     public GameObject popupPanel;
     public float xOffset, yOffset;
     void Awake()
@@ -27,9 +27,9 @@ public class PopupMenu : MonoBehaviour
                     popupPanel.SetActive(true);
                     Vector3 offset = new Vector3(xOffset, yOffset, 0);
                     popupPanel.transform.position = Input.mousePosition + offset;
+                    popupPanel.GetComponent<PopupMenuPanel>().CheckPosition();
                 }
             }
-
         }
 
     }
