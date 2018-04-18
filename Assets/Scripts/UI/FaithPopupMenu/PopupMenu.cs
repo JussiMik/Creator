@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PopupMenu : MonoBehaviour
 {
-    //public GameObject popupMenu;
+    public GameObject clickedObject;
     public GameObject popupPanel;
     public float xOffset, yOffset;
     void Awake()
     {
-        popupPanel = GameObject.Find("PopupPanel");
+       popupPanel = GameObject.FindGameObjectWithTag("Panel");
     }
 
     void Update()
@@ -22,8 +22,13 @@ public class PopupMenu : MonoBehaviour
             if (hitInfo)
             {
                 Debug.Log(hitInfo.transform.gameObject.name);
-                if (hitInfo.transform.gameObject.tag == "Building")
+                if (hitInfo.transform.gameObject.tag == "FaithBuilding")
                 {
+                    clickedObject = hitInfo.transform.gameObject;
+                    if(popupPanel.activeSelf == true)
+                    {
+                        popupPanel.SetActive(false);
+                    }
                     popupPanel.SetActive(true);
                     Vector3 offset = new Vector3(xOffset, yOffset, 0);
                     popupPanel.transform.position = Input.mousePosition + offset;
@@ -31,6 +36,5 @@ public class PopupMenu : MonoBehaviour
                 }
             }
         }
-
     }
 }

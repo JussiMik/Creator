@@ -9,7 +9,7 @@ public class CloseButton : MonoBehaviour
     GameObject popupMenuPanel;
     void Start()
     {
-        popupMenuPanel = GameObject.Find("PopupPanel");
+        popupMenuPanel = GameObject.Find("FaithPopupPanel");
         closeButton = GetComponent<Button>();
         closeButton.onClick.AddListener(CloseWindow); 
     }

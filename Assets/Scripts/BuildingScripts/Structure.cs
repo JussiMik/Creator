@@ -59,11 +59,11 @@ public class Structure : MonoBehaviour
             }
         }
 
-        if (lvlChange == true)
+    /*    if (lvlChange == true)
         {
             ChangeLevel();
         }
-
+        */
         if (faithTimer == true)
         {
             FaithTimer();
