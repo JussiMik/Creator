@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class StructMenu : MonoBehaviour {
 
     public GameObject[] structures;
-    public GameObject[] structButtons;
+    public GameObject[,] structButtons;
     public GameObject buildingMenuBlockPre;
     public GameObject buildingMenu;
 
@@ -21,12 +21,14 @@ public class StructMenu : MonoBehaviour {
 
     public bool menuVisible = false;
 
+    private int curBlockNo = 0;
+
     void Awake()
     {
         //INSTANTIATE STRUCTURE MENU
-        structButtons = new GameObject[gridSizeX * gridSizeY];
+        structButtons = new GameObject[gridSizeX, gridSizeY];
         float blockWidth = buildingMenuBlockPre.GetComponent<RectTransform>().rect.width;
-        float openerWidth = buildingMenu.GetComponent<RectTransform>().rect.width;
+        float openerWidth = gameObject.GetComponent<RectTransform>().rect.width;
         buildGrid = Instantiate(new GameObject(), new Vector3(0,0,0), transform.rotation);
         buildGrid.active = false;
         buildGrid.name = "Building Grid";
@@ -52,13 +54,17 @@ public class StructMenu : MonoBehaviour {
         {
             for (int y = 0; y < gridSizeX; y++)
             {
-                Vector3 pos = new Vector3(buildingMenu.transform.position.x - (openerWidth + blockWidth * i), buildingMenu.transform.position.y, buildingMenu.transform.position.z);
-                structButtons[i] = Instantiate(buildingMenuBlockPre, pos, transform.rotation);
-                structButtons[i].transform.parent = buildGrid.transform;
-                structButtons[i].GetComponent<Image>().sprite = structures[i].GetComponent<SpriteRenderer>().sprite;
-                structButtons[i].name = "StructButton " + i;
-                structButtons[i].GetComponent<StructMenuBlock>().blockNo = i;
-                structButtons[i].GetComponent<StructMenuBlock>().structMenu = this;
+                Vector3 pos = new Vector3(gameObject.transform.position.x - 100 + (100 * x), gameObject.transform.position.y + 100 + (100 * y), gameObject.transform.position.z);
+                structButtons[x,y] = Instantiate(buildingMenuBlockPre, pos, transform.rotation);
+                structButtons[x,y].transform.parent = buildGrid.transform;
+                structButtons[x, y].GetComponent<StructMenuBlock>().blockNo = curBlockNo;
+                if (structures.Length > curBlockNo)
+                {
+                    structButtons[x, y].GetComponent<Image>().sprite = structures[curBlockNo].GetComponent<SpriteRenderer>().sprite;
+                }
+                structButtons[x,y].name = "StructButton " + x + ", "+ y;
+                structButtons[x,y].GetComponent<StructMenuBlock>().structMenu = this;
+                curBlockNo += 1;
             }
 
         }

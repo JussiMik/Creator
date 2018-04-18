@@ -288,26 +288,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridDone: 0
-  roundCorners: 1
-  roundCornerBy: 2
-  showGrid: 1
+  roundCorners: 0
+  roundCornerBy: 1
+  showGrid: 0
   nullVector3: {x: 666, y: 666, z: 666}
-  cantBuild: {r: 0.6838235, g: 0.1005623, b: 0.21702531, a: 0.566}
+  cantBuild: {r: 0, g: 0, b: 0, a: 0}
   lakes: []
   rndLakes: 20
   gridWidth: 20
   gridHeigth: 20
-  currentWidth: 5
-  renderGrid: 0
+  currentWidth: 0
+  renderGrid: 1
   tileByAngle: 0
-  tileHeight: 0.5555556
+  tileHeight: 0.5
   tileWidth: 1
   gridAngle: 0
-  tileCap: 0.1
+  tileCap: 0
   emptyGo: {fileID: 1354137680948214, guid: 17f97aeff80b5df47ad053263e4722f2, type: 2}
   lakeGo: {fileID: 1354137680948214, guid: ef994d6472f08bb45bbadad0d0aa2ff0, type: 2}
-  treeGo: {fileID: 1354137680948214, guid: ed80e251ca308ea4b9c6c70a0bddfd62, type: 2}
-  centerGo: {fileID: 1071149037440394, guid: c3ff45ff8b4e51440a3fbbc83c52154c, type: 2}
+  treeGo: {fileID: 0}
+  centerGo: {fileID: 0}
   lineCount: 10
   radius: 3
 --- !u!4 &593138772
@@ -341,9 +341,9 @@ MonoBehaviour:
   firstRound: 0
   currentColored: {x: 0, y: 0, z: 0}
   currentColoredXY: []
-  emptyColor: {r: 0.28676468, g: 0.28676468, b: 0.28676468, a: 0.559}
-  draCanBuildColor: {r: 0, g: 1, b: 0.95862055, a: 0.522}
-  draCantBuildColor: {r: 1, g: 0, b: 0, a: 0.503}
+  emptyColor: {r: 0, g: 0.656, b: 0.594, a: 0.762}
+  draCanBuildColor: {r: 0.034482718, g: 1, b: 0, a: 0.553}
+  draCantBuildColor: {r: 1, g: 0, b: 0, a: 0.509}
   buildingSize: {x: 2, y: 2}
   bestTarget: {x: 0, y: 0, z: 0}
   toBeColorized: []
@@ -625,7 +625,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 294, y: -212.9}
+  m_AnchoredPosition: {x: 299, y: -143}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1627295992
@@ -727,17 +727,10 @@ MonoBehaviour:
   structures:
   - {fileID: 1147585461023032, guid: 8e7a56d585de8cf419ac7fbf276cb402, type: 2}
   - {fileID: 1071149037440394, guid: c3ff45ff8b4e51440a3fbbc83c52154c, type: 2}
-  - {fileID: 1689765370810492, guid: 096b69b713f61a04aab182f609a7db38, type: 2}
-  - {fileID: 1942373733342142, guid: 3386bf59851fad24dabca9d64916893b, type: 2}
-  - {fileID: 1507489764547042, guid: 72817227a19a6d64695753084697baa5, type: 2}
-  - {fileID: 1875117473056848, guid: e2216061516bcb64c87cfa73ca805702, type: 2}
-  - {fileID: 1957332227456408, guid: 4834998f4aa0fef428a789e704a1989b, type: 2}
-  - {fileID: 1604896122853608, guid: f5c0f300b4a854849a1e68dc29dc4212, type: 2}
-  structButtons: []
   buildingMenuBlockPre: {fileID: 1686200574875558, guid: 38715dbc82d816f4eb82a9928a99c3d6,
     type: 2}
-  buildingMenu: {fileID: 1627295990}
-  gridSprite: {fileID: 21300000, guid: 4e227b55a55ad2f42b424cb72c657b98, type: 3}
+  buildingMenu: {fileID: 0}
+  gridSprite: {fileID: 0}
   gridSizeX: 2
   gridSizeY: 2
   dragNDrop: {fileID: 0}
