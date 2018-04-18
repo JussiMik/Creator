@@ -6,15 +6,11 @@ public class TempleCS : Structure
 {
     private bool addedToList;
 
-    void Start()
+    public override void Start()
     {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        base.Start();
 
-        originalFaithTargetTime = faithTargetTime;
-
-        ConstructingStructures();
-
-        addedToList = false;
+        gameManager.UseFaith(1000);
     }
     
     protected override void Update()

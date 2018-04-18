@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Building
   - Boundary
+  - FaithBuilding
   layers:
   - Default
   - TransparentFX

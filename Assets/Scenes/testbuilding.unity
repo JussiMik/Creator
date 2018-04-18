@@ -365,6 +365,17 @@ Prefab:
       value: 
       objectReference: {fileID: 1957332227456408, guid: 4834998f4aa0fef428a789e704a1989b,
         type: 2}
+    - target: {fileID: 114998486377728318, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: farm
+      value: 
+      objectReference: {fileID: 1689765370810492, guid: 096b69b713f61a04aab182f609a7db38,
+        type: 2}
+    - target: {fileID: 114998486377728318, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: faith
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52db2628f8d703648aea031082b57de4, type: 2}
   m_IsPrefabParent: 0
