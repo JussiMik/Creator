@@ -22,7 +22,7 @@ public class PopupMenu : MonoBehaviour
             if (hitInfo)
             {
                 Debug.Log(hitInfo.transform.gameObject.name);
-                if (hitInfo.transform.gameObject.tag == "FaithBuilding")
+                if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Building"))
                 {
                     clickedObject = hitInfo.transform.gameObject;
                     if(popupPanel.activeSelf == true)

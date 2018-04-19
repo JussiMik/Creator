@@ -65,7 +65,7 @@ public class PathfindingTargetLocation : MonoBehaviour
     void OnTriggerStay2D(Collider2D other)
     {
         // If target moves on building randomize new position
-        if (other.gameObject.tag == "Building")
+        if (other.gameObject.tag == "Building")                                 // NEEDS UPDATING
         {
             moveToPosition = false;
             MoveToNewLocation();
