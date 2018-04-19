@@ -11,6 +11,9 @@ public class StatueCS : Structure
         base.Start();
 
         gameManager.UseFaith(levelUpCost);
+
+        name = "Statue";
+        type = "Faith";
     }
 
     protected override void Update()

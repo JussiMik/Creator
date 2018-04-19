@@ -55,8 +55,8 @@ public class Structure : MonoBehaviour
     public virtual void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        woodWorkshopCS = GameObject.Find("Wood Workshop").GetComponent<WoodWorkshopCS>();
-        quarryCS = GameObject.Find("Quarry").GetComponent<QuarryCS>();
+        //  woodWorkshopCS = GameObject.Find("Wood Workshop").GetComponent<WoodWorkshopCS>();
+        // quarryCS = GameObject.Find("Quarry").GetComponent<QuarryCS>();
 
         originalFaithTargetTime = faithTargetTime;
 
@@ -80,7 +80,7 @@ public class Structure : MonoBehaviour
         }
 
         if (gameManager.devotionDecreaseMp1 == true)
-        {   
+        {
             lowerSpeedConstructing1 = true;
         }
         if (gameManager.devotionDecreaseMp2 == true)
@@ -115,26 +115,29 @@ public class Structure : MonoBehaviour
                 }
             }
 
-            if (woodWorkshopCS.gatheredWood > 0)
-            {
-                if (hit.transform.tag == "WoodWorkshop")
-                {
-                    woodWorkshopCS.CollectWood();
-                }
-            } 
+            /*            if (woodWorkshopCS.gatheredWood > 0)
+                        {
+                            if (hit.transform.tag == "WoodWorkshop")
+                            {
+                                woodWorkshopCS.CollectWood();
+                            }
+                        } 
 
-            if (quarryCS.gatheredStone > 0)
-            {
-                if (hit.transform.tag == "Quarry")
-                {
-                    quarryCS.CollectStone();
-                }
-            }
-            if(hit.transform.tag == null)
-            {
-                Debug.Log("Tyhjä");
-            }
+                        if (quarryCS.gatheredStone > 0)
+                        {
+                            if (hit.transform.tag == "Quarry")
+                            {
+                                quarryCS.CollectStone();
+                            }
+                        }
+
+                        if(hit.transform.tag == null)
+                        {
+                            Debug.Log("Tyhjä");
+                        }
+                         */
         }
+
     }
 
     public void ConstructingStructures()

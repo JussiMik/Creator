@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212648406609876690}
   - component: {fileID: 114257290112293142}
   - component: {fileID: 61608338079898600}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Statue
   m_TagString: FaithBuilding
   m_Icon: {fileID: 0}
@@ -78,22 +78,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ca7886a3247744c911fe8104efe1d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  woodWorkshopCS: {fileID: 0}
+  quarryCS: {fileID: 0}
   constructingTimer: 0
   constructingTime: 10
-  lowerSpeedConstructing: 0
+  constructingTimeSlow1: 0
+  constructingTimeSlow2: 0
+  constructingTimeSlow3: 0
+  normalSpeedConstructing: 0
+  changedValue: 0
+  lowerSpeedConstructing1: 0
+  lowerSpeedConstructing2: 0
+  lowerSpeedConstructing3: 0
   constructingDone: 0
-  lvlChange: 0
-  level: 0
-  maxLevelAmount: 0
   faithAmount: 2
   maxFaithAmount: 0
   faithMultiplier: 1.1
   generatedFaith: 0
-  collectedFaith: 0
-  gameManager: {fileID: 0}
+  faithCollected: 0
   faithTimer: 0
   faithTargetTime: 10
   originalFaithTargetTime: 0
+  defaultFaithGeneration: 0
+  slowerFaithGeneration1: 0
+  slowerFaithGeneration2: 0
+  slowerFaithGeneration3: 0
+  lvlChange: 0
+  level: 0
+  maxLevelAmount: 0
+  levelUpCost: 0
+  name: 
+  type: 
 --- !u!212 &212648406609876690
 SpriteRenderer:
   m_ObjectHideFlags: 1

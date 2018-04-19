@@ -69,6 +69,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  woodWorkshopCS: {fileID: 0}
+  quarryCS: {fileID: 0}
   constructingTimer: 0
   constructingTime: 15
   constructingTimeSlow1: 0
@@ -84,7 +86,7 @@ MonoBehaviour:
   maxFaithAmount: 0
   faithMultiplier: 0
   generatedFaith: 0
-  collectedFaith: 0
+  faithCollected: 0
   faithTimer: 0
   faithTargetTime: 0
   originalFaithTargetTime: 0
@@ -95,6 +97,9 @@ MonoBehaviour:
   lvlChange: 0
   level: 0
   maxLevelAmount: 0
+  levelUpCost: 0
+  name: 
+  type: 
 --- !u!212 &212849919343261006
 SpriteRenderer:
   m_ObjectHideFlags: 1

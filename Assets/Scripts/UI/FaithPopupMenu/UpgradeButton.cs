@@ -8,6 +8,8 @@ public class UpgradeButton : MonoBehaviour
     public GameObject clickedObject;
     GameObject canvas;
     Button upgradeButton;
+    GameObject buildingNameTextObject;
+    public bool levelUp;
     // Use this for initialization
     void Awake()
     {
@@ -16,6 +18,10 @@ public class UpgradeButton : MonoBehaviour
         upgradeButton.onClick.AddListener(UpgradeBuilding);
     }
 
+    private void Start()
+    {
+        buildingNameTextObject = GameObject.Find("Name & Level text");
+    }
     private void OnEnable()
     {
         clickedObject = canvas.GetComponent<PopupMenu>().clickedObject;
@@ -23,6 +29,8 @@ public class UpgradeButton : MonoBehaviour
    public void UpgradeBuilding()
     {
         clickedObject.GetComponent<Structure>().lvlChange = true;
+        buildingNameTextObject.GetComponent<BuildingNameText>().FindInfo();
+
     }
     private void OnDestroy()
     {

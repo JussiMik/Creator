@@ -9,11 +9,12 @@ public class Faithbar : MonoBehaviour
     public float faithTimer;
     Image faithbarForegroundImage;
     Image faithbarBackgroundImage;
-    float percent;
+    public float percent;
     public GameObject canvas;
     public GameObject clickedObject;
     GameObject FaithBarBackground;
-    
+    bool buildingDone;
+
 
     // Use this for initialization
     void Awake()
@@ -22,37 +23,43 @@ public class Faithbar : MonoBehaviour
         FaithBarBackground = GameObject.Find("FaithbarBackground");
         faithbarBackgroundImage = FaithBarBackground.GetComponent<Image>();
         canvas = GameObject.FindGameObjectWithTag("PopupMenuCanvas");
-        
+
     }
     private void Start()
     {
-        
+
     }
     private void OnEnable()
     {
         // When panel is set active get clicked object from PopupMenuCanvas
         clickedObject = canvas.GetComponent<PopupMenu>().clickedObject;
         maximumTime = clickedObject.GetComponent<Structure>().originalFaithTargetTime;
+        
 
     }
     void Update()
     {
-        if(clickedObject.GetComponent<Structure>().type != "Faith")
+        if (clickedObject.GetComponent<Structure>().type != "Faith")
         {
-            Debug.Log(clickedObject.GetComponent<Structure>().type);
             faithbarForegroundImage.enabled = false;
             faithbarBackgroundImage.enabled = false;
         }
-        
+
         if (clickedObject.GetComponent<Structure>().type == "Faith")
         {
-            Debug.Log(clickedObject.GetComponent<Structure>().type);
             faithbarForegroundImage.enabled = true;
             faithbarBackgroundImage.enabled = true;
-            faithTimer = clickedObject.GetComponent<ShrineCS>().faithTargetTime; // Sue me.
+            faithTimer = clickedObject.GetComponent<Structure>().faithTargetTime; // Sue me.
+            buildingDone = clickedObject.GetComponent<Structure>().constructingDone; // Times two.
         }
+
         percent = faithTimer / maximumTime;
         faithbarForegroundImage.fillAmount = Mathf.Lerp(1, 0, percent);
+        if (faithTimer == 10 && buildingDone == true)
+        {
+            faithbarForegroundImage.fillAmount = 1;
+        }
+
 
     }
 }
