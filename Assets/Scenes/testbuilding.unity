@@ -374,8 +374,14 @@ Prefab:
     - target: {fileID: 114998486377728318, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
       propertyPath: faith
-      value: 200
+      value: 10000
       objectReference: {fileID: 0}
+    - target: {fileID: 114998486377728318, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: meditationRoom
+      value: 
+      objectReference: {fileID: 1507489764547042, guid: 72817227a19a6d64695753084697baa5,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52db2628f8d703648aea031082b57de4, type: 2}
   m_IsPrefabParent: 0
