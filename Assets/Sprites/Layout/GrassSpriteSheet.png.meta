@@ -1,11 +1,13 @@
 fileFormatVersion: 2
-guid: 598b89bf61f99664aad330bab6e65527
-timeCreated: 1521756681
-licenseType: Free
+guid: 28abc29a092dc9e4ba6818993ee7a40f
+timeCreated: 1524133364
+licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
-    21300000: PlaceHolders_0
-    21300002: PlaceHolders_1
+    21300000: GrassSpriteSheet_0
+    21300002: GrassSpriteSheet_1
+    21300004: GrassSpriteSheet_2
+    21300006: GrassSpriteSheet_3
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -42,7 +44,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 128
+  spritePixelsToUnits: 445
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -68,22 +70,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: Android
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-  - buildTarget: WebGL
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
   - buildTarget: iPhone
     maxTextureSize: 2048
     textureFormat: -1
@@ -93,6 +79,14 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
   - buildTarget: tvOS
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
     maxTextureSize: 2048
     textureFormat: -1
     textureCompression: 1
@@ -116,6 +110,14 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   - buildTarget: Samsung TV
     maxTextureSize: 2048
     textureFormat: -1
@@ -128,53 +130,58 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlaceHolders_0
+      name: GrassSpriteSheet_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 768
-        width: 512
-        height: 256
+        x: 60
+        y: 1262
+        width: 896
+        height: 523
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: PlaceHolders_1
+      name: GrassSpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 512
-        y: 638
-        width: 512
-        height: 386
-      alignment: 9
-      pivot: {x: 0.5, y: 0.33}
+        x: 1090
+        y: 1264
+        width: 895
+        height: 520
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
-    outline:
-    - - {x: 2, y: 385}
-      - {x: 1, y: 387}
-      - {x: -222, y: 498}
-      - {x: -224, y: 498}
-      - {x: -251, y: 512}
-      - {x: -263, y: 512}
-      - {x: -330, y: 479}
-      - {x: -335, y: 475}
-      - {x: -337, y: 475}
-      - {x: -340, y: 473}
-      - {x: -417, y: 435}
-      - {x: -419, y: 433}
-      - {x: -512, y: 386}
-      - {x: -512, y: 380}
-      - {x: -290, y: 269}
-      - {x: -288, y: 269}
-      - {x: -259, y: 254}
-      - {x: -255, y: 254}
-      - {x: -224, y: 270}
-      - {x: -222, y: 270}
-      - {x: 2, y: 382}
+    - serializedVersion: 2
+      name: GrassSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 1086
+        y: 240
+        width: 900
+        height: 520
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GrassSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 239
+        width: 890
+        height: 520
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

@@ -287,16 +287,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f05825fc7467ce42ba0bf15219abc9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridDone: 0
-  roundCorners: 0
-  roundCornerBy: 1
+  grassTileSprites:
+  - {fileID: 21300000, guid: 28abc29a092dc9e4ba6818993ee7a40f, type: 3}
+  - {fileID: 21300002, guid: 28abc29a092dc9e4ba6818993ee7a40f, type: 3}
+  - {fileID: 21300004, guid: 28abc29a092dc9e4ba6818993ee7a40f, type: 3}
+  - {fileID: 21300006, guid: 28abc29a092dc9e4ba6818993ee7a40f, type: 3}
+  roundCorners: 1
+  roundCornerBy: 2
   showGrid: 0
   nullVector3: {x: 666, y: 666, z: 666}
+  fullColor: {r: 255, g: 255, b: 255, a: 255}
   cantBuild: {r: 0, g: 0, b: 0, a: 0}
   lakes: []
   rndLakes: 20
-  gridWidth: 20
-  gridHeigth: 20
+  gridWidth: 10
+  gridHeigth: 10
   currentWidth: 0
   renderGrid: 1
   tileByAngle: 0
@@ -304,9 +309,9 @@ MonoBehaviour:
   tileWidth: 1
   gridAngle: 0
   tileCap: 0
-  emptyGo: {fileID: 1354137680948214, guid: 17f97aeff80b5df47ad053263e4722f2, type: 2}
+  emptyGo: {fileID: 1354137680948214, guid: aa1f072f27d64bc46b96e02ad3471d02, type: 2}
   lakeGo: {fileID: 1354137680948214, guid: ef994d6472f08bb45bbadad0d0aa2ff0, type: 2}
-  treeGo: {fileID: 0}
+  treeGo: {fileID: 1354137680948214, guid: ed80e251ca308ea4b9c6c70a0bddfd62, type: 2}
   centerGo: {fileID: 0}
   lineCount: 10
   radius: 3
@@ -342,6 +347,7 @@ MonoBehaviour:
   noButton: {fileID: 0}
   yesButtonSpr: {fileID: 21300000, guid: 308c583a736f5914ba0370d6b31298b9, type: 3}
   noButtonSpr: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  draggerButtonSpr: {fileID: 21300000, guid: 7a51693ef9268ba46b73510bf8ab4503, type: 3}
   layoutManager: {fileID: 0}
   firstRound: 0
   currentColored: {x: 0, y: 0, z: 0}
@@ -352,6 +358,7 @@ MonoBehaviour:
   buildingSize: {x: 2, y: 2}
   bestTarget: {x: 0, y: 0, z: 0}
   toBeColorized: []
+  toDragPos: {x: 0, y: 0, z: 0}
   allow: 0
 --- !u!1 &757949110
 GameObject:

@@ -9,6 +9,8 @@ public class LayoutManager : MonoBehaviour
     public GameObject[,] testGrid;
     public Vector3[,] gapPositions;
     [SerializeField]
+    public Sprite[] grassTileSprites;
+
     bool gridDone = false;
     public bool roundCorners = false;
     public int roundCornerBy = 1;
@@ -16,6 +18,7 @@ public class LayoutManager : MonoBehaviour
     public bool showGrid;
 
     public Vector3 nullVector3 = new Vector3(666, 666, 666);
+    public Color fullColor = new Color(255, 255, 255, 255); 
 
     public Color cantBuild;
 
@@ -121,6 +124,7 @@ public class LayoutManager : MonoBehaviour
         }
         SetTestGridActive(false);
         RandomGen();
+        PlaceGrass();
         gridDone = true;
     }
 
@@ -167,6 +171,28 @@ public class LayoutManager : MonoBehaviour
         }
     }
 
+    private void PlaceGrass()
+    {
+        GameObject grassFolder = Instantiate(new GameObject(), transform.position, transform.rotation);
+        grassFolder.name = "Grass Folder";
+        for (int x = 0; x < positions.GetLength(0); x++)
+        {
+            for (int y = 0; y < positions.GetLength(1); y++)
+            {
+                if(!(positions[x, y].z == 1 || positions[x, y] == nullVector3))
+                {
+                    GameObject newgrass = Instantiate(emptyGo, positions[x, y], transform.rotation);
+                    newgrass.transform.parent = grassFolder.transform;
+                    newgrass.name = "GrassTile";
+                    newgrass.GetComponent<SpriteRenderer>().sprite = grassTileSprites[Random.Range(0, grassTileSprites.Length)];
+                    newgrass.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(new Vector2(x,y)) +1;
+                    newgrass.GetComponent<SpriteRenderer>().color = fullColor;
+                    newgrass.GetComponent<SpriteRenderer>().sortingLayerName = "Ground";
+                }
+            }
+        }
+    }
+
     private void RandomGen()
     {
         //RANDOMIZE LAKES
@@ -187,9 +213,12 @@ public class LayoutManager : MonoBehaviour
 
             GameObject newLake = Instantiate(lakeGo, positions[rnd1, rnd2], Quaternion.identity);
             newLake.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(new Vector2(rnd1, rnd2));
+            newLake.GetComponent<SpriteRenderer>().sortingLayerName = ("Buildings");
             lakes.Add(newLake);
             newLake.transform.parent = lakesFolder.transform;
+
             positions[rnd1, rnd2].z = 1;
+
         }
         TestGridUpdate();
     }
@@ -235,9 +264,7 @@ public class LayoutManager : MonoBehaviour
 
     public int CalculateSortingLayer(Vector2 tile)
     {
-        //FIND NEAREST CORNER TILE
-        //When X is smallest and Y is largest
-
+        
         int toReturn = 0;
         toReturn = (int)(tile.y - tile.x);
         return toReturn;

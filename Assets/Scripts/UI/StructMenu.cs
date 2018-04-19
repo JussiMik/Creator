@@ -88,7 +88,7 @@ public class StructMenu : MonoBehaviour {
     }
     public void SelectToDrag(int blockNo)
     {
-        dragNDrop.StartDragging(structures[blockNo]);
+        dragNDrop.ShowToDrag(structures[blockNo]);
         HideStructMenu();
     }
     public void HideStructMenu()

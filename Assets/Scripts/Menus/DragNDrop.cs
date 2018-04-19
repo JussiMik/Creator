@@ -14,6 +14,7 @@ public class DragNDrop : MonoBehaviour
     public GameObject noButton;
     public Sprite yesButtonSpr;
     public Sprite noButtonSpr;
+    public Sprite draggerButtonSpr;
 
     public LayoutManager layoutManager;
 
@@ -32,7 +33,10 @@ public class DragNDrop : MonoBehaviour
 
     public List<Vector2> toBeColorized;
 
-    [SerializeField] private bool allow; 
+    public Vector3 toDragPos;
+
+    [SerializeField]
+    private bool allow;
 
     // Use this for initialization
     void Start()
@@ -51,7 +55,7 @@ public class DragNDrop : MonoBehaviour
 
         //Here we spawn a "Yes" button that follows ToDrag object around and will be pressed 
         //if we want to build to that selected spot.
-        Vector2 yesPos = new Vector3(toDrag.GetComponent<RectTransform>().position.x -40, toDrag.GetComponent<RectTransform>().position.y - 50);
+        Vector2 yesPos = new Vector3(toDrag.GetComponent<RectTransform>().position.x - 40, toDrag.GetComponent<RectTransform>().position.y - 50);
         yesButton = Instantiate(yesOrNoPre, yesPos, transform.rotation);
         yesButton.transform.parent = toDrag.transform;
         yesButton.GetComponent<YesOrNoButton>().SetYesOrNo(true, yesButtonSpr);
@@ -65,14 +69,20 @@ public class DragNDrop : MonoBehaviour
         noButton.GetComponent<YesOrNoButton>().dragNDrop = this;
 
         //Here we spawn dragger button
+        Vector2 dragPos = new Vector3(toDrag.GetComponent<RectTransform>().position.x, toDrag.GetComponent<RectTransform>().position.y - 100);
+        noButton = Instantiate(yesOrNoPre, dragPos, transform.rotation);
+        noButton.transform.parent = toDrag.transform;
+        noButton.GetComponent<YesOrNoButton>().SetAsDragger(true, draggerButtonSpr);
+        noButton.GetComponent<YesOrNoButton>().dragNDrop = this;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(Input.mousePosition, toDrag.transform.position) > 0.01f && dragging)
+        toDragPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y + 100, Input.mousePosition.z);
+        if (Vector2.Distance(toDragPos, toDrag.transform.position) > 0.01f && dragging)
         {
-            toDrag.GetComponent<RectTransform>().position = Input.mousePosition;
+            toDrag.GetComponent<RectTransform>().position = toDragPos;
         }
 
         //if (Input.GetMouseButtonUp(1) && dragging)
@@ -106,16 +116,33 @@ public class DragNDrop : MonoBehaviour
     }
 
 
-    public void StartDragging(GameObject structure)
+    public void ShowToDrag(GameObject structure)
     {
         layoutManager.SetTestGridActive(true);
         curDraBuilding = structure;
-        toDrag.SetActive(true);
         toDrag.GetComponent<Image>().sprite = structure.GetComponent<SpriteRenderer>().sprite;
-
-        firstRound = true;
-        dragging = true;
+        toDrag.transform.position = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0);
+        toDrag.SetActive(true);
     }
+
+    public void StartOrPauseDragging()
+    {
+        //bool checke1st = false;
+
+        if (!dragging)
+        {
+            firstRound = true;
+            dragging = true;
+            Debug.Log("to true");
+            //checke1st = true;
+        }
+        else
+        {
+            //dragging = false;
+            Debug.Log("to false");
+        }
+    }
+
     public void StopDragging()
     {
         dragging = false;
@@ -127,6 +154,8 @@ public class DragNDrop : MonoBehaviour
         //GET MOUSE WORLD POSITION
         v3 = Input.mousePosition;
         v3.z = 10.0f;
+        //Add dragger between
+        v3 = new Vector3(v3.x, v3.y + 100, v3.z);
         v3 = Camera.main.ScreenToWorldPoint(v3);
 
         //FIND CLOCEST TO CURSOR
@@ -157,31 +186,37 @@ public class DragNDrop : MonoBehaviour
         if (!(currentColored == bestTarget))
         {
             allow = true;
-            
+
             //TEST IF SPACES ARE TAKEN
             for (int i = 0; i < toBeColorized.Count; i++)
             {
-                if(layoutManager.positions[(int)toBeColorized[i].x, (int)toBeColorized[i].y].z == 1)
+                if (layoutManager.positions[(int)toBeColorized[i].x, (int)toBeColorized[i].y].z == 1)
                 {
                     allow = false;
                 }
             }
 
             //IF SPACES ARE NOT TAKEN SET THEM GREEN
-            if(allow)
+            if (allow)
             {
                 for (int i = 0; i < toBeColorized.Count; i++)
                 {
-                    layoutManager.testGrid[(int)toBeColorized[i].x, (int)toBeColorized[i].y].GetComponent<SpriteRenderer>().color = draCanBuildColor;
+                    if (!(layoutManager.testGrid[(int)toBeColorized[i].x, (int)toBeColorized[i].y] == null))
+                    {
+                        layoutManager.testGrid[(int)toBeColorized[i].x, (int)toBeColorized[i].y].GetComponent<SpriteRenderer>().color = draCanBuildColor;
+                    }     
                 }
             }
-            
-            //IF SPACES ARE TAKEN SET THEM RED
+
+            //IF EVEN ONE OF SPACES ARE TAKEN SET THEM RED
             else
             {
                 for (int i = 0; i < toBeColorized.Count; i++)
                 {
-                    layoutManager.testGrid[(int)toBeColorized[i].x, (int)toBeColorized[i].y].GetComponent<SpriteRenderer>().color = draCantBuildColor;
+                    if(!(layoutManager.testGrid[(int)toBeColorized[i].x, (int)toBeColorized[i].y] == null))
+                    {
+                        layoutManager.testGrid[(int)toBeColorized[i].x, (int)toBeColorized[i].y].GetComponent<SpriteRenderer>().color = draCantBuildColor;
+                    }
                 }
             }
 
@@ -204,7 +239,13 @@ public class DragNDrop : MonoBehaviour
 
         for (int i = 0; i < toBeColorized.Count; i++)
         {
-            layoutManager.testGrid[(int)toBeColorized[i].x, (int)toBeColorized[i].y].GetComponent<SpriteRenderer>().color = emptyColor;
+            if()
+            {
+                if (!(layoutManager.testGrid[(int)toBeColorized[i].x, (int)toBeColorized[i].y] == null))
+                {
+                    layoutManager.testGrid[(int)toBeColorized[i].x, (int)toBeColorized[i].y].GetComponent<SpriteRenderer>().color = emptyColor;
+                }
+            }   
         }
         toBeColorized.Clear();
     }
