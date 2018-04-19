@@ -11,8 +11,6 @@ public class GameManager : MonoBehaviour
     
     public GameObject shrine;
     public GameObject statue;
-
-    
     //public GameObject temple;
     public GameObject farm;
     public GameObject garden;
@@ -24,6 +22,7 @@ public class GameManager : MonoBehaviour
     [Space(10)]
     public float devotion;
     public float maxDevotionAmount;
+    public float minDevotionAmountCollecting;
 
     public bool devotionDecrease;
     public float devotionChunkDecreaseAmount;
@@ -34,6 +33,10 @@ public class GameManager : MonoBehaviour
     public bool devotionIncrease;
     public float devotionChunkIncreaseAmount;
     public bool devotionIncreaseMp1;
+
+    [Space(10)]
+    public float wood;
+    public float stone;
 
     [Space(10)]
     public List<GameObject> faithBuildings = new List<GameObject>();
@@ -51,6 +54,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         structure = gameObject.GetComponent<Structure>();
+
+        minDevotionAmountCollecting = devotionChunkDecreaseAmount;
     }
 
     void Update()

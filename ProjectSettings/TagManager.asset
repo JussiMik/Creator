@@ -7,7 +7,8 @@ TagManager:
   - Building
   - Boundary
   - FaithBuilding
-  - PopupMenuCanvas
+  - WoodWorkshop
+  - Quarry
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - 
   - Unwalkable
   - PFTargetLayer
-  - Building
+  - 
   - 
   - 
   - 

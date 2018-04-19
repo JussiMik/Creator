@@ -5,6 +5,8 @@ using UnityEngine;
 public class Structure : MonoBehaviour
 {
     public GameManager gameManager;
+    public WoodWorkshopCS woodWorkshopCS;
+    public QuarryCS quarryCS;
 
     [SerializeField]
     private bool constructingTimer;
@@ -30,7 +32,7 @@ public class Structure : MonoBehaviour
     public double faithMultiplier;
     public double generatedFaith;
 
-    public bool collectedFaith;
+    public bool faithCollected;
 
     public bool faithTimer;
     public float faithTargetTime;
@@ -53,6 +55,8 @@ public class Structure : MonoBehaviour
     public virtual void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        woodWorkshopCS = GameObject.Find("Wood Workshop").GetComponent<WoodWorkshopCS>();
+        quarryCS = GameObject.Find("Quarry").GetComponent<QuarryCS>();
 
         originalFaithTargetTime = faithTargetTime;
 
@@ -63,7 +67,7 @@ public class Structure : MonoBehaviour
 
         normalSpeedConstructing = true;
 
-        collectedFaith = true;
+        faithCollected = true;
 
         ConstructingStructures();
     }
@@ -93,19 +97,38 @@ public class Structure : MonoBehaviour
             ChangeLevel();
         }
 
-        if (faithTimer == true && collectedFaith == true)
+        if (faithTimer == true && faithCollected == true)
         {
             FaithTimer();
         }
 
-        if (Input.GetMouseButtonDown(0) && generatedFaith > 0 && gameManager.devotion >= 10)
+        if (Input.GetMouseButtonDown(0) && gameManager.devotion >= gameManager.minDevotionAmountCollecting)
         {
             Vector2 origin = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
             RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.zero, 0f);
 
-            if (hit.transform.tag == "FaithBuilding")
+            if (generatedFaith > 0)
             {
-                CollectFaith();
+                if (hit.transform.tag == "FaithBuilding")
+                {
+                    CollectFaith();
+                }
+            }
+
+            if (woodWorkshopCS.gatheredWood > 0)
+            {
+                if (hit.transform.tag == "WoodWorkshop")
+                {
+                    woodWorkshopCS.CollectWood();
+                }
+            } 
+
+            if (quarryCS.gatheredStone > 0)
+            {
+                if (hit.transform.tag == "Quarry")
+                {
+                    quarryCS.CollectStone();
+                }
             }
             if(hit.transform.tag == null)
             {
@@ -116,7 +139,6 @@ public class Structure : MonoBehaviour
 
     public void ConstructingStructures()
     {
-        //gameManager.UseFaith();
         gameManager.DevotionDecreaseChunk();
 
         constructingTimer = true;
@@ -181,7 +203,7 @@ public class Structure : MonoBehaviour
         {
             faithTargetTime = originalFaithTargetTime;
             faithTimer = true;
-            collectedFaith = false;
+            faithCollected = false;
         }
     }
 
@@ -218,7 +240,7 @@ public class Structure : MonoBehaviour
         gameManager.faith += generatedFaith;
         generatedFaith = 0;
 
-        collectedFaith = true;
+        faithCollected = true;
     }
 
     public void ChangeLevel()
