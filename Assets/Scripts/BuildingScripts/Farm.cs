@@ -6,11 +6,16 @@ public class Farm : Structure
 {
     private bool addedToList;
 
-    public override void Start()
+    void Start()
     {
-        base.Start();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
+        normalSpeedConstructing = true;
+        addedToList = false;
+        ConstructingStructures();
 
         gameManager.UseFaith(levelUpCost);
+
         name = "Farm";
         type = "Food";
     }

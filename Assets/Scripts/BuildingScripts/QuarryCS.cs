@@ -10,15 +10,17 @@ public class QuarryCS : Structure
     private float originalRockTime;
 
     [Space(10)]
-    public float gatheredStone;
     public float gatheredStoneAmount;
 
     [Space(10)]
     public bool stoneCollected;
 
-    public override void Start()
+    void Start()
     {
-        base.Start();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
+        normalSpeedConstructing = true;
+        ConstructingStructures();
 
         originalRockTime = rockTime;
 

@@ -39,6 +39,12 @@ public class Structure : MonoBehaviour
     public float originalFaithTargetTime;
 
     [Space(10)]
+    public float gatheredWood;
+
+    [Space(10)]
+    public float gatheredStone;
+
+    [Space(10)]
     public bool defaultFaithGeneration;
     public bool slowerFaithGeneration1;
     public bool slowerFaithGeneration2;
@@ -47,17 +53,16 @@ public class Structure : MonoBehaviour
     public bool lvlChange;
     public int level;
     public int maxLevelAmount;
-    public int levelUpCost;
+    public float levelUpCost;
 
     public string name;
     public string type;
 
-    public virtual void Start()
+    void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        woodWorkshopCS = GameObject.Find("Wood Workshop").GetComponent<WoodWorkshopCS>();
-        quarryCS = GameObject.Find("Quarry").GetComponent<QuarryCS>();
 
+        /*
         originalFaithTargetTime = faithTargetTime;
 
         level = 1;
@@ -70,6 +75,7 @@ public class Structure : MonoBehaviour
         faithCollected = true;
 
         ConstructingStructures();
+        */
     }
 
     protected virtual void Update()
@@ -111,26 +117,30 @@ public class Structure : MonoBehaviour
             {
                 if (hit.transform.tag == "FaithBuilding")
                 {
+                    Debug.Log("jou");
                     CollectFaith();
                 }
             }
-
-            if (woodWorkshopCS.gatheredWood > 0)
+            
+            if (gatheredWood > 0)
             {
                 if (hit.transform.tag == "WoodWorkshop")
                 {
+                    woodWorkshopCS = GetComponent<WoodWorkshopCS>();
                     woodWorkshopCS.CollectWood();
                 }
-            } 
-
-            if (quarryCS.gatheredStone > 0)
+            }
+            
+            if (gatheredStone > 0)
             {
                 if (hit.transform.tag == "Quarry")
                 {
+                    quarryCS = GetComponent<QuarryCS>();
                     quarryCS.CollectStone();
                 }
             }
-            if(hit.transform.tag == null)
+            
+            if (hit.transform.tag == null)
             {
                 Debug.Log("Tyhjä");
             }
@@ -238,7 +248,7 @@ public class Structure : MonoBehaviour
         gameManager.DevotionDecreaseChunk();
 
         gameManager.faith += generatedFaith;
-        generatedFaith = 0;
+        generatedFaith = 0f;
 
         faithCollected = true;
     }

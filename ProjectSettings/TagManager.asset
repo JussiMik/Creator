@@ -9,6 +9,8 @@ TagManager:
   - FaithBuilding
   - WoodWorkshop
   - Quarry
+  - Tree
+  - Rock
   layers:
   - Default
   - TransparentFX

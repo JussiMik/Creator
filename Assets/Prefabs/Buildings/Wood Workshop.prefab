@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4483021433748496}
   - component: {fileID: 212247566331211474}
-  - component: {fileID: 61774759754518862}
   - component: {fileID: 61364637772624898}
   - component: {fileID: 114257953060364572}
   m_Layer: 10
@@ -52,7 +51,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -66,32 +65,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.2}
-  m_EdgeRadius: 0
---- !u!61 &61774759754518862
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1836903260062016}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0014209636}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.14253993, y: 0.14124325}
+  m_Size: {x: 0.18, y: 0.18}
   m_EdgeRadius: 0
 --- !u!114 &114257953060364572
 MonoBehaviour:
@@ -105,8 +79,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  woodWorkshopCS: {fileID: 0}
+  quarryCS: {fileID: 0}
   constructingTimer: 0
-  constructingTime: 0
+  constructingTime: 20
   constructingTimeSlow1: 0
   constructingTimeSlow2: 0
   constructingTimeSlow3: 0
@@ -120,10 +96,12 @@ MonoBehaviour:
   maxFaithAmount: 0
   faithMultiplier: 0
   generatedFaith: 0
-  collectedFaith: 0
+  faithCollected: 0
   faithTimer: 0
   faithTargetTime: 0
   originalFaithTargetTime: 0
+  gatheredWood: 0
+  gatheredStone: 0
   defaultFaithGeneration: 0
   slowerFaithGeneration1: 0
   slowerFaithGeneration2: 0
@@ -131,10 +109,14 @@ MonoBehaviour:
   lvlChange: 0
   level: 0
   maxLevelAmount: 0
+  levelUpCost: 0
+  name: 
+  type: 
   woodTimer: 0
-  woodTime: 0
-  gatheredWood: 0
-  gatheredWoodAmount: 0
+  woodTime: 10
+  originalWoodTime: 0
+  gatheredWoodAmount: 4
+  woodCollected: 0
 --- !u!212 &212247566331211474
 SpriteRenderer:
   m_ObjectHideFlags: 1

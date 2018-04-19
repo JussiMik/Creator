@@ -6,9 +6,16 @@ public class MeditationRoomCS : Structure
 {
     private bool addedToList;
 
-    public override void Start()
+    void Start()
     {
-        base.Start();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
+        originalFaithTargetTime = faithTargetTime;
+
+        normalSpeedConstructing = true;
+        faithCollected = true;
+        addedToList = false;
+        ConstructingStructures();
 
         gameManager.UseFaith(levelUpCost);
 

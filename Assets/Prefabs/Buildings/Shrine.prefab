@@ -78,6 +78,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e2a98e80e61d3a4fabee95b44a5e4e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  woodWorkshopCS: {fileID: 0}
+  quarryCS: {fileID: 0}
   constructingTimer: 0
   constructingTime: 30
   constructingTimeSlow1: 0
@@ -89,18 +92,24 @@ MonoBehaviour:
   lowerSpeedConstructing2: 0
   lowerSpeedConstructing3: 0
   constructingDone: 0
-  lvlChange: 0
-  level: 0
-  maxLevelAmount: 0
   faithAmount: 5
   maxFaithAmount: 0
   faithMultiplier: 1.2
   generatedFaith: 0
-  collectedFaith: 0
-  gameManager: {fileID: 0}
+  faithCollected: 0
   faithTimer: 0
   faithTargetTime: 10
   originalFaithTargetTime: 0
+  defaultFaithGeneration: 0
+  slowerFaithGeneration1: 0
+  slowerFaithGeneration2: 0
+  slowerFaithGeneration3: 0
+  lvlChange: 0
+  level: 0
+  maxLevelAmount: 0
+  levelUpCost: 100
+  name: 
+  type: 
 --- !u!212 &212195528997444186
 SpriteRenderer:
   m_ObjectHideFlags: 1
