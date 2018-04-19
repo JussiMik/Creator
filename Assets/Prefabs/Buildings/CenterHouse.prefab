@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4915953961094750}
   - component: {fileID: 212104646336442114}
   - component: {fileID: 114595558867786664}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: CenterHouse
   m_TagString: Building
   m_Icon: {fileID: 0}

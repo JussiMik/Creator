@@ -10,7 +10,10 @@ public class GardenCS : Structure
     {
         base.Start();
 
-        gameManager.UseFaith(400);
+        gameManager.UseFaith(levelUpCost);
+
+        name = "Garden";
+        type = "Devotion";
     }
 
     protected override void Update()

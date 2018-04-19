@@ -10,7 +10,10 @@ public class TempleCS : Structure
     {
         base.Start();
 
-        gameManager.UseFaith(1000);
+        gameManager.UseFaith(levelUpCost);
+
+        name = "Temple";
+        type = "Faith";
     }
     
     protected override void Update()

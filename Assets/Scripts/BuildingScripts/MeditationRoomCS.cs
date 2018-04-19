@@ -10,7 +10,10 @@ public class MeditationRoomCS : Structure
     {
         base.Start();
 
-        gameManager.UseFaith(700);
+        gameManager.UseFaith(levelUpCost);
+
+        name = "Meditation room";
+        type = "Devotion";
     }
 
     protected override void Update()

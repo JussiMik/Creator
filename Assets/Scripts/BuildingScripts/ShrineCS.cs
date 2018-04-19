@@ -9,8 +9,12 @@ public class ShrineCS : Structure
     public override void Start()
     {
         base.Start();
+        
+        gameManager.UseFaith(levelUpCost);
 
-        gameManager.UseFaith(500);
+        name = "Shrine";
+        type = "Faith";
+        
     }
 
     protected override void Update()

@@ -7,9 +7,13 @@ public class PopupMenu : MonoBehaviour
     public GameObject clickedObject;
     public GameObject popupPanel;
     public float xOffset, yOffset;
+    public string name;
+    public string type;
+    public int level;
+    public int levelupCost;
     void Awake()
     {
-       popupPanel = GameObject.FindGameObjectWithTag("Panel");
+        popupPanel = GameObject.Find("PopupPanel");
     }
 
     void Update()
@@ -25,10 +29,12 @@ public class PopupMenu : MonoBehaviour
                 if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Building"))
                 {
                     clickedObject = hitInfo.transform.gameObject;
-                    if(popupPanel.activeSelf == true)
+                    //GetClickedObjectInfo();
+                    if (popupPanel.activeSelf == true)
                     {
                         popupPanel.SetActive(false);
                     }
+
                     popupPanel.SetActive(true);
                     Vector3 offset = new Vector3(xOffset, yOffset, 0);
                     popupPanel.transform.position = Input.mousePosition + offset;
@@ -37,4 +43,13 @@ public class PopupMenu : MonoBehaviour
             }
         }
     }
+
+   /*  void GetClickedObjectInfo()
+    {
+        name = clickedObject.GetComponent<Structure>().name;
+        type = clickedObject.GetComponent<Structure>().type;
+        level = clickedObject.GetComponent<Structure>().level;
+        levelupCost = clickedObject.GetComponent<Structure>().levelUpCost;
+    }
+    */
 }

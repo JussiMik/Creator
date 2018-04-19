@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class UpgradeButton : MonoBehaviour
 {
-    GameObject clickedObject;
+    public GameObject clickedObject;
     GameObject canvas;
     Button upgradeButton;
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         canvas = GameObject.Find("PopupMenuCanvas");
         upgradeButton = GetComponent<Button>();
@@ -23,7 +23,6 @@ public class UpgradeButton : MonoBehaviour
    public void UpgradeBuilding()
     {
         clickedObject.GetComponent<Structure>().lvlChange = true;
-        Debug.Log("DADADA");
     }
     private void OnDestroy()
     {

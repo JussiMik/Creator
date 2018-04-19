@@ -10,7 +10,9 @@ public class Farm : Structure
     {
         base.Start();
 
-        gameManager.UseFaith(200);
+        gameManager.UseFaith(levelUpCost);
+        name = "Farm";
+        type = "Food";
     }
 
     protected override void Update()

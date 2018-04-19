@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212849919343261006}
   - component: {fileID: 114737178459137082}
   - component: {fileID: 58356987045335882}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Farm
   m_TagString: Building
   m_Icon: {fileID: 0}
@@ -68,16 +68,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32da33593d807bf46aefb77a6fcae7cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   constructingTimer: 0
   constructingTime: 15
+  constructingTimeSlow1: 0
+  constructingTimeSlow2: 0
+  constructingTimeSlow3: 0
+  normalSpeedConstructing: 0
+  changedValue: 0
+  lowerSpeedConstructing1: 0
+  lowerSpeedConstructing2: 0
+  lowerSpeedConstructing3: 0
   constructingDone: 0
-  lvlChange: 0
-  level: 0
-  maxLevelAmount: 0
   faithAmount: 0
   maxFaithAmount: 0
   faithMultiplier: 0
-  gameManager: {fileID: 0}
+  generatedFaith: 0
+  collectedFaith: 0
+  faithTimer: 0
+  faithTargetTime: 0
+  originalFaithTargetTime: 0
+  defaultFaithGeneration: 0
+  slowerFaithGeneration1: 0
+  slowerFaithGeneration2: 0
+  slowerFaithGeneration3: 0
+  lvlChange: 0
+  level: 0
+  maxLevelAmount: 0
 --- !u!212 &212849919343261006
 SpriteRenderer:
   m_ObjectHideFlags: 1

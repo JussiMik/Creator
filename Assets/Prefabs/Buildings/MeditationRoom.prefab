@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212256963721403386}
   - component: {fileID: 114854310884962966}
   - component: {fileID: 58603276042679086}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: MeditationRoom
   m_TagString: Building
   m_Icon: {fileID: 0}
@@ -68,21 +68,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da6ac33b6795f0b4ab4a21a40b925b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   constructingTimer: 0
   constructingTime: 10
-  lowerSpeedConstructing: 0
+  constructingTimeSlow1: 0
+  constructingTimeSlow2: 0
+  constructingTimeSlow3: 0
+  normalSpeedConstructing: 0
+  changedValue: 0
+  lowerSpeedConstructing1: 0
+  lowerSpeedConstructing2: 0
+  lowerSpeedConstructing3: 0
   constructingDone: 0
-  lvlChange: 0
-  level: 0
-  maxLevelAmount: 0
   faithAmount: 0
-  generatedFaith: 0
   maxFaithAmount: 0
   faithMultiplier: 1.1
-  gameManager: {fileID: 0}
+  generatedFaith: 0
+  collectedFaith: 0
   faithTimer: 0
   faithTargetTime: 10
   originalFaithTargetTime: 0
+  defaultFaithGeneration: 0
+  slowerFaithGeneration1: 0
+  slowerFaithGeneration2: 0
+  slowerFaithGeneration3: 0
+  lvlChange: 0
+  level: 0
+  maxLevelAmount: 0
 --- !u!212 &212256963721403386
 SpriteRenderer:
   m_ObjectHideFlags: 1

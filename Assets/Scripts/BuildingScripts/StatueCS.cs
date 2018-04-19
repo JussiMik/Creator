@@ -10,7 +10,7 @@ public class StatueCS : Structure
     {
         base.Start();
 
-        gameManager.UseFaith(50);
+        gameManager.UseFaith(levelUpCost);
     }
 
     protected override void Update()

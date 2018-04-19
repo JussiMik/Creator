@@ -45,6 +45,10 @@ public class Structure : MonoBehaviour
     public bool lvlChange;
     public int level;
     public int maxLevelAmount;
+    public int levelUpCost;
+
+    public string name;
+    public string type;
 
     public virtual void Start()
     {
@@ -102,6 +106,10 @@ public class Structure : MonoBehaviour
             if (hit.transform.tag == "FaithBuilding")
             {
                 CollectFaith();
+            }
+            if(hit.transform.tag == null)
+            {
+                Debug.Log("Tyhjä");
             }
         }
     }

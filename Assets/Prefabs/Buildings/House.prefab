@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212437089208035856}
   - component: {fileID: 114897907829624234}
   - component: {fileID: 60971596555661660}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: House
   m_TagString: Building
   m_Icon: {fileID: 0}
