@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 61608338079898600}
   m_Layer: 10
   m_Name: Statue
-  m_TagString: Building
+  m_TagString: FaithBuilding
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,10 +85,11 @@ MonoBehaviour:
   lvlChange: 0
   level: 0
   maxLevelAmount: 0
-  faithAmount: 0
-  generatedFaith: 0
+  faithAmount: 2
   maxFaithAmount: 0
   faithMultiplier: 1.1
+  generatedFaith: 0
+  collectedFaith: 0
   gameManager: {fileID: 0}
   faithTimer: 0
   faithTargetTime: 10

@@ -12,9 +12,9 @@ public class GameManager : MonoBehaviour
     public GameObject shrine;
     public GameObject statue;
 
-    /*
-    public GameObject temple;
-    public GameObject farm;*/
+    
+    //public GameObject temple;
+    public GameObject farm;
     public GameObject garden;
     public GameObject meditationRoom;
     
@@ -22,8 +22,7 @@ public class GameManager : MonoBehaviour
     public double faith;
 
     [Space(10)]
-    [SerializeField]
-    private float devotion;
+    public float devotion;
     public float maxDevotionAmount;
 
     public bool devotionDecrease;
@@ -35,12 +34,6 @@ public class GameManager : MonoBehaviour
     public bool devotionIncrease;
     public float devotionChunkIncreaseAmount;
     public bool devotionIncreaseMp1;
-
-    [Space(10)]
-    [SerializeField]
-    public bool slowerFaithGeneration1;
-    public bool slowerFaithGeneration2;
-    public bool slowerFaithGeneration3;
 
     [Space(10)]
     public List<GameObject> faithBuildings = new List<GameObject>();
@@ -62,13 +55,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        /*
-        if (faithBuildings.Count > 0)
-        {
-            structure.FaithTimer();
-        }
-        */
-
         if (devotionDecrease == true)
         {
             DevotionDecrease();
@@ -98,13 +84,8 @@ public class GameManager : MonoBehaviour
         */
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SpawnGarden();
-        }
-        
-
-        if (Input.GetKeyDown(KeyCode.Mouse1) && structure.generatedFaith > 0 && devotion >= 10)
-        {
-            structure.CollectFaith();
+            //SpawnGarden();
+            SpawnFarm();
         }
 
         if (Input.GetKeyDown(KeyCode.W))
@@ -118,37 +99,6 @@ public class GameManager : MonoBehaviour
         GameObject spawnedMonk = Instantiate(monk, new Vector3(transform.position.x + 2, transform.position.y + 2, transform.position.z), transform.rotation);
         monks.Add(spawnedMonk);
     }
-
-    
-
-
-
-    //Generates faith resource that player can later extract and use
-    /*
-    public void GenerateFaith()
-    {
-        for (int i = 0; i < faithMultipliers.Count; i++)
-        {
-            generatedFaith += (structure.faithAmount * faithMultipliers[i]);
-        }
-
-        generatedFaith += (monks.Count * monkFaithMultiplier);
-
-        if (slowerFaithGeneration1 == true)
-        {
-            generatedFaith += (monks.Count * monkFaithMultiplierSlow1);
-        }
-        if (slowerFaithGeneration2 == true)
-        {
-            generatedFaith += (monks.Count * monkFaithMultiplierSlow2);
-        }
-        if (slowerFaithGeneration3 == true)
-        {
-            generatedFaith += (monks.Count * monkFaithMultiplierSlow3);
-        }
-    }*/
-
-   
 
     //Use collected faith for constructing and leveling up buildings
     public void UseFaith(float faithUseAmount)
@@ -168,14 +118,17 @@ public class GameManager : MonoBehaviour
 
         if (devotionDecreaseMp1 == true)
         {
+            structure.changedValue = false;
             devotion -= Time.deltaTime * 2;
         }
-        else if (devotionDecreaseMp2 == true)
+        if (devotionDecreaseMp2 == true)
         {
+            structure.changedValue = false;
             devotion -= Time.deltaTime * 3;
         }
-        else if (devotionDecreaseMp3 == true)
+        if (devotionDecreaseMp3 == true)
         {
+            structure.changedValue = false;
             devotion -= Time.deltaTime * 4;
         }
 
@@ -212,6 +165,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Devotion increases in chunks
     public void DevotionIncreaseChunk()
     {
         devotion += devotionChunkIncreaseAmount;
@@ -243,7 +197,7 @@ public class GameManager : MonoBehaviour
     {
         //if (faith >= faithUseAmount && devotion >= devotionChunkDecreaseAmount)
         {
-            //GameObject spawned = Instantiate(gameObject, new Vector3(transform.position.x + 1, transform.position.y - 4, transform.position.z), transform.rotation);
+            GameObject spawned = Instantiate(farm, new Vector3(transform.position.x + 1, transform.position.y - 4, transform.position.z), transform.rotation);
         }
     }
 

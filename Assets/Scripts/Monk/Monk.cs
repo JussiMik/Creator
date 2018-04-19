@@ -32,20 +32,25 @@ public class Monk : MonoBehaviour
             StartCoroutine("RefreshPath");
             checkForNewDestination = false;
         }
+
         CheckFarmCount();
     }
+
+    /*
     // DELET THIS when dormitory is done
     public void SpawnNewMonk()
     {
         GameObject spawnedMonk = Instantiate(gameObject, new Vector3(transform.position.x + 2, transform.position.y + 2, transform.position.z), transform.rotation);
         gameManager.monks.Add(spawnedMonk);
-    }
+    }*/
+
     void CheckFarmCount()
     {
+        int index;
+
         if (gameManager.farms.Count == 0)
         {
             gameManager.devotionDecrease = true;
-            //gameManager.devotionDecreaseMp1 = true;
 
             if (gameManager.monks.Count == 0)
             {
@@ -58,6 +63,9 @@ public class Monk : MonoBehaviour
             if (gameManager.monks.Count / gameManager.farms.Count <= 4)
             {
                 gameManager.devotionDecrease = false;
+                gameManager.devotionDecreaseMp1 = false;
+                gameManager.devotionDecreaseMp2 = false;
+                gameManager.devotionDecreaseMp3 = false;
                 gameManager.devotionIncrease = true;
 
                 if (gameManager.gardens.Count > 0 || gameManager.meditationRooms.Count > 0)
@@ -75,6 +83,18 @@ public class Monk : MonoBehaviour
             if (gameManager.monks.Count / gameManager.farms.Count >= 5.7)
             {
                 gameManager.devotionDecreaseMp1 = true;
+            }
+
+            if (gameManager.monks.Count / gameManager.farms.Count >= 8)
+            {
+                gameManager.devotionDecreaseMp1 = false;
+                gameManager.devotionDecreaseMp2 = true;
+            }
+
+            if (gameManager.monks.Count / gameManager.farms.Count >= 13.2)
+            {
+                gameManager.devotionDecreaseMp2 = false;
+                gameManager.devotionDecreaseMp3 = true;
             }
         }
 

@@ -4,69 +4,105 @@ using UnityEngine;
 
 public class Structure : MonoBehaviour
 {
+    public GameManager gameManager;
+
     [SerializeField]
     private bool constructingTimer;
 
     [SerializeField]
     private float constructingTime;
-    public bool lowerSpeedConstructing;
+    public float constructingTimeSlow1;
+    public float constructingTimeSlow2;
+    public float constructingTimeSlow3;
+
+    public bool normalSpeedConstructing;
+    public bool changedValue;
+    public bool lowerSpeedConstructing1;
+    public bool lowerSpeedConstructing2;
+    public bool lowerSpeedConstructing3;
 
     public bool constructingDone;
 
-    public bool lvlChange;
-    public int level;
-    public int maxLevelAmount;
-
+    [Space(10)]
     public int faithAmount;
     public int maxFaithAmount;
 
     public double faithMultiplier;
     public double generatedFaith;
-    public double maxGeneratedFaith;
 
-    public GameManager gameManager;
+    public bool collectedFaith;
 
     public bool faithTimer;
     public float faithTargetTime;
     public float originalFaithTargetTime;
 
-    void Start()
+    [Space(10)]
+    public bool defaultFaithGeneration;
+    public bool slowerFaithGeneration1;
+    public bool slowerFaithGeneration2;
+    public bool slowerFaithGeneration3;
+
+    public bool lvlChange;
+    public int level;
+    public int maxLevelAmount;
+
+    public virtual void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
+        originalFaithTargetTime = faithTargetTime;
 
         level = 1;
         lvlChange = false;
 
         constructingDone = false;
+
+        normalSpeedConstructing = true;
+
+        collectedFaith = true;
+
+        ConstructingStructures();
     }
 
     protected virtual void Update()
     {
         if (constructingTimer == true)
         {
-            constructingTime -= Time.deltaTime;
-
-            if (lowerSpeedConstructing == true)
-            {
-                constructingTime = (constructingTime * 2) - Time.deltaTime;
-            }
-
-            if (constructingTime <= 0)
-            {
-                constructingTime = 0f;
-                constructingTimer = false;
-                constructingDone = true;
-            }
+            ConstructingTimer();
         }
 
-    /*    if (lvlChange == true)
+        if (gameManager.devotionDecreaseMp1 == true)
+        {   
+            lowerSpeedConstructing1 = true;
+        }
+        if (gameManager.devotionDecreaseMp2 == true)
+        {
+            lowerSpeedConstructing2 = true;
+        }
+        if (gameManager.devotionDecreaseMp3 == true)
+        {
+            lowerSpeedConstructing3 = true;
+        }
+
+        if (lvlChange == true)
         {
             ChangeLevel();
         }
-        */
-        if (faithTimer == true)
+
+        if (faithTimer == true && collectedFaith == true)
         {
             FaithTimer();
+        }
+
+        if (Input.GetMouseButtonDown(0) && generatedFaith > 0 && gameManager.devotion >= 10)
+        {
+            Vector2 origin = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+            RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.zero, 0f);
+
+            if (hit.transform.tag == "FaithBuilding")
+            {
+                CollectFaith();
+            }
         }
     }
 
@@ -76,6 +112,42 @@ public class Structure : MonoBehaviour
         gameManager.DevotionDecreaseChunk();
 
         constructingTimer = true;
+    }
+
+    public void ConstructingTimer()
+    {
+        if (normalSpeedConstructing == true)
+        {
+            constructingTime -= Time.deltaTime * 4;
+        }
+
+        if (lowerSpeedConstructing1 == true)
+        {
+            normalSpeedConstructing = false;
+            constructingTime -= Time.deltaTime * 3;
+        }
+
+        if (lowerSpeedConstructing2 == true)
+        {
+            normalSpeedConstructing = false;
+            lowerSpeedConstructing1 = false;
+            constructingTime -= Time.deltaTime * 2;
+        }
+
+        if (lowerSpeedConstructing3 == true)
+        {
+            normalSpeedConstructing = false;
+            lowerSpeedConstructing2 = false;
+            constructingTime -= Time.deltaTime;
+        }
+
+        if (constructingTime <= 0)
+        {
+            constructingTime = 0f;
+            constructingTimer = false;
+            constructingDone = true;
+        }
+
     }
 
     //Faithtimer before faithgeneration starts
@@ -94,33 +166,37 @@ public class Structure : MonoBehaviour
     public void TimerEnd()
     {
         faithTimer = false;
+
         GenerateFaith();
 
         if (faithTimer == false)
         {
             faithTargetTime = originalFaithTargetTime;
             faithTimer = true;
+            collectedFaith = false;
         }
     }
 
     public void GenerateFaith()
     {
-        for (int i = 0; i < gameManager.faithMultipliers.Count; i++)
+        generatedFaith += faithAmount;
+
+        if (defaultFaithGeneration == true)
         {
-            generatedFaith += (faithAmount * gameManager.faithMultipliers[i]);
+            generatedFaith += (gameManager.monks.Count * gameManager.monkFaithMultiplier);
         }
 
-        generatedFaith += (gameManager.monks.Count * gameManager.monkFaithMultiplier);
-
-        if (gameManager.slowerFaithGeneration1 == true)
+        if (slowerFaithGeneration1 == true)
         {
             generatedFaith += (gameManager.monks.Count * gameManager.monkFaithMultiplierSlow1);
         }
-        if (gameManager.slowerFaithGeneration2 == true)
+
+        if (slowerFaithGeneration2 == true)
         {
             generatedFaith += (gameManager.monks.Count * gameManager.monkFaithMultiplierSlow2);
         }
-        if (gameManager.slowerFaithGeneration3 == true)
+
+        if (slowerFaithGeneration3 == true)
         {
             generatedFaith += (gameManager.monks.Count * gameManager.monkFaithMultiplierSlow3);
         }
@@ -133,6 +209,8 @@ public class Structure : MonoBehaviour
 
         gameManager.faith += generatedFaith;
         generatedFaith = 0;
+
+        collectedFaith = true;
     }
 
     public void ChangeLevel()

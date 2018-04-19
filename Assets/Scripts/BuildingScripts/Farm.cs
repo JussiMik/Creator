@@ -6,13 +6,11 @@ public class Farm : Structure
 {
     private bool addedToList;
 
-    void Start()
+    public override void Start()
     {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        base.Start();
 
-        ConstructingStructures();
-
-        addedToList = false;
+        gameManager.UseFaith(200);
     }
 
     protected override void Update()
