@@ -9,13 +9,19 @@ public class WoodWorkshopCS : Structure
     public bool woodTimer;
     public float woodTime;
     [SerializeField]
+    private bool woodTimerCollision;
+    [SerializeField]
     private float originalWoodTime;
+
+    [Space(10)]
+    public float gatheredWood;
 
     [Space(10)]
     public float gatheredWoodAmount;
 
     [Space(10)]
-    public bool woodCollected;
+    [SerializeField]
+    private bool woodCollected;
 
     void Start()
     {
@@ -34,6 +40,11 @@ public class WoodWorkshopCS : Structure
     {
         base.Update();
 
+        if (constructingDone == true && woodTimerCollision == true)
+        {
+            woodTimer = true;
+        }
+
         if (woodTimer == true && woodCollected == true)
         {
             WoodTimer();
@@ -44,15 +55,12 @@ public class WoodWorkshopCS : Structure
     {
         if (collision.gameObject.tag == "Tree")
         {
-            Debug.Log("Jou koskettaa plöö eero");
-            if (constructingDone == true)
-            {
-                Debug.Log("Jou koskettaa");
-                woodTimer = true;
-            }
+            Debug.Log("Jou koskettaa");
+
+            woodTimerCollision = true;
         }
     }
-    
+
     public void WoodTimer()
     {
         woodTime -= Time.deltaTime;

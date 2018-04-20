@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4452269055352642}
   - component: {fileID: 212267029862752782}
-  - component: {fileID: 61359232363544918}
   - component: {fileID: 61901481264163544}
+  - component: {fileID: 50307962135381598}
   - component: {fileID: 114607033896441534}
   m_Layer: 10
   m_Name: Quarry
@@ -38,36 +38,31 @@ Transform:
   m_GameObject: {fileID: 1306299770322948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 15, y: 15, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61359232363544918
-BoxCollider2D:
+--- !u!50 &50307962135381598
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1306299770322948}
-  m_Enabled: 1
-  m_Density: 1
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0014209636}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.14253993, y: 0.14124325}
-  m_EdgeRadius: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!61 &61901481264163544
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -91,7 +86,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
 --- !u!114 &114607033896441534
 MonoBehaviour:
@@ -107,8 +102,9 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
+  clickedBuilding: {fileID: 0}
   constructingTimer: 0
-  constructingTime: 0
+  constructingTime: 20
   constructingTimeSlow1: 0
   constructingTimeSlow2: 0
   constructingTimeSlow3: 0
@@ -118,11 +114,11 @@ MonoBehaviour:
   lowerSpeedConstructing2: 0
   lowerSpeedConstructing3: 0
   constructingDone: 0
+  generatedFaith: 0
   faithAmount: 0
   maxFaithAmount: 0
   faithMultiplier: 0
-  generatedFaith: 0
-  collectedFaith: 0
+  faithCollected: 0
   faithTimer: 0
   faithTargetTime: 0
   originalFaithTargetTime: 0
@@ -133,11 +129,16 @@ MonoBehaviour:
   lvlChange: 0
   level: 0
   maxLevelAmount: 0
+  levelUpCost: 0
+  name: 
+  type: 
   rockTimer: 0
-  rockTime: 0
+  rockTime: 10
+  rockTimerCollision: 0
+  originalRockTime: 0
   gatheredStone: 0
-  gatheredStoneAmount: 0
-  stoneGathered: 0
+  gatheredStoneAmount: 6
+  stoneCollected: 0
 --- !u!212 &212267029862752782
 SpriteRenderer:
   m_ObjectHideFlags: 1

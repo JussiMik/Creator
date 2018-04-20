@@ -8,6 +8,8 @@ public class Structure : MonoBehaviour
     public WoodWorkshopCS woodWorkshopCS;
     public QuarryCS quarryCS;
 
+    public GameObject clickedBuilding;
+
     [SerializeField]
     private bool constructingTimer;
 
@@ -26,23 +28,19 @@ public class Structure : MonoBehaviour
     public bool constructingDone;
 
     [Space(10)]
+    public double generatedFaith;
+
+    [Space(10)]
     public int faithAmount;
     public int maxFaithAmount;
 
     public double faithMultiplier;
-    public double generatedFaith;
 
     public bool faithCollected;
 
     public bool faithTimer;
     public float faithTargetTime;
     public float originalFaithTargetTime;
-
-    [Space(10)]
-    public float gatheredWood;
-
-    [Space(10)]
-    public float gatheredStone;
 
     [Space(10)]
     public bool defaultFaithGeneration;
@@ -110,32 +108,75 @@ public class Structure : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && gameManager.devotion >= gameManager.minDevotionAmountCollecting)
         {
+            Vector2 pos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            RaycastHit2D hitInfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(pos), Vector2.zero);
+
+            if (hitInfo == true)
+            {
+                if (hitInfo.transform.tag == "FaithBuilding")
+                {
+                    clickedBuilding = hitInfo.transform.gameObject;
+
+                    if (clickedBuilding.GetComponent<Structure>().generatedFaith > 0)
+                    {
+                        clickedBuilding.GetComponent<Structure>().CollectFaith();
+                    }         
+                }
+
+                if (hitInfo.transform.tag == "WoodWorkshop")
+                {
+                    clickedBuilding = hitInfo.transform.gameObject;
+
+                    if (clickedBuilding.GetComponent<WoodWorkshopCS>().gatheredWood > 0)
+                    {
+                        clickedBuilding.GetComponent<WoodWorkshopCS>().CollectWood();
+                    }       
+                }
+
+                if (hitInfo.transform.tag == "Quarry")
+                {
+                    clickedBuilding = hitInfo.transform.gameObject;
+
+                    if (clickedBuilding.GetComponent<QuarryCS>().gatheredStone > 0)
+                    {
+                        clickedBuilding.GetComponent<QuarryCS>().CollectStone();
+                    }      
+                }
+            }
+        }
+             
+            /*
+
+        if (Input.GetMouseButtonDown(0) && gameManager.devotion >= gameManager.minDevotionAmountCollecting)
+        {
             Vector2 origin = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
             RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.zero, 0f);
 
-            if (generatedFaith > 0)
+            if (hit.transform.tag == "FaithBuilding")
             {
-                if (hit.transform.tag == "FaithBuilding")
+                if (generatedFaith > 0)
                 {
                     Debug.Log("jou");
                     CollectFaith();
                 }
             }
-            
-            if (gatheredWood > 0)
+
+            if (hit.transform.tag == "WoodWorkshop")
             {
-                if (hit.transform.tag == "WoodWorkshop")
+                woodWorkshopCS = GetComponent<WoodWorkshopCS>();
+
+                if (woodWorkshopCS.gatheredWood > 0)
                 {
-                    woodWorkshopCS = GetComponent<WoodWorkshopCS>();
                     woodWorkshopCS.CollectWood();
-                }
+                }              
             }
-            
-            if (gatheredStone > 0)
+
+            if (hit.transform.tag == "Quarry")
             {
-                if (hit.transform.tag == "Quarry")
+                quarryCS = GetComponent<QuarryCS>();
+
+                if (quarryCS.gatheredStone > 0)
                 {
-                    quarryCS = GetComponent<QuarryCS>();
                     quarryCS.CollectStone();
                 }
             }
@@ -145,6 +186,7 @@ public class Structure : MonoBehaviour
                 Debug.Log("Tyhjä");
             }
         }
+        */
     }
 
     public void ConstructingStructures()

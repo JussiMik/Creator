@@ -7,7 +7,13 @@ public class QuarryCS : Structure
     [Space(10)]
     public bool rockTimer;
     public float rockTime;
+    [SerializeField]
+    private bool rockTimerCollision;
+    [SerializeField]
     private float originalRockTime;
+
+    [Space(10)]
+    public float gatheredStone;
 
     [Space(10)]
     public float gatheredStoneAmount;
@@ -33,6 +39,11 @@ public class QuarryCS : Structure
     {
         base.Update();
 
+        if (constructingDone == true && rockTimerCollision == true)
+        {
+            rockTimer = true;
+        }
+
         if (rockTimer == true && stoneCollected == true)
         {
             RockTimer();
@@ -41,9 +52,9 @@ public class QuarryCS : Structure
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Rock" && constructingDone == true)
+        if (collision.gameObject.tag == "Rock")
         {
-            rockTimer = true;
+            rockTimerCollision = true;
         }
     }
 

@@ -20,6 +20,6 @@ public class DormitoryCS : Structure
 
     protected override void Update()
     {
-
+        base.Update();
     }
 }
