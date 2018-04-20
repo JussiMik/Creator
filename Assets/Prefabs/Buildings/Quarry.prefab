@@ -105,6 +105,7 @@ MonoBehaviour:
   clickedBuilding: {fileID: 0}
   constructingTimer: 0
   constructingTime: 20
+  constructingCost: 0
   constructingTimeSlow1: 0
   constructingTimeSlow2: 0
   constructingTimeSlow3: 0
@@ -127,7 +128,8 @@ MonoBehaviour:
   slowerFaithGeneration2: 0
   slowerFaithGeneration3: 0
   lvlChange: 0
-  level: 0
+  level: 1
+  lvlUpFaithIncrease: 0
   maxLevelAmount: 0
   levelUpCost: 0
   name: 
@@ -139,6 +141,11 @@ MonoBehaviour:
   gatheredStone: 0
   gatheredStoneAmount: 6
   stoneCollected: 0
+  rocks: 0
+  totalRockAmount: 0
+  lvl1RockAmount: 1
+  lvl2RockAmount: 3
+  lvl3RockAmount: 5
 --- !u!212 &212267029862752782
 SpriteRenderer:
   m_ObjectHideFlags: 1

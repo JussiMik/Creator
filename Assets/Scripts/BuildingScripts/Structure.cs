@@ -15,6 +15,11 @@ public class Structure : MonoBehaviour
 
     [SerializeField]
     private float constructingTime;
+
+    [Space(10)]
+    public float constructingCost;
+
+    [Space(10)]
     public float constructingTimeSlow1;
     public float constructingTimeSlow2;
     public float constructingTimeSlow3;
@@ -28,13 +33,13 @@ public class Structure : MonoBehaviour
     public bool constructingDone;
 
     [Space(10)]
-    public double generatedFaith;
+    public float generatedFaith;
 
     [Space(10)]
-    public int faithAmount;
-    public int maxFaithAmount;
+    public float faithAmount;
+    public float maxFaithAmount;
 
-    public double faithMultiplier;
+    public float faithMultiplier;
 
     public bool faithCollected;
 
@@ -50,11 +55,13 @@ public class Structure : MonoBehaviour
 
     public bool lvlChange;
     public int level;
+    public float lvlUpFaithIncrease;
     public int maxLevelAmount;
     public float levelUpCost;
 
     public string name;
     public string type;
+    
 
     void Start()
     {
@@ -297,11 +304,11 @@ public class Structure : MonoBehaviour
 
     public void ChangeLevel()
     {
-        //gameManager.UseFaith();
+        gameManager.UseFaith(levelUpCost);
 
         if (level >= 1)
         {
-            faithAmount += 1;
+            faithAmount += lvlUpFaithIncrease;
             level += 1;
 
             if (faithAmount >= maxFaithAmount && level >= maxLevelAmount)

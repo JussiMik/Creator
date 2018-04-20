@@ -17,7 +17,7 @@ public class ShrineCS : Structure
         addedToList = false;
         ConstructingStructures();
         
-        gameManager.UseFaith(levelUpCost);
+        gameManager.UseFaith(constructingCost);
 
         name = "Shrine";
         type = "Faith";

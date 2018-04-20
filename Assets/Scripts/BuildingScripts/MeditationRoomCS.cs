@@ -17,7 +17,7 @@ public class MeditationRoomCS : Structure
         addedToList = false;
         ConstructingStructures();
 
-        gameManager.UseFaith(levelUpCost);
+        gameManager.UseFaith(constructingCost);
 
         name = "Meditation room";
         type = "Devotion";

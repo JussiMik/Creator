@@ -102,8 +102,10 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
+  clickedBuilding: {fileID: 0}
   constructingTimer: 0
   constructingTime: 20
+  constructingCost: 0
   constructingTimeSlow1: 0
   constructingTimeSlow2: 0
   constructingTimeSlow3: 0
@@ -113,22 +115,21 @@ MonoBehaviour:
   lowerSpeedConstructing2: 0
   lowerSpeedConstructing3: 0
   constructingDone: 0
+  generatedFaith: 0
   faithAmount: 0
   maxFaithAmount: 0
   faithMultiplier: 0
-  generatedFaith: 0
   faithCollected: 0
   faithTimer: 0
   faithTargetTime: 0
   originalFaithTargetTime: 0
-  gatheredWood: 0
-  gatheredStone: 0
   defaultFaithGeneration: 0
   slowerFaithGeneration1: 0
   slowerFaithGeneration2: 0
   slowerFaithGeneration3: 0
   lvlChange: 0
   level: 0
+  lvlUpFaithIncrease: 0
   maxLevelAmount: 0
   levelUpCost: 0
   name: 
@@ -137,8 +138,14 @@ MonoBehaviour:
   woodTime: 10
   woodTimerCollision: 0
   originalWoodTime: 0
+  gatheredWood: 0
   gatheredWoodAmount: 4
   woodCollected: 0
+  trees: 0
+  totalTreeAmount: 0
+  lvl1TreeAmount: 1
+  lvl2TreeAmount: 3
+  lvl3TreeAmount: 5
 --- !u!212 &212720129694501702
 SpriteRenderer:
   m_ObjectHideFlags: 1
