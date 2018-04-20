@@ -11,6 +11,7 @@ public class ResourceIcon : MonoBehaviour
     public string type;
     public Sprite faithImage;
     public Sprite devotionImage;
+    public Sprite productionImage;
 
     void Awake()
     {
@@ -32,6 +33,10 @@ public class ResourceIcon : MonoBehaviour
         if (type == "Devotion")
         {
             image.sprite = devotionImage;
+        }
+        if(type == "Production")
+        {
+            image.sprite = productionImage;
         }
         if (type == null)
         {

@@ -26,6 +26,9 @@ public class WoodWorkshopCS : Structure
         woodCollected = true;
 
         gameManager.UseFaith(500);
+
+        name = "Wood workshop";
+        type = "Production";
     }
 
     protected override void Update()

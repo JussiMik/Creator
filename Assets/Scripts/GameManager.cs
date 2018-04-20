@@ -51,10 +51,18 @@ public class GameManager : MonoBehaviour
     public double monkFaithMultiplierSlow2;
     public double monkFaithMultiplierSlow3;
 
+    public FaithText faithResourceTracker;
+    MonkText monkResourceTracker;
+
+    private void Awake()
+    {
+        GetResourceObjects();
+    }
+
     void Start()
     {
+        GetResourceObjects();
         structure = gameObject.GetComponent<Structure>();
-
         minDevotionAmountCollecting = devotionChunkDecreaseAmount;
     }
 
@@ -103,17 +111,19 @@ public class GameManager : MonoBehaviour
     {
         GameObject spawnedMonk = Instantiate(monk, new Vector3(transform.position.x + 2, transform.position.y + 2, transform.position.z), transform.rotation);
         monks.Add(spawnedMonk);
+        monkResourceTracker.UpdateMonkCount();
     }
 
     //Use collected faith for constructing and leveling up buildings
     public void UseFaith(float faithUseAmount)
     {
         faith -= faithUseAmount;
-
+        faithResourceTracker.UpdateFaith();
         if (faith <= 0)
         {
             faith = 0;
         }
+
     }
 
     //Devotion decreases slowly
@@ -211,5 +221,9 @@ public class GameManager : MonoBehaviour
     {
         GameObject spawned = Instantiate(garden, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
     }
-    
+    void GetResourceObjects()
+    {
+        monkResourceTracker = GameObject.Find("MonkText").GetComponent<MonkText>();
+        faithResourceTracker = GameObject.Find("FaithText").GetComponent<FaithText>();
+    }
 }

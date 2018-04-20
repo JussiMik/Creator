@@ -6,6 +6,8 @@ public class PopupMenu : MonoBehaviour
 {
     public GameObject clickedObject;
     public GameObject popupPanel;
+    GameManager gameManager;
+    Structure structure;
     public float xOffset, yOffset;
     public string name;
     public string type;
@@ -14,6 +16,8 @@ public class PopupMenu : MonoBehaviour
     void Awake()
     {
         popupPanel = GameObject.Find("PopupPanel");
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        structure = gameManager.GetComponent<Structure>();
     }
 
     void Update()
@@ -25,7 +29,6 @@ public class PopupMenu : MonoBehaviour
 
             if (hitInfo)
             {
-                Debug.Log(hitInfo.transform.gameObject.name);
                 if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Building"))
                 {
                     clickedObject = hitInfo.transform.gameObject;
@@ -44,12 +47,13 @@ public class PopupMenu : MonoBehaviour
         }
     }
 
-   /*  void GetClickedObjectInfo()
-    {
-        name = clickedObject.GetComponent<Structure>().name;
-        type = clickedObject.GetComponent<Structure>().type;
-        level = clickedObject.GetComponent<Structure>().level;
-        levelupCost = clickedObject.GetComponent<Structure>().levelUpCost;
-    }
-    */
+    // I'll make the UI better someday :(
+    /*  void GetClickedObjectInfo()
+     {
+         name = clickedObject.GetComponent<Structure>().name;
+         type = clickedObject.GetComponent<Structure>().type;
+         level = clickedObject.GetComponent<Structure>().level;
+         levelupCost = clickedObject.GetComponent<Structure>().levelUpCost;
+     }
+     */
 }

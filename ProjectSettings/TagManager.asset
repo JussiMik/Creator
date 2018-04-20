@@ -11,6 +11,7 @@ TagManager:
   - Quarry
   - Panel
   - PopupMenuCanvas
+  - GameManager
   layers:
   - Default
   - TransparentFX

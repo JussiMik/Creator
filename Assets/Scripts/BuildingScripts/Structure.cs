@@ -115,27 +115,27 @@ public class Structure : MonoBehaviour
                 }
             }
 
-            /*            if (woodWorkshopCS.gatheredWood > 0)
-                        {
-                            if (hit.transform.tag == "WoodWorkshop")
-                            {
-                                woodWorkshopCS.CollectWood();
-                            }
-                        } 
+            /*   if (woodWorkshopCS.gatheredWood > 0)
+               {
+                   if (hit.transform.tag == "WoodWorkshop")
+                   {
+                       woodWorkshopCS.CollectWood();
+                   }
+               }
 
-                        if (quarryCS.gatheredStone > 0)
-                        {
-                            if (hit.transform.tag == "Quarry")
-                            {
-                                quarryCS.CollectStone();
-                            }
-                        }
+               if (quarryCS.gatheredStone > 0)
+               {
+                   if (hit.transform.tag == "Quarry")
+                   {
+                       quarryCS.CollectStone();
+                   }
+               }
 
-                        if(hit.transform.tag == null)
-                        {
-                            Debug.Log("Tyhjä");
-                        }
-                         */
+               if (hit.transform.tag == null)
+               {
+                   Debug.Log("Tyhjä");
+               }
+               */
         }
 
     }
@@ -242,7 +242,7 @@ public class Structure : MonoBehaviour
 
         gameManager.faith += generatedFaith;
         generatedFaith = 0;
-
+        GameObject.Find("FaithText").GetComponent<FaithText>().UpdateFaith();
         faithCollected = true;
     }
 

@@ -25,6 +25,9 @@ public class QuarryCS : Structure
         stoneCollected = true;
 
         gameManager.UseFaith(500);
+
+        name = "Quarry";
+        type = "Production";
     }
 
     protected override void Update()
