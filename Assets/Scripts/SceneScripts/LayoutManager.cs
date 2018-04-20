@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class LayoutManager : MonoBehaviour
 {
-
     public Vector3[,] positions;
+    GameObject testGridFolder;
     public GameObject[,] testGrid;
     public Vector3[,] gapPositions;
     [SerializeField]
+    public Sprite[] grassTileSprites;
+
     bool gridDone = false;
     public bool roundCorners = false;
     public int roundCornerBy = 1;
@@ -16,6 +18,7 @@ public class LayoutManager : MonoBehaviour
     public bool showGrid;
 
     public Vector3 nullVector3 = new Vector3(666, 666, 666);
+    public Color fullColor = new Color(255, 255, 255, 255); 
 
     public Color cantBuild;
 
@@ -97,7 +100,7 @@ public class LayoutManager : MonoBehaviour
         }
 
         //CREATE TEST GRID
-        GameObject testGridFolder = Instantiate(new GameObject(), Vector3.zero, transform.rotation);
+        testGridFolder = Instantiate(new GameObject(), Vector3.zero, transform.rotation);
         testGridFolder.name = "Test Grid";
 
         for (int x = 0; x < gridWidth; x++)
@@ -119,38 +122,15 @@ public class LayoutManager : MonoBehaviour
                 }
             }
         }
-        TestGridUpdate();
-
+        SetTestGridActive(false);
         RandomGen();
+        PlaceGrass();
         gridDone = true;
     }
 
     void Update()
     {
         TestGridUpdate();
-        if (gridDone)
-        {
-            //if (showGrid)
-            //{
-            //    for (int x = 0; x < testGrid.GetLength(0); x++)
-            //    {
-            //        for (int y = 0; y < testGrid.GetLength(1); y++)
-            //        {
-            //            testGrid[x, y].GetComponent<SpriteRenderer>().enabled = true;
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    for (int x = 0; x < testGrid.GetLength(0); x++)
-            //    {
-            //        for (int y = 0; y < testGrid.GetLength(1); y++)
-            //        {
-            //            testGrid[x, y].GetComponent<SpriteRenderer>().enabled = false;
-            //        }
-            //    }
-            //}
-        }
 
         //CALCULATE CAP BETWEEN TILES(UNUSED)
         if (tileCap >= (float)tileWidth / 4 + 0.01f)
@@ -191,6 +171,28 @@ public class LayoutManager : MonoBehaviour
         }
     }
 
+    private void PlaceGrass()
+    {
+        GameObject grassFolder = Instantiate(new GameObject(), transform.position, transform.rotation);
+        grassFolder.name = "Grass Folder";
+        for (int x = 0; x < positions.GetLength(0); x++)
+        {
+            for (int y = 0; y < positions.GetLength(1); y++)
+            {
+                if(!(positions[x, y].z == 1 || positions[x, y] == nullVector3))
+                {
+                    GameObject newgrass = Instantiate(emptyGo, positions[x, y], transform.rotation);
+                    newgrass.transform.parent = grassFolder.transform;
+                    newgrass.name = "GrassTile";
+                    newgrass.GetComponent<SpriteRenderer>().sprite = grassTileSprites[Random.Range(0, grassTileSprites.Length)];
+                    newgrass.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(new Vector2(x,y)) +1;
+                    newgrass.GetComponent<SpriteRenderer>().color = fullColor;
+                    newgrass.GetComponent<SpriteRenderer>().sortingLayerName = "Ground";
+                }
+            }
+        }
+    }
+
     private void RandomGen()
     {
         //RANDOMIZE LAKES
@@ -210,16 +212,20 @@ public class LayoutManager : MonoBehaviour
             }
 
             GameObject newLake = Instantiate(lakeGo, positions[rnd1, rnd2], Quaternion.identity);
+            newLake.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(new Vector2(rnd1, rnd2));
+            newLake.GetComponent<SpriteRenderer>().sortingLayerName = ("Buildings");
             lakes.Add(newLake);
             newLake.transform.parent = lakesFolder.transform;
+
             positions[rnd1, rnd2].z = 1;
+
         }
         TestGridUpdate();
     }
 
 
 
-    public void SpawnStructure(GameObject structure, List<Vector2> tiles, Vector2 worldPos, Vector2 size)
+    public void SpawnStructure(GameObject structure, List<Vector2> tiles, Vector2 size)
     {
         for (int i = 0; i < tiles.Count; i++)
         {
@@ -227,9 +233,45 @@ public class LayoutManager : MonoBehaviour
         }
 
         //CALCULATE HOUSE POSITION
-        GameObject obj = Instantiate(structure, new Vector3(worldPos.x, worldPos.y, transform.position.z), Quaternion.identity) as GameObject;
+        //Calculate center of the first and last tile
+        Vector2 firstPos = new Vector2(positions[(int)tiles[0].x, (int)tiles[0].y].x, positions[(int)tiles[0].x, (int)tiles[0].y].y);
+        Vector2 lastPos = new Vector2(positions[(int)tiles[tiles.Count-1].x, (int)tiles[tiles.Count-1].y].x, positions[(int)tiles[tiles.Count-1].x,(int)tiles[tiles.Count-1].y].y);
+        Vector3 cenPos = new Vector3(firstPos.x + ((lastPos.x - firstPos.x) /2), firstPos.y + ((lastPos.y - firstPos.y) / 2), transform.position.z);
 
+        //INSTANTIATE HOUSE
+        GameObject obj = Instantiate(structure, new Vector3(cenPos.x, cenPos.y, transform.position.z), Quaternion.identity) as GameObject;
+        obj.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(tiles);
         TestGridUpdate();
+    }
+    public int CalculateSortingLayer(List<Vector2> tiles)
+    {
+        //FIND NEAREST CORNER TILE
+        //When X is smallest and Y is largest
+
+        int toReturn = 0;
+        Vector2 bestMatch = new Vector2(666,-666);
+        
+        for (int i = 0; i < tiles.Count; i++)
+        {
+            if(tiles[i].x < bestMatch.x && tiles[i].y > bestMatch.y)
+            {
+                bestMatch = tiles[i];
+            }
+        }
+        toReturn = (int)(bestMatch.y - bestMatch.x);
+        return toReturn;
+    }
+
+    public int CalculateSortingLayer(Vector2 tile)
+    {
+        
+        int toReturn = 0;
+        toReturn = (int)(tile.y - tile.x);
+        return toReturn;
+    }
+    public void SetTestGridActive(bool active)
+    {
+        testGridFolder.SetActive(active);
     }
 
 }

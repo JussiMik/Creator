@@ -20,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - TouchInput
   - 
   - Unwalkable
   - PFTargetLayer
@@ -47,4 +47,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 2176633279
+    locked: 0
+  - name: TestGrid
+    uniqueID: 3773513527
+    locked: 0
+  - name: Buildings
+    uniqueID: 818483521
     locked: 0
