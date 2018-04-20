@@ -29,8 +29,8 @@ public class StructMenu : MonoBehaviour {
 
         //INSTANTIATE STRUCTURE MENU
         structButtons = new GameObject[gridSizeX, gridSizeY];
-        float blockWidth = buildingMenuBlockPre.GetComponent<RectTransform>().rect.width;
-        float openerWidth = gameObject.GetComponent<RectTransform>().rect.width;
+        //float blockWidth = buildingMenuBlockPre.GetComponent<RectTransform>().rect.width;
+        //float openerWidth = gameObject.GetComponent<RectTransform>().rect.width;
         buildGrid = Instantiate(new GameObject(), new Vector3(0,0,0), transform.rotation);
         buildGrid.active = false;
         buildGrid.name = "Building Grid";
@@ -56,9 +56,9 @@ public class StructMenu : MonoBehaviour {
         {
             for (int y = 0; y < gridSizeX; y++)
             {
-                Vector3 pos = new Vector3(gameObject.transform.position.x - 100 + (100 * x), gameObject.transform.position.y + 100 + (100 * y), gameObject.transform.position.z);
+                Vector3 pos = new Vector3(gameObject.transform.position.x - 100 + (100 * x), gameObject.transform.position.y + 200 - (100 * y), gameObject.transform.position.z);
                 structButtons[x,y] = Instantiate(buildingMenuBlockPre, pos, transform.rotation);
-                structButtons[x,y].transform.parent = buildGrid.transform;
+                structButtons[x,y].transform.SetParent(buildGrid.transform);
                 structButtons[x, y].GetComponent<StructMenuBlock>().blockNo = curBlockNo;
                 if (structures.Length > curBlockNo)
                 {

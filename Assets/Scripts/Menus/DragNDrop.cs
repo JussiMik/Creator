@@ -57,21 +57,21 @@ public class DragNDrop : MonoBehaviour
         //if we want to build to that selected spot.
         Vector2 yesPos = new Vector3(toDrag.GetComponent<RectTransform>().position.x - 40, toDrag.GetComponent<RectTransform>().position.y - 50);
         yesButton = Instantiate(yesOrNoPre, yesPos, transform.rotation);
-        yesButton.transform.parent = toDrag.transform;
+        yesButton.transform.SetParent(toDrag.transform);
         yesButton.GetComponent<YesOrNoButton>().SetYesOrNo(true, yesButtonSpr);
         yesButton.GetComponent<YesOrNoButton>().dragNDrop = this;
 
         //Here we spawn "No" button
         Vector2 noPos = new Vector3(toDrag.GetComponent<RectTransform>().position.x + 40, toDrag.GetComponent<RectTransform>().position.y - 50);
         noButton = Instantiate(yesOrNoPre, noPos, transform.rotation);
-        noButton.transform.parent = toDrag.transform;
+        noButton.transform.SetParent(toDrag.transform);
         noButton.GetComponent<YesOrNoButton>().SetYesOrNo(false, noButtonSpr);
         noButton.GetComponent<YesOrNoButton>().dragNDrop = this;
 
         //Here we spawn dragger button
         Vector2 dragPos = new Vector3(toDrag.GetComponent<RectTransform>().position.x, toDrag.GetComponent<RectTransform>().position.y - 100);
         noButton = Instantiate(yesOrNoPre, dragPos, transform.rotation);
-        noButton.transform.parent = toDrag.transform;
+        noButton.transform.SetParent(toDrag.transform);
         noButton.GetComponent<YesOrNoButton>().SetAsDragger(true, draggerButtonSpr);
         noButton.GetComponent<YesOrNoButton>().dragNDrop = this;
     }
@@ -79,11 +79,7 @@ public class DragNDrop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        toDragPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y + 100, Input.mousePosition.z);
-        if (Vector2.Distance(toDragPos, toDrag.transform.position) > 0.01f && dragging)
-        {
-            toDrag.GetComponent<RectTransform>().position = toDragPos;
-        }
+        
 
         //if (Input.GetMouseButtonUp(1) && dragging)
         //{
@@ -92,6 +88,12 @@ public class DragNDrop : MonoBehaviour
 
         if (dragging)
         {
+            toDragPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y + 100, Input.mousePosition.z);
+            if (Vector2.Distance(toDragPos, toDrag.transform.position) > 0.01f)
+            {
+                toDrag.GetComponent<RectTransform>().position = toDragPos;
+            }
+
             Dragging();
         }
 
@@ -239,7 +241,7 @@ public class DragNDrop : MonoBehaviour
 
         for (int i = 0; i < toBeColorized.Count; i++)
         {
-            if()
+            
             {
                 if (!(layoutManager.testGrid[(int)toBeColorized[i].x, (int)toBeColorized[i].y] == null))
                 {

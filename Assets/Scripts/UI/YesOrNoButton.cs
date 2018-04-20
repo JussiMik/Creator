@@ -14,11 +14,12 @@ public class YesOrNoButton : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Button btn = gameObject.GetComponent<Button>();
-        btn.onClick.AddListener(TaskOnClick);
+        gameObject.layer = LayerMask.NameToLayer("TouchInput");
+        //Button btn = gameObject.GetComponent<Button>();
+        //btn.onClick.AddListener(TaskOnClick);
     }
 
-    public void TaskOnClick()
+    public void OnTouchDown()
     {
         if (draggerButton == false)
         {
