@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class DormitoryCS : Structure
 {
+    private bool addedToList;
 
-    // Use this for initialization
-    public override void Start()
+    void Start()
     {
-        base.Start();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
+        normalSpeedConstructing = true;
+        addedToList = false;
+        ConstructingStructures();
 
         name = "Dormitory";
         type = "Dormitory";
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-
+        base.Update();
     }
 }

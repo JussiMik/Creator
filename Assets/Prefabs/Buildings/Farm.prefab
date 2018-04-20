@@ -72,7 +72,7 @@ MonoBehaviour:
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
   constructingTimer: 0
-  constructingTime: 15
+  constructingTime: 20
   constructingTimeSlow1: 0
   constructingTimeSlow2: 0
   constructingTimeSlow3: 0

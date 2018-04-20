@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212195528997444186}
   - component: {fileID: 114097827450063018}
   - component: {fileID: 61788962346936284}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Shrine
   m_TagString: FaithBuilding
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   lvlChange: 0
   level: 0
   maxLevelAmount: 0
-  levelUpCost: 0
+  levelUpCost: 100
   name: 
   type: 
 --- !u!212 &212195528997444186

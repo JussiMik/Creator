@@ -20,7 +20,14 @@ public class GameManager : MonoBehaviour
     public double faith;
 
     [Space(10)]
+    public float wood;
+
+    [Space(10)]
+    public float stone;
+
+    [Space(10)]
     public float devotion;
+    [Space(10)]
     public float maxDevotionAmount;
     public float minDevotionAmountCollecting;
 
@@ -33,10 +40,6 @@ public class GameManager : MonoBehaviour
     public bool devotionIncrease;
     public float devotionChunkIncreaseAmount;
     public bool devotionIncreaseMp1;
-
-    [Space(10)]
-    public float wood;
-    public float stone;
 
     [Space(10)]
     public List<GameObject> faithBuildings = new List<GameObject>();
@@ -89,12 +92,12 @@ public class GameManager : MonoBehaviour
             SpawnStatue();
         }
 
-        /*
-        if (Input.GetKeyDown(KeyCode.D))
+        
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            SpawnTemple();
+            SpawnGarden();
         }
-        */
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             //SpawnGarden();
@@ -194,13 +197,14 @@ public class GameManager : MonoBehaviour
     
     public void SpawnShrine()
     {
-        GameObject spawnedShrine = Instantiate(shrine, new Vector3(transform.position.x + 3, transform.position.y + 4, transform.position.z), transform.rotation);
+        GameObject spawnedShrine = Instantiate(shrine, new Vector3(transform.position.x - 3, transform.position.y + 4, transform.position.z), transform.rotation);
     }
     
     public void SpawnStatue()
     {
-        GameObject spawnedStatue = Instantiate(statue, new Vector3(transform.position.x + 2, transform.position.y - 2, transform.position.z), transform.rotation);
+        GameObject spawnedStatue = Instantiate(statue, new Vector3(transform.position.x + 1, transform.position.y - 2, transform.position.z), transform.rotation);
     }
+
     /*
     public void SpawnTemple()
     {
@@ -212,14 +216,14 @@ public class GameManager : MonoBehaviour
     {
         //if (faith >= faithUseAmount && devotion >= devotionChunkDecreaseAmount)
         {
-            GameObject spawned = Instantiate(farm, new Vector3(transform.position.x + 1, transform.position.y - 4, transform.position.z), transform.rotation);
+            GameObject spawned = Instantiate(farm, new Vector3(transform.position.x + 5, transform.position.y - 2, transform.position.z), transform.rotation);
         }
     }
 
     
     public void SpawnGarden()
     {
-        GameObject spawned = Instantiate(garden, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+        GameObject spawned = Instantiate(garden, new Vector3(transform.position.x - 6, transform.position.y - 3, transform.position.z), transform.rotation);
     }
     void GetResourceObjects()
     {

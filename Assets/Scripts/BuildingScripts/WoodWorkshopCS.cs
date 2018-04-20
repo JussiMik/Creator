@@ -8,22 +8,30 @@ public class WoodWorkshopCS : Structure
     [Space(10)]
     public bool woodTimer;
     public float woodTime;
+    [SerializeField]
+    private bool woodTimerCollision;
+    [SerializeField]
     private float originalWoodTime;
 
     [Space(10)]
     public float gatheredWood;
+
+    [Space(10)]
     public float gatheredWoodAmount;
 
     [Space(10)]
-    public bool woodCollected;
+    [SerializeField]
+    private bool woodCollected;
 
-    public override void Start()
+    void Start()
     {
-        base.Start();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
         originalWoodTime = woodTime;
 
         woodCollected = true;
+        normalSpeedConstructing = true;
+        ConstructingStructures();
 
         gameManager.UseFaith(500);
 
@@ -35,6 +43,11 @@ public class WoodWorkshopCS : Structure
     {
         base.Update();
 
+        if (constructingDone == true && woodTimerCollision == true)
+        {
+            woodTimer = true;
+        }
+
         if (woodTimer == true && woodCollected == true)
         {
             WoodTimer();
@@ -43,9 +56,11 @@ public class WoodWorkshopCS : Structure
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Tree" && constructingDone == true)
+        if (collision.gameObject.tag == "Tree")
         {
-            woodTimer = true;
+            Debug.Log("Jou koskettaa");
+
+            woodTimerCollision = true;
         }
     }
 

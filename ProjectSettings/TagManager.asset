@@ -9,9 +9,8 @@ TagManager:
   - FaithBuilding
   - WoodWorkshop
   - Quarry
-  - Panel
-  - PopupMenuCanvas
-  - GameManager
+  - Tree
+  - Rock
   layers:
   - Default
   - TransparentFX
@@ -25,7 +24,7 @@ TagManager:
   - 
   - Unwalkable
   - PFTargetLayer
-  - Building
+  - 
   - 
   - 
   - 
