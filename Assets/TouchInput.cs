@@ -10,7 +10,7 @@ public class TouchInput : MonoBehaviour
 
     private RaycastHit2D hit;
 
-
+    public bool worldPos;
     // Use this for initialization
     void Start()
     {
@@ -29,9 +29,16 @@ public class TouchInput : MonoBehaviour
             touchList.CopyTo(touchesOld);
             touchList.Clear();
 
-            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, touchInputMask);
-            
+            if(worldPos)
+            {
+                hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, touchInputMask);
+            }
+            else
+            {
+                hit = Physics2D.Raycast(Input.mousePosition, Vector2.zero, Mathf.Infinity, touchInputMask);
+            }
 
+            
             if (hit.collider != null)
             {
                 GameObject recipient = hit.transform.gameObject;
@@ -43,11 +50,11 @@ public class TouchInput : MonoBehaviour
                 }
                 if (Input.GetMouseButtonUp(0))
                 {
-                    recipient.SendMessage("onTouchUp", hit.point, SendMessageOptions.DontRequireReceiver);
+                    recipient.SendMessage("OnTouchUp", hit.point, SendMessageOptions.DontRequireReceiver);
                 }
                 if (Input.GetMouseButton(0))
                 {
-                    recipient.SendMessage("onTouchStay", hit.point, SendMessageOptions.DontRequireReceiver);
+                    recipient.SendMessage("OnTouchStay", hit.point, SendMessageOptions.DontRequireReceiver);
                 }
             }
 
@@ -70,29 +77,35 @@ public class TouchInput : MonoBehaviour
 
             foreach (Touch touch in Input.touches)
             {
-                Ray ray = Camera.main.ScreenPointToRay(touch.position);
-
-
-                //if (Physics.Raycast(ray, out hit, touchInputMask))
+                if (worldPos)
                 {
+                    hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, touchInputMask);
+                }
+                else
+                {
+                    hit = Physics2D.Raycast(Input.mousePosition, Vector2.zero, Mathf.Infinity, touchInputMask);
+                }
+
+                if (hit.collider != null)
+                    {
                     GameObject recipient = hit.transform.gameObject;
                     //touchList.Add (recipient);
 
                     if (touch.phase == TouchPhase.Began)
                     {
-                        recipient.SendMessage("onTouchDown", hit.point, SendMessageOptions.DontRequireReceiver);
+                        recipient.SendMessage("OnTouchDown", hit.point, SendMessageOptions.DontRequireReceiver);
                     }
                     if (touch.phase == TouchPhase.Ended)
                     {
-                        recipient.SendMessage("onTouchUp", hit.point, SendMessageOptions.DontRequireReceiver); //orignal
+                        recipient.SendMessage("OnTouchUp", hit.point, SendMessageOptions.DontRequireReceiver); //orignal
                     }
                     if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
                     {
-                        recipient.SendMessage("onTouchStay", hit.point, SendMessageOptions.DontRequireReceiver);
+                        recipient.SendMessage("OnTouchStay", hit.point, SendMessageOptions.DontRequireReceiver);
                     }
                     if (touch.phase == TouchPhase.Canceled)
                     {
-                        recipient.SendMessage("onTouchExit", hit.point, SendMessageOptions.DontRequireReceiver);
+                        recipient.SendMessage("OnTouchExit", hit.point, SendMessageOptions.DontRequireReceiver);
                     }
                 }
             }

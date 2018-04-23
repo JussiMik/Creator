@@ -106,7 +106,7 @@ public class DragNDrop : MonoBehaviour
 
     public void YesButton()
     {
-        if (dragging && firstRound == false && allow == true)
+        if (dragging == false && firstRound == false && allow == true)
         {
             PlaceBuilding();
         }
@@ -127,7 +127,7 @@ public class DragNDrop : MonoBehaviour
         toDrag.SetActive(true);
     }
 
-    public void StartOrPauseDragging()
+    public void StartDragging()
     {
         //bool checke1st = false;
 
@@ -138,11 +138,12 @@ public class DragNDrop : MonoBehaviour
             Debug.Log("to true");
             //checke1st = true;
         }
-        else
-        {
-            //dragging = false;
-            Debug.Log("to false");
-        }
+    }
+
+    public void PauseDragging()
+    {
+        dragging = false;
+        Debug.Log("to false");
     }
 
     public void StopDragging()
