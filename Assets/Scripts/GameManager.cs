@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     Structure structure;
     public GameObject monk;
-
     
     public GameObject shrine;
     public GameObject statue;
@@ -15,9 +14,20 @@ public class GameManager : MonoBehaviour
     public GameObject farm;
     public GameObject garden;
     public GameObject meditationRoom;
-    
+
+    [Space(10)]
+    public float sanctity;
+    [Space(10)]
+    [SerializeField]
+    private float sanctityPoints;
+    [Space(10)]
+    public float maxSanctityPoints;
+    [Space(10)]
+    public float requiredAmountForLvlUp;
+    public float requiredAmountIncrease;
+
     [Space (10)]
-    public double faith;
+    public float faith;
 
     [Space(10)]
     public float wood;
@@ -47,12 +57,12 @@ public class GameManager : MonoBehaviour
     public List<GameObject> gardens = new List<GameObject>();
     public List<GameObject> meditationRooms = new List<GameObject>();
     public List<GameObject> monks = new List<GameObject>();
-    public List<double> faithMultipliers = new List<double>();
+    public List<float> faithMultipliers = new List<float>();
 
-    public double monkFaithMultiplier;
-    public double monkFaithMultiplierSlow1;
-    public double monkFaithMultiplierSlow2;
-    public double monkFaithMultiplierSlow3;
+    public float monkFaithMultiplier;
+    public float monkFaithMultiplierSlow1;
+    public float monkFaithMultiplierSlow2;
+    public float monkFaithMultiplierSlow3;
 
     public FaithText faithResourceTracker;
     MonkText monkResourceTracker;
@@ -122,6 +132,7 @@ public class GameManager : MonoBehaviour
     {
         faith -= faithUseAmount;
         faithResourceTracker.UpdateFaith();
+
         if (faith <= 0)
         {
             faith = 0;
@@ -194,7 +205,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    //Player gets sanctity points
+    public void GiveSanctityPoints(float amount)
+    {
+        sanctityPoints += amount;
+
+        if (sanctityPoints >= requiredAmountForLvlUp)
+        {
+            ChangePlayerLvl();
+
+            requiredAmountForLvlUp += requiredAmountIncrease;
+        }
+
+        if (sanctityPoints >= maxSanctityPoints)
+        {
+            sanctityPoints = maxSanctityPoints;
+        }
+    }
+
+    private void ChangePlayerLvl()
+    {
+        sanctity++;
+    }
+
     public void SpawnShrine()
     {
         GameObject spawnedShrine = Instantiate(shrine, new Vector3(transform.position.x - 3, transform.position.y + 4, transform.position.z), transform.rotation);
@@ -219,12 +252,12 @@ public class GameManager : MonoBehaviour
             GameObject spawned = Instantiate(farm, new Vector3(transform.position.x + 5, transform.position.y - 2, transform.position.z), transform.rotation);
         }
     }
-
     
     public void SpawnGarden()
     {
         GameObject spawned = Instantiate(garden, new Vector3(transform.position.x - 6, transform.position.y - 3, transform.position.z), transform.rotation);
     }
+
     void GetResourceObjects()
     {
         monkResourceTracker = GameObject.Find("MonkText").GetComponent<MonkText>();

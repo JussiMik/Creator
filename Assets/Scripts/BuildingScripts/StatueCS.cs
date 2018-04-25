@@ -6,10 +6,9 @@ public class StatueCS : Structure
 {
     private bool addedToList;
 
-    void Start()
+    protected override void Start()
     {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-
+        base.Start();
         originalFaithTargetTime = faithTargetTime;
 
         normalSpeedConstructing = true;
@@ -17,7 +16,7 @@ public class StatueCS : Structure
         addedToList = false;
         ConstructingStructures();
 
-        gameManager.UseFaith(levelUpCost);
+        gameManager.UseFaith(constructingCost);
 
         name = "Statue";
         type = "Faith";
@@ -30,6 +29,7 @@ public class StatueCS : Structure
         if (constructingDone == true && addedToList == false)
         {
             AddToList();
+            gameManager.GiveSanctityPoints(sanctityPointAmount);
             faithTimer = true;
         }
     }

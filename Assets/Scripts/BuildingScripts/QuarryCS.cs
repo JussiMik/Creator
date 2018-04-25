@@ -10,7 +10,7 @@ public class QuarryCS : Structure
     [SerializeField]
     private bool rockTimerCollision;
     [SerializeField]
-    private float originalRockTime;
+    public float originalRockTime;
 
     [Space(10)]
     public float gatheredStone;
@@ -20,6 +20,18 @@ public class QuarryCS : Structure
 
     [Space(10)]
     public bool stoneCollected;
+
+    [Space(10)]
+    public float rocks;
+    [SerializeField]
+    private float totalRockAmount;
+
+    [Space(10)]
+    public float lvl1RockAmount;
+    public float lvl2RockAmount;
+    public float lvl3RockAmount;
+
+    private bool sanctityPointsGiven;
 
     void Start()
     {
@@ -32,7 +44,7 @@ public class QuarryCS : Structure
 
         stoneCollected = true;
 
-        gameManager.UseFaith(500);
+        gameManager.UseFaith(constructingCost);
 
         name = "Quarry";
         type = "Production";
@@ -42,14 +54,29 @@ public class QuarryCS : Structure
     {
         base.Update();
 
-        if (constructingDone == true && rockTimerCollision == true)
+        if (constructingDone == true && sanctityPointsGiven == false)
         {
-            rockTimer = true;
+            gameManager.GiveSanctityPoints(sanctityPointAmount);
+
+            sanctityPointsGiven = true;
+
+            if (rockTimerCollision == true)
+            {
+                rockTimer = true;
+            } 
         }
 
         if (rockTimer == true && stoneCollected == true)
         {
             RockTimer();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Rock")
+        {
+            totalRockAmount++;
         }
     }
 
@@ -68,9 +95,26 @@ public class QuarryCS : Structure
         if (rockTime <= 0)
         {
             rockTime = 0;
-            gatheredStone += gatheredStoneAmount;
 
-            stoneCollected = false;
+            rocks = totalRockAmount;
+
+            if (level == 1 && rocks >= lvl1RockAmount)
+            {
+                rocks = lvl1RockAmount;
+            }
+
+            if (level == 2 && rocks >= lvl2RockAmount)
+            {
+                rocks = lvl2RockAmount;
+            }
+
+            if (level == 3 && rocks >= lvl3RockAmount)
+            {
+                rocks = lvl3RockAmount;
+            }
+
+            gatheredStone += gatheredStoneAmount * rocks;
+
             rockTimer = false;
         }
 
@@ -88,7 +132,7 @@ public class QuarryCS : Structure
 
         gameManager.stone += gatheredStone;
         gatheredStone = 0;
-
+        gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().showPanel = false;
         stoneCollected = true;
     }
 }

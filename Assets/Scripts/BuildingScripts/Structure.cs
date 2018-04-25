@@ -10,11 +10,20 @@ public class Structure : MonoBehaviour
 
     public GameObject clickedBuilding;
 
+    [Space(10)]
+    public float sanctityPointAmount;
+
+    [Space(10)]
     [SerializeField]
     private bool constructingTimer;
 
-    [SerializeField]
-    private float constructingTime;
+    [Space(10)]
+    public float constructingTime;
+
+    [Space(10)]
+    public float constructingCost;
+
+    [Space(10)]
     public float constructingTimeSlow1;
     public float constructingTimeSlow2;
     public float constructingTimeSlow3;
@@ -28,13 +37,13 @@ public class Structure : MonoBehaviour
     public bool constructingDone;
 
     [Space(10)]
-    public double generatedFaith;
+    public float generatedFaith;
 
     [Space(10)]
-    public int faithAmount;
-    public int maxFaithAmount;
+    public float faithAmount;
+    public float maxFaithAmount;
 
-    public double faithMultiplier;
+    public float faithMultiplier;
 
     public bool faithCollected;
 
@@ -48,32 +57,20 @@ public class Structure : MonoBehaviour
     public bool slowerFaithGeneration2;
     public bool slowerFaithGeneration3;
 
-    public bool lvlChange;
+    [Space(10)]
     public int level;
+    public bool lvlChange;
+    public float lvlUpFaithIncrease;
     public int maxLevelAmount;
     public float levelUpCost;
 
     public string name;
     public string type;
+    
 
-    void Start()
+    protected virtual void Start()
     {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-
-        /*
-        originalFaithTargetTime = faithTargetTime;
-
-        level = 1;
-        lvlChange = false;
-
-        constructingDone = false;
-
-        normalSpeedConstructing = true;
-
-        faithCollected = true;
-
-        ConstructingStructures();
-        */
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     protected virtual void Update()
@@ -105,88 +102,6 @@ public class Structure : MonoBehaviour
         {
             FaithTimer();
         }
-
-        if (Input.GetMouseButtonDown(0) && gameManager.devotion >= gameManager.minDevotionAmountCollecting)
-        {
-            Vector2 pos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            RaycastHit2D hitInfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(pos), Vector2.zero);
-
-            if (hitInfo == true)
-            {
-                if (hitInfo.transform.tag == "FaithBuilding")
-                {
-                    clickedBuilding = hitInfo.transform.gameObject;
-
-                    if (clickedBuilding.GetComponent<Structure>().generatedFaith > 0)
-                    {
-                        clickedBuilding.GetComponent<Structure>().CollectFaith();
-                    }         
-                }
-
-                if (hitInfo.transform.tag == "WoodWorkshop")
-                {
-                    clickedBuilding = hitInfo.transform.gameObject;
-
-                    if (clickedBuilding.GetComponent<WoodWorkshopCS>().gatheredWood > 0)
-                    {
-                        clickedBuilding.GetComponent<WoodWorkshopCS>().CollectWood();
-                    }       
-                }
-
-                if (hitInfo.transform.tag == "Quarry")
-                {
-                    clickedBuilding = hitInfo.transform.gameObject;
-
-                    if (clickedBuilding.GetComponent<QuarryCS>().gatheredStone > 0)
-                    {
-                        clickedBuilding.GetComponent<QuarryCS>().CollectStone();
-                    }      
-                }
-            }
-        }
-             
-            /*
-
-        if (Input.GetMouseButtonDown(0) && gameManager.devotion >= gameManager.minDevotionAmountCollecting)
-        {
-            Vector2 origin = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-            RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.zero, 0f);
-
-            if (hit.transform.tag == "FaithBuilding")
-            {
-                if (generatedFaith > 0)
-                {
-                    Debug.Log("jou");
-                    CollectFaith();
-                }
-            }
-
-            if (hit.transform.tag == "WoodWorkshop")
-            {
-                woodWorkshopCS = GetComponent<WoodWorkshopCS>();
-
-                if (woodWorkshopCS.gatheredWood > 0)
-                {
-                    woodWorkshopCS.CollectWood();
-                }              
-            }
-
-            if (hit.transform.tag == "Quarry")
-            {
-                quarryCS = GetComponent<QuarryCS>();
-
-                if (quarryCS.gatheredStone > 0)
-                {
-                    quarryCS.CollectStone();
-                }
-            }
-            
-            if (hit.transform.tag == null)
-            {
-                Debug.Log("Tyhjä");
-            }
-        }
-        */
     }
 
     public void ConstructingStructures()
@@ -259,6 +174,7 @@ public class Structure : MonoBehaviour
         }
     }
 
+    //Generate faith
     public void GenerateFaith()
     {
         generatedFaith += faithAmount;
@@ -291,17 +207,18 @@ public class Structure : MonoBehaviour
 
         gameManager.faith += generatedFaith;
         generatedFaith = 0f;
-
+        gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().showPanel = false;
         faithCollected = true;
     }
 
+    //Change structures level
     public void ChangeLevel()
     {
-        //gameManager.UseFaith();
+        gameManager.UseFaith(levelUpCost);
 
         if (level >= 1)
         {
-            faithAmount += 1;
+            faithAmount += lvlUpFaithIncrease;
             level += 1;
 
             if (faithAmount >= maxFaithAmount && level >= maxLevelAmount)

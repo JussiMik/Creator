@@ -17,7 +17,7 @@ public class TempleCS : Structure
         addedToList = false;
         ConstructingStructures();
 
-        gameManager.UseFaith(levelUpCost);
+        gameManager.UseFaith(constructingCost);
 
         name = "Temple";
         type = "Faith";
@@ -30,6 +30,7 @@ public class TempleCS : Structure
         if (constructingDone == true && addedToList == false)
         {
             AddToList();
+            gameManager.GiveSanctityPoints(sanctityPointAmount);
             faithTimer = true;
         }
     }

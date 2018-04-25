@@ -17,11 +17,10 @@ public class ShrineCS : Structure
         addedToList = false;
         ConstructingStructures();
         
-        gameManager.UseFaith(levelUpCost);
+        gameManager.UseFaith(constructingCost);
 
         name = "Shrine";
         type = "Faith";
-        
     }
 
     protected override void Update()
@@ -31,6 +30,7 @@ public class ShrineCS : Structure
         if (constructingDone == true && addedToList == false)
         {
             AddToList();
+            gameManager.GiveSanctityPoints(sanctityPointAmount);
             faithTimer = true;
         }
     }

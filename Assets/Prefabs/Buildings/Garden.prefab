@@ -71,8 +71,11 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
+  clickedBuilding: {fileID: 0}
+  sanctityPointAmount: 8
   constructingTimer: 0
   constructingTime: 8
+  constructingCost: 0
   constructingTimeSlow1: 0
   constructingTimeSlow2: 0
   constructingTimeSlow3: 0
@@ -82,10 +85,10 @@ MonoBehaviour:
   lowerSpeedConstructing2: 0
   lowerSpeedConstructing3: 0
   constructingDone: 0
+  generatedFaith: 0
   faithAmount: 0
   maxFaithAmount: 0
   faithMultiplier: 0
-  generatedFaith: 0
   faithCollected: 0
   faithTimer: 0
   faithTargetTime: 0
@@ -94,8 +97,9 @@ MonoBehaviour:
   slowerFaithGeneration1: 0
   slowerFaithGeneration2: 0
   slowerFaithGeneration3: 0
-  lvlChange: 0
   level: 0
+  lvlChange: 0
+  lvlUpFaithIncrease: 0
   maxLevelAmount: 0
   levelUpCost: 0
   name: 

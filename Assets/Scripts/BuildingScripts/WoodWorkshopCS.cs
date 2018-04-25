@@ -11,7 +11,7 @@ public class WoodWorkshopCS : Structure
     [SerializeField]
     private bool woodTimerCollision;
     [SerializeField]
-    private float originalWoodTime;
+    public float originalWoodTime;
 
     [Space(10)]
     public float gatheredWood;
@@ -23,6 +23,18 @@ public class WoodWorkshopCS : Structure
     [SerializeField]
     private bool woodCollected;
 
+    [Space(10)]
+    public float trees;
+    [SerializeField]
+    private float totalTreeAmount;
+
+    [Space(10)]
+    public float lvl1TreeAmount;
+    public float lvl2TreeAmount;
+    public float lvl3TreeAmount;
+
+    private bool sanctityPointsGiven;
+
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
@@ -33,7 +45,9 @@ public class WoodWorkshopCS : Structure
         normalSpeedConstructing = true;
         ConstructingStructures();
 
-        gameManager.UseFaith(500);
+        gameManager.UseFaith(constructingCost);
+
+        level = 1;
 
         name = "Wood workshop";
         type = "Production";
@@ -43,9 +57,16 @@ public class WoodWorkshopCS : Structure
     {
         base.Update();
 
-        if (constructingDone == true && woodTimerCollision == true)
+        if (constructingDone == true && sanctityPointsGiven == false)
         {
-            woodTimer = true;
+            gameManager.GiveSanctityPoints(sanctityPointAmount);
+
+            sanctityPointsGiven = true;
+
+            if (woodTimerCollision == true)
+            {
+                woodTimer = true;
+            }
         }
 
         if (woodTimer == true && woodCollected == true)
@@ -54,12 +75,18 @@ public class WoodWorkshopCS : Structure
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Tree")
+        {
+            totalTreeAmount++;
+        }
+    }
+    
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Tree")
         {
-            Debug.Log("Jou koskettaa");
-
             woodTimerCollision = true;
         }
     }
@@ -71,7 +98,26 @@ public class WoodWorkshopCS : Structure
         if (woodTime <= 0)
         {
             woodTime = 0;
-            gatheredWood += gatheredWoodAmount;
+
+            trees = totalTreeAmount;
+
+            if (level == 1 && trees >= lvl1TreeAmount)
+            {
+                trees = lvl1TreeAmount;
+            }
+
+            if (level == 2 && trees >= lvl2TreeAmount)
+            {
+                trees = lvl2TreeAmount;
+            }
+
+            if (level == 3 && trees >= lvl3TreeAmount)
+            {
+                trees = lvl3TreeAmount;
+            }
+
+            gatheredWood += gatheredWoodAmount * trees;
+
             woodTimer = false;
         }
 
@@ -89,7 +135,7 @@ public class WoodWorkshopCS : Structure
 
         gameManager.wood += gatheredWood;
         gatheredWood = 0;
-
+        gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().showPanel = false;
         woodCollected = true;
     }
 }

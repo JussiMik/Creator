@@ -14,7 +14,7 @@ public class GardenCS : Structure
         addedToList = false;
         ConstructingStructures();
 
-        gameManager.UseFaith(levelUpCost);
+        gameManager.UseFaith(constructingCost);
 
         name = "Garden";
         type = "Devotion";
@@ -27,6 +27,7 @@ public class GardenCS : Structure
         if (constructingDone == true && addedToList == false)
         {
             AddToList();
+            gameManager.GiveSanctityPoints(sanctityPointAmount);
         }
     }
 

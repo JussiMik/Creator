@@ -12,7 +12,7 @@ public class DevotionText : MonoBehaviour
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
         devotionText = gameObject.GetComponent<Text>();
-        InvokeRepeating("UpdateDevotion", 0f, 0.5f);
+        InvokeRepeating("UpdateDevotion", 0f, 0.1f);
     }
 
     void Update()
@@ -23,6 +23,6 @@ public class DevotionText : MonoBehaviour
     public void UpdateDevotion()
     {
         devotion = gameManager.GetComponent<GameManager>().devotion;
-        devotionText.text = devotion.ToString();
+        devotionText.text = devotion.ToString("F0");
     }
 }
