@@ -11,7 +11,7 @@ public class WoodWorkshopCS : Structure
     [SerializeField]
     private bool woodTimerCollision;
     [SerializeField]
-    private float originalWoodTime;
+    public float originalWoodTime;
 
     [Space(10)]
     public float gatheredWood;
@@ -128,7 +128,7 @@ public class WoodWorkshopCS : Structure
 
         gameManager.wood += gatheredWood;
         gatheredWood = 0;
-
+        gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().showPanel = false;
         woodCollected = true;
     }
 }

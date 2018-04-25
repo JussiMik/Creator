@@ -6,9 +6,9 @@ public class StatueCS : Structure
 {
     private bool addedToList;
 
-    void Start()
+    protected virtual void Start()
     {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        base.Start();
 
         originalFaithTargetTime = faithTargetTime;
 

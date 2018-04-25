@@ -10,7 +10,7 @@ public class QuarryCS : Structure
     [SerializeField]
     private bool rockTimerCollision;
     [SerializeField]
-    private float originalRockTime;
+    public float originalRockTime;
 
     [Space(10)]
     public float gatheredStone;
@@ -123,7 +123,7 @@ public class QuarryCS : Structure
 
         gameManager.stone += gatheredStone;
         gatheredStone = 0;
-
+        gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().showPanel = false;
         stoneCollected = true;
     }
 }
