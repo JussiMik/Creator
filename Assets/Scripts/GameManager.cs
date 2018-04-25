@@ -137,7 +137,6 @@ public class GameManager : MonoBehaviour
         {
             faith = 0;
         }
-
     }
 
     //Devotion decreases slowly

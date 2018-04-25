@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 61109269206947522}
   m_Layer: 12
   m_Name: Temple
-  m_TagString: Building
+  m_TagString: FaithBuilding
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
