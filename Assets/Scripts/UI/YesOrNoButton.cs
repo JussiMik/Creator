@@ -34,7 +34,15 @@ public class YesOrNoButton : MonoBehaviour
         }
         else
         {
-            dragNDrop.StartOrPauseDragging();
+            dragNDrop.StartDragging();
+        }
+    }
+
+    public void OnTouchUp()
+    {
+        if(draggerButton == true)
+        {
+            dragNDrop.PauseDragging();
         }
     }
 

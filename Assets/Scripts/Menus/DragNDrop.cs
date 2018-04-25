@@ -35,6 +35,9 @@ public class DragNDrop : MonoBehaviour
 
     public Vector3 toDragPos;
 
+    //
+    private GameObject worldNavigation;
+
     [SerializeField]
     private bool allow;
 
@@ -43,6 +46,8 @@ public class DragNDrop : MonoBehaviour
     {
         layoutManager = gameObject.GetComponent<LayoutManager>();
         emptyColor = layoutManager.emptyGo.GetComponent<SpriteRenderer>().color;
+        worldNavigation = GameObject.Find("WorldNavigation");
+
 
         //INSTANTIATE OBJECT TO DRAG
         //This shows the structure that you're dragging around
@@ -106,7 +111,7 @@ public class DragNDrop : MonoBehaviour
 
     public void YesButton()
     {
-        if (dragging && firstRound == false && allow == true)
+        if (dragging == false && firstRound == false && allow == true)
         {
             PlaceBuilding();
         }
@@ -127,7 +132,7 @@ public class DragNDrop : MonoBehaviour
         toDrag.SetActive(true);
     }
 
-    public void StartOrPauseDragging()
+    public void StartDragging()
     {
         //bool checke1st = false;
 
@@ -136,13 +141,15 @@ public class DragNDrop : MonoBehaviour
             firstRound = true;
             dragging = true;
             Debug.Log("to true");
-            //checke1st = true;
+            worldNavigation.SetActive( false);
         }
-        else
-        {
-            //dragging = false;
-            Debug.Log("to false");
-        }
+    }
+
+    public void PauseDragging()
+    {
+        dragging = false;
+        //worldNavigation.navOn = true;
+        Debug.Log("to false");
     }
 
     public void StopDragging()
@@ -150,6 +157,8 @@ public class DragNDrop : MonoBehaviour
         dragging = false;
         toDrag.SetActive(false);
         layoutManager.SetTestGridActive(false);
+        worldNavigation.SetActive(true);
+
     }
     public void Dragging()
     {
@@ -192,7 +201,7 @@ public class DragNDrop : MonoBehaviour
             //TEST IF SPACES ARE TAKEN
             for (int i = 0; i < toBeColorized.Count; i++)
             {
-                if (layoutManager.positions[(int)toBeColorized[i].x, (int)toBeColorized[i].y].z == 1)
+                if (layoutManager.positions[(int)toBeColorized[i].x, (int)toBeColorized[i].y].z == 1 || layoutManager.positions[(int)toBeColorized[i].x, (int)toBeColorized[i].y].z == 2)
                 {
                     allow = false;
                 }
@@ -231,11 +240,10 @@ public class DragNDrop : MonoBehaviour
         layoutManager.SpawnStructure(curDraBuilding, toBeColorized, new Vector2(2, 2));
         StopDragging();
         SwipeToEmpty();
+
     }
 
-    /// <summary>
     /// SWIPES COLORIZED
-    /// </summary>
     private void SwipeToEmpty()
     {
 
