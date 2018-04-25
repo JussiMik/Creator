@@ -5,11 +5,15 @@ using UnityEngine;
 public class LayoutManager : MonoBehaviour
 {
     public Vector3[,] positions;
+    //FREE SPACE = 0 | TAKEN = 1 | Rock = 2
+
     GameObject testGridFolder;
     public GameObject[,] testGrid;
     public Vector3[,] gapPositions;
     [SerializeField]
     public Sprite[] grassTileSprites;
+    [SerializeField]
+    public Sprite[] rockTileSprites;
 
     bool gridDone = false;
     public bool roundCorners = false;
@@ -17,8 +21,12 @@ public class LayoutManager : MonoBehaviour
 
     public bool showGrid;
 
-    public Vector3 nullVector3 = new Vector3(666, 666, 666);
-    public Color fullColor = new Color(255, 255, 255, 255); 
+    private GameObject rockFolder;
+
+    //public Vector3 nullVector3 = new Vector3(666, 666, 666);
+
+
+    public Color fullColor = new Color(255, 255, 255, 255);
 
     public Color cantBuild;
 
@@ -28,6 +36,9 @@ public class LayoutManager : MonoBehaviour
     public int gridWidth;
     public int gridHeigth;
     public int currentWidth = 0;
+
+    public int startWidth;
+    public int startHeight;
 
     public bool renderGrid = true;
 
@@ -51,7 +62,7 @@ public class LayoutManager : MonoBehaviour
 
     static Material lineMaterial;
 
-   
+
 
     // Use this for initialization
     private void Start()
@@ -81,21 +92,30 @@ public class LayoutManager : MonoBehaviour
         }
 
         //"REMOVE" CORNER POSITIONS
+        rockFolder = Instantiate(new GameObject(), transform.position, transform.rotation);
+        rockFolder.name = "Rock Folder";
         if (roundCorners)
         {
             for (int i1 = 0; i1 < roundCornerBy; i1++)
             {
                 for (int i2 = 0; i2 < roundCornerBy; i2++)
                 {
-                    if(!(i1 == i2 && i1 == roundCornerBy -1) || (i1 == 0 && i2 == 0))
+                    if (!(i1 == i2 && i1 == roundCornerBy - 1) || (i1 == 0 && i2 == 0))
                     {
-                        positions[i1, i2] = nullVector3;
-                        positions[i1, positions.GetLength(1) - 1 - i2] = nullVector3;
-                        positions[positions.GetLength(0) - 1 - i1, i2] = nullVector3;
-                        positions[positions.GetLength(0) - 1 - i1, positions.GetLength(1) - 1 -i2] = nullVector3;
+                        positions[i1, i2] = new Vector3(positions[i1, i2].x, positions[i1, i2].y, 2);
+                        PlaceRockToPlace(positions[i1, i2], new Vector2(i1, i2));
+
+                        positions[i1, positions.GetLength(1) - 1 - i2] = new Vector3(positions[i1, positions.GetLength(1) - 1 - i2].x, positions[i1, positions.GetLength(1) - 1 - i2].y, 2);
+                        PlaceRockToPlace(positions[i1, positions.GetLength(1) - 1 - i2], new Vector2 (i1, positions.GetLength(1) - 1 - i2));
+
+                        positions[positions.GetLength(0) - 1 - i1, i2] = new Vector3(positions[positions.GetLength(0) - 1 - i1, i2].x, positions[positions.GetLength(0) - 1 - i1, i2].y, 2);
+                        PlaceRockToPlace(positions[positions.GetLength(0) - 1 - i1, i2], new Vector2(positions.GetLength(0) - 1 - i1, i2));
+
+                        positions[positions.GetLength(0) - 1 - i1, positions.GetLength(1) - 1 - i2] = new Vector3(positions[positions.GetLength(0) - 1 - i1, positions.GetLength(1) - 1 - i2].x, positions[positions.GetLength(0) - 1 - i1, positions.GetLength(1) - 1 - i2].y, 2);
+                        PlaceRockToPlace(positions[positions.GetLength(0) - 1 - i1, positions.GetLength(1) - 1 - i2], new Vector2(positions.GetLength(0) - 1 - i1, positions.GetLength(1) - 1 - i2));
                     }
                 }
-                
+
             }
         }
 
@@ -108,7 +128,7 @@ public class LayoutManager : MonoBehaviour
 
             for (int y = 0; y < gridHeigth; y++)
             {
-                if (positions[x, y] == nullVector3)
+                if (positions[x, y].z == 3)
                 {
                     testGrid[x, y] = null;
                 }
@@ -118,7 +138,7 @@ public class LayoutManager : MonoBehaviour
                     testGrid[x, y] = Instantiate(emptyGo, newPos, Quaternion.identity);
                     testGrid[x, y].transform.parent = testGridFolder.transform;
                     testGrid[x, y].name = x + " , " + y;
-                    testGrid[x, y].transform.localScale = new Vector3(tileWidth * 0.35f, (tileHeight*2) * 0.35f, testGrid[x, y].transform.localScale.z);
+                    testGrid[x, y].transform.localScale = new Vector3(tileWidth * 0.35f, (tileHeight * 2) * 0.35f, testGrid[x, y].transform.localScale.z);
                 }
             }
         }
@@ -153,7 +173,7 @@ public class LayoutManager : MonoBehaviour
             Application.LoadLevel("testscene");
 
         }
-        
+
     }
 
     void TestGridUpdate()
@@ -163,7 +183,7 @@ public class LayoutManager : MonoBehaviour
         {
             for (int y = 0; y < positions.GetLength(1); y++)
             {
-                if (positions[x, y].z == 1 && !(positions[x, y] == nullVector3))
+                if (positions[x, y].z == 1 && !(positions[x, y].z == 3))
                 {
                     testGrid[x, y].GetComponent<SpriteRenderer>().color = cantBuild;
                 }
@@ -179,17 +199,30 @@ public class LayoutManager : MonoBehaviour
         {
             for (int y = 0; y < positions.GetLength(1); y++)
             {
-                if(!(positions[x, y].z == 1 || positions[x, y] == nullVector3))
+                if (!(positions[x, y].z == 1 || positions[x, y].z == 3))
                 {
                     GameObject newgrass = Instantiate(emptyGo, positions[x, y], transform.rotation);
                     newgrass.transform.parent = grassFolder.transform;
                     newgrass.name = "GrassTile";
                     newgrass.GetComponent<SpriteRenderer>().sprite = grassTileSprites[Random.Range(0, grassTileSprites.Length)];
-                    newgrass.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(new Vector2(x,y)) +1;
+                    newgrass.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(new Vector2(x, y)) + 1;
                     newgrass.GetComponent<SpriteRenderer>().color = fullColor;
                     newgrass.GetComponent<SpriteRenderer>().sortingLayerName = "Ground";
                 }
             }
+        }
+    }
+
+    private void PlaceRockToPlace(Vector3 position, Vector2 gridPos)
+    {
+        {
+            GameObject newgrass = Instantiate(emptyGo, new Vector3(position.x, position.y, transform.position.z), transform.rotation);
+            newgrass.transform.parent = rockFolder.transform;
+            newgrass.name = "RockTile";
+            newgrass.GetComponent<SpriteRenderer>().sprite = rockTileSprites[Random.Range(0, grassTileSprites.Length)];
+            newgrass.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(gridPos) + 1;
+            newgrass.GetComponent<SpriteRenderer>().color = fullColor;
+            newgrass.GetComponent<SpriteRenderer>().sortingLayerName = "Ground";
         }
     }
 
@@ -205,7 +238,7 @@ public class LayoutManager : MonoBehaviour
             int rnd1 = Random.Range(0, positions.GetLength(0));
             int rnd2 = Random.Range(0, positions.GetLength(1));
 
-            while (positions[rnd1, rnd2].z == 1 || (positions[rnd1, rnd2] == nullVector3))
+            while (positions[rnd1, rnd2].z == 1 || (positions[rnd1, rnd2].z == 2))
             {
                 rnd1 = Random.Range(0, positions.GetLength(0));
                 rnd2 = Random.Range(0, positions.GetLength(1));
@@ -235,8 +268,8 @@ public class LayoutManager : MonoBehaviour
         //CALCULATE HOUSE POSITION
         //Calculate center of the first and last tile
         Vector2 firstPos = new Vector2(positions[(int)tiles[0].x, (int)tiles[0].y].x, positions[(int)tiles[0].x, (int)tiles[0].y].y);
-        Vector2 lastPos = new Vector2(positions[(int)tiles[tiles.Count-1].x, (int)tiles[tiles.Count-1].y].x, positions[(int)tiles[tiles.Count-1].x,(int)tiles[tiles.Count-1].y].y);
-        Vector3 cenPos = new Vector3(firstPos.x + ((lastPos.x - firstPos.x) /2), firstPos.y + ((lastPos.y - firstPos.y) / 2), transform.position.z);
+        Vector2 lastPos = new Vector2(positions[(int)tiles[tiles.Count - 1].x, (int)tiles[tiles.Count - 1].y].x, positions[(int)tiles[tiles.Count - 1].x, (int)tiles[tiles.Count - 1].y].y);
+        Vector3 cenPos = new Vector3(firstPos.x + ((lastPos.x - firstPos.x) / 2), firstPos.y + ((lastPos.y - firstPos.y) / 2), transform.position.z);
 
         //INSTANTIATE HOUSE
         GameObject obj = Instantiate(structure, new Vector3(cenPos.x, cenPos.y, transform.position.z), Quaternion.identity) as GameObject;
@@ -249,11 +282,11 @@ public class LayoutManager : MonoBehaviour
         //When X is smallest and Y is largest
 
         int toReturn = 0;
-        Vector2 bestMatch = new Vector2(666,-666);
-        
+        Vector2 bestMatch = new Vector2(666, -666);
+
         for (int i = 0; i < tiles.Count; i++)
         {
-            if(tiles[i].x < bestMatch.x && tiles[i].y > bestMatch.y)
+            if (tiles[i].x < bestMatch.x && tiles[i].y > bestMatch.y)
             {
                 bestMatch = tiles[i];
             }
@@ -264,7 +297,7 @@ public class LayoutManager : MonoBehaviour
 
     public int CalculateSortingLayer(Vector2 tile)
     {
-        
+
         int toReturn = 0;
         toReturn = (int)(tile.y - tile.x);
         return toReturn;

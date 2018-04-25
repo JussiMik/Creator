@@ -23,8 +23,11 @@ public class StructMenu : MonoBehaviour {
 
     private int curBlockNo = 0;
 
+    public GameObject worldNavigation;
+
     void Awake()
     {
+        worldNavigation = GameObject.Find("WorldNavigation");
         dragNDrop = GameObject.Find("LevelManager").GetComponent<DragNDrop>();
 
         //INSTANTIATE STRUCTURE MENU
@@ -79,10 +82,13 @@ public class StructMenu : MonoBehaviour {
         if(menuVisible)
         {
             HideStructMenu();
+            worldNavigation.SetActive(true);
         }
         else
         {
             ShowStructMenu();
+            //worldNavigation;
+            worldNavigation.SetActive(false);
         }
         
     }
@@ -94,19 +100,13 @@ public class StructMenu : MonoBehaviour {
     public void HideStructMenu()
     {
         buildGrid.active = false;
-        //for (int i = 0; i < structButtons.Length; i++)
-        //{
-        //    structButtons[i].active = false;
-        //}
         menuVisible = false;
+       
     }
     public void ShowStructMenu()
     {
         buildGrid.active = true;
-        //for (int i = 0; i < structButtons.Length; i++)
-        //{
-        //    structButtons[i].active = true;
-        //}
         menuVisible = true;
+       
     }
 }

@@ -169,7 +169,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.4
+  orthographic size: 8.91
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -213,6 +213,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   worldPos: 0
+  canvasPos: 0
 --- !u!1 &234578700
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +286,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDragPos: {x: 0, y: 0, z: 0}
+  dragOffset: {x: 0, y: 0, z: 0}
+  startCamPos: {x: 0, y: 0, z: 0}
+  navOn: 1
 --- !u!1 &297980350
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,10 +492,14 @@ MonoBehaviour:
   - {fileID: 21300002, guid: 28abc29a092dc9e4ba6818993ee7a40f, type: 3}
   - {fileID: 21300004, guid: 28abc29a092dc9e4ba6818993ee7a40f, type: 3}
   - {fileID: 21300006, guid: 28abc29a092dc9e4ba6818993ee7a40f, type: 3}
+  rockTileSprites:
+  - {fileID: 21300000, guid: 393e11cc710534b459c851f492fafdf9, type: 3}
+  - {fileID: 21300002, guid: 393e11cc710534b459c851f492fafdf9, type: 3}
+  - {fileID: 21300004, guid: 393e11cc710534b459c851f492fafdf9, type: 3}
+  - {fileID: 21300006, guid: 393e11cc710534b459c851f492fafdf9, type: 3}
   roundCorners: 1
   roundCornerBy: 2
   showGrid: 0
-  nullVector3: {x: 666, y: 666, z: 666}
   fullColor: {r: 255, g: 255, b: 255, a: 255}
   cantBuild: {r: 0.5147059, g: 0.1703071, b: 0.1703071, a: 0}
   lakes: []
@@ -499,6 +507,8 @@ MonoBehaviour:
   gridWidth: 15
   gridHeigth: 15
   currentWidth: 0
+  startWidth: 14
+  startHeight: 14
   renderGrid: 1
   tileByAngle: 0
   tileHeight: 0.5

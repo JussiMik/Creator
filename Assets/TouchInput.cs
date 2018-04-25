@@ -11,6 +11,7 @@ public class TouchInput : MonoBehaviour
     private RaycastHit2D hit;
 
     public bool worldPos;
+    public bool canvasPos;
     // Use this for initialization
     void Start()
     {
