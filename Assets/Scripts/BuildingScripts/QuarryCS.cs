@@ -21,6 +21,16 @@ public class QuarryCS : Structure
     [Space(10)]
     public bool stoneCollected;
 
+    [Space(10)]
+    public float rocks;
+    [SerializeField]
+    private float totalRockAmount;
+
+    [Space(10)]
+    public float lvl1RockAmount;
+    public float lvl2RockAmount;
+    public float lvl3RockAmount;
+
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
@@ -32,7 +42,7 @@ public class QuarryCS : Structure
 
         stoneCollected = true;
 
-        gameManager.UseFaith(500);
+        gameManager.UseFaith(constructingCost);
 
         name = "Quarry";
         type = "Production";
@@ -53,6 +63,14 @@ public class QuarryCS : Structure
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Rock")
+        {
+            totalRockAmount++;
+        }
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Rock")
@@ -68,9 +86,26 @@ public class QuarryCS : Structure
         if (rockTime <= 0)
         {
             rockTime = 0;
-            gatheredStone += gatheredStoneAmount;
 
-            stoneCollected = false;
+            rocks = totalRockAmount;
+
+            if (level == 1 && rocks >= lvl1RockAmount)
+            {
+                rocks = lvl1RockAmount;
+            }
+
+            if (level == 2 && rocks >= lvl2RockAmount)
+            {
+                rocks = lvl2RockAmount;
+            }
+
+            if (level == 3 && rocks >= lvl3RockAmount)
+            {
+                rocks = lvl3RockAmount;
+            }
+
+            gatheredStone += gatheredStoneAmount * rocks;
+
             rockTimer = false;
         }
 

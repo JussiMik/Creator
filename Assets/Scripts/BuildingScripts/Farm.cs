@@ -14,7 +14,7 @@ public class Farm : Structure
         addedToList = false;
         ConstructingStructures();
 
-        gameManager.UseFaith(levelUpCost);
+        gameManager.UseFaith(constructingCost);
 
         name = "Farm";
         type = "Food";

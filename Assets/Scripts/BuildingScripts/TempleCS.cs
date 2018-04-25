@@ -17,7 +17,7 @@ public class TempleCS : Structure
         addedToList = false;
         ConstructingStructures();
 
-        gameManager.UseFaith(levelUpCost);
+        gameManager.UseFaith(constructingCost);
 
         name = "Temple";
         type = "Faith";
