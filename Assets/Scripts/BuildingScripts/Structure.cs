@@ -10,6 +10,7 @@ public class Structure : MonoBehaviour
 
     public GameObject clickedBuilding;
 
+    public Vector2 sizeOnGrid;
     [Space(10)]
     public float sanctityPointAmount;
 
@@ -66,6 +67,7 @@ public class Structure : MonoBehaviour
 
     public string name;
     public string type;
+
     
 
     protected virtual void Start()

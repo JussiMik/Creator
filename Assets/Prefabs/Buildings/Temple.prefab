@@ -82,6 +82,7 @@ MonoBehaviour:
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
   clickedBuilding: {fileID: 0}
+  sizeOnGrid: {x: 3, y: 3}
   sanctityPointAmount: 20
   constructingTimer: 0
   constructingTime: 20

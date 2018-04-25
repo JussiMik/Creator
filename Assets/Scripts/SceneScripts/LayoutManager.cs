@@ -170,7 +170,7 @@ public class LayoutManager : MonoBehaviour
             //    Destroy(lakes[i]);
             //}
             //RandomGen();
-            Application.LoadLevel("testscene");
+            Application.LoadLevel("FirstPlayable");
 
         }
 

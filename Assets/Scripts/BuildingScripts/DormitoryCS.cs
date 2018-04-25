@@ -6,9 +6,9 @@ public class DormitoryCS : Structure
 {
     private bool addedToList;
 
-    void Start()
+    protected override void Start()
     {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        base.Start();
 
         normalSpeedConstructing = true;
         addedToList = false;

@@ -52,7 +52,7 @@ public class DragNDrop : MonoBehaviour
         //INSTANTIATE OBJECT TO DRAG
         //This shows the structure that you're dragging around
         toDrag = Instantiate(new GameObject(), Input.mousePosition, transform.transform.rotation);
-        toDrag.transform.parent = GameObject.Find("Canvas").transform;
+        toDrag.transform.parent = GameObject.Find("DragCanvas").transform;
         toDrag.AddComponent<Image>();
         toDrag.GetComponent<Image>().color = new Color(1, 1, 1, 0.85f);
         toDrag.name = "To Drag";
