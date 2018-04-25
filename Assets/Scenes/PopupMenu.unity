@@ -532,6 +532,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114257290112293142, guid: 4834998f4aa0fef428a789e704a1989b,
+        type: 2}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 805467702}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4834998f4aa0fef428a789e704a1989b, type: 2}
   m_IsPrefabParent: 0
@@ -573,6 +578,10 @@ Prefab:
     - target: {fileID: 4422833062466420, guid: ed80e251ca308ea4b9c6c70a0bddfd62, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354137680948214, guid: ed80e251ca308ea4b9c6c70a0bddfd62, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed80e251ca308ea4b9c6c70a0bddfd62, type: 2}
@@ -1310,6 +1319,10 @@ Prefab:
       propertyPath: woodTimerCollision
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1232997859357268, guid: 9ff4223d1897b824283d8bb11a1159ca, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ff4223d1897b824283d8bb11a1159ca, type: 2}
   m_IsPrefabParent: 0
@@ -1373,7 +1386,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1306299770322948, guid: 389e858513ff7a24d9f6dc2f8801ec15, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 212267029862752782, guid: 389e858513ff7a24d9f6dc2f8801ec15,
         type: 2}
@@ -1489,7 +1502,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1875117473056848, guid: e2216061516bcb64c87cfa73ca805702, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1875117473056848, guid: e2216061516bcb64c87cfa73ca805702, type: 2}
       propertyPath: m_Layer
@@ -1615,7 +1628,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1689765370810492, guid: 096b69b713f61a04aab182f609a7db38, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 096b69b713f61a04aab182f609a7db38, type: 2}
@@ -1854,6 +1867,11 @@ Prefab:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 805467702}
+    - target: {fileID: 114767095191749008, guid: c3de9ca92c1d5254e927c90a52acb14f,
+        type: 2}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3de9ca92c1d5254e927c90a52acb14f, type: 2}
   m_IsPrefabParent: 0
@@ -1941,6 +1959,10 @@ Prefab:
     - target: {fileID: 4190777219606394, guid: dc7355aaabb3d6140a9642f61f8c3e1f, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1836029763304802, guid: dc7355aaabb3d6140a9642f61f8c3e1f, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc7355aaabb3d6140a9642f61f8c3e1f, type: 2}

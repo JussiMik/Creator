@@ -6,10 +6,9 @@ public class StatueCS : Structure
 {
     private bool addedToList;
 
-    protected virtual void Start()
+    protected override void Start()
     {
         base.Start();
-
         originalFaithTargetTime = faithTargetTime;
 
         normalSpeedConstructing = true;

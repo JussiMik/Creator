@@ -23,7 +23,6 @@ public class DevotionText : MonoBehaviour
     public void UpdateDevotion()
     {
         devotion = gameManager.GetComponent<GameManager>().devotion;
-        
         devotionText.text = devotion.ToString("F0");
     }
 }

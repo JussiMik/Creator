@@ -68,24 +68,9 @@ public class Structure : MonoBehaviour
     public string type;
     
 
-    void Start()
+    protected virtual void Start()
     {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-
-        /*
-        originalFaithTargetTime = faithTargetTime;
-
-        level = 1;
-        lvlChange = false;
-
-        constructingDone = false;
-
-        normalSpeedConstructing = true;
-
-        faithCollected = true;
-
-        ConstructingStructures();
-        */
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     protected virtual void Update()
@@ -116,45 +101,6 @@ public class Structure : MonoBehaviour
         if (faithTimer == true && faithCollected == true)
         {
             FaithTimer();
-        }
-
-        if (Input.GetMouseButtonDown(0) && gameManager.devotion >= gameManager.minDevotionAmountCollecting)
-        {
-            Vector2 pos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            RaycastHit2D hitInfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(pos), Vector2.zero);
-
-            if (hitInfo == true)
-            {
-                if (hitInfo.transform.tag == "FaithBuilding")
-                {
-                    clickedBuilding = hitInfo.transform.gameObject;
-
-                    if (clickedBuilding.GetComponent<Structure>().generatedFaith > 0)
-                    {
-                        clickedBuilding.GetComponent<Structure>().CollectFaith();
-                    }         
-                }
-
-                if (hitInfo.transform.tag == "WoodWorkshop")
-                {
-                    clickedBuilding = hitInfo.transform.gameObject;
-
-                    if (clickedBuilding.GetComponent<WoodWorkshopCS>().gatheredWood > 0)
-                    {
-                        clickedBuilding.GetComponent<WoodWorkshopCS>().CollectWood();
-                    }       
-                }
-
-                if (hitInfo.transform.tag == "Quarry")
-                {
-                    clickedBuilding = hitInfo.transform.gameObject;
-
-                    if (clickedBuilding.GetComponent<QuarryCS>().gatheredStone > 0)
-                    {
-                        clickedBuilding.GetComponent<QuarryCS>().CollectStone();
-                    }      
-                }
-            }
         }
     }
 
@@ -261,7 +207,7 @@ public class Structure : MonoBehaviour
 
         gameManager.faith += generatedFaith;
         generatedFaith = 0f;
-
+        gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().showPanel = false;
         faithCollected = true;
     }
 
