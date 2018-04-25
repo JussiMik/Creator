@@ -23,5 +23,13 @@ public class DormitoryCS : Structure
     protected override void Update()
     {
         base.Update();
+
+        if (constructingDone == true && addedToList == false)
+        {
+            //AddToList();
+            gameManager.GiveSanctityPoints(sanctityPointAmount);
+
+            addedToList = true;
+        }
     }
 }

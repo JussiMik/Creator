@@ -31,6 +31,8 @@ public class QuarryCS : Structure
     public float lvl2RockAmount;
     public float lvl3RockAmount;
 
+    private bool sanctityPointsGiven;
+
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
@@ -52,9 +54,16 @@ public class QuarryCS : Structure
     {
         base.Update();
 
-        if (constructingDone == true && rockTimerCollision == true)
+        if (constructingDone == true && sanctityPointsGiven == false)
         {
-            rockTimer = true;
+            gameManager.GiveSanctityPoints(sanctityPointAmount);
+
+            sanctityPointsGiven = true;
+
+            if (rockTimerCollision == true)
+            {
+                rockTimer = true;
+            } 
         }
 
         if (rockTimer == true && stoneCollected == true)

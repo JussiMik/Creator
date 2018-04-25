@@ -14,7 +14,18 @@ public class GameManager : MonoBehaviour
     public GameObject farm;
     public GameObject garden;
     public GameObject meditationRoom;
-    
+
+    [Space(10)]
+    public float sanctity;
+    [Space(10)]
+    [SerializeField]
+    private float sanctityPoints;
+    [Space(10)]
+    public float maxSanctityPoints;
+    [Space(10)]
+    public float requiredAmountForLvlUp;
+    public float requiredAmountIncrease;
+
     [Space (10)]
     public float faith;
 
@@ -194,7 +205,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    //Player gets sanctity points
+    public void GiveSanctityPoints(float amount)
+    {
+        sanctityPoints += amount;
+
+        if (sanctityPoints >= requiredAmountForLvlUp)
+        {
+            ChangePlayerLvl();
+
+            requiredAmountForLvlUp += requiredAmountIncrease;
+        }
+
+        if (sanctityPoints >= maxSanctityPoints)
+        {
+            sanctityPoints = maxSanctityPoints;
+        }
+    }
+
+    private void ChangePlayerLvl()
+    {
+        sanctity++;
+    }
+
     public void SpawnShrine()
     {
         GameObject spawnedShrine = Instantiate(shrine, new Vector3(transform.position.x - 3, transform.position.y + 4, transform.position.z), transform.rotation);

@@ -10,11 +10,15 @@ public class Structure : MonoBehaviour
 
     public GameObject clickedBuilding;
 
+    [Space(10)]
+    public float sanctityPointAmount;
+
+    [Space(10)]
     [SerializeField]
     private bool constructingTimer;
 
-    [SerializeField]
-    private float constructingTime;
+    [Space(10)]
+    public float constructingTime;
 
     [Space(10)]
     public float constructingCost;
@@ -53,8 +57,9 @@ public class Structure : MonoBehaviour
     public bool slowerFaithGeneration2;
     public bool slowerFaithGeneration3;
 
-    public bool lvlChange;
+    [Space(10)]
     public int level;
+    public bool lvlChange;
     public float lvlUpFaithIncrease;
     public int maxLevelAmount;
     public float levelUpCost;
@@ -151,49 +156,6 @@ public class Structure : MonoBehaviour
                 }
             }
         }
-             
-            /*
-
-        if (Input.GetMouseButtonDown(0) && gameManager.devotion >= gameManager.minDevotionAmountCollecting)
-        {
-            Vector2 origin = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-            RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.zero, 0f);
-
-            if (hit.transform.tag == "FaithBuilding")
-            {
-                if (generatedFaith > 0)
-                {
-                    Debug.Log("jou");
-                    CollectFaith();
-                }
-            }
-
-            if (hit.transform.tag == "WoodWorkshop")
-            {
-                woodWorkshopCS = GetComponent<WoodWorkshopCS>();
-
-                if (woodWorkshopCS.gatheredWood > 0)
-                {
-                    woodWorkshopCS.CollectWood();
-                }              
-            }
-
-            if (hit.transform.tag == "Quarry")
-            {
-                quarryCS = GetComponent<QuarryCS>();
-
-                if (quarryCS.gatheredStone > 0)
-                {
-                    quarryCS.CollectStone();
-                }
-            }
-            
-            if (hit.transform.tag == null)
-            {
-                Debug.Log("Tyhjä");
-            }
-        }
-        */
     }
 
     public void ConstructingStructures()
@@ -266,6 +228,7 @@ public class Structure : MonoBehaviour
         }
     }
 
+    //Generate faith
     public void GenerateFaith()
     {
         generatedFaith += faithAmount;
@@ -302,6 +265,7 @@ public class Structure : MonoBehaviour
         faithCollected = true;
     }
 
+    //Change structures level
     public void ChangeLevel()
     {
         gameManager.UseFaith(levelUpCost);
