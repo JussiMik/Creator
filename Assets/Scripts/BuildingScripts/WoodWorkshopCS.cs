@@ -32,7 +32,9 @@ public class WoodWorkshopCS : Structure
     public float lvl1TreeAmount;
     public float lvl2TreeAmount;
     public float lvl3TreeAmount;
-    
+
+    private bool sanctityPointsGiven;
+
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
@@ -55,9 +57,16 @@ public class WoodWorkshopCS : Structure
     {
         base.Update();
 
-        if (constructingDone == true && woodTimerCollision == true)
+        if (constructingDone == true && sanctityPointsGiven == false)
         {
-            woodTimer = true;
+            gameManager.GiveSanctityPoints(sanctityPointAmount);
+
+            sanctityPointsGiven = true;
+
+            if (woodTimerCollision == true)
+            {
+                woodTimer = true;
+            }
         }
 
         if (woodTimer == true && woodCollected == true)
@@ -78,8 +87,6 @@ public class WoodWorkshopCS : Structure
     {
         if (collision.gameObject.tag == "Tree")
         {
-            Debug.Log("Jou koskettaa");
-
             woodTimerCollision = true;
         }
     }

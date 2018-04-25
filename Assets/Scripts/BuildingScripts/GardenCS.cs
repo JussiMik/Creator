@@ -27,6 +27,7 @@ public class GardenCS : Structure
         if (constructingDone == true && addedToList == false)
         {
             AddToList();
+            gameManager.GiveSanctityPoints(sanctityPointAmount);
         }
     }
 
