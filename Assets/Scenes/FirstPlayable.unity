@@ -328,6 +328,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 114103758092629774, guid: d8dd92d68831e084384fd78f14aeddda,
         type: 2}
+      propertyPath: rockTileSprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114103758092629774, guid: d8dd92d68831e084384fd78f14aeddda,
+        type: 2}
       propertyPath: grassTileSprites.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -424,6 +429,45 @@ Prefab:
         type: 2}
       propertyPath: rndLakes
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114103758092629774, guid: d8dd92d68831e084384fd78f14aeddda,
+        type: 2}
+      propertyPath: roundCorners
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114103758092629774, guid: d8dd92d68831e084384fd78f14aeddda,
+        type: 2}
+      propertyPath: roundCornerBy
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114103758092629774, guid: d8dd92d68831e084384fd78f14aeddda,
+        type: 2}
+      propertyPath: rockTileSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 393e11cc710534b459c851f492fafdf9,
+        type: 3}
+    - target: {fileID: 114103758092629774, guid: d8dd92d68831e084384fd78f14aeddda,
+        type: 2}
+      propertyPath: rockTileSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300002, guid: 393e11cc710534b459c851f492fafdf9,
+        type: 3}
+    - target: {fileID: 114103758092629774, guid: d8dd92d68831e084384fd78f14aeddda,
+        type: 2}
+      propertyPath: rockTileSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300004, guid: 393e11cc710534b459c851f492fafdf9,
+        type: 3}
+    - target: {fileID: 114103758092629774, guid: d8dd92d68831e084384fd78f14aeddda,
+        type: 2}
+      propertyPath: rockTileSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300006, guid: 393e11cc710534b459c851f492fafdf9,
+        type: 3}
+    - target: {fileID: 114103758092629774, guid: d8dd92d68831e084384fd78f14aeddda,
+        type: 2}
+      propertyPath: tileHeight
+      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d8dd92d68831e084384fd78f14aeddda, type: 2}
@@ -667,7 +711,7 @@ MonoBehaviour:
   firstRound: 0
   currentColored: {x: 0, y: 0, z: 0}
   currentColoredXY: []
-  emptyColor: {r: 0, g: 0, b: 0, a: 0.522}
+  emptyColor: {r: 0, g: 0, b: 0, a: 1}
   draCanBuildColor: {r: 0.11724138, g: 1, b: 0, a: 0}
   draCantBuildColor: {r: 1, g: 0, b: 0, a: 0}
   buildingSize: {x: 2, y: 2}

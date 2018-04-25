@@ -216,13 +216,13 @@ public class LayoutManager : MonoBehaviour
     private void PlaceRockToPlace(Vector3 position, Vector2 gridPos)
     {
         {
-            GameObject newgrass = Instantiate(emptyGo, new Vector3(position.x, position.y, transform.position.z), transform.rotation);
-            newgrass.transform.parent = rockFolder.transform;
-            newgrass.name = "RockTile";
-            newgrass.GetComponent<SpriteRenderer>().sprite = rockTileSprites[Random.Range(0, grassTileSprites.Length)];
-            newgrass.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(gridPos) + 1;
-            newgrass.GetComponent<SpriteRenderer>().color = fullColor;
-            newgrass.GetComponent<SpriteRenderer>().sortingLayerName = "Ground";
+            GameObject newRock = Instantiate(emptyGo, new Vector3(position.x, position.y, transform.position.z), transform.rotation);
+            newRock.transform.parent = rockFolder.transform;
+            newRock.name = "RockTile";
+            newRock.GetComponent<SpriteRenderer>().sprite = rockTileSprites[Random.Range(0, rockTileSprites.Length)];
+            newRock.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(gridPos) + 1;
+            newRock.GetComponent<SpriteRenderer>().color = fullColor;
+            newRock.GetComponent<SpriteRenderer>().sortingLayerName = "Ground";
         }
     }
 
