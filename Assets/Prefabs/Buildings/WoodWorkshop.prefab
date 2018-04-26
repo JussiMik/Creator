@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114929901044437916}
   m_Layer: 12
   m_Name: WoodWorkshop
-  m_TagString: Building
+  m_TagString: WoodWorkshop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,7 +129,7 @@ MonoBehaviour:
   slowerFaithGeneration1: 0
   slowerFaithGeneration2: 0
   slowerFaithGeneration3: 0
-  level: 0
+  level: 1
   lvlChange: 0
   lvlUpFaithIncrease: 0
   maxLevelAmount: 0

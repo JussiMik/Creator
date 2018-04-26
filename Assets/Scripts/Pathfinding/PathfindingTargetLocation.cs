@@ -31,16 +31,20 @@ public class PathfindingTargetLocation : MonoBehaviour
     float newPathTimerMax;
 
     [Space(10)]
-    float newTargetLocationTimer;
+    public float newTargetLocationTimer;
     [SerializeField]
     float boundaryTimer;
     float setBoundaryTimer;
+    public bool drawOverlapCircle;
+    public float pathfindingOverlapCircle;
+    Collider2D checkLocation;
 
     void Start()
     {
         setBoundaryTimer = boundaryTimer;
         unwalkable = LayerMask.GetMask("Unwalkable");
         newTargetLocationTimer = Random.Range(newPathTimerMin, newPathTimerMax);
+        checkLocation = Physics2D.OverlapCircle(transform.position, pathfindingOverlapCircle);
     }
 
     void Update()
@@ -61,26 +65,37 @@ public class PathfindingTargetLocation : MonoBehaviour
         position = new Vector2(transform.position.x + newPosition, transform.position.y + newPosition);
         transform.position = position;
         newTargetLocationTimer = Random.Range(newPathTimerMin, newPathTimerMax);
+        checkLocation = Physics2D.OverlapCircle(transform.position, pathfindingOverlapCircle);
+        if (checkLocation == null)
+        {
+            moveToPosition = true;
+        }
     }
     void OnTriggerStay2D(Collider2D other)
     {
         // If target moves on building randomize new position
+        if (checkLocation == null)
+        {
+            moveToPosition = true;
+        }
         if (other.gameObject.tag == "Building")                                 // NEEDS UPDATING
         {
             moveToPosition = false;
             MoveToNewLocation();
         }
         // If target moves on boundary set position to 0,0 and start faster timer for new position
-        else if (other.gameObject.tag == "Boundary")
+        if (other.gameObject.tag == "Boundary")
         {
             useBoundaryTimer = true;
             position = new Vector2(0,0);
             transform.position = position;
         }
-        else
-        {
-            moveToPosition = true;
-        }
+
+    }
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, pathfindingOverlapCircle);
     }
     void FindNewTargetTimer()
     {

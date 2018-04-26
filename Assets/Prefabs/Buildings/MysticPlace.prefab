@@ -9,18 +9,19 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1071149037440394}
+  m_RootGameObject: {fileID: 1173936272439816}
   m_IsPrefabParent: 1
---- !u!1 &1071149037440394
+--- !u!1 &1173936272439816
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4915953961094750}
-  - component: {fileID: 212104646336442114}
-  - component: {fileID: 114595558867786664}
+  - component: {fileID: 4333223651142962}
+  - component: {fileID: 212444002140258722}
+  - component: {fileID: 114434509404870410}
+  - component: {fileID: 60832841267373804}
   m_Layer: 12
   m_Name: MysticPlace
   m_TagString: Building
@@ -28,25 +29,53 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4915953961094750
+--- !u!4 &4333223651142962
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1071149037440394}
+  m_GameObject: {fileID: 1173936272439816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.7425585, y: -0.96995205, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114595558867786664
+--- !u!60 &60832841267373804
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1173936272439816}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.4}
+    oldSize: {x: 3.883446, y: 2.7027028}
+    newSize: {x: 5.12, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.0094839735, y: 0.7626242}
+      - {x: -1.3781675, y: 0.04569467}
+      - {x: -0.021725655, y: -0.7089953}
+      - {x: 1.3133361, y: 0.024658998}
+--- !u!114 &114434509404870410
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1071149037440394}
+  m_GameObject: {fileID: 1173936272439816}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41c2df2fe5a97d746b6b72fb48358e37, type: 3}
@@ -54,12 +83,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sizeOnGrid: {x: 2, y: 2}
   pivot: {x: 0, y: 0}
---- !u!212 &212104646336442114
+--- !u!212 &212444002140258722
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1071149037440394}
+  m_GameObject: {fileID: 1173936272439816}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

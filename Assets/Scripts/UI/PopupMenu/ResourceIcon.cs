@@ -9,9 +9,12 @@ public class ResourceIcon : MonoBehaviour
     GameObject clickedObject;
     Image image;
     public string type;
-    public Sprite faithImage;
-    public Sprite devotionImage;
-    public Sprite productionImage;
+    public string name;
+    public Sprite faithSprite;
+    public Sprite devotionSprite;
+    public Sprite quarrySprite;
+    public Sprite workshopSprite;
+    public Sprite foodSprite;
 
     void Awake()
     {
@@ -26,17 +29,26 @@ public class ResourceIcon : MonoBehaviour
     {
         clickedObject = canvas.GetComponent<PopupMenu>().clickedObject;
         type = clickedObject.GetComponent<Structure>().type;
+        name = clickedObject.GetComponent<Structure>().name;
         if (type == "Faith")
         {
-            image.sprite = faithImage;
+            image.sprite = faithSprite;
         }
         if (type == "Devotion")
         {
-            image.sprite = devotionImage;
+            image.sprite = devotionSprite;
         }
-        if(type == "Production")
+        if(name == "Quarry")
         {
-            image.sprite = productionImage;
+            image.sprite = quarrySprite;
+        }
+        if(name == "Wood workshop")
+        {
+            image.sprite = workshopSprite;
+        }
+        if (type == "Food")
+        {
+            image.sprite = foodSprite;
         }
         if (type == null)
         {

@@ -9,31 +9,32 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1377270227970756}
+  m_RootGameObject: {fileID: 1784543766001276}
   m_IsPrefabParent: 1
---- !u!1 &1377270227970756
+--- !u!1 &1784543766001276
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4629229567523938}
-  - component: {fileID: 114998486377728318}
-  - component: {fileID: 114863472694741006}
+  - component: {fileID: 4443163258629840}
+  - component: {fileID: 114050202580726850}
+  - component: {fileID: 114014927048302880}
+  - component: {fileID: 114565402898517716}
   m_Layer: 0
   m_Name: Game Manager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4629229567523938
+--- !u!4 &4443163258629840
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1377270227970756}
+  m_GameObject: {fileID: 1784543766001276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -41,45 +42,82 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114863472694741006
+--- !u!114 &114014927048302880
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1377270227970756}
+  m_GameObject: {fileID: 1784543766001276}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d68b5571d8ea4444e9bfb17a18990571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  woodWorkshopCS: {fileID: 0}
+  quarryCS: {fileID: 0}
+  clickedBuilding: {fileID: 0}
+  sizeOnGrid: {x: 0, y: 0}
+  sanctityPointAmount: 0
   constructingTimer: 0
   constructingTime: 5
-  lowerSpeedConstructing: 0
+  constructingCost: 0
+  constructingTimeSlow1: 0
+  constructingTimeSlow2: 0
+  constructingTimeSlow3: 0
+  normalSpeedConstructing: 0
+  changedValue: 0
+  lowerSpeedConstructing1: 0
+  lowerSpeedConstructing2: 0
+  lowerSpeedConstructing3: 0
   constructingDone: 0
-  lvlChange: 0
-  level: 0
-  maxLevelAmount: 3
-  faithAmount: 2
   generatedFaith: 0
+  faithAmount: 2
   maxFaithAmount: 4
   faithMultiplier: 0
-  gameManager: {fileID: 0}
---- !u!114 &114998486377728318
+  faithCollected: 0
+  faithTimer: 0
+  faithTargetTime: 0
+  originalFaithTargetTime: 0
+  defaultFaithGeneration: 0
+  slowerFaithGeneration1: 0
+  slowerFaithGeneration2: 0
+  slowerFaithGeneration3: 0
+  level: 0
+  lvlChange: 0
+  lvlUpFaithIncrease: 0
+  maxLevelAmount: 3
+  levelUpCost: 0
+  name: 
+  type: 
+--- !u!114 &114050202580726850
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1377270227970756}
+  m_GameObject: {fileID: 1784543766001276}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6c66a93416e89a4891e8e0ed33f4cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   monk: {fileID: 1593562265877594, guid: f73b398545c4f6c4a85c6bcd97b1f284, type: 2}
-  generatedFaith: 0
+  shrine: {fileID: 0}
+  statue: {fileID: 0}
+  farm: {fileID: 0}
+  garden: {fileID: 0}
+  meditationRoom: {fileID: 0}
+  sanctity: 0
+  sanctityPoints: 0
+  maxSanctityPoints: 0
+  requiredAmountForLvlUp: 0
+  requiredAmountIncrease: 0
   faith: 20
+  wood: 0
+  stone: 0
   devotion: 1000
   maxDevotionAmount: 1000
+  minDevotionAmountCollecting: 0
   devotionDecrease: 0
   devotionChunkDecreaseAmount: 100
   devotionDecreaseMp1: 0
@@ -88,11 +126,6 @@ MonoBehaviour:
   devotionIncrease: 0
   devotionChunkIncreaseAmount: 50
   devotionIncreaseMp1: 0
-  faithTimer: 0
-  faithTargetTime: 10
-  slowerFaithGeneration1: 0
-  slowerFaithGeneration2: 0
-  slowerFaithGeneration3: 0
   faithBuildings: []
   farms: []
   gardens: []
@@ -103,3 +136,19 @@ MonoBehaviour:
   monkFaithMultiplierSlow1: 1.4
   monkFaithMultiplierSlow2: 1.3
   monkFaithMultiplierSlow3: 1.2
+  faithResourceTracker: {fileID: 0}
+--- !u!114 &114565402898517716
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1784543766001276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d18980276160fbf4aab5c2da0e32aeb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupMenu: {fileID: 0}
+  gameManager: {fileID: 0}
+  clickedBuilding: {fileID: 0}
+  showPanel: 0

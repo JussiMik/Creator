@@ -60,7 +60,6 @@ public class CollectResourcesAndOpenPanelInput : MonoBehaviour
                 }
                 if (showPanel == true)
                 {
-                    Debug.Log("Herpderp");
                     popupMenu.PanelStuff();
                 }
                 showPanel = true;

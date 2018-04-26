@@ -635,6 +635,78 @@ Prefab:
       propertyPath: showPanel
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114760250645887062, guid: 80eee40d0ce41ea43802cc3b09facabe,
+        type: 2}
+      propertyPath: faithImage
+      value: 
+      objectReference: {fileID: 21300000, guid: fba3c22329113084888b2b87ec9a9f1c,
+        type: 3}
+    - target: {fileID: 114760250645887062, guid: 80eee40d0ce41ea43802cc3b09facabe,
+        type: 2}
+      propertyPath: devotionImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 089b9bbe4d1bafc4ba32a2994ee7db6b,
+        type: 3}
+    - target: {fileID: 114760250645887062, guid: 80eee40d0ce41ea43802cc3b09facabe,
+        type: 2}
+      propertyPath: faithSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fba3c22329113084888b2b87ec9a9f1c,
+        type: 3}
+    - target: {fileID: 114760250645887062, guid: 80eee40d0ce41ea43802cc3b09facabe,
+        type: 2}
+      propertyPath: devotionSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 089b9bbe4d1bafc4ba32a2994ee7db6b,
+        type: 3}
+    - target: {fileID: 114760250645887062, guid: 80eee40d0ce41ea43802cc3b09facabe,
+        type: 2}
+      propertyPath: quarrySprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 59b315eddff87e64c9d0f8821da71c20,
+        type: 3}
+    - target: {fileID: 114760250645887062, guid: 80eee40d0ce41ea43802cc3b09facabe,
+        type: 2}
+      propertyPath: workshopSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a7ae4457b33ea3e4192a400edfe07805,
+        type: 3}
+    - target: {fileID: 114040168441080352, guid: 80eee40d0ce41ea43802cc3b09facabe,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114040168441080352, guid: 80eee40d0ce41ea43802cc3b09facabe,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114040168441080352, guid: 80eee40d0ce41ea43802cc3b09facabe,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224537198041280022, guid: 80eee40d0ce41ea43802cc3b09facabe,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 224537198041280022, guid: 80eee40d0ce41ea43802cc3b09facabe,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 224537198041280022, guid: 80eee40d0ce41ea43802cc3b09facabe,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 55.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114760250645887062, guid: 80eee40d0ce41ea43802cc3b09facabe,
+        type: 2}
+      propertyPath: foodSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 308c583a736f5914ba0370d6b31298b9,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 80eee40d0ce41ea43802cc3b09facabe, type: 2}
   m_IsPrefabParent: 0
@@ -675,6 +747,26 @@ MonoBehaviour:
   toBeColorized: []
   toDragPos: {x: 0, y: 0, z: 0}
   allow: 0
+--- !u!1 &1548623526 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1377270227970756, guid: 52db2628f8d703648aea031082b57de4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1937778284}
+--- !u!114 &1548623530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1548623526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d18980276160fbf4aab5c2da0e32aeb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupMenu: {fileID: 0}
+  gameManager: {fileID: 0}
+  clickedBuilding: {fileID: 0}
+  showPanel: 0
 --- !u!1001 &1937778284
 Prefab:
   m_ObjectHideFlags: 0
