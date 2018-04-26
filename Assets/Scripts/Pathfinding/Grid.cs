@@ -29,15 +29,15 @@ public class Grid : MonoBehaviour
         CreateGrid();
     }
 
-    /* private void Update()
+     private void Update()
      {
          if (Input.GetKeyDown("g"))
          {
              CreateGrid();
-             Debug.Log("Create new grid");
+             Debug.Log("Grid updated");
          }
      }
-     */
+     
 
 
     public int MaxSize

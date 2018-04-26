@@ -72,6 +72,12 @@ public class QuarryCS : Structure
         }
     }
 
+    public void UpdateValues()
+    {
+        totalRockAmount = transform.GetChild(0).GetComponent<QuarryRockCollider>().totalRockAmount;
+        rockTimerCollision = transform.GetChild(0).GetComponent<QuarryRockCollider>().rockTimerCollision;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Rock")

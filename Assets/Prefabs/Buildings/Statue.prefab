@@ -108,7 +108,7 @@ MonoBehaviour:
   slowerFaithGeneration1: 0
   slowerFaithGeneration2: 0
   slowerFaithGeneration3: 0
-  level: 0
+  level: 1
   lvlChange: 0
   lvlUpFaithIncrease: 0
   maxLevelAmount: 0

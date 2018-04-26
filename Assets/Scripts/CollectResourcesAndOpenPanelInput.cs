@@ -8,12 +8,14 @@ public class CollectResourcesAndOpenPanelInput : MonoBehaviour
     public GameManager gameManager;
     public GameObject clickedBuilding;
     public bool showPanel;
+    public LayerMask collisionMask;
     // Use this for initialization
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         popupMenu = GameObject.FindGameObjectWithTag("PopupMenuCanvas").GetComponent<PopupMenu>();
         showPanel = true;
+       // Physics2D.IgnoreLayerCollision(0, 13);
     }
 
     // Update is called once per frame
@@ -60,7 +62,6 @@ public class CollectResourcesAndOpenPanelInput : MonoBehaviour
                 }
                 if (showPanel == true)
                 {
-                    Debug.Log("Herpderp");
                     popupMenu.PanelStuff();
                 }
                 showPanel = true;

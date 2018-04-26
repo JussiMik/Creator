@@ -9,7 +9,7 @@ public class WoodWorkshopCS : Structure
     public bool woodTimer;
     public float woodTime;
     [SerializeField]
-    private bool woodTimerCollision;
+    public bool woodTimerCollision;
     [SerializeField]
     public float originalWoodTime;
 
@@ -26,7 +26,7 @@ public class WoodWorkshopCS : Structure
     [Space(10)]
     public float trees;
     [SerializeField]
-    private float totalTreeAmount;
+    public float totalTreeAmount;
 
     [Space(10)]
     public float lvl1TreeAmount;
@@ -75,20 +75,26 @@ public class WoodWorkshopCS : Structure
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*  private void OnTriggerEnter2D(Collider2D collision)
+      {
+          if (collision.gameObject.tag == "Tree")
+          {
+              totalTreeAmount++;
+          }
+      }
+
+      private void OnTriggerStay2D(Collider2D collision)
+      {
+          if (collision.gameObject.tag == "Tree")
+          {
+              woodTimerCollision = true;
+          }
+      }
+      */
+    public void UpdateValues()
     {
-        if (collision.gameObject.tag == "Tree")
-        {
-            totalTreeAmount++;
-        }
-    }
-    
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Tree")
-        {
-            woodTimerCollision = true;
-        }
+        totalTreeAmount = transform.GetChild(0).GetComponent<WorkshopTreeCollider>().totalTreeAmount;
+        woodTimerCollision = transform.GetChild(0).GetComponent<WorkshopTreeCollider>().woodTimerCollision;
     }
 
     public void WoodTimer()
