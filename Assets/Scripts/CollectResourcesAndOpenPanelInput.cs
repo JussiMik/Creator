@@ -30,41 +30,54 @@ public class CollectResourcesAndOpenPanelInput : MonoBehaviour
             {
                 Debug.Log(hitInfo.collider.name);
                 clickedBuilding = hitInfo.transform.gameObject;
-                GameObject.FindGameObjectWithTag("PopupMenuCanvas").GetComponent<PopupMenu>().clickedObject = hitInfo.transform.gameObject;
-                if (hitInfo.transform.tag == "FaithBuilding" && gameManager.devotion >= gameManager.minDevotionAmountCollecting)
+                if(clickedBuilding.layer == LayerMask.NameToLayer("Building"))
                 {
-                    clickedBuilding = hitInfo.transform.gameObject;
-
-                    if (clickedBuilding.GetComponent<Structure>().generatedFaith > 0)
+                    GameObject.FindGameObjectWithTag("PopupMenuCanvas").GetComponent<PopupMenu>().clickedObject = hitInfo.transform.gameObject;
+                    if (hitInfo.transform.tag == "FaithBuilding" && gameManager.devotion >= gameManager.minDevotionAmountCollecting)
                     {
-                        clickedBuilding.GetComponent<Structure>().CollectFaith();
+                        clickedBuilding = hitInfo.transform.gameObject;
+
+                        if (clickedBuilding.GetComponent<Structure>().generatedFaith > 0)
+                        {
+                            clickedBuilding.GetComponent<Structure>().CollectFaith();
+                        }
                     }
-                }
 
-                if (hitInfo.transform.tag == "WoodWorkshop" && gameManager.devotion >= gameManager.minDevotionAmountCollecting)
-                {
-                    clickedBuilding = hitInfo.transform.gameObject;
-
-                    if (clickedBuilding.GetComponent<WoodWorkshopCS>().gatheredWood > 0)
+                    if (hitInfo.transform.tag == "WoodWorkshop" && gameManager.devotion >= gameManager.minDevotionAmountCollecting)
                     {
-                        clickedBuilding.GetComponent<WoodWorkshopCS>().CollectWood();
+                        clickedBuilding = hitInfo.transform.gameObject;
+
+                        if (clickedBuilding.GetComponent<WoodWorkshopCS>().gatheredWood > 0)
+                        {
+                            clickedBuilding.GetComponent<WoodWorkshopCS>().CollectWood();
+                        }
                     }
-                }
 
-                if (hitInfo.transform.tag == "Quarry" && gameManager.devotion >= gameManager.minDevotionAmountCollecting)
-                {
-                    clickedBuilding = hitInfo.transform.gameObject;
-
-                    if (clickedBuilding.GetComponent<QuarryCS>().gatheredStone > 0)
+                    if (hitInfo.transform.tag == "Quarry" && gameManager.devotion >= gameManager.minDevotionAmountCollecting)
                     {
-                        clickedBuilding.GetComponent<QuarryCS>().CollectStone();
+                        clickedBuilding = hitInfo.transform.gameObject;
+
+                        if (clickedBuilding.GetComponent<QuarryCS>().gatheredStone > 0)
+                        {
+                            clickedBuilding.GetComponent<QuarryCS>().CollectStone();
+                        }
                     }
+                    if (hitInfo.transform.name == "MysticPlace")
+                    {
+                        clickedBuilding = hitInfo.transform.gameObject;
+
+                        if (clickedBuilding.GetComponent<Structure>().generatedFaith > 0)
+                        {
+                            clickedBuilding.GetComponent<Structure>().CollectFaith();
+                        }
+                    }
+                    if (showPanel == true)
+                    {
+                        popupMenu.PanelStuff();
+                    }
+                    showPanel = true;
                 }
-                if (showPanel == true)
-                {
-                    popupMenu.PanelStuff();
-                }
-                showPanel = true;
+               
             }
         }
     }

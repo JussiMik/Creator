@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212444002140258722}
   - component: {fileID: 114434509404870410}
   - component: {fileID: 60832841267373804}
+  - component: {fileID: 114846904060427160}
   m_Layer: 12
   m_Name: MysticPlace
   m_TagString: Building
@@ -83,6 +84,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sizeOnGrid: {x: 2, y: 2}
   pivot: {x: 0, y: 0}
+--- !u!114 &114846904060427160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1173936272439816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67313a1469251994f80f98d74e1d1ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  woodWorkshopCS: {fileID: 0}
+  quarryCS: {fileID: 0}
+  clickedBuilding: {fileID: 0}
+  sizeOnGrid: {x: 0, y: 0}
+  sanctityPointAmount: 0
+  constructingTimer: 0
+  constructingTime: 0
+  constructingCost: 0
+  constructingTimeSlow1: 0
+  constructingTimeSlow2: 0
+  constructingTimeSlow3: 0
+  normalSpeedConstructing: 0
+  changedValue: 0
+  lowerSpeedConstructing1: 0
+  lowerSpeedConstructing2: 0
+  lowerSpeedConstructing3: 0
+  constructingDone: 0
+  generatedFaith: 0
+  faithAmount: 5
+  maxFaithAmount: 0
+  faithMultiplier: 0
+  faithCollected: 0
+  faithTimer: 0
+  faithTargetTime: 10
+  originalFaithTargetTime: 10
+  defaultFaithGeneration: 0
+  slowerFaithGeneration1: 0
+  slowerFaithGeneration2: 0
+  slowerFaithGeneration3: 0
+  level: 0
+  lvlChange: 0
+  lvlUpFaithIncrease: 0
+  maxLevelAmount: 0
+  levelUpCost: 0
+  name: 
+  type: 
 --- !u!212 &212444002140258722
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     Structure structure;
     public GameObject monk;
-    
     public GameObject shrine;
     public GameObject statue;
     //public GameObject temple;
@@ -66,6 +65,8 @@ public class GameManager : MonoBehaviour
 
     public FaithText faithResourceTracker;
     MonkText monkResourceTracker;
+    
+    
 
     private void Awake()
     {
@@ -74,7 +75,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        GetResourceObjects();
         structure = gameObject.GetComponent<Structure>();
         minDevotionAmountCollecting = devotionChunkDecreaseAmount;
     }
@@ -114,19 +114,21 @@ public class GameManager : MonoBehaviour
             SpawnFarm();
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
+       /* if (Input.GetKeyDown(KeyCode.W))
         {
             SpawnNewMonk();
         }
+        */
     }
 
-    public void SpawnNewMonk()
+ /*   public void SpawnNewMonk()
     {
-        GameObject spawnedMonk = Instantiate(monk, new Vector3(transform.position.x + 2, transform.position.y + 2, transform.position.z), transform.rotation);
+        clickedObject = PopupCanvas.GetComponent<PopupMenu>().clickedObject;
+        GameObject spawnedMonk = Instantiate(monk, new Vector3(clickedObject.transform.position.x + 2 , clickedObject.transform.position.y + 2, clickedObject.transform.position.z), clickedObject.transform.rotation);
         monks.Add(spawnedMonk);
         monkResourceTracker.UpdateMonkCount();
     }
-
+    */
     //Use collected faith for constructing and leveling up buildings
     public void UseFaith(float faithUseAmount)
     {

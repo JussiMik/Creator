@@ -6,7 +6,9 @@ public class PopupMenu : MonoBehaviour
 {
     public GameObject clickedObject;
     public GameObject popupPanel;
-    GameManager gameManager;
+    public BuyMonkButton buyMonkButton;
+    public MonkCostText monkCostText;
+    GameObject gameManager;
     Structure structure;
     public float xOffset, yOffset;
     public string name;
@@ -17,28 +19,14 @@ public class PopupMenu : MonoBehaviour
     void Awake()
     {
         popupPanel = GameObject.Find("PopupPanel");
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
         structure = gameManager.GetComponent<Structure>();
         showPanel = true;
-    }
 
-    void Update()
-    {
-        /*  if (Input.GetMouseButtonDown(0))
-          {
-              Vector2 pos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-              RaycastHit2D hitInfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(pos), Vector2.zero);
-
-              if (hitInfo)
-              {
-                  if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Building") && showPanel == true)
-                  {
-                      clickedObject = hitInfo.transform.gameObject;
-                      //GetClickedObjectInfo(); */
+       // buyMonkButton = gameObject.transform.Find("BuyMonkButton").GetComponent<BuyMonkButton>();
+       // monkCostText = gameObject.transform.Find("MonkCostText").GetComponent<MonkCostText>();
 
     }
-
-
 
     public void PanelStuff()
     {
@@ -50,5 +38,15 @@ public class PopupMenu : MonoBehaviour
         Vector3 offset = new Vector3(xOffset, yOffset, 0);
         popupPanel.transform.position = Input.mousePosition + offset;
         popupPanel.GetComponent<PopupMenuPanel>().CheckPosition();
+        if(clickedObject.name != "MysticPlace")
+        {
+            buyMonkButton.gameObject.SetActive(false);
+            monkCostText.enabled = false;
+        }
+        if(clickedObject.name == "MysticPlace")
+        {
+            buyMonkButton.gameObject.SetActive(true);
+            monkCostText.enabled = true;
+        }
     }
 }
