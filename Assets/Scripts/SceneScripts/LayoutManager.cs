@@ -37,8 +37,8 @@ public class LayoutManager : MonoBehaviour
     public int gridHeigth;
     public int currentWidth = 0;
 
-    public int startWidth;
-    public int startHeight;
+    public int borderWidth;
+    public int borderHeight;
 
     public bool renderGrid = true;
 
@@ -142,6 +142,59 @@ public class LayoutManager : MonoBehaviour
                 }
             }
         }
+
+        //PLACE SURRONDING ROCKS
+        //Place on top width alinged lines
+        for (int rowNo = 0; rowNo < borderHeight; rowNo++)
+        {
+            for (int i = 0; i < gridWidth; i++)
+            {
+                if (!(positions[i, rowNo].z == 2))
+                {
+                    PlaceRockToPlace(new Vector3(positions[i, rowNo].x, positions[i, rowNo].y, transform.position.z), new Vector2(i, rowNo));
+                }
+            }
+        }
+
+        //Place on right height alinged lines
+        for (int rowNo = 0; rowNo < borderWidth; rowNo++)
+        {
+            for (int i = 0; i < gridHeigth; i++)
+            {
+                if (!(positions[rowNo, i].z == 2))
+                {
+                    PlaceRockToPlace(new Vector3(positions[rowNo, i].x, positions[rowNo, i].y, transform.position.z), new Vector2(rowNo, i));
+                }
+            }
+        }
+
+        //Place on left height alinged lines
+        for (int rowNo = gridWidth -1; rowNo > (gridWidth - borderWidth -1); rowNo--)
+        {
+            for (int i = 0; i < gridHeigth; i++)
+            {
+                if (!(positions[rowNo, i].z == 2))
+                {
+                    PlaceRockToPlace(new Vector3(positions[rowNo, i].x, positions[rowNo, i].y, transform.position.z), new Vector2(rowNo, i));
+                }
+            }
+        }
+
+        //Place on bottom width alinged lines
+        for (int rowNo = gridHeigth -1; rowNo > (gridHeigth - borderHeight -1); rowNo--)
+        {
+            for (int i = 0; i < gridWidth; i++)
+            {
+                if (!(positions[i, rowNo].z == 2))
+                {
+                    PlaceRockToPlace(new Vector3(positions[i, rowNo].x, positions[i, rowNo].y, transform.position.z), new Vector2(i, rowNo));
+                }
+            }
+        }
+
+
+
+
         SetTestGridActive(false);
         RandomGen();
         PlaceGrass();
@@ -223,6 +276,9 @@ public class LayoutManager : MonoBehaviour
             newRock.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(gridPos) + 1;
             newRock.GetComponent<SpriteRenderer>().color = fullColor;
             newRock.GetComponent<SpriteRenderer>().sortingLayerName = "Ground";
+            newRock.tag = "Boundary";
+            positions[(int)gridPos.x, (int)gridPos.y].z = 2;
+
         }
     }
 

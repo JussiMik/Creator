@@ -14,6 +14,7 @@ TagManager:
   - Panel
   - PopupMenuCanvas
   - GameManager
+  - MenuButton
   layers:
   - Default
   - TransparentFX
