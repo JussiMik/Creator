@@ -15,6 +15,7 @@ TagManager:
   - PopupMenuCanvas
   - GameManager
   - MonkTarget
+  - ShrineCollider
   layers:
   - Default
   - TransparentFX

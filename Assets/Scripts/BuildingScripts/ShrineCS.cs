@@ -6,6 +6,11 @@ public class ShrineCS : Structure
 {
     private bool addedToList;
 
+    [Space(10)]
+    public float totalShrineAmount;
+    [Space(10)]
+    public bool allowTempleConstructing;
+
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
@@ -40,5 +45,15 @@ public class ShrineCS : Structure
         gameManager.faithBuildings.Add(gameObject);
         gameManager.faithMultipliers.Add(faithMultiplier);
         addedToList = true;
+    }
+
+    public void UpdateValues()
+    {
+        totalShrineAmount = transform.GetChild(0).GetComponent<ShrineCollider>().totalShrineAmount;
+    }
+
+    public void UpdateBool()
+    {
+        allowTempleConstructing = transform.GetChild(0).GetComponent<ShrineCollider>().allowTempleConstructing;
     }
 }

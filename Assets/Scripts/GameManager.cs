@@ -229,12 +229,12 @@ public class GameManager : MonoBehaviour
 
     public void SpawnShrine()
     {
-        GameObject spawnedShrine = Instantiate(shrine, new Vector3(transform.position.x - 3, transform.position.y + 4, transform.position.z), transform.rotation);
+        GameObject spawnedShrine = Instantiate(shrine, new Vector3(transform.position.x - 3, transform.position.y + 2, transform.position.z), transform.rotation);
     }
     
     public void SpawnStatue()
     {
-        GameObject spawnedStatue = Instantiate(statue, new Vector3(transform.position.x + 1, transform.position.y - 2, transform.position.z), transform.rotation);
+        GameObject spawnedStatue = Instantiate(statue, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), transform.rotation);
     }
 
     /*

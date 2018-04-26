@@ -6,6 +6,8 @@ public class TempleCS : Structure
 {
     private bool addedToList;
 
+    public float radius = 10f;
+
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
@@ -22,7 +24,26 @@ public class TempleCS : Structure
         name = "Temple";
         type = "Faith";
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("ShrineCollider"))
+        {
+            Debug.Log("Koskettaa");
+
+            Collider[] colliders = Physics.OverlapSphere(collision.gameObject.transform.position, radius);
+            //Collider[] colliders = Physics2D.OverlapArea(collision.transform.position, collision.transform.position, radius);
+
+            foreach (Collider col in colliders)
+            {
+                if (col.gameObject.tag == "Shrine")
+                {
+                    Destroy(col.gameObject);
+                }
+            }
+        }
+    }
+
     protected override void Update()
     {
         base.Update();
