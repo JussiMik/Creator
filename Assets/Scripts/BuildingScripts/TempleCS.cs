@@ -6,7 +6,7 @@ public class TempleCS : Structure
 {
     private bool addedToList;
 
-    public float radius = 10f;
+    //public float radius = 10f;
 
     void Start()
     {
@@ -27,6 +27,13 @@ public class TempleCS : Structure
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "Shrine")
+        {
+            Debug.Log("Koskettaa");
+            Destroy(collision.gameObject);
+        }
+
+        /*
         if (collision.gameObject.CompareTag("ShrineCollider"))
         {
             Debug.Log("Koskettaa");
@@ -41,7 +48,7 @@ public class TempleCS : Structure
                     Destroy(col.gameObject);
                 }
             }
-        }
+        }*/
     }
 
     protected override void Update()

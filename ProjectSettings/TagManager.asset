@@ -16,6 +16,7 @@ TagManager:
   - GameManager
   - MonkTarget
   - ShrineCollider
+  - Shrine
   layers:
   - Default
   - TransparentFX
