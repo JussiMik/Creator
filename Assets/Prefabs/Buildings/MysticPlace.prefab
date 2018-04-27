@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4333223651142962}
   - component: {fileID: 212444002140258722}
   - component: {fileID: 114434509404870410}
-  - component: {fileID: 60832841267373804}
+  - component: {fileID: 60540289590645054}
   - component: {fileID: 114846904060427160}
   m_Layer: 12
   m_Name: MysticPlace
@@ -43,7 +43,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &60832841267373804
+--- !u!60 &60540289590645054
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -59,7 +59,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.4}
-    oldSize: {x: 3.883446, y: 2.7027028}
+    oldSize: {x: 4, y: 2.783819}
     newSize: {x: 5.12, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -67,10 +67,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.0094839735, y: 0.7626242}
-      - {x: -1.3781675, y: 0.04569467}
-      - {x: -0.021725655, y: -0.7089953}
-      - {x: 1.3133361, y: 0.024658998}
+    - - {x: -0.054784775, y: -0.7365086}
+      - {x: 1.3269901, y: 0.043885827}
+      - {x: -0.013223648, y: 0.8004888}
+      - {x: -1.392561, y: 0.06767094}
 --- !u!114 &114434509404870410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -100,22 +100,23 @@ MonoBehaviour:
   quarryCS: {fileID: 0}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 0, y: 0}
-  sanctityPointAmount: 0
-  sanctityLevelUpReward: 0
+  sanctityPointsOnConsturction: 0
+  sanctityPointsOnLevelup: 0
   constructingTimer: 0
   constructingTime: 0
   faithCost: 100
   woodCost: 0
   stoneCost: 0
-  constructingTimeSlow1: 0
-  constructingTimeSlow2: 0
-  constructingTimeSlow3: 0
+  normalSpeedConstructingMp: 0
+  lowerSpeedConstructingMp1: 0
+  lowerSpeedConstructingMp2: 0
+  lowerSpeedConstructingMp3: 0
   normalSpeedConstructing: 0
-  changedValue: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0
   lowerSpeedConstructing3: 0
   constructingDone: 0
+  changedValue: 0
   generatedFaith: 0
   faithAmount: 5
   maxFaithAmount: 0

@@ -13,6 +13,7 @@ public class PopupMenu : MonoBehaviour
     public float xOffset, yOffset;
     public string name;
     public string type;
+    public string clickedObjectName;
     public int level;
     public int levelupCost;
     public bool showPanel;
@@ -22,9 +23,9 @@ public class PopupMenu : MonoBehaviour
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
         structure = gameManager.GetComponent<Structure>();
         showPanel = true;
-
-       // buyMonkButton = gameObject.transform.Find("BuyMonkButton").GetComponent<BuyMonkButton>();
-       // monkCostText = gameObject.transform.Find("MonkCostText").GetComponent<MonkCostText>();
+        clickedObjectName = structure.name;
+        // buyMonkButton = gameObject.transform.Find("BuyMonkButton").GetComponent<BuyMonkButton>();
+        // monkCostText = gameObject.transform.Find("MonkCostText").GetComponent<MonkCostText>();
 
     }
 
@@ -38,12 +39,12 @@ public class PopupMenu : MonoBehaviour
         Vector3 offset = new Vector3(xOffset, yOffset, 0);
         popupPanel.transform.position = Input.mousePosition + offset;
         popupPanel.GetComponent<PopupMenuPanel>().CheckPosition();
-        if(clickedObject.name != "MysticPlace")
+        if(clickedObjectName != "MysticPlace")
         {
             buyMonkButton.gameObject.SetActive(false);
             monkCostText.enabled = false;
         }
-        if(clickedObject.name == "MysticPlace")
+        if(clickedObjectName == "MysticPlace")
         {
             buyMonkButton.gameObject.SetActive(true);
             monkCostText.enabled = true;

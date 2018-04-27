@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4508075497322598}
   - component: {fileID: 212809761474534424}
-  - component: {fileID: 61966764584237072}
+  - component: {fileID: 60884686366902698}
   - component: {fileID: 50769514224919958}
   - component: {fileID: 114504866947670604}
   m_Layer: 12
@@ -38,9 +38,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4296720088501730}
-  - component: {fileID: 61982808962661606}
   - component: {fileID: 50355422494978278}
   - component: {fileID: 114544871669537822}
+  - component: {fileID: 60139981964651628}
   m_Layer: 2
   m_Name: TreeCollider
   m_TagString: Untagged
@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1632218740180484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.02, y: -0.92, z: 0}
+  m_LocalPosition: {x: 12.069591, y: -2.4361644, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4296720088501730}
@@ -115,8 +115,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!61 &61966764584237072
-BoxCollider2D:
+--- !u!60 &60139981964651628
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1900569145022794}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.35}
+    oldSize: {x: 2, y: 1.6993244}
+    newSize: {x: 4, y: 3.3986487}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.0069999695, y: -0.8698592}
+      - {x: 1.3236485, y: -0.09960079}
+      - {x: -0.022729874, y: 0.67798233}
+      - {x: -1.3190536, y: -0.08803177}
+--- !u!60 &60884686366902698
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -131,40 +159,18 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.9020271, y: 2.7195945}
+    oldSize: {x: 2, y: 1.3939394}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
---- !u!61 &61982808962661606
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1900569145022794}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0017163306, y: -0.00000008940697}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.4748241, y: 0.45079625}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.015644073, y: -0.44997835}
+      - {x: 0.6450348, y: -0.062333584}
+      - {x: 0.018678665, y: 0.32095337}
+      - {x: -0.62800026, y: -0.07768965}
 --- !u!114 &114504866947670604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -181,22 +187,23 @@ MonoBehaviour:
   quarryCS: {fileID: 0}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
-  sanctityPointAmount: 12
-  sanctityLevelUpReward: 0
+  sanctityPointsOnConsturction: 0
+  sanctityPointsOnLevelup: 0
   constructingTimer: 0
   constructingTime: 20
   faithCost: 0
   woodCost: 0
   stoneCost: 0
-  constructingTimeSlow1: 0
-  constructingTimeSlow2: 0
-  constructingTimeSlow3: 0
+  normalSpeedConstructingMp: 0
+  lowerSpeedConstructingMp1: 0
+  lowerSpeedConstructingMp2: 0
+  lowerSpeedConstructingMp3: 0
   normalSpeedConstructing: 0
-  changedValue: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0
   lowerSpeedConstructing3: 0
   constructingDone: 0
+  changedValue: 0
   generatedFaith: 0
   faithAmount: 0
   maxFaithAmount: 0

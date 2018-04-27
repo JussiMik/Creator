@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4205692062986032}
   - component: {fileID: 212648406609876690}
+  - component: {fileID: 60440308234321026}
   - component: {fileID: 114257290112293142}
-  - component: {fileID: 61608338079898600}
   m_Layer: 12
   m_Name: Statue
   m_TagString: FaithBuilding
@@ -36,14 +36,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1957332227456408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.94556, y: -31.815458, z: 0}
+  m_LocalPosition: {x: 19.78289, y: -4.595141, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61608338079898600
-BoxCollider2D:
+--- !u!60 &60440308234321026
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -54,19 +54,22 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.001705166}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.9020271, y: 2.7195945}
+    oldSize: {x: 2, y: 1.3939394}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.14976901, y: 0.14294836}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.010717392, y: -0.47212648}
+      - {x: 0.6691532, y: -0.08569288}
+      - {x: 0.00069618225, y: 0.30261087}
+      - {x: -0.69119644, y: -0.072518826}
 --- !u!114 &114257290112293142
 MonoBehaviour:
   m_ObjectHideFlags: 1
