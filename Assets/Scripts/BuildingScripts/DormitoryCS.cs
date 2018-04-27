@@ -5,7 +5,7 @@ using UnityEngine;
 public class DormitoryCS : Structure
 {
     private bool addedToList;
-
+    public int addedMonkSlots;
     protected override void Start()
     {
         base.Start();
@@ -25,9 +25,12 @@ public class DormitoryCS : Structure
         if (constructingDone == true && addedToList == false)
         {
             //AddToList();
-            gameManager.GiveSanctityPoints(sanctityPointAmount);
-
+            gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
+            gameManager.monkSlots += addedMonkSlots;
             addedToList = true;
         }
+
+
     }
+
 }

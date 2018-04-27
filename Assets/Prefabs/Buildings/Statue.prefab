@@ -83,22 +83,23 @@ MonoBehaviour:
   quarryCS: {fileID: 0}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
-  sanctityPointAmount: 5
-  sanctityLevelUpReward: 10
+  sanctityPointsOnConsturction: 5
+  sanctityPointsOnLevelup: 10
   constructingTimer: 0
   constructingTime: 10
   faithCost: 10
   woodCost: 10
   stoneCost: 10
-  constructingTimeSlow1: 0
-  constructingTimeSlow2: 0
-  constructingTimeSlow3: 0
+  normalSpeedConstructingMp: 0
+  lowerSpeedConstructingMp1: 0
+  lowerSpeedConstructingMp2: 0
+  lowerSpeedConstructingMp3: 0
   normalSpeedConstructing: 0
-  changedValue: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0
   lowerSpeedConstructing3: 0
   constructingDone: 0
+  changedValue: 0
   generatedFaith: 0
   faithAmount: 2
   maxFaithAmount: 0

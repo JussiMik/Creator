@@ -43,9 +43,8 @@ public class MysticPlaceCS : Structure
     }
     public void SpawnNewMonk()
     {
-        Debug.Log(monkFaithCosts.Length);
         clickedBuilding = gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().clickedBuilding;
-        if (gameManager.faith >= monkFaithCosts[monksPurchased])
+        if (gameManager.faith >= monkFaithCosts[monksPurchased] && gameManager.monks.Count < gameManager.monkSlots)
         {
 
             gameManager.UseResources(monkFaithCosts[monksPurchased], 0, 0);

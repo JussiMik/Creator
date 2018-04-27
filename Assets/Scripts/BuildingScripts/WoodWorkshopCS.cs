@@ -58,7 +58,7 @@ public class WoodWorkshopCS : Structure
 
         if (constructingDone == true && sanctityPointsGiven == false)
         {
-            gameManager.GiveSanctityPoints(sanctityPointAmount);
+            gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
 
             sanctityPointsGiven = true;
 

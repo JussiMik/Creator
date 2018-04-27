@@ -120,6 +120,7 @@ MonoBehaviour:
   stoneLevelUpCost: 0
   name: 
   type: 
+  addedMonkSlots: 5
 --- !u!212 &212605180961649994
 SpriteRenderer:
   m_ObjectHideFlags: 1

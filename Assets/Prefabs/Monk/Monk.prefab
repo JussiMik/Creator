@@ -163,12 +163,10 @@ MonoBehaviour:
   unwalkable:
     serializedVersion: 2
     m_Bits: 4096
-  MovementRange: 10
   newPathTimerMin: 4
   newPathTimerMax: 15
   newTargetLocationTimer: 0
   boundaryTimer: 2
-  drawOverlapCircle: 0
   pathfindingOverlapCircle: 0.3
 --- !u!114 &114510126755378382
 MonoBehaviour:
@@ -189,6 +187,10 @@ MonoBehaviour:
   speed: 1
   movementCheckDistance: 4
   gameManager: {fileID: 0}
+  goodMonkAndFarmRatio: 4
+  badMonkAndFarmRatio75: 5.7
+  badMonkAndFarmRatio50: 8
+  badMonkAndFarmRatio25: 13.2
 --- !u!212 &212391985801830276
 SpriteRenderer:
   m_ObjectHideFlags: 1

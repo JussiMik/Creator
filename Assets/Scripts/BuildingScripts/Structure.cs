@@ -12,8 +12,8 @@ public class Structure : MonoBehaviour
 
     public Vector2 sizeOnGrid;
     [Space(10)]
-    public float sanctityPointAmount;
-    public float sanctityLevelUpReward;
+    public float sanctityPointsOnConsturction;
+    public float sanctityPointsOnLevelup;
 
     [Space(10)]
     [SerializeField]
@@ -28,17 +28,20 @@ public class Structure : MonoBehaviour
     public float stoneCost;
 
     [Space(10)]
-    public float constructingTimeSlow1;
-    public float constructingTimeSlow2;
-    public float constructingTimeSlow3;
+    public float normalSpeedConstructingMp;
+    public float lowerSpeedConstructingMp1;
+    public float lowerSpeedConstructingMp2;
+    public float lowerSpeedConstructingMp3;
 
+    [Space(10)]
     public bool normalSpeedConstructing;
-    public bool changedValue;
     public bool lowerSpeedConstructing1;
     public bool lowerSpeedConstructing2;
     public bool lowerSpeedConstructing3;
 
     public bool constructingDone;
+
+    public bool changedValue;
 
     [Space(10)]
     public float generatedFaith;
@@ -89,15 +92,15 @@ public class Structure : MonoBehaviour
             ConstructingTimer();
         }
 
-        if (gameManager.devotionDecreaseMp1 == true)
+        if (gameManager.devotionDecrease1 == true)
         {
             lowerSpeedConstructing1 = true;
         }
-        if (gameManager.devotionDecreaseMp2 == true)
+        if (gameManager.devotionDecrease2 == true)
         {
             lowerSpeedConstructing2 = true;
         }
-        if (gameManager.devotionDecreaseMp3 == true)
+        if (gameManager.devotionDecrease3 == true)
         {
             lowerSpeedConstructing3 = true;
         }
@@ -124,20 +127,20 @@ public class Structure : MonoBehaviour
     {
         if (normalSpeedConstructing == true)
         {
-            constructingTime -= Time.deltaTime * 4;
+            constructingTime -= Time.deltaTime * normalSpeedConstructingMp;
         }
 
         if (lowerSpeedConstructing1 == true)
         {
             normalSpeedConstructing = false;
-            constructingTime -= Time.deltaTime * 3;
+            constructingTime -= Time.deltaTime * lowerSpeedConstructingMp1;
         }
 
         if (lowerSpeedConstructing2 == true)
         {
             normalSpeedConstructing = false;
             lowerSpeedConstructing1 = false;
-            constructingTime -= Time.deltaTime * 2;
+            constructingTime -= Time.deltaTime * lowerSpeedConstructingMp2;
         }
 
         if (lowerSpeedConstructing3 == true)
@@ -229,7 +232,7 @@ public class Structure : MonoBehaviour
         {
             if (level < maxLevelAmount)
             {
-                gameManager.GiveSanctityPoints(sanctityLevelUpReward);
+                gameManager.GiveSanctityPoints(sanctityPointsOnLevelup);
             }
 
             faithAmount += lvlUpFaithIncrease;

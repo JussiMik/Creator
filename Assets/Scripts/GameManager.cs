@@ -40,15 +40,25 @@ public class GameManager : MonoBehaviour
     public float maxDevotionAmount;
     public float minDevotionAmountCollecting;
 
-    public bool devotionDecrease;
+    [Space(10)]
     public float devotionChunkDecreaseAmount;
-    public bool devotionDecreaseMp1;
-    public bool devotionDecreaseMp2;
-    public bool devotionDecreaseMp3;
+    [Space(10)]
+    public float devotionDecreaseMp1;
+    public float devotionDecreaseMp2;
+    public float devotionDecreaseMp3;
+    [Space(10)]
+    public bool devotionDecrease;
+    public bool devotionDecrease1;
+    public bool devotionDecrease2;
+    public bool devotionDecrease3;
 
-    public bool devotionIncrease;
+    [Space(10)]
     public float devotionChunkIncreaseAmount;
-    public bool devotionIncreaseMp1;
+    [Space(10)]
+    public bool devotionIncrease;  
+    public bool devotionIncrease1;
+    public bool devotionIncrease2;
+    public bool devotionIncrease3;
 
     [Space(10)]
     public List<GameObject> faithBuildings = new List<GameObject>();
@@ -68,7 +78,7 @@ public class GameManager : MonoBehaviour
     StoneText stoneResourceTracker;
     MonkText monkResourceTracker;
 
-
+    public int monkSlots;
 
     private void Awake()
     {
@@ -165,20 +175,20 @@ public class GameManager : MonoBehaviour
     {
         devotion -= Time.deltaTime;
 
-        if (devotionDecreaseMp1 == true)
+        if (devotionDecrease1 == true)
         {
             structure.changedValue = false;
-            devotion -= Time.deltaTime * 2;
+            devotion -= Time.deltaTime * devotionDecreaseMp1;
         }
-        if (devotionDecreaseMp2 == true)
+        if (devotionDecrease2 == true)
         {
             structure.changedValue = false;
-            devotion -= Time.deltaTime * 3;
+            devotion -= Time.deltaTime * devotionDecreaseMp2;
         }
-        if (devotionDecreaseMp3 == true)
+        if (devotionDecrease3 == true)
         {
             structure.changedValue = false;
-            devotion -= Time.deltaTime * 4;
+            devotion -= Time.deltaTime * devotionDecreaseMp3;
         }
 
         if (devotion <= 0)
@@ -203,7 +213,7 @@ public class GameManager : MonoBehaviour
     {
         devotion += Time.deltaTime;
 
-        if (devotionIncreaseMp1 == true)
+        if (devotionIncrease1 == true)
         {
             devotion += Time.deltaTime * 2;
         }
