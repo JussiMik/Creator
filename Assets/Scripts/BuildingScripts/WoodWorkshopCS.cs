@@ -35,8 +35,9 @@ public class WoodWorkshopCS : Structure
 
     private bool sanctityPointsGiven;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
         originalWoodTime = woodTime;
@@ -44,8 +45,6 @@ public class WoodWorkshopCS : Structure
         woodCollected = true;
         normalSpeedConstructing = true;
         ConstructingStructures();
-
-        gameManager.UseFaith(constructingCost);
 
         level = 1;
 

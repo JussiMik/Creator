@@ -16,8 +16,6 @@ public class StatueCS : Structure
         addedToList = false;
         ConstructingStructures();
 
-        gameManager.UseFaith(constructingCost);
-
         name = "Statue";
         type = "Faith";
     }

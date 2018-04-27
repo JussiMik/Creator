@@ -15,12 +15,7 @@ public class WoodText : MonoBehaviour
         InvokeRepeating("UpdateWood", 0.1f, 0.2f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-    void UpdateWood()
+    public void UpdateWood()
     {
         wood = gameManager.wood;
         woodText.text = wood.ToString();

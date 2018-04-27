@@ -51,9 +51,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4433914815474506}
-  - component: {fileID: 114240488187040060}
   - component: {fileID: 61218658418362278}
   - component: {fileID: 50710608010039352}
+  - component: {fileID: 114240488187040060}
   m_Layer: 2
   m_Name: Target
   m_TagString: Untagged
@@ -218,8 +218,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2118334017
-  m_SortingLayer: 1
+  m_SortingLayerID: 818483521
+  m_SortingLayer: 3
   m_SortingOrder: 150
   m_Sprite: {fileID: 21300000, guid: 308c583a736f5914ba0370d6b31298b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

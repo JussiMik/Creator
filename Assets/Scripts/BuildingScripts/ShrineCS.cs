@@ -6,8 +6,9 @@ public class ShrineCS : Structure
 {
     private bool addedToList;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
         originalFaithTargetTime = faithTargetTime;
@@ -17,8 +18,6 @@ public class ShrineCS : Structure
         addedToList = false;
         ConstructingStructures();
         
-        gameManager.UseFaith(constructingCost);
-
         name = "Shrine";
         type = "Faith";
     }

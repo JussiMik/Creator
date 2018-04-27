@@ -13,6 +13,7 @@ public class Structure : MonoBehaviour
     public Vector2 sizeOnGrid;
     [Space(10)]
     public float sanctityPointAmount;
+    public float sanctityLevelUpReward;
 
     [Space(10)]
     [SerializeField]
@@ -22,7 +23,9 @@ public class Structure : MonoBehaviour
     public float constructingTime;
 
     [Space(10)]
-    public float constructingCost;
+    public float faithCost;
+    public float woodCost;
+    public float stoneCost;
 
     [Space(10)]
     public float constructingTimeSlow1;
@@ -63,16 +66,25 @@ public class Structure : MonoBehaviour
     public bool lvlChange;
     public float lvlUpFaithIncrease;
     public int maxLevelAmount;
-    public float levelUpCost;
+    public float faithLevelUpCost;
+    public float woodLevelUpCost;
+    public float stoneLevelUpCost;
 
     public string name;
     public string type;
 
-    
+
 
     protected virtual void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
+      /*  gameManager.UseFaith(faithCost);
+        gameManager.UseWood(woodCost);
+        gameManager.UseStone(stoneCost);
+        */
+
+       gameManager.UseResources(faithCost, woodCost, stoneCost);
     }
 
     protected virtual void Update()
@@ -83,7 +95,7 @@ public class Structure : MonoBehaviour
         }
 
         if (gameManager.devotionDecreaseMp1 == true)
-        {   
+        {
             lowerSpeedConstructing1 = true;
         }
         if (gameManager.devotionDecreaseMp2 == true)
@@ -216,10 +228,15 @@ public class Structure : MonoBehaviour
     //Change structures level
     public void ChangeLevel()
     {
-        gameManager.UseFaith(levelUpCost);
+        gameManager.UseResources(faithLevelUpCost, woodLevelUpCost, stoneLevelUpCost);
 
         if (level >= 1)
         {
+            if (level < maxLevelAmount)
+            {
+                gameManager.GiveSanctityPoints(sanctityLevelUpReward);
+            }
+
             faithAmount += lvlUpFaithIncrease;
             level += 1;
 

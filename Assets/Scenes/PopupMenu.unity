@@ -153,7 +153,7 @@ Prefab:
     - target: {fileID: 224780085861637890, guid: c6b75fc9ba576f844a268507833d8451,
         type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 224780085861637890, guid: c6b75fc9ba576f844a268507833d8451,
         type: 2}
@@ -271,7 +271,7 @@ Prefab:
     - target: {fileID: 224682341739368194, guid: c3de9ca92c1d5254e927c90a52acb14f,
         type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 224682341739368194, guid: c3de9ca92c1d5254e927c90a52acb14f,
         type: 2}
@@ -615,9 +615,12 @@ MonoBehaviour:
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 0, y: 0}
   sanctityPointAmount: 0
+  sanctityLevelUpReward: 0
   constructingTimer: 0
   constructingTime: 0
-  constructingCost: 0
+  faithCost: 0
+  woodCost: 0
+  stoneCost: 0
   constructingTimeSlow1: 0
   constructingTimeSlow2: 0
   constructingTimeSlow3: 0
@@ -643,11 +646,20 @@ MonoBehaviour:
   lvlChange: 0
   lvlUpFaithIncrease: 0
   maxLevelAmount: 0
-  levelUpCost: 0
+  faithLevelUpCost: 0
+  woodLevelUpCost: 0
+  stoneLevelUpCost: 0
   name: 
   type: 
+  monksPurchased: 0
   monk: {fileID: 1593562265877594, guid: f73b398545c4f6c4a85c6bcd97b1f284, type: 2}
   monkText: {fileID: 498950762}
+  monkFaithCosts:
+  - 100
+  - 200
+  - 300
+  - 400
+  - 500
 --- !u!1001 &729695246
 Prefab:
   m_ObjectHideFlags: 0
@@ -685,7 +697,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4333223651142962, guid: c3ff45ff8b4e51440a3fbbc83c52154c, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114846904060427160, guid: c3ff45ff8b4e51440a3fbbc83c52154c, type: 2}
@@ -736,7 +748,7 @@ Prefab:
     - target: {fileID: 224745262112515886, guid: 80eee40d0ce41ea43802cc3b09facabe,
         type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224745262112515886, guid: 80eee40d0ce41ea43802cc3b09facabe,
         type: 2}
@@ -919,7 +931,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4443163258629840, guid: 52db2628f8d703648aea031082b57de4, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
@@ -936,6 +948,31 @@ Prefab:
       propertyPath: PopupCanvas
       value: 
       objectReference: {fileID: 1573594892}
+    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: faith
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: requiredAmountForLvlUp
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: requiredAmountIncrease
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: sanctity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: maxSanctityPoints
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52db2628f8d703648aea031082b57de4, type: 2}
   m_IsPrefabParent: 0
@@ -1164,8 +1201,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 1305812446}
+        m_MethodName: BuyMonk
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1174,7 +1211,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1305812448
@@ -1398,7 +1435,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1917828692
 Prefab:
@@ -1442,7 +1479,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4749513966076964, guid: d8dd92d68831e084384fd78f14aeddda, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114103758092629774, guid: d8dd92d68831e084384fd78f14aeddda,
         type: 2}
@@ -1567,45 +1604,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2117293479
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4803978389494360, guid: e2216061516bcb64c87cfa73ca805702, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 4.7240977
-      objectReference: {fileID: 0}
-    - target: {fileID: 4803978389494360, guid: e2216061516bcb64c87cfa73ca805702, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -0.80717504
-      objectReference: {fileID: 0}
-    - target: {fileID: 4803978389494360, guid: e2216061516bcb64c87cfa73ca805702, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4803978389494360, guid: e2216061516bcb64c87cfa73ca805702, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4803978389494360, guid: e2216061516bcb64c87cfa73ca805702, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4803978389494360, guid: e2216061516bcb64c87cfa73ca805702, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4803978389494360, guid: e2216061516bcb64c87cfa73ca805702, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4803978389494360, guid: e2216061516bcb64c87cfa73ca805702, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: e2216061516bcb64c87cfa73ca805702, type: 2}
-  m_IsPrefabParent: 0

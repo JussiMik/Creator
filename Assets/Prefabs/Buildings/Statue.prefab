@@ -84,9 +84,12 @@ MonoBehaviour:
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
   sanctityPointAmount: 5
+  sanctityLevelUpReward: 10
   constructingTimer: 0
   constructingTime: 10
-  constructingCost: 0
+  faithCost: 10
+  woodCost: 10
+  stoneCost: 10
   constructingTimeSlow1: 0
   constructingTimeSlow2: 0
   constructingTimeSlow3: 0
@@ -111,8 +114,10 @@ MonoBehaviour:
   level: 1
   lvlChange: 0
   lvlUpFaithIncrease: 0
-  maxLevelAmount: 0
-  levelUpCost: 0
+  maxLevelAmount: 2
+  faithLevelUpCost: 0
+  woodLevelUpCost: 0
+  stoneLevelUpCost: 0
   name: 
   type: 
 --- !u!212 &212648406609876690

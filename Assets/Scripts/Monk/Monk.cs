@@ -39,12 +39,13 @@ public class Monk : MonoBehaviour
 
     
     // DELET THIS when dormitory is done & move UpdateMonkCount();
-    public void SpawnNewMonk()
+  /*  public void SpawnNewMonk()
     {
         GameObject spawnedMonk = Instantiate(gameObject, new Vector3(transform.position.x + 2, transform.position.y + 2, transform.position.z), transform.rotation);
         gameManager.monks.Add(spawnedMonk);
 
     }
+    */
 
     void CheckFarmCount()
     {

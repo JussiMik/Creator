@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public float requiredAmountForLvlUp;
     public float requiredAmountIncrease;
 
-    [Space (10)]
+    [Space(10)]
     public float faith;
 
     [Space(10)]
@@ -63,10 +63,12 @@ public class GameManager : MonoBehaviour
     public float monkFaithMultiplierSlow2;
     public float monkFaithMultiplierSlow3;
 
-    public FaithText faithResourceTracker;
+    FaithText faithResourceTracker;
+    WoodText woodResourceTracker;
+    StoneText stoneResourceTracker;
     MonkText monkResourceTracker;
-    
-    
+
+
 
     private void Awake()
     {
@@ -91,46 +93,46 @@ public class GameManager : MonoBehaviour
             DevotionIncrease();
         }
 
-        
+
         if (Input.GetKeyDown(KeyCode.A))
         {
             SpawnShrine();
         }
-        
+
         if (Input.GetKeyDown(KeyCode.S))
         {
             SpawnStatue();
         }
 
-        
+
         if (Input.GetKeyDown(KeyCode.C))
         {
             SpawnGarden();
         }
-        
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             //SpawnGarden();
             SpawnFarm();
         }
 
-       /* if (Input.GetKeyDown(KeyCode.W))
-        {
-            SpawnNewMonk();
-        }
-        */
+        /* if (Input.GetKeyDown(KeyCode.W))
+         {
+             SpawnNewMonk();
+         }
+         */
     }
 
- /*   public void SpawnNewMonk()
-    {
-        clickedObject = PopupCanvas.GetComponent<PopupMenu>().clickedObject;
-        GameObject spawnedMonk = Instantiate(monk, new Vector3(clickedObject.transform.position.x + 2 , clickedObject.transform.position.y + 2, clickedObject.transform.position.z), clickedObject.transform.rotation);
-        monks.Add(spawnedMonk);
-        monkResourceTracker.UpdateMonkCount();
-    }
-    */
+    /*   public void SpawnNewMonk()
+       {
+           clickedObject = PopupCanvas.GetComponent<PopupMenu>().clickedObject;
+           GameObject spawnedMonk = Instantiate(monk, new Vector3(clickedObject.transform.position.x + 2 , clickedObject.transform.position.y + 2, clickedObject.transform.position.z), clickedObject.transform.rotation);
+           monks.Add(spawnedMonk);
+           monkResourceTracker.UpdateMonkCount();
+       }
+       */
     //Use collected faith for constructing and leveling up buildings
-    public void UseFaith(float faithUseAmount)
+    public void UseResources(float faithUseAmount, float woodUseAmount, float stoneUseAmount)
     {
         faith -= faithUseAmount;
         faithResourceTracker.UpdateFaith();
@@ -140,8 +142,22 @@ public class GameManager : MonoBehaviour
             faith = 0;
         }
 
-    }
+        wood -= woodUseAmount;
+        woodResourceTracker.UpdateWood();
 
+        if (wood <= 0)
+        {
+            wood = 0;
+        }
+
+        stone -= stoneUseAmount;
+        stoneResourceTracker.UpdateStone();
+
+        if (stone <= 0)
+        {
+            stone = 0;
+        }
+    }
     //Devotion decreases slowly
     void DevotionDecrease()
     {
@@ -234,7 +250,7 @@ public class GameManager : MonoBehaviour
     {
         GameObject spawnedShrine = Instantiate(shrine, new Vector3(transform.position.x - 3, transform.position.y + 4, transform.position.z), transform.rotation);
     }
-    
+
     public void SpawnStatue()
     {
         GameObject spawnedStatue = Instantiate(statue, new Vector3(transform.position.x + 1, transform.position.y - 2, transform.position.z), transform.rotation);
@@ -254,7 +270,7 @@ public class GameManager : MonoBehaviour
             GameObject spawned = Instantiate(farm, new Vector3(transform.position.x + 5, transform.position.y - 2, transform.position.z), transform.rotation);
         }
     }
-    
+
     public void SpawnGarden()
     {
         GameObject spawned = Instantiate(garden, new Vector3(transform.position.x - 6, transform.position.y - 3, transform.position.z), transform.rotation);
@@ -264,5 +280,7 @@ public class GameManager : MonoBehaviour
     {
         monkResourceTracker = GameObject.Find("MonkText").GetComponent<MonkText>();
         faithResourceTracker = GameObject.Find("FaithText").GetComponent<FaithText>();
+        woodResourceTracker = GameObject.Find("WoodText").GetComponent<WoodText>();
+        stoneResourceTracker = GameObject.Find("StoneText").GetComponent<StoneText>();
     }
 }

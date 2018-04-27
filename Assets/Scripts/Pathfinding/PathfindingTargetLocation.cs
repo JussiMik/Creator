@@ -18,8 +18,8 @@ public class PathfindingTargetLocation : MonoBehaviour
     */
 
     [Range(0, 15f)]
-    [SerializeField]
-    float MovementRange;
+    float movementRangeHorizontal;
+    float movementRangeVertical;
     float newPosition;
 
     [Space(10)]
@@ -35,7 +35,6 @@ public class PathfindingTargetLocation : MonoBehaviour
     [SerializeField]
     float boundaryTimer;
     float setBoundaryTimer;
-    public bool drawOverlapCircle;
     public float pathfindingOverlapCircle;
     Collider2D checkLocation;
 
@@ -61,8 +60,9 @@ public class PathfindingTargetLocation : MonoBehaviour
     // Randomize position and timer
     void MoveToNewLocation()
     {
-        newPosition = Random.Range(-MovementRange, MovementRange);
-        position = new Vector2(transform.position.x + newPosition, transform.position.y + newPosition);
+        movementRangeHorizontal = Random.Range(-4f, 4f);
+        movementRangeVertical = Random.Range(-4f, 4f);
+        position = new Vector2(transform.position.x + movementRangeHorizontal, transform.position.y + movementRangeVertical);
         transform.position = position;
         newTargetLocationTimer = Random.Range(newPathTimerMin, newPathTimerMax);
         checkLocation = Physics2D.OverlapCircle(transform.position, pathfindingOverlapCircle);

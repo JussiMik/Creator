@@ -14,8 +14,6 @@ public class DormitoryCS : Structure
         addedToList = false;
         ConstructingStructures();
 
-        gameManager.UseFaith(constructingCost);
-
         name = "Dormitory";
         type = "Dormitory";
     }

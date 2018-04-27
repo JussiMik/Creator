@@ -33,7 +33,7 @@ public class CollectResourcesAndOpenPanelInput : MonoBehaviour
                 if(clickedBuilding.layer == LayerMask.NameToLayer("Building"))
                 {
                     GameObject.FindGameObjectWithTag("PopupMenuCanvas").GetComponent<PopupMenu>().clickedObject = hitInfo.transform.gameObject;
-                    if (hitInfo.transform.tag == "FaithBuilding" && gameManager.devotion >= gameManager.minDevotionAmountCollecting)
+                    if ((hitInfo.transform.tag == "FaithBuilding" || hitInfo.transform.tag == "Shrine") && gameManager.devotion >= gameManager.minDevotionAmountCollecting)
                     {
                         clickedBuilding = hitInfo.transform.gameObject;
 

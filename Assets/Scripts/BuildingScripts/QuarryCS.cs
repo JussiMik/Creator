@@ -33,8 +33,9 @@ public class QuarryCS : Structure
 
     private bool sanctityPointsGiven;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
         normalSpeedConstructing = true;
@@ -43,8 +44,6 @@ public class QuarryCS : Structure
         originalRockTime = rockTime;
 
         stoneCollected = true;
-
-        gameManager.UseFaith(constructingCost);
 
         name = "Quarry";
         type = "Production";

@@ -15,11 +15,6 @@ public class FaithText : MonoBehaviour
         InvokeRepeating("UpdateFaith", 0.1f, 0.2f);
     }
 
-    void Update()
-    {
-
-    }
-
     public void UpdateFaith()
     {
         faith = gameManager.faith;

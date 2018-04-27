@@ -8,20 +8,15 @@ public class StoneText : MonoBehaviour
     float stone;
     Text stoneText;
     GameManager gameManager;
-    // Use this for initialization
-    void Start()
+
+    void Awake()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         stoneText = gameObject.GetComponent<Text>();
-        InvokeRepeating("UpdateWood", 0.1f, 0.2f);
+        InvokeRepeating("UpdateStone", 0.1f, 0.2f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-    void UpdateWood()
+    public void UpdateStone()
     {
         stone = gameManager.stone;
         stoneText.text = stone.ToString();
