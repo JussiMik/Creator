@@ -6,8 +6,6 @@ public class TempleCS : Structure
 {
     private bool addedToList;
 
-    //public float radius = 10f;
-
     protected override void Start()
     {
         base.Start();
@@ -31,23 +29,6 @@ public class TempleCS : Structure
             Debug.Log("Koskettaa");
             Destroy(collision.gameObject);
         }
-
-        /*
-        if (collision.gameObject.CompareTag("ShrineCollider"))
-        {
-            Debug.Log("Koskettaa");
-
-            Collider[] colliders = Physics.OverlapSphere(collision.gameObject.transform.position, radius);
-            //Collider[] colliders = Physics2D.OverlapArea(collision.transform.position, collision.transform.position, radius);
-
-            foreach (Collider col in colliders)
-            {
-                if (col.gameObject.tag == "Shrine")
-                {
-                    Destroy(col.gameObject);
-                }
-            }
-        }*/
     }
 
     protected override void Update()

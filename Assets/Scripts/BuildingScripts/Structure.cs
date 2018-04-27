@@ -51,10 +51,11 @@ public class Structure : MonoBehaviour
     public float maxFaithAmount;
 
     public float faithMultiplier;
-
     public bool faithCollected;
 
+    [Space(10)]
     public bool faithTimer;
+    [Space(10)]
     public float faithTargetTime;
     public float originalFaithTargetTime;
 
