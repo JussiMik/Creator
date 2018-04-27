@@ -183,8 +183,15 @@ MonoBehaviour:
   sizeOnGrid: {x: 0, y: 0}
   sanctityPointAmount: 7
   constructingTimer: 0
+<<<<<<< HEAD
+  constructingTime: 30
+  faithCost: 10
+  woodCost: 20
+  stoneCost: 30000
+=======
   constructingTime: 20
   constructingCost: 100
+>>>>>>> feature/sanctity_and_testing
   constructingTimeSlow1: 0
   constructingTimeSlow2: 0
   constructingTimeSlow3: 0
@@ -210,7 +217,13 @@ MonoBehaviour:
   lvlChange: 0
   lvlUpFaithIncrease: 0
   maxLevelAmount: 0
+<<<<<<< HEAD
+  faithLevelUpCost: 0
+  woodLevelUpCost: 0
+  stoneLevelUpCost: 0
+=======
   levelUpCost: 0
+>>>>>>> feature/sanctity_and_testing
   name: 
   type: 
   totalShrineAmount: 0
