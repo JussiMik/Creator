@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StructMenu : MonoBehaviour {
+public class BuildingMenu : MonoBehaviour {
 
-    //Miracle
-    //Production
-
+  
     public GameObject[] buildingsPro;
     public GameObject[] buildingsUti;
-    public GameObject[] buildingButtons;
+
+    public List<GameObject> buildingButtons;
     public GameObject buildingMenuBlockPre;
     public GameObject buildingMenu;
 
     public Sprite gridSprite;
 
-    public int gridSizeX = 2;
-    public int gridSizeY = 2;
+    //public int gridSizeX = 2;
+    //public int gridSizeY = 2;
 
     public GameObject buildGrid;
 
@@ -29,6 +28,8 @@ public class StructMenu : MonoBehaviour {
 
     public GameObject worldNavigation;
 
+    public bool proActive;
+
     void Awake()
     {
         worldNavigation = GameObject.Find("WorldNavigation");
@@ -37,7 +38,19 @@ public class StructMenu : MonoBehaviour {
 
 
         //INSTANTIATE STRUCTURE MENU
-        buildingButtons = buildGrid.FindGameObjectsWithTag("MenuButton");
+
+        foreach (Transform child in buildGrid.transform) if (child.CompareTag("BuildingButton"))
+            {
+                buildingButtons.Add(child.gameObject);
+            }
+        for (int i = 0; i < buildingButtons.Count; i++)
+        {
+            buildingButtons[i].GetComponent<StructMenuBlock>().blockNo = i;
+        }
+       
+
+
+        ProducalToActive();
         //float blockWidth = buildingMenuBlockPre.GetComponent<RectTransform>().rect.width;
         //float openerWidth = gameObject.GetComponent<RectTransform>().rect.width;
 
@@ -71,7 +84,7 @@ public class StructMenu : MonoBehaviour {
 
         //}
 
-        
+
 
     }
 
@@ -84,6 +97,42 @@ public class StructMenu : MonoBehaviour {
     {
 
     }
+
+    public void ProducalToActive()
+    {
+        proActive = true;
+        for (int i = 0; i < buildingButtons.Count; i++)
+        {
+            if (buildingsPro.Length - 1  >= i )
+            {
+                buildingButtons[i].GetComponent<Image>().sprite = buildingsPro[i].GetComponent<SpriteRenderer>().sprite;
+            }
+            else
+            {
+                buildingButtons[i].GetComponent<Image>().sprite = gridSprite;
+            }
+            
+        }
+    }
+
+    public void UtilityToActive()
+    {
+        proActive = false;
+        for (int i = 0; i < buildingButtons.Count; i++)
+        {
+            if (buildingsUti.Length - 1 >= i)
+            {
+                buildingButtons[i].GetComponent<Image>().sprite = buildingsUti[i].GetComponent<SpriteRenderer>().sprite;
+            }
+            else
+            {
+                buildingButtons[i].GetComponent<Image>().sprite = gridSprite;
+            }
+
+        }
+    }
+
+
 
     public void PressStructureMenu()
     {
@@ -102,7 +151,15 @@ public class StructMenu : MonoBehaviour {
     }
     public void SelectToDrag(int blockNo)
     {
-        dragNDrop.ShowToDrag(buildingsPro[blockNo]);
+        if(proActive)
+        {
+            dragNDrop.ShowToDrag(buildingsPro[blockNo]);
+        }
+        else
+        {
+            dragNDrop.ShowToDrag(buildingsUti[blockNo]);
+        }
+
         HideStructMenu();
     }
     public void HideStructMenu()
