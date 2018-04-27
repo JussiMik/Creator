@@ -45,7 +45,7 @@ public class DragNDrop : MonoBehaviour
     void Start()
     {
         layoutManager = gameObject.GetComponent<LayoutManager>();
-        emptyColor = layoutManager.emptyGo.GetComponent<SpriteRenderer>().color;
+        emptyColor = layoutManager.emptyPre.GetComponent<SpriteRenderer>().color;
         worldNavigation = GameObject.Find("WorldNavigation");
 
 
@@ -125,6 +125,7 @@ public class DragNDrop : MonoBehaviour
 
     public void ShowToDrag(GameObject structure)
     {
+        buildingSize = structure.GetComponent<Structure>().sizeOnGrid;
         layoutManager.SetTestGridActive(true);
         curDraBuilding = structure;
         toDrag.GetComponent<Image>().sprite = structure.GetComponent<SpriteRenderer>().sprite;

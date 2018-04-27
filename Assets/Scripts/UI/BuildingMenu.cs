@@ -106,10 +106,12 @@ public class BuildingMenu : MonoBehaviour {
             if (buildingsPro.Length - 1  >= i )
             {
                 buildingButtons[i].GetComponent<Image>().sprite = buildingsPro[i].GetComponent<SpriteRenderer>().sprite;
+                buildingButtons[i].transform.Find("Text").gameObject.GetComponent<Text>().text = buildingsPro[i].name;
             }
             else
             {
                 buildingButtons[i].GetComponent<Image>().sprite = gridSprite;
+                buildingButtons[i].transform.Find("Text").gameObject.GetComponent<Text>().text = "Butt";
             }
             
         }
@@ -123,10 +125,12 @@ public class BuildingMenu : MonoBehaviour {
             if (buildingsUti.Length - 1 >= i)
             {
                 buildingButtons[i].GetComponent<Image>().sprite = buildingsUti[i].GetComponent<SpriteRenderer>().sprite;
+                buildingButtons[i].transform.Find("Text").gameObject.GetComponent<Text>().text = buildingsUti[i].name;
             }
             else
             {
                 buildingButtons[i].GetComponent<Image>().sprite = gridSprite;
+                buildingButtons[i].transform.Find("Text").gameObject.GetComponent<Text>().text = "Butt";
             }
 
         }

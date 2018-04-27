@@ -33,6 +33,12 @@ public class LayoutManager : MonoBehaviour
     public List<GameObject> lakes;
     public int rndLakes = 1;
 
+    public List<GameObject> trees;
+    public int rndTrees = 1;
+
+    public List<GameObject> rocks;
+    public int rndRocks = 1;
+
     public int gridWidth;
     public int gridHeigth;
     public int currentWidth = 0;
@@ -50,10 +56,11 @@ public class LayoutManager : MonoBehaviour
 
     public float tileCap;
 
-    public GameObject emptyGo;
-    public GameObject lakeGo;
-    public GameObject treeGo;
-    public GameObject centerGo;
+    public GameObject emptyPre;
+    public GameObject lakePre;
+    public GameObject treePre;
+    public GameObject rockPre;
+    public GameObject mysticPlace;
 
     //https://docs.unity3d.com/ScriptReference/GL.html
 
@@ -135,10 +142,10 @@ public class LayoutManager : MonoBehaviour
                 else
                 {
                     Vector3 newPos = new Vector3(positions[x, y].x, positions[x, y].y, transform.position.z);
-                    testGrid[x, y] = Instantiate(emptyGo, newPos, Quaternion.identity);
+                    testGrid[x, y] = Instantiate(emptyPre, newPos, Quaternion.identity);
                     testGrid[x, y].transform.parent = testGridFolder.transform;
                     testGrid[x, y].name = x + " , " + y;
-                    testGrid[x, y].transform.localScale = new Vector3(tileWidth * 0.35f, (tileHeight * 2) * 0.35f, testGrid[x, y].transform.localScale.z);
+                    //testGrid[x, y].transform.localScale = new Vector3(tileWidth * 0.35f, (tileHeight * 2) * 0.35f, testGrid[x, y].transform.localScale.z);
                 }
             }
         }
@@ -191,9 +198,8 @@ public class LayoutManager : MonoBehaviour
                 }
             }
         }
-
-
-
+        List<Vector2> temp = new List<Vector2>() { new Vector2(gridWidth / 2, gridHeigth / 2), new Vector2(gridWidth / 2 + 1, gridHeigth / 2), new Vector2(gridWidth / 2, gridHeigth / 2 + 1), new Vector2(gridWidth / 2 + 1, gridHeigth / 2 + 1) };
+        SpawnStructure(mysticPlace, temp, new Vector2(2,2)); 
 
         SetTestGridActive(false);
         RandomGen();
@@ -254,7 +260,7 @@ public class LayoutManager : MonoBehaviour
             {
                 if (!(positions[x, y].z == 1 || positions[x, y].z == 3))
                 {
-                    GameObject newgrass = Instantiate(emptyGo, positions[x, y], transform.rotation);
+                    GameObject newgrass = Instantiate(emptyPre, positions[x, y], transform.rotation);
                     newgrass.transform.parent = grassFolder.transform;
                     newgrass.name = "GrassTile";
                     newgrass.GetComponent<SpriteRenderer>().sprite = grassTileSprites[Random.Range(0, grassTileSprites.Length)];
@@ -269,7 +275,7 @@ public class LayoutManager : MonoBehaviour
     private void PlaceRockToPlace(Vector3 position, Vector2 gridPos)
     {
         {
-            GameObject newRock = Instantiate(emptyGo, new Vector3(position.x, position.y, transform.position.z), transform.rotation);
+            GameObject newRock = Instantiate(emptyPre, new Vector3(position.x, position.y, transform.position.z), transform.rotation);
             newRock.transform.parent = rockFolder.transform;
             newRock.name = "RockTile";
             newRock.GetComponent<SpriteRenderer>().sprite = rockTileSprites[Random.Range(0, rockTileSprites.Length)];
@@ -286,7 +292,7 @@ public class LayoutManager : MonoBehaviour
     {
         //RANDOMIZE LAKES
         GameObject lakesFolder = Instantiate(new GameObject(), Vector3.zero, transform.rotation);
-        lakesFolder.name = "Lakes";
+        lakesFolder.name = "Lakes Folder";
 
         for (int i = 0; i < rndLakes; i++)
         {
@@ -300,11 +306,65 @@ public class LayoutManager : MonoBehaviour
                 rnd2 = Random.Range(0, positions.GetLength(1));
             }
 
-            GameObject newLake = Instantiate(lakeGo, positions[rnd1, rnd2], Quaternion.identity);
+            GameObject newLake = Instantiate(lakePre, positions[rnd1, rnd2], Quaternion.identity);
             newLake.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(new Vector2(rnd1, rnd2));
             newLake.GetComponent<SpriteRenderer>().sortingLayerName = ("Buildings");
             lakes.Add(newLake);
             newLake.transform.parent = lakesFolder.transform;
+
+            positions[rnd1, rnd2].z = 1;
+
+        }
+        TestGridUpdate();
+
+        //RANDOMIZE TREES
+        GameObject treesFolder = Instantiate(new GameObject(), Vector3.zero, transform.rotation);
+        lakesFolder.name = "Trees Folder";
+
+        for (int i = 0; i < rndTrees; i++)
+        {
+
+            int rnd1 = Random.Range(0, positions.GetLength(0));
+            int rnd2 = Random.Range(0, positions.GetLength(1));
+
+            while (positions[rnd1, rnd2].z == 1 || (positions[rnd1, rnd2].z == 2))
+            {
+                rnd1 = Random.Range(0, positions.GetLength(0));
+                rnd2 = Random.Range(0, positions.GetLength(1));
+            }
+
+            GameObject newTree = Instantiate(treePre, positions[rnd1, rnd2], Quaternion.identity);
+            newTree.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(new Vector2(rnd1, rnd2));
+            newTree.GetComponent<SpriteRenderer>().sortingLayerName = ("Buildings");
+            lakes.Add(newTree);
+            newTree.transform.parent = treesFolder.transform;
+
+            positions[rnd1, rnd2].z = 1;
+
+        }
+        TestGridUpdate();
+
+        //RANDOMIZE ROCKS
+        GameObject rocksFolder = Instantiate(new GameObject(), Vector3.zero, transform.rotation);
+        lakesFolder.name = "Rocks Folder";
+
+        for (int i = 0; i < rndRocks; i++)
+        {
+
+            int rnd1 = Random.Range(0, positions.GetLength(0));
+            int rnd2 = Random.Range(0, positions.GetLength(1));
+
+            while (positions[rnd1, rnd2].z == 1 || (positions[rnd1, rnd2].z == 2))
+            {
+                rnd1 = Random.Range(0, positions.GetLength(0));
+                rnd2 = Random.Range(0, positions.GetLength(1));
+            }
+
+            GameObject newRock = Instantiate(rockPre, positions[rnd1, rnd2], Quaternion.identity);
+            newRock.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(new Vector2(rnd1, rnd2));
+            newRock.GetComponent<SpriteRenderer>().sortingLayerName = ("Buildings");
+            lakes.Add(newRock);
+            newRock.transform.parent = rocksFolder.transform;
 
             positions[rnd1, rnd2].z = 1;
 
