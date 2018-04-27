@@ -85,9 +85,12 @@ MonoBehaviour:
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 0, y: 0}
   sanctityPointAmount: 0
+  sanctityLevelUpReward: 0
   constructingTimer: 0
   constructingTime: 0
-  constructingCost: 0
+  faithCost: 0
+  woodCost: 0
+  stoneCost: 0
   constructingTimeSlow1: 0
   constructingTimeSlow2: 0
   constructingTimeSlow3: 0
@@ -113,7 +116,9 @@ MonoBehaviour:
   lvlChange: 0
   lvlUpFaithIncrease: 0
   maxLevelAmount: 0
-  levelUpCost: 0
+  faithLevelUpCost: 0
+  woodLevelUpCost: 0
+  stoneLevelUpCost: 0
   name: 
   type: 
 --- !u!114 &114578952783787904
@@ -133,9 +138,12 @@ MonoBehaviour:
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 0, y: 0}
   sanctityPointAmount: 0
+  sanctityLevelUpReward: 0
   constructingTimer: 0
   constructingTime: 10
-  constructingCost: 0
+  faithCost: 0
+  woodCost: 0
+  stoneCost: 0
   constructingTimeSlow1: 0
   constructingTimeSlow2: 0
   constructingTimeSlow3: 0
@@ -161,7 +169,9 @@ MonoBehaviour:
   lvlChange: 0
   lvlUpFaithIncrease: 0
   maxLevelAmount: 0
-  levelUpCost: 0
+  faithLevelUpCost: 0
+  woodLevelUpCost: 0
+  stoneLevelUpCost: 0
   name: 
   type: 
 --- !u!212 &212554661945632236

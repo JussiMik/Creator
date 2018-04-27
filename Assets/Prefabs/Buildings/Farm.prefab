@@ -74,6 +74,7 @@ MonoBehaviour:
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
   sanctityPointAmount: 12
+  sanctityLevelUpReward: 0
   constructingTimer: 0
   constructingTime: 20
   faithCost: 0
@@ -104,7 +105,9 @@ MonoBehaviour:
   lvlChange: 0
   lvlUpFaithIncrease: 0
   maxLevelAmount: 0
-  levelUpCost: 0
+  faithLevelUpCost: 0
+  woodLevelUpCost: 0
+  stoneLevelUpCost: 0
   name: 
   type: 
 --- !u!212 &212849919343261006
@@ -120,7 +123,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a496ac5fd845a5f4988a871d511976c7, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
