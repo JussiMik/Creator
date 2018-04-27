@@ -182,9 +182,12 @@ MonoBehaviour:
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
   sanctityPointAmount: 12
+  sanctityLevelUpReward: 0
   constructingTimer: 0
   constructingTime: 20
-  constructingCost: 0
+  faithCost: 0
+  woodCost: 0
+  stoneCost: 0
   constructingTimeSlow1: 0
   constructingTimeSlow2: 0
   constructingTimeSlow3: 0
@@ -210,7 +213,9 @@ MonoBehaviour:
   lvlChange: 0
   lvlUpFaithIncrease: 0
   maxLevelAmount: 0
-  levelUpCost: 0
+  faithLevelUpCost: 0
+  woodLevelUpCost: 0
+  stoneLevelUpCost: 0
   name: 
   type: 
   woodTimer: 0
@@ -218,7 +223,7 @@ MonoBehaviour:
   woodTimerCollision: 0
   originalWoodTime: 0
   gatheredWood: 0
-  gatheredWoodAmount: 4
+  woodAmount: 4
   woodCollected: 0
   trees: 0
   totalTreeAmount: 0
@@ -267,8 +272,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2118334017
+  m_SortingLayer: 1
   m_SortingOrder: 100
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.33823532, g: 0.14695741, b: 0, a: 1}

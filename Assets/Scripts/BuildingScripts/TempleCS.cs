@@ -8,8 +8,9 @@ public class TempleCS : Structure
 
     //public float radius = 10f;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
         originalFaithTargetTime = faithTargetTime;
@@ -18,8 +19,6 @@ public class TempleCS : Structure
         faithCollected = true;
         addedToList = false;
         ConstructingStructures();
-
-        gameManager.UseFaith(constructingCost);
 
         name = "Temple";
         type = "Faith";

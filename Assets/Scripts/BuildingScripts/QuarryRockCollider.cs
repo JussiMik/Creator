@@ -7,7 +7,7 @@ public class QuarryRockCollider : MonoBehaviour
     public float totalRockAmount;
     public bool rockTimerCollision;
     QuarryCS parent;
-    // Use this for initialization
+
     void Start()
     {
         parent = transform.parent.gameObject.GetComponent<QuarryCS>();
@@ -27,7 +27,7 @@ public class QuarryRockCollider : MonoBehaviour
         if (collision.gameObject.tag == "Rock")
         {
             rockTimerCollision = true;
-            parent.SendMessage("UpdateValeus", SendMessageOptions.DontRequireReceiver);
+            parent.SendMessage("UpdateValues", SendMessageOptions.DontRequireReceiver);
         }
     }
 }

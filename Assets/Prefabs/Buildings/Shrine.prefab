@@ -182,9 +182,12 @@ MonoBehaviour:
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 0, y: 0}
   sanctityPointAmount: 7
+  sanctityLevelUpReward: 0
   constructingTimer: 0
   constructingTime: 20
-  constructingCost: 100
+  faithCost: 100
+  woodCost: 100
+  stoneCost: 100
   constructingTimeSlow1: 0
   constructingTimeSlow2: 0
   constructingTimeSlow3: 0
@@ -210,7 +213,9 @@ MonoBehaviour:
   lvlChange: 0
   lvlUpFaithIncrease: 0
   maxLevelAmount: 0
-  levelUpCost: 0
+  faithLevelUpCost: 0
+  woodLevelUpCost: 0
+  stoneLevelUpCost: 0
   name: 
   type: 
   totalShrineAmount: 0

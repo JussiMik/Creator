@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class WorkshopTreeCollider : MonoBehaviour
 {
-
     public float totalTreeAmount;
     public bool woodTimerCollision;
     WoodWorkshopCS parent;
-    // Use this for initialization
+
     void Start()
     {
         parent = transform.parent.gameObject.GetComponent<WoodWorkshopCS>();
@@ -28,7 +27,7 @@ public class WorkshopTreeCollider : MonoBehaviour
         if (collision.gameObject.tag == "Tree")
         {
             woodTimerCollision = true;
-            parent.SendMessage("UpdateValeus", SendMessageOptions.DontRequireReceiver);
+            parent.SendMessage("UpdateValues", SendMessageOptions.DontRequireReceiver);
         }
     }
 }

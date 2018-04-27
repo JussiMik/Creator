@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
             DevotionIncrease();
         }
 
-
+        /*
         if (Input.GetKeyDown(KeyCode.A))
         {
             SpawnShrine();
@@ -120,10 +120,10 @@ public class GameManager : MonoBehaviour
          {
              SpawnNewMonk();
          }
-         */
+         
     }
 
-    /*   public void SpawnNewMonk()
+       public void SpawnNewMonk()
        {
            clickedObject = PopupCanvas.GetComponent<PopupMenu>().clickedObject;
            GameObject spawnedMonk = Instantiate(monk, new Vector3(clickedObject.transform.position.x + 2 , clickedObject.transform.position.y + 2, clickedObject.transform.position.z), clickedObject.transform.rotation);
@@ -131,6 +131,8 @@ public class GameManager : MonoBehaviour
            monkResourceTracker.UpdateMonkCount();
        }
        */
+
+    }
     //Use collected faith for constructing and leveling up buildings
     public void UseResources(float faithUseAmount, float woodUseAmount, float stoneUseAmount)
     {

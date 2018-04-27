@@ -79,12 +79,7 @@ public class Structure : MonoBehaviour
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 
-      /*  gameManager.UseFaith(faithCost);
-        gameManager.UseWood(woodCost);
-        gameManager.UseStone(stoneCost);
-        */
-
-       gameManager.UseResources(faithCost, woodCost, stoneCost);
+        gameManager.UseResources(faithCost, woodCost, stoneCost);
     }
 
     protected virtual void Update()

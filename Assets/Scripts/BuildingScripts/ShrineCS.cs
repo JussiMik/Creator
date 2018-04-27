@@ -11,8 +11,9 @@ public class ShrineCS : Structure
     [Space(10)]
     public bool allowTempleConstructing;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
         originalFaithTargetTime = faithTargetTime;
@@ -22,8 +23,6 @@ public class ShrineCS : Structure
         addedToList = false;
         ConstructingStructures();
         
-        gameManager.UseFaith(constructingCost);
-
         name = "Shrine";
         type = "Faith";
     }

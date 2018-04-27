@@ -17,7 +17,7 @@ public class WoodWorkshopCS : Structure
     public float gatheredWood;
 
     [Space(10)]
-    public float gatheredWoodAmount;
+    public float woodAmount;
 
     [Space(10)]
     [SerializeField]
@@ -74,22 +74,6 @@ public class WoodWorkshopCS : Structure
         }
     }
 
-    /*  private void OnTriggerEnter2D(Collider2D collision)
-      {
-          if (collision.gameObject.tag == "Tree")
-          {
-              totalTreeAmount++;
-          }
-      }
-
-      private void OnTriggerStay2D(Collider2D collision)
-      {
-          if (collision.gameObject.tag == "Tree")
-          {
-              woodTimerCollision = true;
-          }
-      }
-      */
     public void UpdateValues()
     {
         totalTreeAmount = transform.GetChild(0).GetComponent<WorkshopTreeCollider>().totalTreeAmount;
@@ -121,7 +105,7 @@ public class WoodWorkshopCS : Structure
                 trees = lvl3TreeAmount;
             }
 
-            gatheredWood += gatheredWoodAmount * trees;
+            gatheredWood += woodAmount * trees;
 
             woodTimer = false;
         }
