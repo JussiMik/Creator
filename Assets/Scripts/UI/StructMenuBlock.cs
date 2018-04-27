@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class StructMenuBlock : MonoBehaviour {
 
     
-    public StructMenu structMenu;
+    public BuildingMenu buildingMenu;
     public int blockNo;
          
 	// Use this for initialization
 	void Start () {
-        
+
+        buildingMenu = GameObject.Find("BuildingMenu").GetComponent<BuildingMenu>();
         Button btn = gameObject.GetComponent<Button>();
 
         btn.onClick.AddListener(TaskOnClick);
@@ -20,6 +21,6 @@ public class StructMenuBlock : MonoBehaviour {
 	
 	void TaskOnClick()
     {
-        structMenu.SelectToDrag(blockNo);
+        buildingMenu.SelectToDrag(blockNo);
     }
 }

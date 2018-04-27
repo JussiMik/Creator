@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 114062357249725808}
   m_Layer: 5
   m_Name: BuildingMenuBlock
-  m_TagString: Untagged
+  m_TagString: BuildingButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6ce72c229ba77e40a2089589cdf7dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  structMenu: {fileID: 0}
+  buildingMenu: {fileID: 0}
   blockNo: 0
 --- !u!114 &114381272405455144
 MonoBehaviour:
@@ -207,6 +207,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 173.58731, y: 249.75122}
+  m_AnchoredPosition: {x: -191, y: -25}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}

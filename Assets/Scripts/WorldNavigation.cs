@@ -14,7 +14,7 @@ public class WorldNavigation : MonoBehaviour
     private Vector3 curPos;
     private Vector3 prePos;
 
-    public bool navOn = true;
+    public bool valuesReset;
 
     // Use this for initialization
     void Start()
@@ -42,17 +42,19 @@ public class WorldNavigation : MonoBehaviour
     }
     public void OnTouchUp()
     {
-        //startDragPos = Input.mousePosition;
+        
     }
     public void OnTouchStay()
     {
-
-        Debug.DrawLine(startDragPos, Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        dragOffset = Camera.main.ScreenToWorldPoint(Input.mousePosition) - startDragPos;
-        if (!(Camera.main.transform.position == startCamPos - dragOffset))
+        if (!valuesReset)
         {
-            Vector3 newTarget = startCamPos - dragOffset;
-            Camera.main.transform.position = Vector3.SmoothDamp(Camera.main.transform.position, newTarget, ref velocity, 0.1f);
+            Debug.DrawLine(startDragPos, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            dragOffset = Camera.main.ScreenToWorldPoint(Input.mousePosition) - startDragPos;
+            if (!(Camera.main.transform.position == startCamPos - dragOffset))
+            {
+                Vector3 newTarget = startCamPos - dragOffset;
+                Camera.main.transform.position = Vector3.SmoothDamp(Camera.main.transform.position, newTarget, ref velocity, 0.1f);
+            }
         }
 
     }
@@ -60,6 +62,7 @@ public class WorldNavigation : MonoBehaviour
     {
         startDragPos = Vector3.zero;
         dragOffset = Vector3.zero;
-        //startCamPos = Vector3.zero;
+        valuesReset = true;
+        
     }
 }

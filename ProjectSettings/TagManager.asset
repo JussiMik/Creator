@@ -14,9 +14,8 @@ TagManager:
   - Panel
   - PopupMenuCanvas
   - GameManager
-  - MonkTarget
-  - ShrineCollider
-  - Shrine
+  - MenuButton
+  - BuildingButton
   layers:
   - Default
   - TransparentFX
@@ -27,11 +26,11 @@ TagManager:
   - 
   - 
   - TouchInput
-  - MonkTarget
+  - 
   - Unwalkable
   - PFTargetLayer
   - Building
-  - Collider
+  - 
   - 
   - 
   - 
