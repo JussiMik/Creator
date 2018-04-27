@@ -75,7 +75,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0032816604, y: 0.0041019917}
+  m_Offset: {x: -0.048852205, y: -0.01933372}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.28577548}
@@ -86,7 +86,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.327107, y: 0.2562939}
+  m_Size: {x: 2.3752208, y: 1.807598}
   m_EdgeRadius: 0
 --- !u!114 &114956424039527146
 MonoBehaviour:
@@ -104,22 +104,23 @@ MonoBehaviour:
   quarryCS: {fileID: 0}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 3, y: 3}
-  sanctityPointAmount: 20
-  sanctityLevelUpReward: 0
+  sanctityPointsOnConsturction: 0
+  sanctityPointsOnLevelup: 0
   constructingTimer: 0
   constructingTime: 20
   faithCost: 0
   woodCost: 0
   stoneCost: 0
-  constructingTimeSlow1: 0
-  constructingTimeSlow2: 0
-  constructingTimeSlow3: 0
+  normalSpeedConstructingMp: 0
+  lowerSpeedConstructingMp1: 0
+  lowerSpeedConstructingMp2: 0
+  lowerSpeedConstructingMp3: 0
   normalSpeedConstructing: 0
-  changedValue: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0
   lowerSpeedConstructing3: 0
   constructingDone: 0
+  changedValue: 0
   generatedFaith: 0
   faithAmount: 0
   maxFaithAmount: 0
