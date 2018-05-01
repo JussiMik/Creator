@@ -19,10 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4422833062466420}
+  - component: {fileID: 60854677673913590}
   - component: {fileID: 212757984733681106}
-  - component: {fileID: 61446342376679672}
   - component: {fileID: 50183799080363704}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TreeGO
   m_TagString: Tree
   m_Icon: {fileID: -6488666005112524639, guid: 0000000000000000d000000000000000, type: 0}
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1354137680948214}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.9857492, y: -1.1545584, z: 0}
+  m_LocalPosition: {x: 17.132004, y: -6.8408403, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -62,8 +62,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!61 &61446342376679672
-BoxCollider2D:
+--- !u!60 &60854677673913590
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -71,7 +71,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -84,9 +84,12 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4, y: 2}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.7328806, y: 0.0143351555}
+      - {x: 0.011686325, y: -0.43069983}
+      - {x: 0.7441902, y: 0.00058174133}
+      - {x: 0.023540497, y: 0.44644594}
 --- !u!212 &212757984733681106
 SpriteRenderer:
   m_ObjectHideFlags: 1

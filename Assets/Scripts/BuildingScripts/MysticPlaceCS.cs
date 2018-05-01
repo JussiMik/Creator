@@ -6,15 +6,19 @@ public class MysticPlaceCS : Structure
 {
     private bool addedToList;
     bool increaseMonkCost;
+    public int addedMonkSlots;
     public int monksPurchased;
     public GameObject monk;
-    public MonkText monkText;
+    public GameObject resourceTracker;
     public float[] monkFaithCosts;
     float randomDistanceHorizontal;
     float randomDistanceVertical;
+
     protected override void Start()
     {
         base.Start();
+        
+        gameManager.monkSlots += addedMonkSlots; 
         originalFaithTargetTime = faithTargetTime;
         faithCollected = true;
         addedToList = false;
@@ -52,7 +56,7 @@ public class MysticPlaceCS : Structure
             randomDistanceVertical = Random.Range(-1.5f, 1.5f);
             GameObject spawnedMonk = Instantiate(monk, new Vector2(clickedBuilding.transform.position.x + randomDistanceHorizontal, clickedBuilding.transform.position.y + randomDistanceVertical), clickedBuilding.transform.rotation);
             gameManager.monks.Add(spawnedMonk);
-            monkText.UpdateMonkCount();
+            resourceTracker.GetComponent<MonkText>().UpdateMonkCount();
             if (monksPurchased < monkFaithCosts.Length - 1)
             {
                 increaseMonkCost = true;

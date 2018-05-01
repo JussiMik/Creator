@@ -138,9 +138,11 @@ MonoBehaviour:
   stoneLevelUpCost: 0
   name: 
   type: 
+  addedMonkSlots: 2
   monksPurchased: 0
-  monk: {fileID: 0}
-  monkText: {fileID: 0}
+  monk: {fileID: 1593562265877594, guid: f73b398545c4f6c4a85c6bcd97b1f284, type: 2}
+  resourceTracker: {fileID: 1378866797525180, guid: c3de9ca92c1d5254e927c90a52acb14f,
+    type: 2}
   monkFaithCosts:
   - 100
   - 200
