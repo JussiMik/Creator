@@ -17,6 +17,7 @@ public class DragNDrop : MonoBehaviour
     public Sprite draggerButtonSpr;
 
     public LayoutManager layoutManager;
+    public Grid grid;
 
     public bool firstRound;
     public Vector3 currentColored;
@@ -239,6 +240,7 @@ public class DragNDrop : MonoBehaviour
     private void PlaceBuilding()
     {
         layoutManager.SpawnStructure(curDraBuilding, toBeColorized, new Vector2(2, 2));
+        grid.CreateGrid();
         StopDragging();
         SwipeToEmpty();
 

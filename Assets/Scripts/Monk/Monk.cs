@@ -7,10 +7,10 @@ public class Monk : MonoBehaviour
     public Transform targetTransform;
     public GameObject targetObject;
     public GameManager gameManager;
-    bool checkForNewDestination;
+   public bool checkForNewDestination;
     bool startNewPathTimer;
     bool reachedDestination;
-    public float speed = 20f;
+    public float speed;
     public float movementCheckDistance;
     Vector2[] path;
     int targetIndex;
@@ -37,7 +37,6 @@ public class Monk : MonoBehaviour
         if (checkForNewDestination == true)
         {
             StartCoroutine("RefreshPath");
-            checkForNewDestination = false;
         }
 
         CheckFarmCount();
@@ -127,6 +126,7 @@ public class Monk : MonoBehaviour
                 StartCoroutine("FollowPath");
             }
             StopCoroutine("RefreshPath");
+            checkForNewDestination = false;
             yield return new WaitForSeconds(.25f);
         }
     }
@@ -169,8 +169,8 @@ public class Monk : MonoBehaviour
         {
             for (int i = targetIndex; i < path.Length; i++)
             {
-                Gizmos.color = Color.black;
-                Gizmos.DrawCube((Vector3)path[i], Vector3.one * .5f);
+                 Gizmos.color = Color.black;
+                // Gizmos.DrawCube((Vector3)path[i], Vector3.one * .5f);
 
                 if (i == targetIndex)
                 {

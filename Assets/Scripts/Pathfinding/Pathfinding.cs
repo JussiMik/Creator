@@ -11,12 +11,13 @@ public class Pathfinding : MonoBehaviour
      * Video tutorial for Lague's 3D pathfinding can be found at https://www.youtube.com/watch?v=-L-WgKMFuhE 
      */
 
-
+    Vector2 location;
     Grid grid;
     static Pathfinding instance;
 
     void Awake()
     {
+        
         grid = GetComponent<Grid>();
         instance = this;
     }
@@ -28,15 +29,15 @@ public class Pathfinding : MonoBehaviour
 
     Vector2[] FindPath(Vector2 from, Vector2 to)
     {
-
+        location = gameObject.transform.position;
         Stopwatch sw = new Stopwatch();
         sw.Start();
 
         Vector2[] waypoints = new Vector2[0];
         bool pathSuccess = false;
 
-        Node startNode = grid.NodeFromWorldPoint(from);
-        Node targetNode = grid.NodeFromWorldPoint(to);
+        Node startNode = grid.NodeFromWorldPoint(from - location);
+        Node targetNode = grid.NodeFromWorldPoint(to - location);
         startNode.parent = startNode;
 
         if (!startNode.walkable)
@@ -63,7 +64,7 @@ public class Pathfinding : MonoBehaviour
                 if (currentNode == targetNode)
                 {
                     sw.Stop();
-                    print("Path found: " + sw.ElapsedMilliseconds + " ms");
+                   // print("Path found: " + sw.ElapsedMilliseconds + " ms");
                     pathSuccess = true;
                     break;
                 }
