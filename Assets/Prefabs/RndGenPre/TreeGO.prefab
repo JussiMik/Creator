@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4422833062466420}
-  - component: {fileID: 60854677673913590}
   - component: {fileID: 212757984733681106}
+  - component: {fileID: 60854677673913590}
   - component: {fileID: 50183799080363704}
   m_Layer: 9
   m_Name: TreeGO
@@ -71,7 +71,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

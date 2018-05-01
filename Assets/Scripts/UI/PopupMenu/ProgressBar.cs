@@ -52,7 +52,7 @@ public class ProgressBar : MonoBehaviour
             rockMaximumTime = clickedObject.GetComponent<QuarryCS>().originalRockTime;
             progressBarForegroundImage.enabled = true;
             progressBarBackgroundImage.enabled = true;
-            rockTimer = clickedObject.GetComponent<Structure>().GetComponent<QuarryCS>().rockTime; // Sue me.
+            rockTimer = clickedObject.GetComponent<Structure>().GetComponent<QuarryCS>().stoneProductionTimeLength; // Sue me.
             buildingDone = clickedObject.GetComponent<Structure>().constructingDone; // Times two.
 
             percent = rockTimer / rockMaximumTime;
@@ -67,7 +67,7 @@ public class ProgressBar : MonoBehaviour
             woodMaximumTime = clickedObject.GetComponent<WoodWorkshopCS>().originalWoodTime;
             progressBarForegroundImage.enabled = true;
             progressBarBackgroundImage.enabled = true;
-            woodTimer = clickedObject.GetComponent<Structure>().GetComponent<WoodWorkshopCS>().woodTime;
+            woodTimer = clickedObject.GetComponent<Structure>().GetComponent<WoodWorkshopCS>().woodProductionTimeLength;
             buildingDone = clickedObject.GetComponent<Structure>().constructingDone;
 
             percent = woodTimer / woodMaximumTime;
@@ -81,7 +81,7 @@ public class ProgressBar : MonoBehaviour
         {
             progressBarForegroundImage.enabled = true;
             progressBarBackgroundImage.enabled = true;
-            faithTimer = clickedObject.GetComponent<Structure>().faithTargetTime; // Sue me.
+            faithTimer = clickedObject.GetComponent<Structure>().productionCycleLength; // Sue me.
             buildingDone = clickedObject.GetComponent<Structure>().constructingDone; // Times two.
 
             percent = faithTimer / faithMaximumTime;

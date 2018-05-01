@@ -86,17 +86,16 @@ MonoBehaviour:
   quarryCS: {fileID: 0}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 2, y: 2}
+  faithConstructingCost: 0
+  woodConstructingCost: 0
+  stoneConstructingCost: 0
   sanctityPointsOnConsturction: 0
-  sanctityPointsOnLevelup: 0
-  constructingTimer: 0
+  sanctityPointsOnUpgrade: 0
   constructingTime: 10
-  faithCost: 0
-  woodCost: 0
-  stoneCost: 0
-  normalSpeedConstructingMp: 0
-  lowerSpeedConstructingMp1: 0
-  lowerSpeedConstructingMp2: 0
-  lowerSpeedConstructingMp3: 0
+  normalSpeedConstructingMp: 4
+  lowerSpeedConstructingMp1: 3
+  lowerSpeedConstructingMp2: 2
+  lowerSpeedConstructingMp3: 1
   normalSpeedConstructing: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0
@@ -104,12 +103,12 @@ MonoBehaviour:
   constructingDone: 0
   changedValue: 0
   generatedFaith: 0
-  faithAmount: 0
+  faithAmountPerProductionCycle: 0
   maxFaithAmount: 0
   faithMultiplier: 1.1
   faithCollected: 0
   faithTimer: 0
-  faithTargetTime: 10
+  productionCycleLength: 10
   originalFaithTargetTime: 0
   defaultFaithGeneration: 0
   slowerFaithGeneration1: 0
@@ -118,10 +117,10 @@ MonoBehaviour:
   level: 1
   lvlChange: 0
   lvlUpFaithIncrease: 0
-  maxLevelAmount: 0
-  faithLevelUpCost: 0
-  woodLevelUpCost: 0
-  stoneLevelUpCost: 0
+  maxLevelAmount: 2
+  faithUpgardeCost: 0
+  woodUpgardeCost: 0
+  stoneUpgardeCost: 0
   name: 
   type: 
 --- !u!212 &212256963721403386

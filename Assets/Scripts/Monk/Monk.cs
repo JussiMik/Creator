@@ -6,16 +6,16 @@ public class Monk : MonoBehaviour
 
     public Transform targetTransform;
     public GameObject targetObject;
-    public bool checkForNewDestination;
-    public bool startNewPathTimer;
-    public bool reachedDestination;
+    public GameManager gameManager;
+    bool checkForNewDestination;
+    bool startNewPathTimer;
+    bool reachedDestination;
     public float speed = 20f;
     public float movementCheckDistance;
     Vector2[] path;
     int targetIndex;
 
     //  public GameObject monk;
-    public GameManager gameManager;
 
     [Space(10)]
     public float goodMonkAndFarmRatio;
@@ -55,7 +55,7 @@ public class Monk : MonoBehaviour
 
     void CheckFarmCount()
     {
-        int index;
+       // int index;
 
         if (gameManager.farms.Count == 0)
         {

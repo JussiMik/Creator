@@ -219,7 +219,7 @@ MonoBehaviour:
   level: 1
   lvlChange: 0
   lvlUpFaithIncrease: 0
-  maxLevelAmount: 0
+  maxLevelAmount: 2
   faithLevelUpCost: 0
   woodLevelUpCost: 0
   stoneLevelUpCost: 0

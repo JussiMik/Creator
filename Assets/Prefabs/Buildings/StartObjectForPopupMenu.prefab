@@ -49,7 +49,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1344051648884992}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -59,7 +59,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.35}
-    oldSize: {x: 4, y: 3.3986487}
+    oldSize: {x: 2, y: 1.6993244}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -84,29 +84,33 @@ MonoBehaviour:
   quarryCS: {fileID: 0}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 0, y: 0}
-  sanctityPointAmount: 0
-  sanctityLevelUpReward: 0
-  constructingTimer: 0
+  faithConstructingCost: 0
+  woodConstructingCost: 0
+  stoneConstructingCost: 0
+  faithUpgardeCost: 0
+  woodUpgardeCost: 0
+  stoneUpgardeCost: 0
+  sanctityPointsOnConsturction: 0
+  sanctityPointsOnUpgrade: 0
   constructingTime: 0
-  faithCost: 0
-  woodCost: 0
-  stoneCost: 0
-  constructingTimeSlow1: 0
-  constructingTimeSlow2: 0
-  constructingTimeSlow3: 0
+  normalSpeedConstructingMp: 0
+  lowerSpeedConstructingMp1: 0
+  lowerSpeedConstructingMp2: 0
+  lowerSpeedConstructingMp3: 0
   normalSpeedConstructing: 0
-  changedValue: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0
   lowerSpeedConstructing3: 0
   constructingDone: 0
+  changedValue: 0
+  faithAmountPerProductionCycle: 0
+  faithAmountPerProductionCycleUpgraded: 0
+  productionCycleLength: 0
   generatedFaith: 0
-  faithAmount: 0
   maxFaithAmount: 0
   faithMultiplier: 0
   faithCollected: 0
   faithTimer: 0
-  faithTargetTime: 0
   originalFaithTargetTime: 0
   defaultFaithGeneration: 0
   slowerFaithGeneration1: 0
@@ -114,11 +118,7 @@ MonoBehaviour:
   slowerFaithGeneration3: 0
   level: 0
   lvlChange: 0
-  lvlUpFaithIncrease: 0
   maxLevelAmount: 0
-  faithLevelUpCost: 0
-  woodLevelUpCost: 0
-  stoneLevelUpCost: 0
   name: 
   type: 
 --- !u!114 &114578952783787904
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1344051648884992}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5ca7886a3247744c911fe8104efe1d7, type: 3}
   m_Name: 
@@ -137,29 +137,33 @@ MonoBehaviour:
   quarryCS: {fileID: 0}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 0, y: 0}
-  sanctityPointAmount: 0
-  sanctityLevelUpReward: 0
-  constructingTimer: 0
+  faithConstructingCost: 0
+  woodConstructingCost: 0
+  stoneConstructingCost: 0
+  faithUpgardeCost: 0
+  woodUpgardeCost: 0
+  stoneUpgardeCost: 0
+  sanctityPointsOnConsturction: 0
+  sanctityPointsOnUpgrade: 0
   constructingTime: 10
-  faithCost: 0
-  woodCost: 0
-  stoneCost: 0
-  constructingTimeSlow1: 0
-  constructingTimeSlow2: 0
-  constructingTimeSlow3: 0
+  normalSpeedConstructingMp: 4
+  lowerSpeedConstructingMp1: 3
+  lowerSpeedConstructingMp2: 2
+  lowerSpeedConstructingMp3: 1
   normalSpeedConstructing: 0
-  changedValue: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0
   lowerSpeedConstructing3: 0
   constructingDone: 0
+  changedValue: 0
+  faithAmountPerProductionCycle: 0
+  faithAmountPerProductionCycleUpgraded: 0
+  productionCycleLength: 10
   generatedFaith: 0
-  faithAmount: 2
   maxFaithAmount: 0
   faithMultiplier: 1.1
   faithCollected: 0
   faithTimer: 0
-  faithTargetTime: 10
   originalFaithTargetTime: 0
   defaultFaithGeneration: 0
   slowerFaithGeneration1: 0
@@ -167,11 +171,7 @@ MonoBehaviour:
   slowerFaithGeneration3: 0
   level: 0
   lvlChange: 0
-  lvlUpFaithIncrease: 0
   maxLevelAmount: 0
-  faithLevelUpCost: 0
-  woodLevelUpCost: 0
-  stoneLevelUpCost: 0
   name: 
   type: 
 --- !u!212 &212554661945632236

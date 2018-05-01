@@ -11,8 +11,6 @@ public class PopupMenu : MonoBehaviour
     GameObject gameManager;
     Structure structure;
     public float xOffset, yOffset;
-    public string name;
-    public string type;
     public string clickedObjectName;
     public int level;
     public int levelupCost;

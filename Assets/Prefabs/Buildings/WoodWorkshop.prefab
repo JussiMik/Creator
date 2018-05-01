@@ -38,9 +38,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4296720088501730}
+  - component: {fileID: 60139981964651628}
   - component: {fileID: 50355422494978278}
   - component: {fileID: 114544871669537822}
-  - component: {fileID: 60139981964651628}
   m_Layer: 2
   m_Name: TreeCollider
   m_TagString: Untagged
@@ -187,30 +187,33 @@ MonoBehaviour:
   quarryCS: {fileID: 0}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
+  faithConstructingCost: 0
+  woodConstructingCost: 0
+  stoneConstructingCost: 0
+  faithUpgardeCost: 0
+  woodUpgardeCost: 0
+  stoneUpgardeCost: 0
   sanctityPointsOnConsturction: 0
-  sanctityPointsOnLevelup: 0
-  constructingTimer: 0
+  sanctityPointsOnUpgrade: 0
   constructingTime: 20
-  faithCost: 0
-  woodCost: 0
-  stoneCost: 0
-  normalSpeedConstructingMp: 0
-  lowerSpeedConstructingMp1: 0
-  lowerSpeedConstructingMp2: 0
-  lowerSpeedConstructingMp3: 0
+  normalSpeedConstructingMp: 4
+  lowerSpeedConstructingMp1: 3
+  lowerSpeedConstructingMp2: 2
+  lowerSpeedConstructingMp3: 1
   normalSpeedConstructing: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0
   lowerSpeedConstructing3: 0
   constructingDone: 0
   changedValue: 0
+  faithAmountPerProductionCycle: 0
+  faithAmountPerProductionCycleUpgraded: 0
+  productionCycleLength: 10
   generatedFaith: 0
-  faithAmount: 0
   maxFaithAmount: 0
   faithMultiplier: 0
   faithCollected: 0
   faithTimer: 0
-  faithTargetTime: 0
   originalFaithTargetTime: 0
   defaultFaithGeneration: 0
   slowerFaithGeneration1: 0
@@ -218,20 +221,15 @@ MonoBehaviour:
   slowerFaithGeneration3: 0
   level: 1
   lvlChange: 0
-  lvlUpFaithIncrease: 0
-  maxLevelAmount: 0
-  faithLevelUpCost: 0
-  woodLevelUpCost: 0
-  stoneLevelUpCost: 0
+  maxLevelAmount: 2
   name: 
   type: 
+  woodAmountPerProductionCyclePerTree: 6
+  woodProductionTimeLength: 10
   woodTimer: 0
-  woodTime: 10
-  woodTimerCollision: 0
+  woodCollected: 0
   originalWoodTime: 0
   gatheredWood: 0
-  woodAmount: 4
-  woodCollected: 0
   trees: 0
   totalTreeAmount: 0
   lvl1TreeAmount: 1

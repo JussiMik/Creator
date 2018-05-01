@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4190777219606394}
   - component: {fileID: 212520883611634946}
-  - component: {fileID: 50767908246989082}
   - component: {fileID: 60859035836516524}
+  - component: {fileID: 50767908246989082}
   m_Layer: 9
   m_Name: RockGO
   m_TagString: Rock
@@ -71,7 +71,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

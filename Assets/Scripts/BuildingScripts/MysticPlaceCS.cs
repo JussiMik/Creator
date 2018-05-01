@@ -6,20 +6,21 @@ public class MysticPlaceCS : Structure
 {
     private bool addedToList;
     bool increaseMonkCost;
+    [Space(10)]
     public int addedMonkSlots;
     public int monksPurchased;
-    public GameObject monk;
-    public GameObject resourceTracker;
     public float[] monkFaithCosts;
+    [HideInInspector]
+    public GameObject monk, resourceTracker;
     float randomDistanceHorizontal;
     float randomDistanceVertical;
 
     protected override void Start()
     {
         base.Start();
-        
+        resourceTracker = GameObject.Find("MonkText");
         gameManager.monkSlots += addedMonkSlots; 
-        originalFaithTargetTime = faithTargetTime;
+        originalFaithTargetTime = productionCycleLength;
         faithCollected = true;
         addedToList = false;
         constructingDone = true;

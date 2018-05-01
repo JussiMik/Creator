@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4995539867967068}
   - component: {fileID: 212786247880967774}
-  - component: {fileID: 50043023997098472}
   - component: {fileID: 60153976432085792}
+  - component: {fileID: 50043023997098472}
   - component: {fileID: 114300564340172304}
   m_Layer: 12
   m_Name: Quarry
@@ -38,8 +38,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4615166767786162}
-  - component: {fileID: 50635778114084016}
   - component: {fileID: 60714118560735686}
+  - component: {fileID: 50635778114084016}
   - component: {fileID: 114668280684337658}
   m_Layer: 2
   m_Name: StoneCollider
@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1216336883453896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.81, y: -1.34, z: 0}
+  m_LocalPosition: {x: 26.933712, y: -1.7167429, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4615166767786162}
@@ -167,10 +167,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.013312578, y: -0.9788052}
-      - {x: 1.421804, y: -0.13899767}
-      - {x: -0.0022497177, y: 0.7572461}
-      - {x: -1.4928029, y: -0.061998844}
+    - - {x: -0.013313293, y: -1.143674}
+      - {x: 1.8311329, y: -0.12762761}
+      - {x: -0.013620377, y: 0.97530955}
+      - {x: -1.8556519, y: -0.09559488}
 --- !u!114 &114300564340172304
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -187,13 +187,15 @@ MonoBehaviour:
   quarryCS: {fileID: 0}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
+  faithConstructingCost: 0
+  woodConstructingCost: 0
+  stoneConstructingCost: 0
+  faithUpgardeCost: 0
+  woodUpgardeCost: 0
+  stoneUpgardeCost: 0
   sanctityPointsOnConsturction: 0
-  sanctityPointsOnLevelup: 0
-  constructingTimer: 0
+  sanctityPointsOnUpgrade: 0
   constructingTime: 20
-  faithCost: 0
-  woodCost: 0
-  stoneCost: 0
   normalSpeedConstructingMp: 4
   lowerSpeedConstructingMp1: 3
   lowerSpeedConstructingMp2: 2
@@ -204,13 +206,14 @@ MonoBehaviour:
   lowerSpeedConstructing3: 0
   constructingDone: 0
   changedValue: 0
+  faithAmountPerProductionCycle: 0
+  faithAmountPerProductionCycleUpgraded: 0
+  productionCycleLength: 10
   generatedFaith: 0
-  faithAmount: 0
   maxFaithAmount: 0
   faithMultiplier: 0
   faithCollected: 0
   faithTimer: 0
-  faithTargetTime: 0
   originalFaithTargetTime: 0
   defaultFaithGeneration: 0
   slowerFaithGeneration1: 0
@@ -218,20 +221,15 @@ MonoBehaviour:
   slowerFaithGeneration3: 0
   level: 1
   lvlChange: 0
-  lvlUpFaithIncrease: 0
-  maxLevelAmount: 0
-  faithLevelUpCost: 0
-  woodLevelUpCost: 0
-  stoneLevelUpCost: 0
+  maxLevelAmount: 2
   name: 
   type: 
+  stoneAmountPerProductionCyclePerRock: 6
+  stoneProductionTimeLength: 10
   rockTimer: 0
-  rockTime: 10
-  rockTimerCollision: 0
+  stoneCollected: 0
   originalRockTime: 0
   gatheredStone: 0
-  gatheredStoneAmount: 6
-  stoneCollected: 0
   rocks: 0
   totalRockAmount: 0
   lvl1RockAmount: 1

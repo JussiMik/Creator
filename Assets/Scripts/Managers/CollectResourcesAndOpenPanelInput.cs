@@ -7,8 +7,8 @@ public class CollectResourcesAndOpenPanelInput : MonoBehaviour
     public PopupMenu popupMenu;
     public GameManager gameManager;
     public GameObject clickedBuilding;
+    [HideInInspector]
     public bool showPanel;
-    public LayerMask collisionMask;
     // Use this for initialization
     void Start()
     {
@@ -30,7 +30,7 @@ public class CollectResourcesAndOpenPanelInput : MonoBehaviour
 
                  if (hitInfo == true)
                  {
-                     Debug.Log(hitInfo.collider.name);
+                    // Debug.Log(hitInfo.collider.name);
                      clickedBuilding = hitInfo.transform.gameObject;
                      if (clickedBuilding.layer == LayerMask.NameToLayer("Building"))
                      {

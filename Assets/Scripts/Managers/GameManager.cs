@@ -9,26 +9,20 @@ public class GameManager : MonoBehaviour
 
     [Space(10)]
     public float sanctity;
-    [Space(10)]
     [SerializeField]
     private float sanctityPoints;
-    [Space(10)]
     public float maxSanctityPoints;
+
     [Space(10)]
     public float requiredAmountForLvlUp;
     public float requiredAmountIncrease;
 
     [Space(10)]
     public float faith;
-
-    [Space(10)]
     public float wood;
-
-    [Space(10)]
     public float stone;
-
-    [Space(10)]
     public float devotion;
+
     [Space(10)]
     public float maxDevotionAmount;
     public float minDevotionAmountCollecting;
@@ -54,17 +48,18 @@ public class GameManager : MonoBehaviour
     public bool devotionIncrease3;
 
     [Space(10)]
+    public float monkFaithMultiplier;
+    public float monkFaithMultiplierSlow1;
+    public float monkFaithMultiplierSlow2;
+    public float monkFaithMultiplierSlow3;
+
+    [Space(10)]
     public List<GameObject> faithBuildings = new List<GameObject>();
     public List<GameObject> farms = new List<GameObject>();
     public List<GameObject> gardens = new List<GameObject>();
     public List<GameObject> meditationRooms = new List<GameObject>();
     public List<GameObject> monks = new List<GameObject>();
     public List<float> faithMultipliers = new List<float>();
-
-    public float monkFaithMultiplier;
-    public float monkFaithMultiplierSlow1;
-    public float monkFaithMultiplierSlow2;
-    public float monkFaithMultiplierSlow3;
 
     FaithText faithResourceTracker;
     WoodText woodResourceTracker;

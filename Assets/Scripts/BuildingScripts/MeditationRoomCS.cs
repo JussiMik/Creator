@@ -11,7 +11,7 @@ public class MeditationRoomCS : Structure
         base.Start();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
-        originalFaithTargetTime = faithTargetTime;
+        originalFaithTargetTime = productionCycleLength;
 
         normalSpeedConstructing = true;
         faithCollected = true;
