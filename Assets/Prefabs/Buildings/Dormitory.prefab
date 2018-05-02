@@ -84,6 +84,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
+  levelTwoSprite: {fileID: 21300000, guid: 84dc1a3441c2a064fbff7d57b00343aa, type: 3}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
   faithConstructingCost: 0

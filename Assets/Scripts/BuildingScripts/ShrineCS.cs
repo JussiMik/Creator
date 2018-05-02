@@ -37,6 +37,11 @@ public class ShrineCS : Structure
             gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
             faithTimer = true;
         }
+      /*  if (Input.GetKeyDown("d"))
+        {
+            Destroy(gameObject);
+        }
+        */
     }
 
     private void AddToList()

@@ -243,7 +243,6 @@ public class DragNDrop : MonoBehaviour
         grid.CreateGrid();
         StopDragging();
         SwipeToEmpty();
-
     }
 
     /// SWIPES COLORIZED

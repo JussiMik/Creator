@@ -34,7 +34,7 @@ public class ShrineCollider : MonoBehaviour
     {
         if (collision.gameObject.tag == "ShrineCollider")
         {
-            if (totalShrineAmount == 8)
+            if (totalShrineAmount >= 8)
             {
                 allowTempleConstructing = true;
                 shrine.SendMessage("UpdateBool", SendMessageOptions.DontRequireReceiver);

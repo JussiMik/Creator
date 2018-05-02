@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Structure : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Structure : MonoBehaviour
     [HideInInspector]
     public QuarryCS quarryCS;
 
+    public Sprite levelTwoSprite;
     public GameObject clickedBuilding;
     public Vector2 sizeOnGrid;
 
@@ -251,6 +253,7 @@ public class Structure : MonoBehaviour
 
             faithAmountPerProductionCycle = faithAmountPerProductionCycleUpgraded;
             level += 1;
+            gameObject.GetComponent<SpriteRenderer>().sprite = levelTwoSprite;
 
             if (faithAmountPerProductionCycle >= maxFaithAmount && level >= maxLevelAmount)
             {

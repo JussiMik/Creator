@@ -34,6 +34,10 @@ public class TempleCS : Structure
     protected override void Update()
     {
         base.Update();
+        if (Input.GetKeyDown("d"))
+        {
+            Destroy(gameObject);
+        }
 
         if (constructingDone == true && addedToList == false)
         {

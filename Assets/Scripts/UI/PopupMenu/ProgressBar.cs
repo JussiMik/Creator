@@ -81,8 +81,11 @@ public class ProgressBar : MonoBehaviour
         {
             progressBarForegroundImage.enabled = true;
             progressBarBackgroundImage.enabled = true;
-            faithTimer = clickedObject.GetComponent<Structure>().productionCycleLength; // Sue me.
-            buildingDone = clickedObject.GetComponent<Structure>().constructingDone; // Times two.
+            if (clickedObject != null)
+            {
+                faithTimer = clickedObject.GetComponent<Structure>().productionCycleLength; // Sue me.
+                buildingDone = clickedObject.GetComponent<Structure>().constructingDone; // Times two.
+            }
 
             percent = faithTimer / faithMaximumTime;
             progressBarForegroundImage.fillAmount = Mathf.Lerp(1, 0, percent);
