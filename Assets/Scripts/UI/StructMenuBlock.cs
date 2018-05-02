@@ -21,6 +21,6 @@ public class StructMenuBlock : MonoBehaviour {
 	
 	void TaskOnClick()
     {
-        buildingMenu.SelectToDrag(blockNo);
+        buildingMenu.ShowInfo(blockNo);
     }
 }

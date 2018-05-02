@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class BuildingMenu : MonoBehaviour {
 
-  
-    public GameObject[] buildingsPro;
-    public GameObject[] buildingsUti;
+
+    public GameObject[] buildingsPro = new GameObject[6];
+    public GameObject[] buildingsUti = new GameObject[3];
 
     public List<GameObject> buildingButtons;
     public GameObject buildingMenuBlockPre;
@@ -19,6 +19,7 @@ public class BuildingMenu : MonoBehaviour {
     //public int gridSizeY = 2;
 
     public GameObject buildGrid;
+    public GameObject infoCard;
 
     public DragNDrop dragNDrop;
 
@@ -153,9 +154,14 @@ public class BuildingMenu : MonoBehaviour {
         }
         
     }
+    public void ShowInfo(int blockNo)
+    {
+        
+    }
+
     public void SelectToDrag(int blockNo)
     {
-        if(proActive)
+        if (proActive)
         {
             dragNDrop.ShowToDrag(buildingsPro[blockNo]);
         }
@@ -166,6 +172,7 @@ public class BuildingMenu : MonoBehaviour {
 
         HideStructMenu();
     }
+
     public void HideStructMenu()
     {
         buildGrid.active = false;
