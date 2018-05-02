@@ -18,12 +18,14 @@ public class Structure : MonoBehaviour
 
     [Space(10)]
     public float faithConstructingCost;
+    public float devotionConstructingCost;
     public float woodConstructingCost;
     public float stoneConstructingCost;
     [Space(10)]
-    public float faithUpgardeCost;
-    public float woodUpgardeCost;
-    public float stoneUpgardeCost;
+    public float faithUpgradeCost;
+    public float devotionUpgradeCost;
+    public float woodUpgradeCost;
+    public float stoneUpgradeCost;
 
     [Space(10)]
     public float sanctityPointsOnConsturction;
@@ -98,7 +100,7 @@ public class Structure : MonoBehaviour
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 
-        gameManager.UseResources(faithConstructingCost, woodConstructingCost, stoneConstructingCost);
+        gameManager.UseResources(faithConstructingCost, devotionConstructingCost, woodConstructingCost, stoneConstructingCost);
     }
 
     protected virtual void Update()
@@ -242,7 +244,7 @@ public class Structure : MonoBehaviour
     //Change structures level
     public void ChangeLevel()
     {
-        gameManager.UseResources(faithUpgardeCost, woodUpgardeCost, stoneUpgardeCost);
+        gameManager.UseResources(faithUpgradeCost, devotionUpgradeCost, woodUpgradeCost, stoneUpgradeCost);
 
         if (level >= 1)
         {

@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
     public List<float> faithMultipliers = new List<float>();
 
     FaithText faithResourceTracker;
+    DevotionText devotionResourceTracker;
     WoodText woodResourceTracker;
     StoneText stoneResourceTracker;
     MonkText monkResourceTracker;
@@ -93,7 +94,7 @@ public class GameManager : MonoBehaviour
     }
 
     //Use collected faith for constructing and leveling up buildings
-    public void UseResources(float faithUseAmount, float woodUseAmount, float stoneUseAmount)
+    public void UseResources(float faithUseAmount, float devotionUseAmount, float woodUseAmount, float stoneUseAmount)
     {
         faith -= faithUseAmount;
         faithResourceTracker.UpdateFaith();
@@ -101,6 +102,14 @@ public class GameManager : MonoBehaviour
         if (faith <= 0)
         {
             faith = 0;
+        }
+
+        devotion -= devotionUseAmount;
+        devotionResourceTracker.UpdateDevotion();
+
+        if (devotion <= 0)
+        {
+            devotion = 0;
         }
 
         wood -= woodUseAmount;

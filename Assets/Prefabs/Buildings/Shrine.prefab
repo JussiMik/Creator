@@ -187,7 +187,7 @@ MonoBehaviour:
   quarryCS: {fileID: 0}
   levelTwoSprite: {fileID: 21300000, guid: d63017497710a2e4093269d116958235, type: 3}
   clickedBuilding: {fileID: 0}
-  sizeOnGrid: {x: 0, y: 0}
+  sizeOnGrid: {x: 1, y: 1}
   faithConstructingCost: 0
   woodConstructingCost: 0
   stoneConstructingCost: 0
