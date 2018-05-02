@@ -18,6 +18,7 @@ TagManager:
   - BuildingButton
   - Shrine
   - ShrineCollider
+  - MysticPlace
   layers:
   - Default
   - TransparentFX

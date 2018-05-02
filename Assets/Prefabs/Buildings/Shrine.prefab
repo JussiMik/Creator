@@ -55,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1605660245458212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.049, y: -3.44, z: 0}
+  m_LocalPosition: {x: 24.462677, y: 1.5822985, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4984276195261882}
@@ -139,10 +139,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.046821594, y: -1.228992}
-      - {x: 1.5591908, y: -0.27128863}
-      - {x: 0.03656578, y: 0.75828266}
-      - {x: -1.5353107, y: -0.2403779}
+    - - {x: 0.0055236816, y: -0.85729635}
+      - {x: 1.6913471, y: 0.11692715}
+      - {x: -0.007463455, y: 1.205776}
+      - {x: -1.6732349, y: 0.18008924}
 --- !u!60 &60744983853061038
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -158,7 +158,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.31186676}
+    pivot: {x: 0.5013757, y: 0.26041147}
     oldSize: {x: 2.0810812, y: 1.7804054}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
@@ -167,10 +167,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.02994728, y: -0.707571}
-      - {x: 0.72818375, y: -0.3012414}
-      - {x: 0.0039787292, y: 0.072684765}
-      - {x: -0.6953945, y: -0.31879115}
+    - - {x: 0.024139404, y: -0.25452816}
+      - {x: 0.6584854, y: 0.14018512}
+      - {x: 0.021402359, y: 0.5315356}
+      - {x: -0.6547375, y: 0.12844348}
 --- !u!114 &114215616270478050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -187,7 +187,7 @@ MonoBehaviour:
   quarryCS: {fileID: 0}
   levelTwoSprite: {fileID: 21300000, guid: d63017497710a2e4093269d116958235, type: 3}
   clickedBuilding: {fileID: 0}
-  sizeOnGrid: {x: 0, y: 0}
+  sizeOnGrid: {x: 1, y: 1}
   faithConstructingCost: 0
   woodConstructingCost: 0
   stoneConstructingCost: 0
