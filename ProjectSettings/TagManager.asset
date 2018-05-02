@@ -18,6 +18,7 @@ TagManager:
   - BuildingButton
   - Shrine
   - ShrineCollider
+  - Monk
   layers:
   - Default
   - TransparentFX

@@ -27,6 +27,7 @@ public class Monk : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        gameManager.goodMonkAndFarmRatio = goodMonkAndFarmRatio;
         InvokeRepeating("CheckForNewDestination", 0.5f, 1.5f);
         InvokeRepeating("CheckDistanceFromTarget", 1f, 2.5f);
         startNewPathTimer = targetObject.GetComponent<PathfindingTargetLocation>().startNewTargetTimer;

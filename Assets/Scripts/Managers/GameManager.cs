@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
     [Space(10)]
     public float devotionChunkIncreaseAmount;
     [Space(10)]
+    public float devotionIncreaseMp1;
+    [Space(10)]
     public bool devotionIncrease;  
     public bool devotionIncrease1;
     public bool devotionIncrease2;
@@ -68,6 +70,11 @@ public class GameManager : MonoBehaviour
     MonkText monkResourceTracker;
 
     public int monkSlots;
+
+    public float goodMonkAndFarmRatio;
+
+    public float numberOfMonksToKill;
+    
 
     private void Awake()
     {
@@ -105,7 +112,7 @@ public class GameManager : MonoBehaviour
         }
 
         devotion -= devotionUseAmount;
-        devotionResourceTracker.UpdateDevotion();
+        //devotionResourceTracker.UpdateDevotion();
 
         if (devotion <= 0)
         {
@@ -153,6 +160,7 @@ public class GameManager : MonoBehaviour
         if (devotion <= 0)
         {
             devotion = 0;
+            KillSomeMonks();
         }
     }
 
@@ -164,6 +172,7 @@ public class GameManager : MonoBehaviour
         if (devotion <= 0)
         {
             devotion = 0;
+            //KillSomeMonks();
         }
     }
 
@@ -174,7 +183,7 @@ public class GameManager : MonoBehaviour
 
         if (devotionIncrease1 == true)
         {
-            devotion += Time.deltaTime * 2;
+            devotion += Time.deltaTime * devotionIncreaseMp1;
         }
 
         if (devotion >= maxDevotionAmount)
@@ -226,6 +235,32 @@ public class GameManager : MonoBehaviour
         }
     }
     */
+
+    void KillSomeMonks()
+    {
+        numberOfMonksToKill = monks.Count - (farms.Count * goodMonkAndFarmRatio);
+
+        //float f = 0;
+
+        for (int i = 0; i < monks.Count; i++)
+        {
+            if (i < numberOfMonksToKill)
+            {
+                Destroy(numberOfMonksToKill);
+            }
+            
+        }
+
+        /*
+        foreach (f < numberOfMonksToKill)
+        {
+            GameObject monkToKill = monks[monks.Count];
+
+            Destroy(monkToKill);
+            f++;
+        }
+        */
+    }
 
     void GetResourceObjects()
     {

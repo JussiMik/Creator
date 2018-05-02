@@ -189,11 +189,13 @@ MonoBehaviour:
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
   faithConstructingCost: 0
+  devotionConstructingCost: 0
   woodConstructingCost: 0
   stoneConstructingCost: 0
-  faithUpgardeCost: 0
-  woodUpgardeCost: 0
-  stoneUpgardeCost: 0
+  faithUpgradeCost: 0
+  devotionUpgradeCost: 0
+  woodUpgradeCost: 0
+  stoneUpgradeCost: 0
   sanctityPointsOnConsturction: 0
   sanctityPointsOnUpgrade: 0
   constructingTime: 20
@@ -207,11 +209,11 @@ MonoBehaviour:
   lowerSpeedConstructing3: 0
   constructingDone: 0
   changedValue: 0
-  faithAmountPerProductionCycle: 0
-  faithAmountPerProductionCycleUpgraded: 0
-  productionCycleLength: 0
+  faithAmountPerProductionCycle: 10
+  faithAmountPerProductionCycleUpgraded: 5
+  productionCycleLength: 8
   generatedFaith: 0
-  maxFaithAmount: 0
+  maxFaithAmount: 50
   faithMultiplier: 1.2
   faithCollected: 0
   faithTimer: 0

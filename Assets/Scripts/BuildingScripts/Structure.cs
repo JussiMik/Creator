@@ -22,10 +22,19 @@ public class Structure : MonoBehaviour
     public float woodConstructingCost;
     public float stoneConstructingCost;
     [Space(10)]
-    public float faithUpgradeCost;
-    public float devotionUpgradeCost;
-    public float woodUpgradeCost;
-    public float stoneUpgradeCost;
+    [HideInInspector]
+    public float faithUpgradeCost, devotionUpgradeCost, woodUpgradeCost, stoneUpgradeCost;
+
+    [Space(10)]
+    public float lvl2FaithUpgradeCost;
+    public float lvl2DevotionUpgradeCost;
+    public float lvl2WoodUpgradeCost;
+    public float lvl2StoneUpgradeCost;
+    [Space(10)]
+    public float lvl3FaithUpgradeCost;
+    public float lvl3DevotionUpgradeCost;
+    public float lvl3WoodUpgradeCost;
+    public float lvl3StoneUpgradeCost;
 
     [Space(10)]
     public float sanctityPointsOnConsturction;
@@ -82,6 +91,7 @@ public class Structure : MonoBehaviour
 
     [HideInInspector]
     public string  name, type;
+   
 
     public float WoodConstuctingCost
     {
@@ -136,7 +146,7 @@ public class Structure : MonoBehaviour
 
     public void ConstructingStructures()
     {
-        gameManager.DevotionDecreaseChunk();
+        //gameManager.DevotionDecreaseChunk();
 
         constructingTimer = true;
     }
@@ -244,6 +254,7 @@ public class Structure : MonoBehaviour
     //Change structures level
     public void ChangeLevel()
     {
+        AddResourceCostAmountOnLevelUp();
         gameManager.UseResources(faithUpgradeCost, devotionUpgradeCost, woodUpgradeCost, stoneUpgradeCost);
 
         if (level >= 1)
@@ -253,17 +264,32 @@ public class Structure : MonoBehaviour
                 gameManager.GiveSanctityPoints(sanctityPointsOnUpgrade);
             }
 
-            faithAmountPerProductionCycle = faithAmountPerProductionCycleUpgraded;
+            faithAmountPerProductionCycle += faithAmountPerProductionCycleUpgraded;
             level += 1;
             gameObject.GetComponent<SpriteRenderer>().sprite = levelTwoSprite;
 
-            if (faithAmountPerProductionCycle >= maxFaithAmount && level >= maxLevelAmount)
+            if (faithAmountPerProductionCycle >= maxFaithAmount)
             {
                 faithAmountPerProductionCycle = maxFaithAmount;
+            }
+
+            if (level >= maxLevelAmount)
+            {
                 level = maxLevelAmount;
             }
         }
 
         lvlChange = false;
+    }
+
+    void AddResourceCostAmountOnLevelUp()
+    {
+        if (level == 2)
+        {
+            faithUpgradeCost = lvl3FaithUpgradeCost;
+            devotionUpgradeCost = lvl3DevotionUpgradeCost;
+            woodUpgradeCost = lvl3WoodUpgradeCost;
+            stoneUpgradeCost = lvl3StoneUpgradeCost;
+        }
     }
 }

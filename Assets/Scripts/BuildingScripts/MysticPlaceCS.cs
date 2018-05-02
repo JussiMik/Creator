@@ -52,7 +52,7 @@ public class MysticPlaceCS : Structure
         if (gameManager.faith >= monkFaithCosts[monksPurchased] && gameManager.monks.Count < gameManager.monkSlots)
         {
 
-            gameManager.UseResources(monkFaithCosts[monksPurchased], 0, 0);
+            gameManager.UseResources(monkFaithCosts[monksPurchased], 0, 0, 0);
             randomDistanceHorizontal = Random.Range(-1.5f, 1.5f);
             randomDistanceVertical = Random.Range(-1.5f, 1.5f);
             GameObject spawnedMonk = Instantiate(monk, new Vector2(clickedBuilding.transform.position.x + randomDistanceHorizontal, clickedBuilding.transform.position.y + randomDistanceVertical), clickedBuilding.transform.rotation);
