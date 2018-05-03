@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: bd86de94bf5cc7b49a70b92837877baa
+timeCreated: 1525345796
+licenseType: Pro
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - foregroundObject: {fileID: 1733398171417390, guid: 64bcdab38214950458388e55013e650a,
+      type: 2}
+  - backgroundObject: {fileID: 1947643304754428, guid: 5637093a46a2c554b93134d0f465e1c1,
+      type: 2}
+  - progressBarForegroundImage: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

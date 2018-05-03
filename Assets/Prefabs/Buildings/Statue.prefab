@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212648406609876690}
   - component: {fileID: 60440308234321026}
   - component: {fileID: 114257290112293142}
+  - component: {fileID: 114060046334648512}
   m_Layer: 12
   m_Name: Statue
   m_TagString: FaithBuilding
@@ -70,6 +71,27 @@ PolygonCollider2D:
       - {x: 0.6691532, y: -0.08569288}
       - {x: 0.00069618225, y: 0.30261087}
       - {x: -0.69119644, y: -0.072518826}
+--- !u!114 &114060046334648512
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1957332227456408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd86de94bf5cc7b49a70b92837877baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 30, z: 0}
+  foregroundObject: {fileID: 1733398171417390, guid: 64bcdab38214950458388e55013e650a,
+    type: 2}
+  backgroundObject: {fileID: 1947643304754428, guid: 5637093a46a2c554b93134d0f465e1c1,
+    type: 2}
+  progressBarForegroundImage: {fileID: 0}
+  buildingDone: 0
+  percent: 0
+  faithMaximumTime: 0
+  faithTimer: 0
 --- !u!114 &114257290112293142
 MonoBehaviour:
   m_ObjectHideFlags: 1

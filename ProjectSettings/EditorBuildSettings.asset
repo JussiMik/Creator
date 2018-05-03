@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 2627fb8202d00b94599352d8dc095139
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PopupMenu.unity
     guid: ec5072d33e2239542b962ae602e39acf
+  - enabled: 1
+    path: Assets/Scenes/FirstPlayable.unity
+    guid: 3f3abc53eb83abd489225036428cf3f3

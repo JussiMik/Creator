@@ -19,6 +19,8 @@ TagManager:
   - Shrine
   - ShrineCollider
   - MysticPlace
+  - HealthCanvas
+  - ProductionCycleCanvas
   layers:
   - Default
   - TransparentFX

@@ -171,6 +171,6 @@ public class TouchInput : MonoBehaviour
     }
     void LimitCameraMovement()
     {
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, minXValue.x, maxXValue.x), Mathf.Clamp(transform.position.y, minYValue.y, maxYValue.y), transform.position.z);
+       // transform.position = new Vector3(Mathf.Clamp(transform.position.x, minXValue.x, maxXValue.x), Mathf.Clamp(transform.position.y, minYValue.y, maxYValue.y), transform.position.z);
     }
 }

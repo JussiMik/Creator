@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50528240957337664}
   - component: {fileID: 60744983853061038}
   - component: {fileID: 114215616270478050}
+  - component: {fileID: 114250203515358368}
   m_Layer: 12
   m_Name: Shrine
   m_TagString: Shrine
@@ -54,8 +55,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1605660245458212}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.462677, y: 1.5822985, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9.03139, y: 0.48888505, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4984276195261882}
@@ -207,9 +208,9 @@ MonoBehaviour:
   lowerSpeedConstructing3: 0
   constructingDone: 0
   changedValue: 0
-  faithAmountPerProductionCycle: 0
+  faithAmountPerProductionCycle: 10
   faithAmountPerProductionCycleUpgraded: 0
-  productionCycleLength: 0
+  productionCycleLength: 10
   generatedFaith: 0
   maxFaithAmount: 0
   faithMultiplier: 1.2
@@ -227,6 +228,27 @@ MonoBehaviour:
   type: 
   totalShrineAmount: 0
   allowTempleConstructing: 0
+--- !u!114 &114250203515358368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1605660245458212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd86de94bf5cc7b49a70b92837877baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 45, z: 0}
+  foregroundObject: {fileID: 1733398171417390, guid: 64bcdab38214950458388e55013e650a,
+    type: 2}
+  backgroundObject: {fileID: 1947643304754428, guid: 5637093a46a2c554b93134d0f465e1c1,
+    type: 2}
+  progressBarForegroundImage: {fileID: 0}
+  buildingDone: 0
+  percent: 0
+  faithMaximumTime: 0
+  faithTimer: 0
 --- !u!114 &114255791115822326
 MonoBehaviour:
   m_ObjectHideFlags: 1

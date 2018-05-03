@@ -30,14 +30,15 @@ public class CollectResourcesAndOpenPanelInput : MonoBehaviour
 
                  if (hitInfo == true)
                  {
-                    // Debug.Log(hitInfo.collider.name);
+                    Debug.Log(hitInfo.collider.name);
                      clickedBuilding = hitInfo.transform.gameObject;
                      if (clickedBuilding.layer == LayerMask.NameToLayer("Building"))
                      {
                          GameObject.FindGameObjectWithTag("PopupMenuCanvas").GetComponent<PopupMenu>().clickedObject = hitInfo.transform.gameObject;
                          if ((hitInfo.transform.tag == "FaithBuilding" || hitInfo.transform.tag == "Shrine") && gameManager.devotion >= gameManager.minDevotionAmountCollecting)
                          {
-                             clickedBuilding = hitInfo.transform.gameObject;
+                            
+                            clickedBuilding = hitInfo.transform.gameObject;
 
                              if (clickedBuilding.GetComponent<Structure>().generatedFaith > 0)
                              {
