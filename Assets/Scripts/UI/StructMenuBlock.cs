@@ -7,7 +7,7 @@ public class StructMenuBlock : MonoBehaviour {
 
     
     public BuildingMenu buildingMenu;
-    public int blockNo;
+    public int blockNo = 666;
          
 	// Use this for initialization
 	void Start () {
@@ -21,6 +21,9 @@ public class StructMenuBlock : MonoBehaviour {
 	
 	void TaskOnClick()
     {
-        buildingMenu.SelectToDrag(blockNo);
+        if ((buildingMenu.proActive && buildingMenu.buildingsPro.Length -1 >= blockNo) || (!buildingMenu.proActive && buildingMenu.buildingsUti.Length -1 >= blockNo))
+        {
+            buildingMenu.ShowInfo(blockNo);
+        }
     }
 }

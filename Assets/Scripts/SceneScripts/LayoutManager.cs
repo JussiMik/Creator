@@ -21,7 +21,7 @@ public class LayoutManager : MonoBehaviour
 
     public bool showGrid;
 
-    private GameObject rockFolder;
+    private GameObject solidRockFolder;
 
     //public Vector3 nullVector3 = new Vector3(666, 666, 666);
 
@@ -56,6 +56,8 @@ public class LayoutManager : MonoBehaviour
 
     public float tileCap;
 
+    private GameObject allTiles;
+
     public GameObject emptyPre;
     public GameObject lakePre;
     public GameObject treePre;
@@ -75,6 +77,8 @@ public class LayoutManager : MonoBehaviour
     private void Start()
     {
         gridAngle = 45 * (tileHeight / tileWidth);
+        allTiles = Instantiate(new GameObject("AllTiles"));
+        //allTiles.hideFlags = HideFlags.HideInHierarchy;
         CreateGrid();
     }
 
@@ -99,8 +103,10 @@ public class LayoutManager : MonoBehaviour
         }
 
         //"REMOVE" CORNER POSITIONS
-        rockFolder = Instantiate(new GameObject(), transform.position, transform.rotation);
-        rockFolder.name = "Rock Folder";
+
+        solidRockFolder = Instantiate(new GameObject("Rock Folder"), transform.position, transform.rotation);
+        solidRockFolder.transform.SetParent(allTiles.transform);
+
         if (roundCorners)
         {
             for (int i1 = 0; i1 < roundCornerBy; i1++)
@@ -127,8 +133,8 @@ public class LayoutManager : MonoBehaviour
         }
 
         //CREATE TEST GRID
-        testGridFolder = Instantiate(new GameObject(), Vector3.zero, transform.rotation);
-        testGridFolder.name = "Test Grid";
+        testGridFolder = Instantiate(new GameObject("Test Grid"), Vector3.zero, transform.rotation);
+        testGridFolder.transform.SetParent(allTiles.transform);
 
         for (int x = 0; x < gridWidth; x++)
         {
@@ -143,14 +149,16 @@ public class LayoutManager : MonoBehaviour
                 {
                     Vector3 newPos = new Vector3(positions[x, y].x, positions[x, y].y, transform.position.z);
                     testGrid[x, y] = Instantiate(emptyPre, newPos, Quaternion.identity);
-                    testGrid[x, y].transform.parent = testGridFolder.transform;
+                    testGrid[x, y].transform.SetParent(testGridFolder.transform);
                     testGrid[x, y].name = x + " , " + y;
                     //testGrid[x, y].transform.localScale = new Vector3(tileWidth * 0.35f, (tileHeight * 2) * 0.35f, testGrid[x, y].transform.localScale.z);
                 }
             }
         }
 
-        //PLACE SURRONDING ROCKS
+        
+
+        //PLACE SOLID ROCKS
         //Place on top width alinged lines
         for (int rowNo = 0; rowNo < borderHeight; rowNo++)
         {
@@ -252,8 +260,9 @@ public class LayoutManager : MonoBehaviour
 
     private void PlaceGrass()
     {
-        GameObject grassFolder = Instantiate(new GameObject(), transform.position, transform.rotation);
-        grassFolder.name = "Grass Folder";
+        GameObject grassFolder = Instantiate(new GameObject("Grass Folder"), transform.position, transform.rotation);
+        grassFolder.transform.SetParent(allTiles.transform);
+
         for (int x = 0; x < positions.GetLength(0); x++)
         {
             for (int y = 0; y < positions.GetLength(1); y++)
@@ -261,7 +270,7 @@ public class LayoutManager : MonoBehaviour
                 if (!(positions[x, y].z == 1 || positions[x, y].z == 3))
                 {
                     GameObject newgrass = Instantiate(emptyPre, positions[x, y], transform.rotation);
-                    newgrass.transform.parent = grassFolder.transform;
+                    newgrass.transform.SetParent(grassFolder.transform);
                     newgrass.name = "GrassTile";
                     newgrass.GetComponent<SpriteRenderer>().sprite = grassTileSprites[Random.Range(0, grassTileSprites.Length)];
                     newgrass.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(new Vector2(x, y)) + 1;
@@ -276,12 +285,14 @@ public class LayoutManager : MonoBehaviour
     {
         {
             GameObject newRock = Instantiate(emptyPre, new Vector3(position.x, position.y, transform.position.z), transform.rotation);
-            newRock.transform.parent = rockFolder.transform;
             newRock.name = "RockTile";
-            newRock.GetComponent<SpriteRenderer>().sprite = rockTileSprites[Random.Range(0, rockTileSprites.Length)];
-            newRock.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(gridPos) + 1;
-            newRock.GetComponent<SpriteRenderer>().color = fullColor;
-            newRock.GetComponent<SpriteRenderer>().sortingLayerName = "Ground";
+            newRock.transform.SetParent(solidRockFolder.transform);
+
+            var rend = newRock.GetComponent<SpriteRenderer>();
+            rend.sprite = rockTileSprites[Random.Range(0, rockTileSprites.Length)];
+            rend.sortingOrder = CalculateSortingLayer(gridPos) + 1;
+            rend.color = fullColor;
+            rend.sortingLayerName = "Ground";
             newRock.tag = "Boundary";
             positions[(int)gridPos.x, (int)gridPos.y].z = 2;
 
@@ -291,8 +302,8 @@ public class LayoutManager : MonoBehaviour
     private void RandomGen()
     {
         //RANDOMIZE LAKES
-        GameObject lakesFolder = Instantiate(new GameObject(), Vector3.zero, transform.rotation);
-        lakesFolder.name = "Lakes Folder";
+        GameObject lakesFolder = Instantiate(new GameObject("Lakes Folder"), Vector3.zero, transform.rotation);
+        lakesFolder.transform.SetParent(allTiles.transform);
 
         for (int i = 0; i < rndLakes; i++)
         {
@@ -310,7 +321,7 @@ public class LayoutManager : MonoBehaviour
             newLake.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(new Vector2(rnd1, rnd2));
             newLake.GetComponent<SpriteRenderer>().sortingLayerName = ("Buildings");
             lakes.Add(newLake);
-            newLake.transform.parent = lakesFolder.transform;
+            newLake.transform.SetParent(lakesFolder.transform);
 
             positions[rnd1, rnd2].z = 1;
 
@@ -318,8 +329,8 @@ public class LayoutManager : MonoBehaviour
         TestGridUpdate();
 
         //RANDOMIZE TREES
-        GameObject treesFolder = Instantiate(new GameObject(), Vector3.zero, transform.rotation);
-        lakesFolder.name = "Trees Folder";
+        GameObject treesFolder = Instantiate(new GameObject("Tree Folder"), Vector3.zero, transform.rotation);
+        treesFolder.transform.SetParent(allTiles.transform);
 
         for (int i = 0; i < rndTrees; i++)
         {
@@ -336,7 +347,7 @@ public class LayoutManager : MonoBehaviour
             GameObject newTree = Instantiate(treePre, positions[rnd1, rnd2], Quaternion.identity);
             newTree.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(new Vector2(rnd1, rnd2));
             newTree.GetComponent<SpriteRenderer>().sortingLayerName = ("Buildings");
-            lakes.Add(newTree);
+            trees.Add(newTree);
             newTree.transform.parent = treesFolder.transform;
 
             positions[rnd1, rnd2].z = 1;
@@ -345,8 +356,8 @@ public class LayoutManager : MonoBehaviour
         TestGridUpdate();
 
         //RANDOMIZE ROCKS
-        GameObject rocksFolder = Instantiate(new GameObject(), Vector3.zero, transform.rotation);
-        lakesFolder.name = "Rocks Folder";
+        GameObject rocksFolder = Instantiate(new GameObject("Rocks Folder"), Vector3.zero, transform.rotation);
+        rocksFolder.transform.SetParent(allTiles.transform);
 
         for (int i = 0; i < rndRocks; i++)
         {
@@ -363,8 +374,8 @@ public class LayoutManager : MonoBehaviour
             GameObject newRock = Instantiate(rockPre, positions[rnd1, rnd2], Quaternion.identity);
             newRock.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(new Vector2(rnd1, rnd2));
             newRock.GetComponent<SpriteRenderer>().sortingLayerName = ("Buildings");
-            lakes.Add(newRock);
-            newRock.transform.parent = rocksFolder.transform;
+            rocks.Add(newRock);
+            newRock.transform.SetParent(rocksFolder.transform);
 
             positions[rnd1, rnd2].z = 1;
 
