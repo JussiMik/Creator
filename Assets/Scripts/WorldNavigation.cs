@@ -60,8 +60,8 @@ public class WorldNavigation : MonoBehaviour
     }
     public void ResetValues()
     {
-        startDragPos = Vector3.zero;
-        dragOffset = Vector3.zero;
+        startDragPos = new Vector3(0, 0, Camera.main.transform.position.z);
+        dragOffset = new Vector3(0, 0, Camera.main.transform.position.z);
         valuesReset = true;
         
     }

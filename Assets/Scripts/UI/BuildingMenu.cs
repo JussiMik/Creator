@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BuildingMenu : MonoBehaviour {
 
-
+    [Header("Building Lists")]
     public GameObject[] buildingsPro = new GameObject[6];
     public GameObject[] buildingsUti = new GameObject[3];
 
@@ -32,8 +32,35 @@ public class BuildingMenu : MonoBehaviour {
 
     public bool proActive;
 
+    public GameManager gameManager;
+
+    public bool canBuild;
+
+    [Header("Building Info Stuff")]
+
+    public GameObject infoBuildingSprite;
+    public GameObject infoBuildingName;
+    public GameObject infoBuildingText;
+    public GameObject infoBuildingBuild;
+
+
+    [Header("Needed Resource Texts")]
+    public Text infoBuildingRes_Wood;
+    public Text infoBuildingRes_Dev;
+    public Text infoBuildingRes_Faith;
+    public Text infoBuildingRes_Stone;
+
+
+
     void Awake()
     {
+        //infoBuildingRes_Wood = GameObject.Find("Info_Resource_Wood").transform.Find("Text").GetComponent<Text>();
+        //infoBuildingRes_Stone = GameObject.Find("Info_Resource_Stone").transform.Find("Text").GetComponent<Text>();
+        //infoBuildingRes_Dev = GameObject.Find("Info_Resource_Devotion").transform.Find("Text").GetComponent<Text>();
+        //infoBuildingRes_Faith = GameObject.Find("Info_Resource_Faith").transform.Find("Text").GetComponent<Text>();
+
+
+
         worldNavigation = GameObject.Find("WorldNavigation");
         dragNDrop = GameObject.Find("LevelManager").GetComponent<DragNDrop>();
 
@@ -49,56 +76,26 @@ public class BuildingMenu : MonoBehaviour {
         {
             buildingButtons[i].GetComponent<StructMenuBlock>().blockNo = i;
         }
-       
-
 
         ProducalToActive();
-        //float blockWidth = buildingMenuBlockPre.GetComponent<RectTransform>().rect.width;
-        //float openerWidth = gameObject.GetComponent<RectTransform>().rect.width;
-
-        //INSTATIATE BUILDGRID
-        //buildGrid = Instantiate(new GameObject(), new Vector3(0,0,0), transform.rotation);
-        //buildGrid.active = false;
-        //buildGrid.name = "Building Grid";
-        //buildGrid.transform.parent = gameObject.transform;
-        //buildGrid.AddComponent<Image>();
-        //buildGrid.GetComponent<Image>().sprite = gridSprite;
-        //buildGrid.GetComponent<RectTransform>().anchoredPosition = new Vector2(-256, 260);
-        //buildGrid.GetComponent<RectTransform>().localScale = new Vector3(7f, 4f, 1f);
-
-        //Building buttons spawn
-        //for (int x = 0; x < gridSizeX; x++)
-        //{
-        //    for (int y = 0; y < gridSizeX; y++)
-        //    {
-        //        Vector3 pos = new Vector3(gameObject.transform.position.x - 500 + (100 * x), gameObject.transform.position.y + 200 - (100 * y), gameObject.transform.position.z);
-        //        structButtons[x,y] = Instantiate(buildingMenuBlockPre, pos, transform.rotation);
-        //        structButtons[x,y].transform.SetParent(buildGrid.transform);
-        //        structButtons[x, y].GetComponent<StructMenuBlock>().blockNo = curBlockNo;
-        //        if (buildingsPro.Length > curBlockNo)
-        //        {
-        //            structButtons[x, y].GetComponent<Image>().sprite = buildingsPro[curBlockNo].GetComponent<SpriteRenderer>().sprite;
-        //        }
-        //        structButtons[x,y].name = "StructButton " + x + ", "+ y;
-        //        structButtons[x,y].GetComponent<StructMenuBlock>().structMenu = this;
-        //        curBlockNo += 1;
-        //    }
-
-        //}
-
-
 
     }
-
-    public void ProducalButton()
+    private void Update()
     {
-
+        if (infoCard.active == true)
+        {
+            if(proActive)
+            {
+                CheckRecourses(buildingsPro);
+            }
+            else
+            {
+                CheckRecourses(buildingsUti);
+            }
+            
+        } 
     }
 
-    public void UnitialButton()
-    {
-
-    }
 
     public void ProducalToActive()
     {
@@ -160,25 +157,41 @@ public class BuildingMenu : MonoBehaviour {
         infoCard.SetActive(true);
         if (proActive)
         {
-            infoCard.transform.Find("Info_BuildingSprite").GetComponent<Image>().sprite = buildingsPro[blockNo].GetComponent<SpriteRenderer>().sprite;
-            infoCard.transform.Find("Info_BuildingName").GetComponent<Text>().text = buildingsPro[blockNo].name;
+            curBlockNo = blockNo;
+            infoBuildingSprite.GetComponent<Image>().sprite = buildingsPro[blockNo].GetComponent<SpriteRenderer>().sprite;
+            infoBuildingName.GetComponent<Text>().text = buildingsPro[blockNo].name;
+            infoBuildingText.GetComponent<Text>().text = buildingsPro[blockNo].GetComponent<Structure>().info;
+
+            infoBuildingRes_Wood.text = buildingsPro[blockNo].GetComponent<Structure>().woodConstructingCost.ToString();
+            infoBuildingRes_Faith.text = buildingsPro[blockNo].GetComponent<Structure>().faithConstructingCost.ToString();
+            infoBuildingRes_Stone.text = buildingsPro[blockNo].GetComponent<Structure>().stoneConstructingCost.ToString();
+            infoBuildingRes_Dev.text = buildingsPro[blockNo].GetComponent<Structure>().devotionConstructingCost.ToString();
+
+
         }
         else
         {
-            infoCard.transform.Find("Info_BuildingSprite").GetComponent<Image>().sprite = buildingsUti[blockNo].GetComponent<SpriteRenderer>().sprite;
-            infoCard.transform.Find("Info_BuildingName").GetComponent<Text>().text = buildingsUti[blockNo].name;
+            curBlockNo = blockNo;
+            infoBuildingSprite.GetComponent<Image>().sprite = buildingsUti[blockNo].GetComponent<SpriteRenderer>().sprite;
+            infoBuildingName.GetComponent<Text>().text = buildingsUti[blockNo].name;
+            infoBuildingText.GetComponent<Text>().text = buildingsUti[blockNo].GetComponent<Structure>().info;
+
+            infoBuildingRes_Wood.text = buildingsUti[blockNo].GetComponent<Structure>().woodConstructingCost.ToString();
+            infoBuildingRes_Faith.text = buildingsUti[blockNo].GetComponent<Structure>().faithConstructingCost.ToString();
+            infoBuildingRes_Stone.text = buildingsUti[blockNo].GetComponent<Structure>().stoneConstructingCost.ToString();
+            infoBuildingRes_Dev.text = buildingsUti[blockNo].GetComponent<Structure>().devotionConstructingCost.ToString();
         }
     }
 
-    public void SelectToDrag(int blockNo)
+    public void SelectToDrag()
     {
         if (proActive)
         {
-            dragNDrop.ShowToDrag(buildingsPro[blockNo]);
+            dragNDrop.ShowToDrag(buildingsPro[curBlockNo]);
         }
         else
         {
-            dragNDrop.ShowToDrag(buildingsUti[blockNo]);
+            dragNDrop.ShowToDrag(buildingsUti[curBlockNo]);
         }
 
         HideStructMenu();
@@ -195,5 +208,64 @@ public class BuildingMenu : MonoBehaviour {
         buildGrid.active = true;
         menuVisible = true;
        
+    }
+
+    void CheckRecourses(GameObject[] otherBuildingsList)
+    {
+        canBuild = true; 
+
+        //TEST WOOD
+        if (gameManager.wood >= otherBuildingsList[curBlockNo].GetComponent<Structure>().woodConstructingCost)
+        {
+            infoBuildingRes_Wood.color = Color.green;
+        }
+        else
+        {
+            infoBuildingRes_Wood.color = Color.red;
+            canBuild = false;
+        }
+
+        //TEST FAITH
+        if (gameManager.faith >= otherBuildingsList[curBlockNo].GetComponent<Structure>().faithConstructingCost)
+        {
+            infoBuildingRes_Faith.color = Color.green;
+        }
+        else
+        {
+            infoBuildingRes_Faith.color = Color.red;
+            canBuild = false;
+        }
+
+        //TEST STONE
+        if (gameManager.stone >= otherBuildingsList[curBlockNo].GetComponent<Structure>().stoneConstructingCost)
+        {
+            infoBuildingRes_Stone.color = Color.green;
+        }
+        else
+        {
+            infoBuildingRes_Stone.color = Color.red;
+            canBuild = false;
+        }
+
+        //TEST DEVOTION
+        if (gameManager.devotion >= otherBuildingsList[curBlockNo].GetComponent<Structure>().devotionConstructingCost)
+        {
+            infoBuildingRes_Dev.color = Color.green;
+        }
+        else
+        {
+            infoBuildingRes_Dev.color = Color.red;
+            canBuild = false;
+        }
+
+        if(canBuild)
+        {
+            infoBuildingBuild.GetComponent<Image>().color = Color.green; 
+        }
+        else
+        {
+            infoBuildingBuild.GetComponent<Image>().color = Color.red;
+        }
+         
     }
 }

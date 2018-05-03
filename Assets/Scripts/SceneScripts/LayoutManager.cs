@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LayoutManager : MonoBehaviour
 {
@@ -232,12 +233,7 @@ public class LayoutManager : MonoBehaviour
         //NEW GRID SEED
         if (Input.GetKeyDown("space"))
         {
-            //for (int i = 0; i < lakes.Count; i++)
-            //{
-            //    Destroy(lakes[i]);
-            //}
-            //RandomGen();
-            Application.LoadLevel("FirstPlayable");
+            Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
 
         }
 

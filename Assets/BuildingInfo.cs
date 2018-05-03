@@ -5,32 +5,31 @@ using UnityEngine.UI;
 
 public class BuildingInfo : MonoBehaviour {
 
-    [Header("Producal Infos")]
-    public string woodWorkshopInfo;
-    public string quarryInfo;
-    public string farmInfo;
-    public string shrineInfo;
-    public string statueInfo;
-    public string templeInfo;
-
-    [Header("Utility Infos")]
-    public string gardenInfo;
-    public string meditationRoomInfo;
-    public string dormitoryInfo;
-
     public BuildingMenu buildingMenu;
 
     public GameObject infoText;
-    
+
+    private void Start()
+    {
+        buildingMenu = GameObject.Find("BuildingMenu").GetComponent<BuildingMenu>();
+    }
 
     // Use this for initialization
-    public void CloseInfo (int no)
+    public void CloseInfo()
     {
         gameObject.SetActive(false);  
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    public void Select()
+    {
+        if(buildingMenu.canBuild)
+        {
+            buildingMenu.SelectToDrag();
+            gameObject.SetActive(false);
+        }
+        else
+        {
+
+        }
+    }
 }

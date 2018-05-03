@@ -88,13 +88,20 @@ MonoBehaviour:
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 2, y: 2}
   faithConstructingCost: 0
+  devotionConstructingCost: 0
   woodConstructingCost: 0
   stoneConstructingCost: 0
-  faithUpgardeCost: 0
-  woodUpgardeCost: 0
-  stoneUpgardeCost: 0
+  lvl2FaithUpgradeCost: 0
+  lvl2DevotionUpgradeCost: 0
+  lvl2WoodUpgradeCost: 0
+  lvl2StoneUpgradeCost: 0
+  lvl3FaithUpgradeCost: 0
+  lvl3DevotionUpgradeCost: 0
+  lvl3WoodUpgradeCost: 0
+  lvl3StoneUpgradeCost: 0
   sanctityPointsOnConsturction: 0
   sanctityPointsOnUpgrade: 0
+  constructingTimer: 0
   constructingTime: 8
   normalSpeedConstructingMp: 4
   lowerSpeedConstructingMp1: 3
@@ -106,24 +113,25 @@ MonoBehaviour:
   lowerSpeedConstructing3: 0
   constructingDone: 0
   changedValue: 0
+  generatedFaith: 0
   faithAmountPerProductionCycle: 0
   faithAmountPerProductionCycleUpgraded: 0
   productionCycleLength: 10
-  generatedFaith: 0
   maxFaithAmount: 0
   faithMultiplier: 0
   faithCollected: 0
   faithTimer: 0
   originalFaithTargetTime: 0
-  defaultFaithGeneration: 0
-  slowerFaithGeneration1: 0
-  slowerFaithGeneration2: 0
-  slowerFaithGeneration3: 0
+  defaultFaithTimer: 0
+  slowerFaithTimer1: 0
+  slowerFaithTimer2: 0
+  slowerFaithTimer3: 0
   level: 1
   lvlChange: 0
   maxLevelAmount: 2
   name: 
   type: 
+  info: This is a nice garden.
 --- !u!212 &212792370755002724
 SpriteRenderer:
   m_ObjectHideFlags: 1
