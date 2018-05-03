@@ -6,49 +6,52 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     Structure structure;
-    public GameObject monk;
-    public GameObject shrine;
-    public GameObject statue;
-    //public GameObject temple;
-    public GameObject farm;
-    public GameObject garden;
-    public GameObject meditationRoom;
 
     [Space(10)]
     public float sanctity;
-    [Space(10)]
     [SerializeField]
     private float sanctityPoints;
-    [Space(10)]
     public float maxSanctityPoints;
+
     [Space(10)]
     public float requiredAmountForLvlUp;
     public float requiredAmountIncrease;
 
     [Space(10)]
     public float faith;
-
-    [Space(10)]
     public float wood;
-
-    [Space(10)]
     public float stone;
-
-    [Space(10)]
     public float devotion;
+
     [Space(10)]
     public float maxDevotionAmount;
     public float minDevotionAmountCollecting;
 
-    public bool devotionDecrease;
+    [Space(10)]
     public float devotionChunkDecreaseAmount;
-    public bool devotionDecreaseMp1;
-    public bool devotionDecreaseMp2;
-    public bool devotionDecreaseMp3;
+    [Space(10)]
+    public float devotionDecreaseMp1;
+    public float devotionDecreaseMp2;
+    public float devotionDecreaseMp3;
+    [Space(10)]
+    public bool devotionDecrease;
+    public bool devotionDecrease1;
+    public bool devotionDecrease2;
+    public bool devotionDecrease3;
 
-    public bool devotionIncrease;
+    [Space(10)]
     public float devotionChunkIncreaseAmount;
-    public bool devotionIncreaseMp1;
+    [Space(10)]
+    public bool devotionIncrease;  
+    public bool devotionIncrease1;
+    public bool devotionIncrease2;
+    public bool devotionIncrease3;
+
+    [Space(10)]
+    public float monkFaithMultiplier;
+    public float monkFaithMultiplierSlow1;
+    public float monkFaithMultiplierSlow2;
+    public float monkFaithMultiplierSlow3;
 
     [Space(10)]
     public List<GameObject> faithBuildings = new List<GameObject>();
@@ -58,17 +61,12 @@ public class GameManager : MonoBehaviour
     public List<GameObject> monks = new List<GameObject>();
     public List<float> faithMultipliers = new List<float>();
 
-    public float monkFaithMultiplier;
-    public float monkFaithMultiplierSlow1;
-    public float monkFaithMultiplierSlow2;
-    public float monkFaithMultiplierSlow3;
-
     FaithText faithResourceTracker;
     WoodText woodResourceTracker;
     StoneText stoneResourceTracker;
     MonkText monkResourceTracker;
 
-
+    public int monkSlots;
 
     private void Awake()
     {
@@ -92,47 +90,8 @@ public class GameManager : MonoBehaviour
         {
             DevotionIncrease();
         }
-
-        /*
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            SpawnShrine();
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            SpawnStatue();
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            SpawnGarden();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //SpawnGarden();
-            SpawnFarm();
-        }
-
-        /* if (Input.GetKeyDown(KeyCode.W))
-         {
-             SpawnNewMonk();
-         }
-         
     }
 
-       public void SpawnNewMonk()
-       {
-           clickedObject = PopupCanvas.GetComponent<PopupMenu>().clickedObject;
-           GameObject spawnedMonk = Instantiate(monk, new Vector3(clickedObject.transform.position.x + 2 , clickedObject.transform.position.y + 2, clickedObject.transform.position.z), clickedObject.transform.rotation);
-           monks.Add(spawnedMonk);
-           monkResourceTracker.UpdateMonkCount();
-       }
-       */
-
-    }
     //Use collected faith for constructing and leveling up buildings
     public void UseResources(float faithUseAmount, float woodUseAmount, float stoneUseAmount)
     {
@@ -160,25 +119,26 @@ public class GameManager : MonoBehaviour
             stone = 0;
         }
     }
+
     //Devotion decreases slowly
     void DevotionDecrease()
     {
         devotion -= Time.deltaTime;
 
-        if (devotionDecreaseMp1 == true)
+        if (devotionDecrease1 == true)
         {
             structure.changedValue = false;
-            devotion -= Time.deltaTime * 2;
+            devotion -= Time.deltaTime * devotionDecreaseMp1;
         }
-        if (devotionDecreaseMp2 == true)
+        if (devotionDecrease2 == true)
         {
             structure.changedValue = false;
-            devotion -= Time.deltaTime * 3;
+            devotion -= Time.deltaTime * devotionDecreaseMp2;
         }
-        if (devotionDecreaseMp3 == true)
+        if (devotionDecrease3 == true)
         {
             structure.changedValue = false;
-            devotion -= Time.deltaTime * 4;
+            devotion -= Time.deltaTime * devotionDecreaseMp3;
         }
 
         if (devotion <= 0)
@@ -203,7 +163,7 @@ public class GameManager : MonoBehaviour
     {
         devotion += Time.deltaTime;
 
-        if (devotionIncreaseMp1 == true)
+        if (devotionIncrease1 == true)
         {
             devotion += Time.deltaTime * 2;
         }
@@ -248,23 +208,7 @@ public class GameManager : MonoBehaviour
         sanctity++;
     }
 
-    public void SpawnShrine()
-    {
-        GameObject spawnedShrine = Instantiate(shrine, new Vector3(transform.position.x - 3, transform.position.y + 4, transform.position.z), transform.rotation);
-    }
-
-    public void SpawnStatue()
-    {
-        GameObject spawnedStatue = Instantiate(statue, new Vector3(transform.position.x + 1, transform.position.y - 2, transform.position.z), transform.rotation);
-    }
-
     /*
-    public void SpawnTemple()
-    {
-        GameObject spawned = Instantiate(temple, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-    }
-    */
-
     public void SpawnFarm()
     {
         //if (faith >= faithUseAmount && devotion >= devotionChunkDecreaseAmount)
@@ -272,11 +216,7 @@ public class GameManager : MonoBehaviour
             GameObject spawned = Instantiate(farm, new Vector3(transform.position.x + 5, transform.position.y - 2, transform.position.z), transform.rotation);
         }
     }
-
-    public void SpawnGarden()
-    {
-        GameObject spawned = Instantiate(garden, new Vector3(transform.position.x - 6, transform.position.y - 3, transform.position.z), transform.rotation);
-    }
+    */
 
     void GetResourceObjects()
     {

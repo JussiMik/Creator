@@ -1,27 +1,19 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WoodWorkshopCS : Structure
 {
     [Space(10)]
-    public bool woodTimer;
-    public float woodTime;
-    [SerializeField]
-    public bool woodTimerCollision;
-    [SerializeField]
+    public float woodAmountPerProductionCyclePerTree;
+    public float woodProductionTimeLength;
+
+    private bool woodTimerCollision;
+    [HideInInspector]
+    public bool woodTimer, woodCollected;
+    [HideInInspector]
     public float originalWoodTime;
-
-    [Space(10)]
     public float gatheredWood;
-
-    [Space(10)]
-    public float woodAmount;
-
-    [Space(10)]
-    [SerializeField]
-    private bool woodCollected;
 
     [Space(10)]
     public float trees;
@@ -40,7 +32,7 @@ public class WoodWorkshopCS : Structure
         base.Start();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
-        originalWoodTime = woodTime;
+        originalWoodTime = woodProductionTimeLength;
 
         woodCollected = true;
         normalSpeedConstructing = true;
@@ -58,7 +50,7 @@ public class WoodWorkshopCS : Structure
 
         if (constructingDone == true && sanctityPointsGiven == false)
         {
-            gameManager.GiveSanctityPoints(sanctityPointAmount);
+            gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
 
             sanctityPointsGiven = true;
 
@@ -82,11 +74,11 @@ public class WoodWorkshopCS : Structure
 
     public void WoodTimer()
     {
-        woodTime -= Time.deltaTime;
+        woodProductionTimeLength -= Time.deltaTime;
 
-        if (woodTime <= 0)
+        if (woodProductionTimeLength <= 0)
         {
-            woodTime = 0;
+            woodProductionTimeLength = 0;
 
             trees = totalTreeAmount;
 
@@ -105,14 +97,14 @@ public class WoodWorkshopCS : Structure
                 trees = lvl3TreeAmount;
             }
 
-            gatheredWood += woodAmount * trees;
+            gatheredWood += woodAmountPerProductionCyclePerTree * trees;
 
             woodTimer = false;
         }
 
         if (woodTimer == false)
         {
-            woodTime = originalWoodTime;
+            woodProductionTimeLength = originalWoodTime;
             woodTimer = true;
             woodCollected = false;
         }

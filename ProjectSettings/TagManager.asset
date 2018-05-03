@@ -16,6 +16,8 @@ TagManager:
   - GameManager
   - MenuButton
   - BuildingButton
+  - Shrine
+  - ShrineCollider
   layers:
   - Default
   - TransparentFX
@@ -26,7 +28,7 @@ TagManager:
   - 
   - 
   - TouchInput
-  - 
+  - Resource
   - Unwalkable
   - PFTargetLayer
   - Building

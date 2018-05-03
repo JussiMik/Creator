@@ -6,16 +6,21 @@ public class MysticPlaceCS : Structure
 {
     private bool addedToList;
     bool increaseMonkCost;
+    [Space(10)]
+    public int addedMonkSlots;
     public int monksPurchased;
-    public GameObject monk;
-    public MonkText monkText;
     public float[] monkFaithCosts;
+    [HideInInspector]
+    public GameObject monk, resourceTracker;
     float randomDistanceHorizontal;
     float randomDistanceVertical;
+
     protected override void Start()
     {
         base.Start();
-        originalFaithTargetTime = faithTargetTime;
+        resourceTracker = GameObject.Find("MonkText");
+        gameManager.monkSlots += addedMonkSlots; 
+        originalFaithTargetTime = productionCycleLength;
         faithCollected = true;
         addedToList = false;
         constructingDone = true;
@@ -43,9 +48,8 @@ public class MysticPlaceCS : Structure
     }
     public void SpawnNewMonk()
     {
-        Debug.Log(monkFaithCosts.Length);
         clickedBuilding = gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().clickedBuilding;
-        if (gameManager.faith >= monkFaithCosts[monksPurchased])
+        if (gameManager.faith >= monkFaithCosts[monksPurchased] && gameManager.monks.Count < gameManager.monkSlots)
         {
 
             gameManager.UseResources(monkFaithCosts[monksPurchased], 0, 0);
@@ -53,7 +57,7 @@ public class MysticPlaceCS : Structure
             randomDistanceVertical = Random.Range(-1.5f, 1.5f);
             GameObject spawnedMonk = Instantiate(monk, new Vector2(clickedBuilding.transform.position.x + randomDistanceHorizontal, clickedBuilding.transform.position.y + randomDistanceVertical), clickedBuilding.transform.rotation);
             gameManager.monks.Add(spawnedMonk);
-            monkText.UpdateMonkCount();
+            resourceTracker.GetComponent<MonkText>().UpdateMonkCount();
             if (monksPurchased < monkFaithCosts.Length - 1)
             {
                 increaseMonkCost = true;

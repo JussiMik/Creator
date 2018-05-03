@@ -5,21 +5,15 @@ using UnityEngine;
 public class QuarryCS : Structure
 {
     [Space(10)]
-    public bool rockTimer;
-    public float rockTime;
-    [SerializeField]
+    public float stoneAmountPerProductionCyclePerRock;
+    public float stoneProductionTimeLength;
+
     private bool rockTimerCollision;
-    [SerializeField]
+    [HideInInspector]
+    public bool rockTimer, stoneCollected;
+    [HideInInspector]
     public float originalRockTime;
-
-    [Space(10)]
     public float gatheredStone;
-
-    [Space(10)]
-    public float gatheredStoneAmount;
-
-    [Space(10)]
-    public bool stoneCollected;
 
     [Space(10)]
     public float rocks;
@@ -41,7 +35,7 @@ public class QuarryCS : Structure
         normalSpeedConstructing = true;
         ConstructingStructures();
 
-        originalRockTime = rockTime;
+        originalRockTime = stoneProductionTimeLength;
 
         stoneCollected = true;
 
@@ -55,7 +49,7 @@ public class QuarryCS : Structure
 
         if (constructingDone == true && sanctityPointsGiven == false)
         {
-            gameManager.GiveSanctityPoints(sanctityPointAmount);
+            gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
 
             sanctityPointsGiven = true;
 
@@ -77,7 +71,7 @@ public class QuarryCS : Structure
         rockTimerCollision = transform.GetChild(0).GetComponent<QuarryRockCollider>().rockTimerCollision;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+   /* private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Rock")
         {
@@ -92,14 +86,15 @@ public class QuarryCS : Structure
             rockTimerCollision = true;
         }
     }
+    */
 
     private void RockTimer()
     {
-        rockTime -= Time.deltaTime;
+        stoneProductionTimeLength -= Time.deltaTime;
 
-        if (rockTime <= 0)
+        if (stoneProductionTimeLength <= 0)
         {
-            rockTime = 0;
+            stoneProductionTimeLength = 0;
 
             rocks = totalRockAmount;
 
@@ -118,14 +113,14 @@ public class QuarryCS : Structure
                 rocks = lvl3RockAmount;
             }
 
-            gatheredStone += gatheredStoneAmount * rocks;
+            gatheredStone += stoneAmountPerProductionCyclePerRock * rocks;
 
             rockTimer = false;
         }
 
         if (rockTimer == false)
         {
-            rockTime = originalRockTime;
+            stoneProductionTimeLength = originalRockTime;
             rockTimer = true;
             stoneCollected = false;
         }

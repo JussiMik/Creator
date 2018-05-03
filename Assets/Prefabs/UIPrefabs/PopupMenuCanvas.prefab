@@ -268,6 +268,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickedObject: {fileID: 0}
+  dragNDrop: {fileID: 0}
+  temple: {fileID: 1604896122853608, guid: f5c0f300b4a854849a1e68dc29dc4212, type: 2}
   levelUp: 0
 --- !u!114 &114135590257165694
 MonoBehaviour:
@@ -585,7 +587,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 40
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 4
     m_MaxSize: 60
     m_Alignment: 4
@@ -750,8 +752,7 @@ MonoBehaviour:
   monkCostText: {fileID: 114875713360440668}
   xOffset: 140
   yOffset: 80
-  name: 
-  type: 
+  clickedObjectName: 
   level: 0
   levelupCost: 0
   showPanel: 0
@@ -1057,8 +1058,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4, y: 177}
-  m_SizeDelta: {x: 115, y: 137}
+  m_AnchoredPosition: {x: -4, y: 178}
+  m_SizeDelta: {x: 115, y: 133}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224119021078852722
 RectTransform:

@@ -27,8 +27,11 @@ public class BuildingNameText : MonoBehaviour
     }
     public void ShowNameAndLevel()
     {
-        level = clickedObject.GetComponent<Structure>().level;
-        nameText.text = name + " LVL. " + level;
+        if (clickedObject != null)
+        {
+            level = clickedObject.GetComponent<Structure>().level;
+            nameText.text = name + " LVL. " + level;
+        }
     }
     public void FindInfo()
     {

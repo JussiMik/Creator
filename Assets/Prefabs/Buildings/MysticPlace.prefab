@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4333223651142962}
   - component: {fileID: 212444002140258722}
   - component: {fileID: 114434509404870410}
-  - component: {fileID: 60832841267373804}
+  - component: {fileID: 60540289590645054}
   - component: {fileID: 114846904060427160}
   m_Layer: 12
   m_Name: MysticPlace
@@ -43,7 +43,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &60832841267373804
+--- !u!60 &60540289590645054
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -59,7 +59,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.4}
-    oldSize: {x: 3.883446, y: 2.7027028}
+    oldSize: {x: 4, y: 2.783819}
     newSize: {x: 5.12, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -67,10 +67,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.0094839735, y: 0.7626242}
-      - {x: -1.3781675, y: 0.04569467}
-      - {x: -0.021725655, y: -0.7089953}
-      - {x: 1.3133361, y: 0.024658998}
+    - - {x: -0.054784775, y: -0.7365086}
+      - {x: 1.3269901, y: 0.043885827}
+      - {x: -0.013223648, y: 0.8004888}
+      - {x: -1.392561, y: 0.06767094}
 --- !u!114 &114434509404870410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -98,54 +98,56 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
+  levelTwoSprite: {fileID: 21300000, guid: fb6c5e4e1580cdf4f9d76f2c100647c0, type: 3}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 0, y: 0}
-  sanctityPointAmount: 0
-  sanctityLevelUpReward: 0
-  constructingTimer: 0
+  faithConstructingCost: 0
+  woodConstructingCost: 0
+  stoneConstructingCost: 0
+  faithUpgardeCost: 0
+  woodUpgardeCost: 0
+  stoneUpgardeCost: 0
+  sanctityPointsOnConsturction: 0
+  sanctityPointsOnUpgrade: 0
   constructingTime: 0
-  faithCost: 100
-  woodCost: 0
-  stoneCost: 0
-  constructingTimeSlow1: 0
-  constructingTimeSlow2: 0
-  constructingTimeSlow3: 0
+  normalSpeedConstructingMp: 4
+  lowerSpeedConstructingMp1: 3
+  lowerSpeedConstructingMp2: 2
+  lowerSpeedConstructingMp3: 1
   normalSpeedConstructing: 0
-  changedValue: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0
   lowerSpeedConstructing3: 0
   constructingDone: 0
+  changedValue: 0
+  faithAmountPerProductionCycle: 0
+  faithAmountPerProductionCycleUpgraded: 0
+  productionCycleLength: 10
   generatedFaith: 0
-  faithAmount: 5
   maxFaithAmount: 0
   faithMultiplier: 0
   faithCollected: 0
   faithTimer: 0
-  faithTargetTime: 10
-  originalFaithTargetTime: 10
+  originalFaithTargetTime: 0
   defaultFaithGeneration: 0
   slowerFaithGeneration1: 0
   slowerFaithGeneration2: 0
   slowerFaithGeneration3: 0
-  level: 0
+  level: 1
   lvlChange: 0
-  lvlUpFaithIncrease: 0
-  maxLevelAmount: 0
-  faithLevelUpCost: 0
-  woodLevelUpCost: 0
-  stoneLevelUpCost: 0
+  maxLevelAmount: 2
   name: 
   type: 
+  addedMonkSlots: 2
   monksPurchased: 0
-  monk: {fileID: 0}
-  monkText: {fileID: 0}
   monkFaithCosts:
   - 100
   - 200
   - 300
   - 400
   - 500
+  monk: {fileID: 1593562265877594, guid: f73b398545c4f6c4a85c6bcd97b1f284, type: 2}
+  resourceTracker: {fileID: 0}
 --- !u!212 &212444002140258722
 SpriteRenderer:
   m_ObjectHideFlags: 1

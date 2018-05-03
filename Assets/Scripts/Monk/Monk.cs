@@ -6,17 +6,23 @@ public class Monk : MonoBehaviour
 
     public Transform targetTransform;
     public GameObject targetObject;
-    public bool checkForNewDestination;
-    public bool startNewPathTimer;
-    public bool reachedDestination;
-    public float speed = 20f;
+    public GameManager gameManager;
+   public bool checkForNewDestination;
+    bool startNewPathTimer;
+    bool reachedDestination;
+    public float speed;
     public float movementCheckDistance;
     Vector2[] path;
     int targetIndex;
 
     //  public GameObject monk;
-    public GameManager gameManager;
-   
+
+    [Space(10)]
+    public float goodMonkAndFarmRatio;
+    public float badMonkAndFarmRatio75;
+    public float badMonkAndFarmRatio50;
+    public float badMonkAndFarmRatio25;
+
 
     void Start()
     {
@@ -31,7 +37,6 @@ public class Monk : MonoBehaviour
         if (checkForNewDestination == true)
         {
             StartCoroutine("RefreshPath");
-            checkForNewDestination = false;
         }
 
         CheckFarmCount();
@@ -49,7 +54,7 @@ public class Monk : MonoBehaviour
 
     void CheckFarmCount()
     {
-        int index;
+       // int index;
 
         if (gameManager.farms.Count == 0)
         {
@@ -63,41 +68,41 @@ public class Monk : MonoBehaviour
 
         if (gameManager.monks.Count > 0 && gameManager.farms.Count > 0)
         {
-            if (gameManager.monks.Count / gameManager.farms.Count <= 4)
+            if (gameManager.monks.Count / gameManager.farms.Count <= goodMonkAndFarmRatio)
             {
                 gameManager.devotionDecrease = false;
-                gameManager.devotionDecreaseMp1 = false;
-                gameManager.devotionDecreaseMp2 = false;
-                gameManager.devotionDecreaseMp3 = false;
+                gameManager.devotionDecrease1 = false;
+                gameManager.devotionDecrease2 = false;
+                gameManager.devotionDecrease3 = false;
                 gameManager.devotionIncrease = true;
 
                 if (gameManager.gardens.Count > 0 || gameManager.meditationRooms.Count > 0)
                 {
-                    gameManager.devotionIncreaseMp1 = true;
+                    gameManager.devotionIncrease1 = true;
                 }
             }
 
-            if (gameManager.monks.Count / gameManager.farms.Count > 4)
+            if (gameManager.monks.Count / gameManager.farms.Count > goodMonkAndFarmRatio)
             {
                 gameManager.devotionIncrease = false;
                 gameManager.devotionDecrease = true;
             }
 
-            if (gameManager.monks.Count / gameManager.farms.Count >= 5.7)
+            if (gameManager.monks.Count / gameManager.farms.Count >= badMonkAndFarmRatio75)
             {
-                gameManager.devotionDecreaseMp1 = true;
+                gameManager.devotionDecrease1 = true;
             }
 
-            if (gameManager.monks.Count / gameManager.farms.Count >= 8)
+            if (gameManager.monks.Count / gameManager.farms.Count >= badMonkAndFarmRatio50)
             {
-                gameManager.devotionDecreaseMp1 = false;
-                gameManager.devotionDecreaseMp2 = true;
+                gameManager.devotionDecrease1 = false;
+                gameManager.devotionDecrease2 = true;
             }
 
-            if (gameManager.monks.Count / gameManager.farms.Count >= 13.2)
+            if (gameManager.monks.Count / gameManager.farms.Count >= badMonkAndFarmRatio25)
             {
-                gameManager.devotionDecreaseMp2 = false;
-                gameManager.devotionDecreaseMp3 = true;
+                gameManager.devotionDecrease2 = false;
+                gameManager.devotionDecrease3 = true;
             }
         }
 
@@ -121,6 +126,7 @@ public class Monk : MonoBehaviour
                 StartCoroutine("FollowPath");
             }
             StopCoroutine("RefreshPath");
+            checkForNewDestination = false;
             yield return new WaitForSeconds(.25f);
         }
     }
@@ -163,8 +169,8 @@ public class Monk : MonoBehaviour
         {
             for (int i = targetIndex; i < path.Length; i++)
             {
-                Gizmos.color = Color.black;
-                Gizmos.DrawCube((Vector3)path[i], Vector3.one * .5f);
+                 Gizmos.color = Color.black;
+                // Gizmos.DrawCube((Vector3)path[i], Vector3.one * .5f);
 
                 if (i == targetIndex)
                 {

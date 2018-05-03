@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4180492287541226}
   - component: {fileID: 212826804653827858}
-  - component: {fileID: 61869171918766578}
   - component: {fileID: 50528240957337664}
+  - component: {fileID: 60744983853061038}
   - component: {fileID: 114215616270478050}
   m_Layer: 12
   m_Name: Shrine
@@ -38,7 +38,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4984276195261882}
-  - component: {fileID: 61002006860246814}
+  - component: {fileID: 60114254168038932}
   - component: {fileID: 50182060507315542}
   - component: {fileID: 114255791115822326}
   m_Layer: 2
@@ -55,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1605660245458212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 18.049, y: -3.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4984276195261882}
@@ -115,8 +115,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!61 &61002006860246814
-BoxCollider2D:
+--- !u!60 &60114254168038932
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -127,21 +127,24 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0011303239, y: -0.0018295646}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.35}
+    oldSize: {x: 2, y: 1.6993244}
+    newSize: {x: 4, y: 3.3986487}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.1968663, y: 0.18937251}
-  m_EdgeRadius: 0
---- !u!61 &61869171918766578
-BoxCollider2D:
+  m_Points:
+    m_Paths:
+    - - {x: 0.046821594, y: -1.228992}
+      - {x: 1.5591908, y: -0.27128863}
+      - {x: 0.03656578, y: 0.75828266}
+      - {x: -1.5353107, y: -0.2403779}
+--- !u!60 &60744983853061038
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -149,22 +152,25 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0014209636}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.1621623, y: 3.5608108}
+    pivot: {x: 0.5, y: 0.31186676}
+    oldSize: {x: 2.0810812, y: 1.7804054}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.14253993, y: 0.14124325}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.02994728, y: -0.707571}
+      - {x: 0.72818375, y: -0.3012414}
+      - {x: 0.0039787292, y: 0.072684765}
+      - {x: -0.6953945, y: -0.31879115}
 --- !u!114 &114215616270478050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,31 +185,36 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
+  levelTwoSprite: {fileID: 21300000, guid: d63017497710a2e4093269d116958235, type: 3}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 0, y: 0}
-  sanctityPointAmount: 7
-  sanctityLevelUpReward: 0
-  constructingTimer: 0
+  faithConstructingCost: 0
+  woodConstructingCost: 0
+  stoneConstructingCost: 0
+  faithUpgardeCost: 0
+  woodUpgardeCost: 0
+  stoneUpgardeCost: 0
+  sanctityPointsOnConsturction: 0
+  sanctityPointsOnUpgrade: 0
   constructingTime: 20
-  faithCost: 100
-  woodCost: 100
-  stoneCost: 100
-  constructingTimeSlow1: 0
-  constructingTimeSlow2: 0
-  constructingTimeSlow3: 0
+  normalSpeedConstructingMp: 4
+  lowerSpeedConstructingMp1: 3
+  lowerSpeedConstructingMp2: 2
+  lowerSpeedConstructingMp3: 1
   normalSpeedConstructing: 0
-  changedValue: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0
   lowerSpeedConstructing3: 0
   constructingDone: 0
+  changedValue: 0
+  faithAmountPerProductionCycle: 0
+  faithAmountPerProductionCycleUpgraded: 0
+  productionCycleLength: 0
   generatedFaith: 0
-  faithAmount: 5
   maxFaithAmount: 0
   faithMultiplier: 1.2
   faithCollected: 0
   faithTimer: 0
-  faithTargetTime: 10
   originalFaithTargetTime: 0
   defaultFaithGeneration: 0
   slowerFaithGeneration1: 0
@@ -211,11 +222,7 @@ MonoBehaviour:
   slowerFaithGeneration3: 0
   level: 1
   lvlChange: 0
-  lvlUpFaithIncrease: 0
-  maxLevelAmount: 0
-  faithLevelUpCost: 0
-  woodLevelUpCost: 0
-  stoneLevelUpCost: 0
+  maxLevelAmount: 2
   name: 
   type: 
   totalShrineAmount: 0
@@ -266,7 +273,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: a8820d63c12e4e34189f8439b8fb1de2, type: 3}
-  m_Color: {r: 0.18382353, g: 0.39208913, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class UpgradeButton : MonoBehaviour
 {
     public GameObject clickedObject;
+    public GameObject DragNDrop;
+    public GameObject temple;
     GameObject canvas;
     Button upgradeButton;
     GameObject buildingNameTextObject;
@@ -29,6 +31,10 @@ public class UpgradeButton : MonoBehaviour
    public void UpgradeBuilding()
     {
         clickedObject.GetComponent<Structure>().lvlChange = true;
+        if (clickedObject.tag == "Shrine" && clickedObject.GetComponent<Structure>().level == 2 && clickedObject.GetComponent<ShrineCS>().allowTempleConstructing == true)
+        {
+            Instantiate(temple, clickedObject.transform.position, clickedObject.transform.rotation);
+        }
         buildingNameTextObject.GetComponent<BuildingNameText>().FindInfo();
 
     }

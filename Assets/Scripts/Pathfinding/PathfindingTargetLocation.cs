@@ -6,16 +6,17 @@ public class PathfindingTargetLocation : MonoBehaviour
 {
     public bool moveToPosition;
     public bool startNewTargetTimer;
+    public bool drawLocationCircle;
     bool useBoundaryTimer;
     int layer;
     Vector2 position;
     public LayerMask unwalkable;
 
-   /* [Space(10)]
-    [Range(-15, 0f)]
-    [SerializeField]
-    float MinMovementRange;
-    */
+    /* [Space(10)]
+     [Range(-15, 0f)]
+     [SerializeField]
+     float MinMovementRange;
+     */
 
     [Range(0, 15f)]
     float movementRangeHorizontal;
@@ -74,11 +75,7 @@ public class PathfindingTargetLocation : MonoBehaviour
     void OnTriggerStay2D(Collider2D other)
     {
         // If target moves on building randomize new position
-        if (checkLocation == null)
-        {
-            moveToPosition = true;
-        }
-        if (other.gameObject.tag == "Building")                                 // NEEDS UPDATING
+        if (other.gameObject.tag == "Building")
         {
             moveToPosition = false;
             MoveToNewLocation();
@@ -87,15 +84,18 @@ public class PathfindingTargetLocation : MonoBehaviour
         if (other.gameObject.tag == "Boundary")
         {
             useBoundaryTimer = true;
-            position = new Vector2(0,0);
+            position = new Vector2(0, 0);
             transform.position = position;
         }
 
     }
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, pathfindingOverlapCircle);
+        if (drawLocationCircle)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, pathfindingOverlapCircle);
+        }
     }
     void FindNewTargetTimer()
     {

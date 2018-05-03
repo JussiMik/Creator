@@ -1,58 +1,69 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Structure : MonoBehaviour
 {
+    [HideInInspector]
     public GameManager gameManager;
+    [HideInInspector]
     public WoodWorkshopCS woodWorkshopCS;
+    [HideInInspector]
     public QuarryCS quarryCS;
 
+    public Sprite levelTwoSprite;
     public GameObject clickedBuilding;
-
     public Vector2 sizeOnGrid;
-    [Space(10)]
-    public float sanctityPointAmount;
-    public float sanctityLevelUpReward;
 
     [Space(10)]
-    [SerializeField]
+    public float faithConstructingCost;
+    public float woodConstructingCost;
+    public float stoneConstructingCost;
+    [Space(10)]
+    public float faithUpgardeCost;
+    public float woodUpgardeCost;
+    public float stoneUpgardeCost;
+
+    [Space(10)]
+    public float sanctityPointsOnConsturction;
+    public float sanctityPointsOnUpgrade;
+
+    [Space(10)]
     private bool constructingTimer;
 
     [Space(10)]
     public float constructingTime;
 
     [Space(10)]
-    public float faithCost;
-    public float woodCost;
-    public float stoneCost;
+    public float normalSpeedConstructingMp;
+    public float lowerSpeedConstructingMp1;
+    public float lowerSpeedConstructingMp2;
+    public float lowerSpeedConstructingMp3;
 
-    [Space(10)]
-    public float constructingTimeSlow1;
-    public float constructingTimeSlow2;
-    public float constructingTimeSlow3;
-
-    public bool normalSpeedConstructing;
-    public bool changedValue;
-    public bool lowerSpeedConstructing1;
-    public bool lowerSpeedConstructing2;
-    public bool lowerSpeedConstructing3;
+    [HideInInspector]
+    public bool normalSpeedConstructing, lowerSpeedConstructing1, lowerSpeedConstructing2, lowerSpeedConstructing3;
 
     public bool constructingDone;
 
-    [Space(10)]
-    public float generatedFaith;
+    [HideInInspector]
+    public bool changedValue;
 
     [Space(10)]
-    public float faithAmount;
+    public float faithAmountPerProductionCycle;
+    public float faithAmountPerProductionCycleUpgraded;
+    public float productionCycleLength;
+    public float generatedFaith;
     public float maxFaithAmount;
 
     public float faithMultiplier;
-
     public bool faithCollected;
 
+    [Space(10)]
+    [HideInInspector]
     public bool faithTimer;
-    public float faithTargetTime;
+
+    [HideInInspector]
     public float originalFaithTargetTime;
 
     [Space(10)]
@@ -63,23 +74,31 @@ public class Structure : MonoBehaviour
 
     [Space(10)]
     public int level;
+    [HideInInspector]
     public bool lvlChange;
-    public float lvlUpFaithIncrease;
     public int maxLevelAmount;
-    public float faithLevelUpCost;
-    public float woodLevelUpCost;
-    public float stoneLevelUpCost;
 
-    public string name;
-    public string type;
+    [HideInInspector]
+    public string  name, type;
 
+    public float WoodConstuctingCost
+    {
+        get
+        {
+            return woodConstructingCost;
+        }
 
+        set
+        {
+            woodConstructingCost = value;
+        }
+    }
 
     protected virtual void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 
-        gameManager.UseResources(faithCost, woodCost, stoneCost);
+        gameManager.UseResources(faithConstructingCost, woodConstructingCost, stoneConstructingCost);
     }
 
     protected virtual void Update()
@@ -89,15 +108,15 @@ public class Structure : MonoBehaviour
             ConstructingTimer();
         }
 
-        if (gameManager.devotionDecreaseMp1 == true)
+        if (gameManager.devotionDecrease1 == true)
         {
             lowerSpeedConstructing1 = true;
         }
-        if (gameManager.devotionDecreaseMp2 == true)
+        if (gameManager.devotionDecrease2 == true)
         {
             lowerSpeedConstructing2 = true;
         }
-        if (gameManager.devotionDecreaseMp3 == true)
+        if (gameManager.devotionDecrease3 == true)
         {
             lowerSpeedConstructing3 = true;
         }
@@ -124,20 +143,20 @@ public class Structure : MonoBehaviour
     {
         if (normalSpeedConstructing == true)
         {
-            constructingTime -= Time.deltaTime * 4;
+            constructingTime -= Time.deltaTime * normalSpeedConstructingMp;
         }
 
         if (lowerSpeedConstructing1 == true)
         {
             normalSpeedConstructing = false;
-            constructingTime -= Time.deltaTime * 3;
+            constructingTime -= Time.deltaTime * lowerSpeedConstructingMp1;
         }
 
         if (lowerSpeedConstructing2 == true)
         {
             normalSpeedConstructing = false;
             lowerSpeedConstructing1 = false;
-            constructingTime -= Time.deltaTime * 2;
+            constructingTime -= Time.deltaTime * lowerSpeedConstructingMp2;
         }
 
         if (lowerSpeedConstructing3 == true)
@@ -159,11 +178,11 @@ public class Structure : MonoBehaviour
     //Faithtimer before faithgeneration starts
     public virtual void FaithTimer()
     {
-        faithTargetTime -= Time.deltaTime;
+        productionCycleLength -= Time.deltaTime;
 
-        if (faithTargetTime <= 0)
+        if (productionCycleLength <= 0)
         {
-            faithTargetTime = 0;
+            productionCycleLength = 0;
             TimerEnd();
         }
     }
@@ -177,7 +196,7 @@ public class Structure : MonoBehaviour
 
         if (faithTimer == false)
         {
-            faithTargetTime = originalFaithTargetTime;
+            productionCycleLength = originalFaithTargetTime;
             faithTimer = true;
             faithCollected = false;
         }
@@ -186,7 +205,7 @@ public class Structure : MonoBehaviour
     //Generate faith
     public void GenerateFaith()
     {
-        generatedFaith += faithAmount;
+        generatedFaith += faithAmountPerProductionCycle;
 
         if (defaultFaithGeneration == true)
         {
@@ -223,21 +242,22 @@ public class Structure : MonoBehaviour
     //Change structures level
     public void ChangeLevel()
     {
-        gameManager.UseResources(faithLevelUpCost, woodLevelUpCost, stoneLevelUpCost);
+        gameManager.UseResources(faithUpgardeCost, woodUpgardeCost, stoneUpgardeCost);
 
         if (level >= 1)
         {
             if (level < maxLevelAmount)
             {
-                gameManager.GiveSanctityPoints(sanctityLevelUpReward);
+                gameManager.GiveSanctityPoints(sanctityPointsOnUpgrade);
             }
 
-            faithAmount += lvlUpFaithIncrease;
+            faithAmountPerProductionCycle = faithAmountPerProductionCycleUpgraded;
             level += 1;
+            gameObject.GetComponent<SpriteRenderer>().sprite = levelTwoSprite;
 
-            if (faithAmount >= maxFaithAmount && level >= maxLevelAmount)
+            if (faithAmountPerProductionCycle >= maxFaithAmount && level >= maxLevelAmount)
             {
-                faithAmount = maxFaithAmount;
+                faithAmountPerProductionCycle = maxFaithAmount;
                 level = maxLevelAmount;
             }
         }

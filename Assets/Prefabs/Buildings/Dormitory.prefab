@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4613630204875246}
   - component: {fileID: 212605180961649994}
-  - component: {fileID: 61999284679109634}
+  - component: {fileID: 60758812216687678}
   - component: {fileID: 114295869844737976}
   m_Layer: 12
   m_Name: Dormitory
@@ -36,14 +36,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1166537093407616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6458435, y: 0.60188514, z: 0}
+  m_LocalPosition: {x: 15.96861, y: -1.2953697, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61999284679109634
-BoxCollider2D:
+--- !u!60 &60758812216687678
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -54,19 +54,22 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.038282514, y: 0.5041146}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.35}
-    oldSize: {x: 4, y: 3.3986487}
+    oldSize: {x: 2, y: 1.6993244}
     newSize: {x: 4, y: 3.3986487}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.8159559, y: 3.280796}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.007, y: -0.316}
+      - {x: 0.658, y: 0.063}
+      - {x: 0.023, y: 0.429}
+      - {x: -0.628, y: 0.039}
 --- !u!114 &114295869844737976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -81,31 +84,36 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
+  levelTwoSprite: {fileID: 21300000, guid: 84dc1a3441c2a064fbff7d57b00343aa, type: 3}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
-  sanctityPointAmount: 0
-  sanctityLevelUpReward: 0
-  constructingTimer: 0
+  faithConstructingCost: 0
+  woodConstructingCost: 0
+  stoneConstructingCost: 0
+  faithUpgardeCost: 0
+  woodUpgardeCost: 0
+  stoneUpgardeCost: 0
+  sanctityPointsOnConsturction: 0
+  sanctityPointsOnUpgrade: 0
   constructingTime: 0
-  faithCost: 0
-  woodCost: 0
-  stoneCost: 0
-  constructingTimeSlow1: 0
-  constructingTimeSlow2: 0
-  constructingTimeSlow3: 0
+  normalSpeedConstructingMp: 4
+  lowerSpeedConstructingMp1: 3
+  lowerSpeedConstructingMp2: 2
+  lowerSpeedConstructingMp3: 1
   normalSpeedConstructing: 0
-  changedValue: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0
   lowerSpeedConstructing3: 0
   constructingDone: 0
+  changedValue: 0
+  faithAmountPerProductionCycle: 0
+  faithAmountPerProductionCycleUpgraded: 0
+  productionCycleLength: 10
   generatedFaith: 0
-  faithAmount: 0
   maxFaithAmount: 0
   faithMultiplier: 0
   faithCollected: 0
   faithTimer: 0
-  faithTargetTime: 0
   originalFaithTargetTime: 0
   defaultFaithGeneration: 0
   slowerFaithGeneration1: 0
@@ -113,13 +121,10 @@ MonoBehaviour:
   slowerFaithGeneration3: 0
   level: 1
   lvlChange: 0
-  lvlUpFaithIncrease: 0
-  maxLevelAmount: 0
-  faithLevelUpCost: 0
-  woodLevelUpCost: 0
-  stoneLevelUpCost: 0
+  maxLevelAmount: 2
   name: 
   type: 
+  monkSlotsPerDormitory: 5
 --- !u!212 &212605180961649994
 SpriteRenderer:
   m_ObjectHideFlags: 1
