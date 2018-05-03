@@ -24,8 +24,6 @@ public class ShrineCS : Structure
 
         constructingTimer = true;
 
-        defaultFaithTimer = true;
-
         name = "Shrine";
         type = "Faith";
     }

@@ -17,8 +17,6 @@ public class StatueCS : Structure
 
         constructingTimer = true;
 
-        defaultFaithTimer = true;
-
         name = "Statue";
         type = "Faith";
     }

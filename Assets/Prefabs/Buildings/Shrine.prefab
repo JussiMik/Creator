@@ -192,41 +192,39 @@ MonoBehaviour:
   devotionConstructingCost: 0
   woodConstructingCost: 0
   stoneConstructingCost: 0
-  faithUpgradeCost: 0
-  devotionUpgradeCost: 0
-  woodUpgradeCost: 0
-  stoneUpgradeCost: 0
+  lvl2FaithUpgradeCost: 0
+  lvl2DevotionUpgradeCost: 0
+  lvl2WoodUpgradeCost: 0
+  lvl2StoneUpgradeCost: 0
+  lvl3FaithUpgradeCost: 0
+  lvl3DevotionUpgradeCost: 0
+  lvl3WoodUpgradeCost: 0
+  lvl3StoneUpgradeCost: 0
   sanctityPointsOnConsturction: 0
   sanctityPointsOnUpgrade: 0
+  constructingTimer: 0
   constructingTime: 20
-  normalSpeedConstructingMp: 4
-  lowerSpeedConstructingMp1: 3
-  lowerSpeedConstructingMp2: 2
-  lowerSpeedConstructingMp3: 1
   normalSpeedConstructing: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0
   lowerSpeedConstructing3: 0
   constructingDone: 0
   changedValue: 0
+  generatedFaith: 0
   faithAmountPerProductionCycle: 10
   faithAmountPerProductionCycleUpgraded: 5
-  productionCycleLength: 8
-  generatedFaith: 0
+  productionCycleLength: 20
   maxFaithAmount: 50
   faithMultiplier: 1.2
   faithCollected: 0
   faithTimer: 0
   originalFaithTargetTime: 0
-  defaultFaithGeneration: 0
-  slowerFaithGeneration1: 0
-  slowerFaithGeneration2: 0
-  slowerFaithGeneration3: 0
   level: 1
   lvlChange: 0
   maxLevelAmount: 2
   name: 
   type: 
+  info: 
   totalShrineAmount: 0
   allowTempleConstructing: 0
 --- !u!114 &114255791115822326

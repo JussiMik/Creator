@@ -29,15 +29,16 @@ public class GameManager : MonoBehaviour
 
     [Space(10)]
     public float devotionChunkDecreaseAmount;
+    
     [Space(10)]
-    public float devotionDecreaseMp1;
-    public float devotionDecreaseMp2;
-    public float devotionDecreaseMp3;
+    public float devotionDecreaseMp;
+    [Space(10)]
+    public float constructingTimerMp;
+    [Space(10)]
+    public float faithTimerMp;
+
     [Space(10)]
     public bool devotionDecrease;
-    public bool devotionDecrease1;
-    public bool devotionDecrease2;
-    public bool devotionDecrease3;
 
     [Space(10)]
     public float devotionChunkIncreaseAmount;
@@ -53,11 +54,6 @@ public class GameManager : MonoBehaviour
 
     [Space(10)]
     public float monkFaithMultiplier;
-    /*
-    public float monkFaithMultiplierSlow1;
-    public float monkFaithMultiplierSlow2;
-    public float monkFaithMultiplierSlow3;
-    */
 
     [Space(10)]
     public List<GameObject> faithBuildings = new List<GameObject>();
@@ -79,7 +75,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private float numberOfMonksToKill;
-
+    
     private void Awake()
     {
         GetResourceObjects();
@@ -95,7 +91,7 @@ public class GameManager : MonoBehaviour
     {
         if (devotionDecrease == true)
         {
-            DevotionDecrease();
+            DevotionDecrease(devotionDecreaseMp);
         }
 
         if (devotionIncrease == true)
@@ -143,25 +139,10 @@ public class GameManager : MonoBehaviour
     }
 
     //Devotion decreases slowly
-    void DevotionDecrease()
+    public void DevotionDecrease(float decreaseMp)
     {
-        devotion -= Time.deltaTime;
-
-        if (devotionDecrease1 == true)
-        {
-            structure.changedValue = false;
-            devotion -= Time.deltaTime * devotionDecreaseMp1;
-        }
-        if (devotionDecrease2 == true)
-        {
-            structure.changedValue = false;
-            devotion -= Time.deltaTime * devotionDecreaseMp2;
-        }
-        if (devotionDecrease3 == true)
-        {
-            structure.changedValue = false;
-            devotion -= Time.deltaTime * devotionDecreaseMp3;
-        }
+        devotion -= Time.deltaTime * decreaseMp;
+        structure.changedValue = false;
 
         if (devotion <= 0)
         {
@@ -227,6 +208,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Changes players level
     private void ChangePlayerLvl()
     {
         sanctity++;
@@ -242,7 +224,7 @@ public class GameManager : MonoBehaviour
     }
     */
 
-    //Goes through a list of monks and destroys all of the excess ones in Update() function
+    //Goes through a list of monks and destroys all of the excess ones, in Update() function destroys null objects from the list
     void KillSomeMonks()
     {
         numberOfMonksToKill = monks.Count - (farms.Count * goodMonkAndFarmRatio);

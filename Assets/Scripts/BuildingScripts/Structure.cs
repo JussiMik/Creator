@@ -43,12 +43,6 @@ public class Structure : MonoBehaviour
     [Space(10)]
     public float constructingTime;
 
-    [Space(10)]
-    public float normalSpeedConstructingMp;
-    public float lowerSpeedConstructingMp1;
-    public float lowerSpeedConstructingMp2;
-    public float lowerSpeedConstructingMp3;
-
     [HideInInspector]
     public bool normalSpeedConstructing, lowerSpeedConstructing1, lowerSpeedConstructing2, lowerSpeedConstructing3;
     [HideInInspector]
@@ -62,8 +56,9 @@ public class Structure : MonoBehaviour
     [Space(10)]
     public float faithAmountPerProductionCycle;
     public float faithAmountPerProductionCycleUpgraded;
+    [Space(10)]
     public float productionCycleLength;
-
+    [Space(10)]
     public float maxFaithAmount;
     public float faithMultiplier;
     [HideInInspector]
@@ -75,12 +70,6 @@ public class Structure : MonoBehaviour
 
     [HideInInspector]
     public float originalFaithTargetTime;
-
-    [Space(10)]
-    public bool defaultFaithTimer;
-    public bool slowerFaithTimer1;
-    public bool slowerFaithTimer2;
-    public bool slowerFaithTimer3;
 
     [Space(10)]
     public int level;
@@ -119,20 +108,7 @@ public class Structure : MonoBehaviour
     {
         if (constructingTimer == true)
         {
-            ConstructingTimer();
-        }
-
-        if (gameManager.devotionDecrease1 == true)
-        {
-            lowerSpeedConstructing1 = true;
-        }
-        if (gameManager.devotionDecrease2 == true)
-        {
-            lowerSpeedConstructing2 = true;
-        }
-        if (gameManager.devotionDecrease3 == true)
-        {
-            lowerSpeedConstructing3 = true;
+            ConstructingTimer(gameManager.constructingTimerMp);
         }
 
         if (lvlChange == true)
@@ -142,76 +118,26 @@ public class Structure : MonoBehaviour
 
         if (faithTimer == true && faithCollected == true)
         {
-            FaithTimer();
+            FaithTimer(gameManager.faithTimerMp);
         }
     }
 
-    /*
-    public void ConstructingStructures()
+    public void ConstructingTimer(float timerMp)
     {
-        gameManager.DevotionDecreaseChunk();
-
-        constructingTimer = true;
-    }
-    */
-
-    public void ConstructingTimer()
-    {
-        if (normalSpeedConstructing == true)
-        {
-            constructingTime -= Time.deltaTime * normalSpeedConstructingMp;
-        }
-
-        if (lowerSpeedConstructing1 == true)
-        {
-            normalSpeedConstructing = false;
-            constructingTime -= Time.deltaTime * lowerSpeedConstructingMp1;
-        }
-
-        if (lowerSpeedConstructing2 == true)
-        {
-            normalSpeedConstructing = false;
-            lowerSpeedConstructing1 = false;
-            constructingTime -= Time.deltaTime * lowerSpeedConstructingMp2;
-        }
-
-        if (lowerSpeedConstructing3 == true)
-        {
-            normalSpeedConstructing = false;
-            lowerSpeedConstructing2 = false;
-            constructingTime -= Time.deltaTime;
-        }
+        constructingTime -= Time.deltaTime * timerMp;
 
         if (constructingTime <= 0)
         {
-            constructingTime = 0f;
+            constructingTime = 0;
             constructingTimer = false;
             constructingDone = true;
         }
     }
 
     //Faithtimer before faithgeneration starts
-    public virtual void FaithTimer()
+    public virtual void FaithTimer(float timerMp)
     {
-        if (defaultFaithTimer == true)
-        {
-            productionCycleLength -= Time.deltaTime * 4;
-        }
-
-        if (slowerFaithTimer1 == true)
-        {
-            productionCycleLength -= Time.deltaTime * 3;
-        }
-
-        if (slowerFaithTimer2 == true)
-        {
-            productionCycleLength -= Time.deltaTime * 2;
-        }
-
-        if (slowerFaithTimer3 == true)
-        {
-            productionCycleLength -= Time.deltaTime;
-        }
+        productionCycleLength -= Time.deltaTime * timerMp;
 
         if (productionCycleLength <= 0)
         {
