@@ -875,6 +875,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: faith
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: wood
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: stone
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52db2628f8d703648aea031082b57de4, type: 2}
   m_IsPrefabParent: 0
@@ -1173,6 +1188,7 @@ MonoBehaviour:
   worldNavigation: {fileID: 0}
   proActive: 0
   gameManager: {fileID: 1080521344}
+  canBuild: 0
   infoBuildingSprite: {fileID: 809970552}
   infoBuildingName: {fileID: 1838318040}
   infoBuildingText: {fileID: 1621814855}
@@ -1574,6 +1590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f05825fc7467ce42ba0bf15219abc9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1080521344}
   grassTileSprites:
   - {fileID: 21300000, guid: 28abc29a092dc9e4ba6818993ee7a40f, type: 3}
   - {fileID: 21300002, guid: 28abc29a092dc9e4ba6818993ee7a40f, type: 3}

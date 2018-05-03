@@ -400,10 +400,6 @@ public class LayoutManager : MonoBehaviour
         GameObject obj = Instantiate(structure, new Vector3(cenPos.x, cenPos.y, transform.position.z), Quaternion.identity) as GameObject;
         obj.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(tiles);
 
-        var structureCS = structure.GetComponent<Structure>(); 
-
-        gameManager.UseResources(structureCS.faithConstructingCost, structureCS.devotionConstructingCost, structureCS.woodConstructingCost, structureCS.stoneConstructingCost);
-
         TestGridUpdate();
     }
     public int CalculateSortingLayer(List<Vector2> tiles)
