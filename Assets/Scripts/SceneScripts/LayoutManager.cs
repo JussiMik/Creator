@@ -8,6 +8,8 @@ public class LayoutManager : MonoBehaviour
     public Vector3[,] positions;
     //FREE SPACE = 0 | TAKEN = 1 | Rock = 2
 
+    public GameManager gameManager;
+
     GameObject testGridFolder;
     public GameObject[,] testGrid;
     public Vector3[,] gapPositions;
@@ -397,6 +399,11 @@ public class LayoutManager : MonoBehaviour
         //INSTANTIATE HOUSE
         GameObject obj = Instantiate(structure, new Vector3(cenPos.x, cenPos.y, transform.position.z), Quaternion.identity) as GameObject;
         obj.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(tiles);
+
+        var structureCS = structure.GetComponent<Structure>(); 
+
+        gameManager.UseResources(structureCS.faithConstructingCost, structureCS.devotionConstructingCost, structureCS.woodConstructingCost, structureCS.stoneConstructingCost);
+
         TestGridUpdate();
     }
     public int CalculateSortingLayer(List<Vector2> tiles)
