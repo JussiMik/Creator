@@ -47,6 +47,8 @@ public class Monk : MonoBehaviour
         InvokeRepeating("CheckForNewDestination", 0.5f, 1.5f);
         InvokeRepeating("CheckDistanceFromTarget", 1f, 2.5f);
         startNewPathTimer = targetObject.GetComponent<PathfindingTargetLocation>().startNewTargetTimer;
+
+        //gameManager.constructingTimerMp = defaultConstructingTimerMp;
     }
 
     void Update()
