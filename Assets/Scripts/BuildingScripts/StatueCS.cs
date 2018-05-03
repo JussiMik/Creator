@@ -9,12 +9,15 @@ public class StatueCS : Structure
     protected override void Start()
     {
         base.Start();
-        originalFaithTargetTime = faithTargetTime;
+        originalFaithTargetTime = productionCycleLength;
 
         normalSpeedConstructing = true;
         faithCollected = true;
         addedToList = false;
-        ConstructingStructures();
+
+        constructingTimer = true;
+
+        defaultFaithTimer = true;
 
         name = "Statue";
         type = "Faith";
@@ -27,7 +30,7 @@ public class StatueCS : Structure
         if (constructingDone == true && addedToList == false)
         {
             AddToList();
-            gameManager.GiveSanctityPoints(sanctityPointAmount);
+            gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
             faithTimer = true;
         }
     }

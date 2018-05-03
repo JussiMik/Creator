@@ -5,22 +5,18 @@ using UnityEngine;
 public class QuarryCS : Structure
 {
     [Space(10)]
-    public bool rockTimer;
-    public float rockTime;
-    [SerializeField]
-    private bool rockTimerCollision;
-    [SerializeField]
-    public float originalRockTime;
-
-    [Space(10)]
     public float gatheredStone;
 
     [Space(10)]
-    public float gatheredStoneAmount;
+    public float stoneAmountPerProductionCyclePerRock;
+    public float stoneProductionTimeLength;
 
-    [Space(10)]
-    public bool stoneCollected;
-
+    private bool rockTimerCollision;
+    [HideInInspector]
+    public bool rockTimer, stoneCollected;
+    [HideInInspector]
+    public float originalstoneProductionTimeLength;
+    
     [Space(10)]
     public float rocks;
     [SerializeField]
@@ -36,14 +32,14 @@ public class QuarryCS : Structure
     protected override void Start()
     {
         base.Start();
+
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
-        normalSpeedConstructing = true;
-        ConstructingStructures();
-
-        originalRockTime = rockTime;
-
+        originalstoneProductionTimeLength = stoneProductionTimeLength;
         stoneCollected = true;
+        normalSpeedConstructing = true;
+
+        constructingTimer = true;
 
         name = "Quarry";
         type = "Production";
@@ -55,7 +51,7 @@ public class QuarryCS : Structure
 
         if (constructingDone == true && sanctityPointsGiven == false)
         {
-            gameManager.GiveSanctityPoints(sanctityPointAmount);
+            gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
 
             sanctityPointsGiven = true;
 
@@ -77,29 +73,13 @@ public class QuarryCS : Structure
         rockTimerCollision = transform.GetChild(0).GetComponent<QuarryRockCollider>().rockTimerCollision;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Rock")
-        {
-            totalRockAmount++;
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Rock")
-        {
-            rockTimerCollision = true;
-        }
-    }
-
     private void RockTimer()
     {
-        rockTime -= Time.deltaTime;
+        stoneProductionTimeLength -= Time.deltaTime;
 
-        if (rockTime <= 0)
+        if (stoneProductionTimeLength <= 0)
         {
-            rockTime = 0;
+            stoneProductionTimeLength = 0;
 
             rocks = totalRockAmount;
 
@@ -118,14 +98,14 @@ public class QuarryCS : Structure
                 rocks = lvl3RockAmount;
             }
 
-            gatheredStone += gatheredStoneAmount * rocks;
+            gatheredStone += stoneAmountPerProductionCyclePerRock * rocks;
 
             rockTimer = false;
         }
 
         if (rockTimer == false)
         {
-            rockTime = originalRockTime;
+            stoneProductionTimeLength = originalstoneProductionTimeLength;
             rockTimer = true;
             stoneCollected = false;
         }

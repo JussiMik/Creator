@@ -1,10 +1,17 @@
 fileFormatVersion: 2
 guid: 67313a1469251994f80f98d74e1d1ca5
-timeCreated: 1524738809
-licenseType: Pro
+timeCreated: 1525171505
+licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gameManager: {instanceID: 0}
+  - woodWorkshopCS: {instanceID: 0}
+  - quarryCS: {instanceID: 0}
+  - clickedBuilding: {instanceID: 0}
+  - monk: {instanceID: 0}
+  - resourceTracker: {fileID: 1378866797525180, guid: c3de9ca92c1d5254e927c90a52acb14f,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

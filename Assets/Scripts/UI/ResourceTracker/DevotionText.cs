@@ -7,22 +7,17 @@ public class DevotionText : MonoBehaviour
 {
     float devotion;
     Text devotionText;
-    GameObject gameManager;
-    void Start()
+    public GameManager gameManager;
+    void Awake()
     {
-        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         devotionText = gameObject.GetComponent<Text>();
-        InvokeRepeating("UpdateDevotion", 0f, 0.1f);
-    }
-
-    void Update()
-    {
-
+        InvokeRepeating("UpdateDevotion", 0.1f, 0.1f);
     }
 
     public void UpdateDevotion()
     {
-        devotion = gameManager.GetComponent<GameManager>().devotion;
+        devotion = gameManager.devotion;
         devotionText.text = devotion.ToString("F0");
     }
 }

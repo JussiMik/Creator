@@ -16,13 +16,16 @@ public class ShrineCS : Structure
         base.Start();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
-        originalFaithTargetTime = faithTargetTime;
+        originalFaithTargetTime = productionCycleLength;
 
         normalSpeedConstructing = true;
         faithCollected = true;
         addedToList = false;
-        ConstructingStructures();
-        
+
+        constructingTimer = true;
+
+        defaultFaithTimer = true;
+
         name = "Shrine";
         type = "Faith";
     }
@@ -34,9 +37,14 @@ public class ShrineCS : Structure
         if (constructingDone == true && addedToList == false)
         {
             AddToList();
-            gameManager.GiveSanctityPoints(sanctityPointAmount);
+            gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
             faithTimer = true;
         }
+      /*  if (Input.GetKeyDown("d"))
+        {
+            Destroy(gameObject);
+        }
+        */
     }
 
     private void AddToList()

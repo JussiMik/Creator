@@ -11,12 +11,15 @@ public class MeditationRoomCS : Structure
         base.Start();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
-        originalFaithTargetTime = faithTargetTime;
+        originalFaithTargetTime = productionCycleLength;
 
         normalSpeedConstructing = true;
         faithCollected = true;
         addedToList = false;
-        ConstructingStructures();
+
+        constructingTimer = true;
+
+        defaultFaithTimer = true;
 
         name = "Meditation room";
         type = "Devotion";
@@ -29,7 +32,7 @@ public class MeditationRoomCS : Structure
         if (constructingDone == true && addedToList == false)
         {
             AddToList();
-            gameManager.GiveSanctityPoints(sanctityPointAmount);
+            gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
             faithTimer = true;
         }
     }

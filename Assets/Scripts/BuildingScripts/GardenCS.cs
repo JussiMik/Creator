@@ -13,7 +13,8 @@ public class GardenCS : Structure
 
         normalSpeedConstructing = true;
         addedToList = false;
-        ConstructingStructures();
+
+        constructingTimer = true;
 
         name = "Garden";
         type = "Devotion";
@@ -26,7 +27,7 @@ public class GardenCS : Structure
         if (constructingDone == true && addedToList == false)
         {
             AddToList();
-            gameManager.GiveSanctityPoints(sanctityPointAmount);
+            gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
         }
     }
 

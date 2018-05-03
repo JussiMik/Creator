@@ -13,7 +13,8 @@ public class Farm : Structure
 
         normalSpeedConstructing = true;
         addedToList = false;
-        ConstructingStructures();
+
+        constructingTimer = true;
 
         name = "Farm";
         type = "Food";
@@ -26,7 +27,7 @@ public class Farm : Structure
         if (constructingDone == true && addedToList == false)
         {
             AddToList();
-            gameManager.GiveSanctityPoints(sanctityPointAmount);
+            gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
         }
     }
 

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4559867508256176}
   m_Layer: 0
   m_Name: Monk
-  m_TagString: Untagged
+  m_TagString: Monk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ Transform:
   m_GameObject: {fileID: 1601578867070062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 4559867508256176}
   m_RootOrder: 0
@@ -160,15 +160,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveToPosition: 0
   startNewTargetTimer: 0
+  drawLocationCircle: 0
   unwalkable:
     serializedVersion: 2
     m_Bits: 4096
-  MovementRange: 10
   newPathTimerMin: 4
   newPathTimerMax: 15
   newTargetLocationTimer: 0
   boundaryTimer: 2
-  drawOverlapCircle: 0
   pathfindingOverlapCircle: 0.3
 --- !u!114 &114510126755378382
 MonoBehaviour:
@@ -183,12 +182,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 4433914815474506}
   targetObject: {fileID: 1642679442656560}
-  checkForNewDestination: 0
-  startNewPathTimer: 0
-  reachedDestination: 0
-  speed: 1
-  movementCheckDistance: 4
   gameManager: {fileID: 0}
+  checkForNewDestination: 0
+  speed: 0.6
+  movementCheckDistance: 4
+  goodMonkAndFarmRatio: 4
+  badMonkAndFarmRatio75: 5.7
+  badMonkAndFarmRatio50: 8
+  badMonkAndFarmRatio25: 13.2
 --- !u!212 &212391985801830276
 SpriteRenderer:
   m_ObjectHideFlags: 1
