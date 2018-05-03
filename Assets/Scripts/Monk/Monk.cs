@@ -6,8 +6,11 @@ public class Monk : MonoBehaviour
 
     public Transform targetTransform;
     public GameObject targetObject;
+
     public GameManager gameManager;
-   public bool checkForNewDestination;
+    public Structure structure;
+
+    public bool checkForNewDestination;
     bool startNewPathTimer;
     bool reachedDestination;
     public float speed;
@@ -15,18 +18,31 @@ public class Monk : MonoBehaviour
     Vector2[] path;
     int targetIndex;
 
-    //  public GameObject monk;
-
     [Space(10)]
     public float goodMonkAndFarmRatio;
     public float badMonkAndFarmRatio75;
     public float badMonkAndFarmRatio50;
     public float badMonkAndFarmRatio25;
-
+    [Space(10)]
+    public float defaultDevotionDecreaseMp;
+    public float devotionDecreaseMp1;
+    public float devotionDecreaseMp2;
+    public float devotionDecreaseMp3;
+    [Space(10)]
+    public float defaultConstructingTimerMp;
+    public float constructingTimerMp1;
+    public float constructingTimerMp2;
+    public float constructingTimerMp3;
+    [Space(10)]
+    public float defaultFaithTimerMp;
+    public float faithTimerMp1;
+    public float faithTimerMp2;
+    public float faithTimerMp3;
 
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        structure = GameObject.Find("Game Manager").GetComponent<Structure>();
         gameManager.goodMonkAndFarmRatio = goodMonkAndFarmRatio;
         InvokeRepeating("CheckForNewDestination", 0.5f, 1.5f);
         InvokeRepeating("CheckDistanceFromTarget", 1f, 2.5f);
@@ -43,20 +59,18 @@ public class Monk : MonoBehaviour
         CheckFarmCount();
     }
 
-    
-    // DELET THIS when dormitory is done & move UpdateMonkCount();
-  /*  public void SpawnNewMonk()
-    {
-        GameObject spawnedMonk = Instantiate(gameObject, new Vector3(transform.position.x + 2, transform.position.y + 2, transform.position.z), transform.rotation);
-        gameManager.monks.Add(spawnedMonk);
 
-    }
-    */
+    // DELET THIS when dormitory is done & move UpdateMonkCount();
+    /*  public void SpawnNewMonk()
+      {
+          GameObject spawnedMonk = Instantiate(gameObject, new Vector3(transform.position.x + 2, transform.position.y + 2, transform.position.z), transform.rotation);
+          gameManager.monks.Add(spawnedMonk);
+
+      }
+      */
 
     void CheckFarmCount()
     {
-       // int index;
-
         if (gameManager.farms.Count == 0)
         {
             gameManager.devotionDecrease = true;
@@ -71,10 +85,10 @@ public class Monk : MonoBehaviour
         {
             if (gameManager.monks.Count / gameManager.farms.Count <= goodMonkAndFarmRatio)
             {
+                gameManager.constructingTimerMp = defaultConstructingTimerMp;
+                gameManager.faithTimerMp = defaultFaithTimerMp;
+
                 gameManager.devotionDecrease = false;
-                gameManager.devotionDecrease1 = false;
-                gameManager.devotionDecrease2 = false;
-                gameManager.devotionDecrease3 = false;
                 gameManager.devotionIncrease = true;
 
                 if (gameManager.gardens.Count > 0 || gameManager.meditationRooms.Count > 0)
@@ -85,25 +99,33 @@ public class Monk : MonoBehaviour
 
             if (gameManager.monks.Count / gameManager.farms.Count > goodMonkAndFarmRatio)
             {
+                gameManager.devotionDecreaseMp = defaultDevotionDecreaseMp;
+                gameManager.constructingTimerMp = defaultConstructingTimerMp;
+                gameManager.faithTimerMp = defaultFaithTimerMp;
+
                 gameManager.devotionIncrease = false;
                 gameManager.devotionDecrease = true;
             }
 
             if (gameManager.monks.Count / gameManager.farms.Count >= badMonkAndFarmRatio75)
             {
-                gameManager.devotionDecrease1 = true;
+                gameManager.devotionDecreaseMp = devotionDecreaseMp1;
+                gameManager.constructingTimerMp = constructingTimerMp1;
+                gameManager.faithTimerMp = faithTimerMp1;
             }
 
             if (gameManager.monks.Count / gameManager.farms.Count >= badMonkAndFarmRatio50)
             {
-                gameManager.devotionDecrease1 = false;
-                gameManager.devotionDecrease2 = true;
+                gameManager.devotionDecreaseMp = devotionDecreaseMp2;
+                gameManager.constructingTimerMp = constructingTimerMp2;
+                gameManager.faithTimerMp = faithTimerMp2;
             }
 
             if (gameManager.monks.Count / gameManager.farms.Count >= badMonkAndFarmRatio25)
             {
-                gameManager.devotionDecrease2 = false;
-                gameManager.devotionDecrease3 = true;
+                gameManager.devotionDecreaseMp = devotionDecreaseMp3;
+                gameManager.constructingTimerMp = constructingTimerMp3;
+                gameManager.faithTimerMp = faithTimerMp3;
             }
         }
 
@@ -170,7 +192,7 @@ public class Monk : MonoBehaviour
         {
             for (int i = targetIndex; i < path.Length; i++)
             {
-                 Gizmos.color = Color.black;
+                Gizmos.color = Color.black;
                 // Gizmos.DrawCube((Vector3)path[i], Vector3.one * .5f);
 
                 if (i == targetIndex)

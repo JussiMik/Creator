@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WoodWorkshopCS : Structure
 {
+    public float gatheredWood;
+
     [Space(10)]
     public float woodAmountPerProductionCyclePerTree;
     public float woodProductionTimeLength;
@@ -13,7 +15,6 @@ public class WoodWorkshopCS : Structure
     public bool woodTimer, woodCollected;
     [HideInInspector]
     public float originalWoodTime;
-    public float gatheredWood;
 
     [Space(10)]
     public float trees;

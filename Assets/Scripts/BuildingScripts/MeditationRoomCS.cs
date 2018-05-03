@@ -19,8 +19,6 @@ public class MeditationRoomCS : Structure
 
         constructingTimer = true;
 
-        defaultFaithTimer = true;
-
         name = "Meditation room";
         type = "Devotion";
     }

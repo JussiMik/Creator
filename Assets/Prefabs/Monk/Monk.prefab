@@ -183,13 +183,26 @@ MonoBehaviour:
   targetTransform: {fileID: 4433914815474506}
   targetObject: {fileID: 1642679442656560}
   gameManager: {fileID: 0}
+  structure: {fileID: 0}
   checkForNewDestination: 0
   speed: 0.6
   movementCheckDistance: 4
-  goodMonkAndFarmRatio: 4
-  badMonkAndFarmRatio75: 5.7
+  goodMonkAndFarmRatio: 3
+  badMonkAndFarmRatio75: 5
   badMonkAndFarmRatio50: 8
-  badMonkAndFarmRatio25: 13.2
+  badMonkAndFarmRatio25: 10
+  defaultDevotionDecreaseMp: 1
+  devotionDecreaseMp1: 2
+  devotionDecreaseMp2: 3
+  devotionDecreaseMp3: 4
+  defaultConstructingTimerMp: 4
+  constructingTimerMp1: 3
+  constructingTimerMp2: 2
+  constructingTimerMp3: 1
+  defaultFaithTimerMp: 4
+  faithTimerMp1: 3
+  faithTimerMp2: 2
+  faithTimerMp3: 1
 --- !u!212 &212391985801830276
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -19,8 +19,6 @@ public class TempleCS : Structure
 
         constructingTimer = true;
 
-        defaultFaithTimer = true;
-
         name = "Temple";
         type = "Faith";
     }
