@@ -19,6 +19,7 @@ public class BuildingMenu : MonoBehaviour {
     //public int gridSizeY = 2;
 
     public GameObject buildGrid;
+
     public GameObject infoCard;
 
     public DragNDrop dragNDrop;
@@ -156,7 +157,17 @@ public class BuildingMenu : MonoBehaviour {
     }
     public void ShowInfo(int blockNo)
     {
-        
+        infoCard.SetActive(true);
+        if (proActive)
+        {
+            infoCard.transform.Find("Info_BuildingSprite").GetComponent<Image>().sprite = buildingsPro[blockNo].GetComponent<SpriteRenderer>().sprite;
+            infoCard.transform.Find("Info_BuildingName").GetComponent<Text>().text = buildingsPro[blockNo].name;
+        }
+        else
+        {
+            infoCard.transform.Find("Info_BuildingSprite").GetComponent<Image>().sprite = buildingsUti[blockNo].GetComponent<SpriteRenderer>().sprite;
+            infoCard.transform.Find("Info_BuildingName").GetComponent<Text>().text = buildingsUti[blockNo].name;
+        }
     }
 
     public void SelectToDrag(int blockNo)
