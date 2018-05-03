@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
     [Space(10)]
     public float devotionChunkIncreaseAmount;
     [Space(10)]
+    public float devotionChunkIncreaseAfterKilledMonks;
+    [Space(10)]
     public float devotionIncreaseMp1;
     [Space(10)]
     public bool devotionIncrease;  
@@ -51,9 +53,11 @@ public class GameManager : MonoBehaviour
 
     [Space(10)]
     public float monkFaithMultiplier;
+    /*
     public float monkFaithMultiplierSlow1;
     public float monkFaithMultiplierSlow2;
     public float monkFaithMultiplierSlow3;
+    */
 
     [Space(10)]
     public List<GameObject> faithBuildings = new List<GameObject>();
@@ -73,8 +77,8 @@ public class GameManager : MonoBehaviour
 
     public float goodMonkAndFarmRatio;
 
-    public float numberOfMonksToKill;
-    
+    [SerializeField]
+    private float numberOfMonksToKill;
 
     private void Awake()
     {
@@ -98,6 +102,8 @@ public class GameManager : MonoBehaviour
         {
             DevotionIncrease();
         }
+
+        monks.RemoveAll(list_item => list_item == null);
     }
 
     //Use collected faith for constructing and leveling up buildings
@@ -172,7 +178,7 @@ public class GameManager : MonoBehaviour
         if (devotion <= 0)
         {
             devotion = 0;
-            //KillSomeMonks();
+            KillSomeMonks();
         }
     }
 
@@ -193,9 +199,9 @@ public class GameManager : MonoBehaviour
     }
 
     //Devotion increases in chunks
-    public void DevotionIncreaseChunk()
+    public void DevotionIncreaseChunk(float chunkAmount)
     {
-        devotion += devotionChunkIncreaseAmount;
+        devotion += chunkAmount;
 
         if (devotion >= maxDevotionAmount)
         {
@@ -236,30 +242,25 @@ public class GameManager : MonoBehaviour
     }
     */
 
+    //Goes through a list of monks and destroys all of the excess ones in Update() function
     void KillSomeMonks()
     {
         numberOfMonksToKill = monks.Count - (farms.Count * goodMonkAndFarmRatio);
 
-        //float f = 0;
-
-        for (int i = 0; i < monks.Count; i++)
+        float f = 0;
+        
+        foreach (GameObject monksToKill in monks)
         {
-            if (i < numberOfMonksToKill)
+            if (f == numberOfMonksToKill) break;
             {
-                Destroy(numberOfMonksToKill);
+                Destroy(monksToKill.gameObject);
+
+                monkResourceTracker.UpdateMonkCount();
+
+                f++;
             }
-            
         }
-
-        /*
-        foreach (f < numberOfMonksToKill)
-        {
-            GameObject monkToKill = monks[monks.Count];
-
-            Destroy(monkToKill);
-            f++;
-        }
-        */
+        DevotionIncreaseChunk(devotionChunkIncreaseAfterKilledMonks);
     }
 
     void GetResourceObjects()

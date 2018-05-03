@@ -13,7 +13,8 @@ public class DormitoryCS : Structure
 
         normalSpeedConstructing = true;
         addedToList = false;
-        ConstructingStructures();
+
+        constructingTimer = true;
 
         name = "Dormitory";
         type = "Dormitory";

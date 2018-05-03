@@ -16,7 +16,10 @@ public class TempleCS : Structure
         normalSpeedConstructing = true;
         faithCollected = true;
         addedToList = false;
-        ConstructingStructures();
+
+        constructingTimer = true;
+
+        defaultFaithTimer = true;
 
         name = "Temple";
         type = "Faith";

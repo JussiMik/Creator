@@ -49,7 +49,7 @@ public class ProgressBar : MonoBehaviour
     {
         if (buildingName == "Quarry")
         {
-            rockMaximumTime = clickedObject.GetComponent<QuarryCS>().originalRockTime;
+            rockMaximumTime = clickedObject.GetComponent<QuarryCS>().originalstoneProductionTimeLength;
             progressBarForegroundImage.enabled = true;
             progressBarBackgroundImage.enabled = true;
             rockTimer = clickedObject.GetComponent<Structure>().GetComponent<QuarryCS>().stoneProductionTimeLength; // Sue me.

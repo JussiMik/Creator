@@ -5,6 +5,9 @@ using UnityEngine;
 public class QuarryCS : Structure
 {
     [Space(10)]
+    public float gatheredStone;
+
+    [Space(10)]
     public float stoneAmountPerProductionCyclePerRock;
     public float stoneProductionTimeLength;
 
@@ -12,9 +15,8 @@ public class QuarryCS : Structure
     [HideInInspector]
     public bool rockTimer, stoneCollected;
     [HideInInspector]
-    public float originalRockTime;
-    public float gatheredStone;
-
+    public float originalstoneProductionTimeLength;
+    
     [Space(10)]
     public float rocks;
     [SerializeField]
@@ -30,14 +32,14 @@ public class QuarryCS : Structure
     protected override void Start()
     {
         base.Start();
+
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
-        normalSpeedConstructing = true;
-        ConstructingStructures();
-
-        originalRockTime = stoneProductionTimeLength;
-
+        originalstoneProductionTimeLength = stoneProductionTimeLength;
         stoneCollected = true;
+        normalSpeedConstructing = true;
+
+        constructingTimer = true;
 
         name = "Quarry";
         type = "Production";
@@ -71,23 +73,6 @@ public class QuarryCS : Structure
         rockTimerCollision = transform.GetChild(0).GetComponent<QuarryRockCollider>().rockTimerCollision;
     }
 
-   /* private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Rock")
-        {
-            totalRockAmount++;
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Rock")
-        {
-            rockTimerCollision = true;
-        }
-    }
-    */
-
     private void RockTimer()
     {
         stoneProductionTimeLength -= Time.deltaTime;
@@ -120,7 +105,7 @@ public class QuarryCS : Structure
 
         if (rockTimer == false)
         {
-            stoneProductionTimeLength = originalRockTime;
+            stoneProductionTimeLength = originalstoneProductionTimeLength;
             rockTimer = true;
             stoneCollected = false;
         }

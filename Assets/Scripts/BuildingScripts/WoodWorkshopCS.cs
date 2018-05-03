@@ -30,15 +30,14 @@ public class WoodWorkshopCS : Structure
     protected override void Start()
     {
         base.Start();
+
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
         originalWoodTime = woodProductionTimeLength;
-
         woodCollected = true;
         normalSpeedConstructing = true;
-        ConstructingStructures();
 
-        level = 1;
+        constructingTimer = true;
 
         name = "Wood workshop";
         type = "Production";

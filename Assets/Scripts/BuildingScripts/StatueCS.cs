@@ -14,7 +14,10 @@ public class StatueCS : Structure
         normalSpeedConstructing = true;
         faithCollected = true;
         addedToList = false;
-        ConstructingStructures();
+
+        constructingTimer = true;
+
+        defaultFaithTimer = true;
 
         name = "Statue";
         type = "Faith";

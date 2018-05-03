@@ -16,7 +16,10 @@ public class MeditationRoomCS : Structure
         normalSpeedConstructing = true;
         faithCollected = true;
         addedToList = false;
-        ConstructingStructures();
+
+        constructingTimer = true;
+
+        defaultFaithTimer = true;
 
         name = "Meditation room";
         type = "Devotion";

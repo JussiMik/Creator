@@ -13,7 +13,8 @@ public class Farm : Structure
 
         normalSpeedConstructing = true;
         addedToList = false;
-        ConstructingStructures();
+
+        constructingTimer = true;
 
         name = "Farm";
         type = "Food";

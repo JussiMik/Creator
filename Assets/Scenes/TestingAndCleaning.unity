@@ -926,6 +926,11 @@ Prefab:
       propertyPath: devotion
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: devotionChunkIncreaseAfterKilledMonks
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52db2628f8d703648aea031082b57de4, type: 2}
   m_IsPrefabParent: 0

@@ -13,7 +13,8 @@ public class GardenCS : Structure
 
         normalSpeedConstructing = true;
         addedToList = false;
-        ConstructingStructures();
+
+        constructingTimer = true;
 
         name = "Garden";
         type = "Devotion";

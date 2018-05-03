@@ -21,8 +21,11 @@ public class ShrineCS : Structure
         normalSpeedConstructing = true;
         faithCollected = true;
         addedToList = false;
-        ConstructingStructures();
-        
+
+        constructingTimer = true;
+
+        defaultFaithTimer = true;
+
         name = "Shrine";
         type = "Faith";
     }
