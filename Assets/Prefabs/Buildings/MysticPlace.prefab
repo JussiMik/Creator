@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114846904060427160}
   m_Layer: 12
   m_Name: MysticPlace
-  m_TagString: Building
+  m_TagString: MysticPlace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,10 +117,6 @@ MonoBehaviour:
   sanctityPointsOnUpgrade: 0
   constructingTimer: 0
   constructingTime: 0
-  normalSpeedConstructingMp: 4
-  lowerSpeedConstructingMp1: 3
-  lowerSpeedConstructingMp2: 2
-  lowerSpeedConstructingMp3: 1
   normalSpeedConstructing: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0
@@ -136,10 +132,6 @@ MonoBehaviour:
   faithCollected: 0
   faithTimer: 0
   originalFaithTargetTime: 0
-  defaultFaithTimer: 0
-  slowerFaithTimer1: 0
-  slowerFaithTimer2: 0
-  slowerFaithTimer3: 0
   level: 1
   lvlChange: 0
   maxLevelAmount: 2
@@ -148,14 +140,17 @@ MonoBehaviour:
   info: This is a nice Mystic Place.
   addedMonkSlots: 2
   monksPurchased: 0
-  monkFaithCosts:
-  - 100
-  - 200
-  - 300
-  - 400
-  - 500
+  monkFaithCosts: []
   monk: {fileID: 1593562265877594, guid: f73b398545c4f6c4a85c6bcd97b1f284, type: 2}
   resourceTracker: {fileID: 0}
+  monkFaithBaseCost: 10
+  monkFaithCost: 0
+  monksNeededForMultiplierIncrease1: 5
+  monksNeededForMultiplierIncrease2: 7
+  monksNeededForMultiplierIncrease3: 9
+  monkFaithCostMultiplier1: 1
+  monkFaithCostMultiplier2: 2
+  monkFaithCostMultiplier3: 3
 --- !u!212 &212444002140258722
 SpriteRenderer:
   m_ObjectHideFlags: 1

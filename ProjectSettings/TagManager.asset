@@ -18,7 +18,9 @@ TagManager:
   - BuildingButton
   - Shrine
   - ShrineCollider
-  - Monk
+  - MysticPlace
+  - HealthCanvas
+  - ProductionCycleCanvas
   layers:
   - Default
   - TransparentFX

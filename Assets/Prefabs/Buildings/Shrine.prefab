@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50528240957337664}
   - component: {fileID: 60744983853061038}
   - component: {fileID: 114215616270478050}
+  - component: {fileID: 114040860842953902}
   m_Layer: 12
   m_Name: Shrine
   m_TagString: Shrine
@@ -55,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1605660245458212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.049, y: -3.44, z: 0}
+  m_LocalPosition: {x: 21.815186, y: -0.45570487, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4984276195261882}
@@ -139,10 +140,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.046821594, y: -1.228992}
-      - {x: 1.5591908, y: -0.27128863}
-      - {x: 0.03656578, y: 0.75828266}
-      - {x: -1.5353107, y: -0.2403779}
+    - - {x: -0.024913788, y: -0.87928504}
+      - {x: 1.7026596, y: 0.051517725}
+      - {x: -0.017234802, y: 1.0990229}
+      - {x: -1.750515, y: 0.09139538}
 --- !u!60 &60744983853061038
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -158,7 +159,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.31186676}
+    pivot: {x: 0.5013757, y: 0.26041147}
     oldSize: {x: 2.0810812, y: 1.7804054}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
@@ -167,10 +168,34 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.02994728, y: -0.707571}
-      - {x: 0.72818375, y: -0.3012414}
-      - {x: 0.0039787292, y: 0.072684765}
-      - {x: -0.6953945, y: -0.31879115}
+    - - {x: 0.02994728, y: -0.2338584}
+      - {x: 0.65299225, y: 0.08975971}
+      - {x: 0.019016266, y: 0.48624343}
+      - {x: -0.5675678, y: 0.13988322}
+--- !u!114 &114040860842953902
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1605660245458212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd86de94bf5cc7b49a70b92837877baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
+  foregroundObject: {fileID: 1733398171417390, guid: 64bcdab38214950458388e55013e650a,
+    type: 2}
+  backgroundObject: {fileID: 1947643304754428, guid: 5637093a46a2c554b93134d0f465e1c1,
+    type: 2}
+  progressBarForegroundImage: {fileID: 0}
+  buildingDone: 0
+  checkForBuildingDone: 0
+  startTimer: 0
+  checkForFaithCollected: 0
+  percent: 0
+  faithMaximumTime: 0
+  faithTimer: 0
 --- !u!114 &114215616270478050
 MonoBehaviour:
   m_ObjectHideFlags: 1

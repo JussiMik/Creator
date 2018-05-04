@@ -18,6 +18,6 @@ public class FaithText : MonoBehaviour
     public void UpdateFaith()
     {
         faith = gameManager.faith;
-        faithText.text = faith.ToString();
+        faithText.text = faith.ToString("F0");
     }
 }

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 60107405408330436}
   - component: {fileID: 50765504510955102}
   - component: {fileID: 114956424039527146}
+  - component: {fileID: 114082311777160790}
   m_Layer: 12
   m_Name: Temple
   m_TagString: FaithBuilding
@@ -91,6 +92,30 @@ PolygonCollider2D:
       - {x: 2.1785183, y: 0.013263702}
       - {x: 0.037210464, y: 1.2674165}
       - {x: -2.1414127, y: 0.031894684}
+--- !u!114 &114082311777160790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1604896122853608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd86de94bf5cc7b49a70b92837877baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
+  foregroundObject: {fileID: 1733398171417390, guid: 64bcdab38214950458388e55013e650a,
+    type: 2}
+  backgroundObject: {fileID: 1947643304754428, guid: 5637093a46a2c554b93134d0f465e1c1,
+    type: 2}
+  progressBarForegroundImage: {fileID: 0}
+  buildingDone: 0
+  checkForBuildingDone: 0
+  startTimer: 0
+  checkForFaithCollected: 0
+  percent: 0
+  faithMaximumTime: 0
+  faithTimer: 0
 --- !u!114 &114956424039527146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,10 +149,6 @@ MonoBehaviour:
   sanctityPointsOnUpgrade: 0
   constructingTimer: 0
   constructingTime: 20
-  normalSpeedConstructingMp: 4
-  lowerSpeedConstructingMp1: 3
-  lowerSpeedConstructingMp2: 2
-  lowerSpeedConstructingMp3: 1
   normalSpeedConstructing: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0
@@ -143,10 +164,6 @@ MonoBehaviour:
   faithCollected: 0
   faithTimer: 0
   originalFaithTargetTime: 0
-  defaultFaithTimer: 0
-  slowerFaithTimer1: 0
-  slowerFaithTimer2: 0
-  slowerFaithTimer3: 0
   level: 1
   lvlChange: 0
   maxLevelAmount: 1

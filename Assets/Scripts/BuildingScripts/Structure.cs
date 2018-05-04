@@ -68,7 +68,6 @@ public class Structure : MonoBehaviour
     [HideInInspector]
     public bool faithTimer;
 
-    [HideInInspector]
     public float originalFaithTargetTime;
 
     [Space(10)]

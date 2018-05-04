@@ -21,7 +21,6 @@ public class ProgressBar : MonoBehaviour
     string buildingType;
     string buildingName;
 
-
     // Use this for initialization
     void Awake()
     {
@@ -29,11 +28,6 @@ public class ProgressBar : MonoBehaviour
         FaithBarBackground = GameObject.Find("ProgressBarBackground");
         progressBarBackgroundImage = FaithBarBackground.GetComponent<Image>();
         canvas = GameObject.FindGameObjectWithTag("PopupMenuCanvas");
-
-    }
-    private void Start()
-    {
-
     }
     private void OnEnable()
     {
@@ -42,8 +36,6 @@ public class ProgressBar : MonoBehaviour
         faithMaximumTime = clickedObject.GetComponent<Structure>().originalFaithTargetTime;
         buildingType = clickedObject.GetComponent<Structure>().type;
         buildingName = clickedObject.GetComponent<Structure>().name;
-
-
     }
     void Update()
     {
@@ -99,10 +91,5 @@ public class ProgressBar : MonoBehaviour
             progressBarForegroundImage.enabled = false;
             progressBarBackgroundImage.enabled = false;
         }
-
-
-
-
-
     }
 }
