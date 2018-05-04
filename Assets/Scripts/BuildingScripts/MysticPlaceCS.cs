@@ -58,6 +58,8 @@ public class MysticPlaceCS : Structure
             GameObject spawnedMonk = Instantiate(monk, new Vector2(clickedBuilding.transform.position.x + randomDistanceHorizontal, clickedBuilding.transform.position.y + randomDistanceVertical), clickedBuilding.transform.rotation);
             gameManager.monks.Add(spawnedMonk);
             resourceTracker.GetComponent<MonkText>().UpdateMonkCount();
+            gameManager.CheckFarmCount();
+
             if (monksPurchased < monkFaithCosts.Length - 1)
             {
                 increaseMonkCost = true;
