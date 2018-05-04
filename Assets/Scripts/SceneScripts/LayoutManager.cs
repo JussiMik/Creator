@@ -284,6 +284,7 @@ public class LayoutManager : MonoBehaviour
         {
             GameObject newRock = Instantiate(emptyPre, new Vector3(position.x, position.y, transform.position.z), transform.rotation);
             newRock.name = "RockTile";
+            newRock.layer = LayerMask.NameToLayer("Border");
             newRock.transform.SetParent(solidRockFolder.transform);
 
             var rend = newRock.GetComponent<SpriteRenderer>();
@@ -353,9 +354,9 @@ public class LayoutManager : MonoBehaviour
         }
         TestGridUpdate();
 
-        //RANDOMIZE ROCKS
-        GameObject rocksFolder = Instantiate(new GameObject("Rocks Folder"), Vector3.zero, transform.rotation);
-        rocksFolder.transform.SetParent(allTiles.transform);
+        //RANDOMIZE STONE
+        GameObject stonesFolder = Instantiate(new GameObject("Stone Folder"), Vector3.zero, transform.rotation);
+        stonesFolder.transform.SetParent(allTiles.transform);
 
         for (int i = 0; i < rndRocks; i++)
         {
@@ -373,7 +374,7 @@ public class LayoutManager : MonoBehaviour
             newRock.GetComponent<SpriteRenderer>().sortingOrder = CalculateSortingLayer(new Vector2(rnd1, rnd2));
             newRock.GetComponent<SpriteRenderer>().sortingLayerName = ("Buildings");
             rocks.Add(newRock);
-            newRock.transform.SetParent(rocksFolder.transform);
+            newRock.transform.SetParent(stonesFolder.transform);
 
             positions[rnd1, rnd2].z = 1;
 

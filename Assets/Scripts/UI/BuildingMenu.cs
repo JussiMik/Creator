@@ -36,6 +36,10 @@ public class BuildingMenu : MonoBehaviour {
 
     public bool canBuild;
 
+    [Header("Menu Background Sprites")]
+    public Sprite menuSpriteUti;
+    public Sprite menuSpritePro;
+
     [Header("Building Info Stuff")]
 
     public GameObject infoBuildingSprite;
@@ -100,6 +104,8 @@ public class BuildingMenu : MonoBehaviour {
     public void ProducalToActive()
     {
         proActive = true;
+        buildGrid.GetComponent<Image>().sprite = menuSpritePro;
+
         for (int i = 0; i < buildingButtons.Count; i++)
         {
             if (buildingsPro.Length - 1  >= i )
@@ -119,6 +125,7 @@ public class BuildingMenu : MonoBehaviour {
     public void UtilityToActive()
     {
         proActive = false;
+        buildGrid.GetComponent<Image>().sprite = menuSpriteUti;
         for (int i = 0; i < buildingButtons.Count; i++)
         {
             if (buildingsUti.Length - 1 >= i)

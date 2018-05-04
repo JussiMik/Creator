@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/testscene.unity
     guid: 43efce343c5c12d49b610fc3e09a94fc
   - enabled: 0
-    path: Assets/Scenes/PerformanceTest.unity
+    path: 
     guid: 2627fb8202d00b94599352d8dc095139
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PopupMenu.unity
     guid: ec5072d33e2239542b962ae602e39acf
