@@ -178,7 +178,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1632218740180484}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8828eaa8532246340a020044d21aabed, type: 3}
   m_Name: 
@@ -190,6 +190,9 @@ MonoBehaviour:
     type: 2}
   progressBarForegroundImage: {fileID: 0}
   buildingDone: 0
+  checkForBuildingDone: 0
+  startTimer: 0
+  checkForFaithCollected: 0
   percent: 0
   faithMaximumTime: 0
   faithTimer: 0

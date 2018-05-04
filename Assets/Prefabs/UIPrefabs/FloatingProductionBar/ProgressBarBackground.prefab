@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224304323047907458}
   - component: {fileID: 222694545532571180}
   - component: {fileID: 114482036689564906}
+  - component: {fileID: 114174411887060046}
   m_Layer: 2
   m_Name: ProgressBarBackground
   m_TagString: Untagged
@@ -28,6 +29,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114174411887060046
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1947643304754428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff1186bb528383245ae48cf78a01a583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalParent: {fileID: 0}
+  structure: {fileID: 0}
+  offset: {x: 0, y: 45, z: 0}
 --- !u!114 &114482036689564906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77,5 +92,5 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 139.12157, y: 298.9016}
-  m_SizeDelta: {x: 37.5, y: 47.5}
+  m_SizeDelta: {x: 42.5, y: 62.5}
   m_Pivot: {x: 0.5, y: 0.5}

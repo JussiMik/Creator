@@ -15,7 +15,7 @@ public class TouchInput : MonoBehaviour
     public float zoomAmountPerStep;
     public float cameraSizeMax = 20f;
     public float cameraSizeMin = 1f;
-    public float orthoZoomSpeed = 0.5f;
+    public float orthoZoomSpeed = 0.1f;
     float scrollSpeed = 0.5f;
 
     public Vector2 minXValue;
@@ -171,6 +171,6 @@ public class TouchInput : MonoBehaviour
     }
     void LimitCameraMovement()
     {
-       // transform.position = new Vector3(Mathf.Clamp(transform.position.x, minXValue.x, maxXValue.x), Mathf.Clamp(transform.position.y, minYValue.y, maxYValue.y), transform.position.z);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, minXValue.x, maxXValue.x), Mathf.Clamp(transform.position.y, minYValue.y, maxYValue.y), transform.position.z);
     }
 }
