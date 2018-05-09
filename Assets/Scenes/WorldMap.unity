@@ -205,7 +205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b989e11236f29e54f8d817b48e033957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveRightOnLists: []
   speedOnLines:
   - 13
   - 0

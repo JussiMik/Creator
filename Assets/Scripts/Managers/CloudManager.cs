@@ -8,13 +8,12 @@ public class CloudManager : MonoBehaviour
     //public List<GameObject> moveRightOnLists;
 
     static List<GameObject> list01 = new List<GameObject>();
-    static List<GameObject> list02;
-    static List<GameObject> list03;
+    static List<GameObject> list02 = new List<GameObject>();
+    static List<GameObject> list03 = new List<GameObject>();
 
-    public List<GameObject> moveRightOnLists;
-
+    public List<List<GameObject>> moveRightOnLists = new List<List<GameObject>>() {list01, list02, list03};
+    
     public float[] speedOnLines = new float[3];
-
 
     public GameObject gamammaa;
 
@@ -36,8 +35,6 @@ public class CloudManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //List<List<GameObject>> moveRightOnLists = new List<List<GameObject>>(list01, list02, list03);
-
         NewCloud(lightCloud, 0);
         NewCloud(midCloud, 1);
         NewCloud(darkCloud, 2);
@@ -46,14 +43,18 @@ public class CloudManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < list01.Count; i++)
+        for (int i = 0; i < moveRightOnLists.Count; i++)
         {
-            list01[i].transform.Translate(Vector2.right * Time.deltaTime * speedOnLines[i]);
-            if ((list01[i].transform.position.x) >= (lines[0].position.x * -1))
+            for (int i2 = 0; i2 < moveRightOnLists[i].Count; i2++)
             {
-                list01[i].transform.position = lines[0].position;
+                moveRightOnLists[i][i2].transform.Translate(Vector2.right * Time.deltaTime * speedOnLines[i]);
+                if ((moveRightOnLists[i][i2].transform.position.x) >= (lines[0].position.x * -1))
+                {
+                    moveRightOnLists[i][i2].transform.position = lines[i].position;
+                }
             }
         }
+        
         //for (int i = 0; i < list02.Count; i++)
         //{
         //    list02[i].transform.Translate(Vector2.right * Time.deltaTime * speedOnLines[i]);
