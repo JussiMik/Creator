@@ -14,30 +14,25 @@ public class CloudManager : MonoBehaviour
     public List<List<GameObject>> moveRightOnLists = new List<List<GameObject>>() {list01, list02, list03};
     
     public float[] speedOnLines = new float[3];
+    public float[] cloudsPerLine = new float[3];
 
     public GameObject gamammaa;
 
     [Header("LineMarks")]
     public Transform[] lines = new Transform[3];
 
-    [Header("Light Clouds")]
-    public Sprite lightCloud;
-    public Sprite lightCloudFluffy;
+    [Header("Cloud Sprites")]
+    
+    public Sprite[] flatClouds = new Sprite[3];
+    public Sprite[] fluffyClouds = new Sprite[3];
 
-    [Header("Mid Clouds")]
-    public Sprite midCloud;
-    public Sprite midCloudFluffy;
-
-    [Header("Dark Clouds")]
-    public Sprite darkCloud;
-    public Sprite darkCloudFluffy;
 
     // Use this for initialization
     void Start()
     {
-        NewCloud(lightCloud, 0);
-        NewCloud(midCloud, 1);
-        NewCloud(darkCloud, 2);
+        NewCloudsToLine(0);
+        NewCloudsToLine(1);
+        NewCloudsToLine(2);
     }
 
     // Update is called once per frame
@@ -48,7 +43,7 @@ public class CloudManager : MonoBehaviour
             for (int i2 = 0; i2 < moveRightOnLists[i].Count; i2++)
             {
                 moveRightOnLists[i][i2].transform.Translate(Vector2.right * Time.deltaTime * speedOnLines[i]);
-                if ((moveRightOnLists[i][i2].transform.position.x) >= (lines[0].position.x * -1))
+                if ((moveRightOnLists[i][i2].transform.position.x) >= (lines[i].position.x * -1))
                 {
                     moveRightOnLists[i][i2].transform.position = lines[i].position;
                 }
@@ -74,13 +69,34 @@ public class CloudManager : MonoBehaviour
         //}
     }
 
-    void NewCloud(Sprite spr, int line)
+    void NewCloudsToLine(int line)
     {
-        list01.Add(new GameObject("Cloud On Line " + (line + 1)));
-        var newCloud = list01[list01.Count - 1];
-        newCloud.transform.position = lines[line].position;
-        newCloud.AddComponent<SpriteRenderer>();
-        newCloud.GetComponent<SpriteRenderer>().sprite = spr;
-        newCloud.GetComponent<SpriteRenderer>().sortingOrder = 2 + line * 2;
+        bool flatCloud = true;
+        float linePartLength = (((-1) * lines[line].position.x * 2)/cloudsPerLine[line]);
+       
+        for (int i = 0; i < cloudsPerLine[line]; i++)
+        {
+            moveRightOnLists[line].Add(new GameObject("Cloud " +i+ " On Line " + (line + 1)));
+            var newCloud = moveRightOnLists[line][moveRightOnLists[line].Count - 1];
+
+            Vector3 newPos = new Vector3(lines[line].position.x + (linePartLength * i), lines[line].position.y, lines[line].position.z);
+
+            newCloud.transform.position = newPos;
+            newCloud.AddComponent<SpriteRenderer>();
+
+            if(flatCloud)
+            {
+                newCloud.GetComponent<SpriteRenderer>().sprite = flatClouds[line];
+                flatCloud = false;
+            }
+            else
+            {
+                newCloud.GetComponent<SpriteRenderer>().sprite = fluffyClouds[line];
+                flatCloud = true;
+            }
+
+            newCloud.GetComponent<SpriteRenderer>().sortingOrder = 2 + line * 2;
+        }
+        
     }
 }
