@@ -188,10 +188,10 @@ MonoBehaviour:
   levelTwoSprite: {fileID: 21300000, guid: d63017497710a2e4093269d116958235, type: 3}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
-  faithConstructingCost: 0
-  devotionConstructingCost: 0
-  woodConstructingCost: 0
-  stoneConstructingCost: 0
+  faithConstructingCost: 5000
+  devotionConstructingCost: 20
+  woodConstructingCost: 500
+  stoneConstructingCost: 85
   lvl2FaithUpgradeCost: 0
   lvl2DevotionUpgradeCost: 0
   lvl2WoodUpgradeCost: 0
@@ -211,10 +211,10 @@ MonoBehaviour:
   constructingDone: 0
   changedValue: 0
   generatedFaith: 0
-  faithAmountPerProductionCycle: 10
-  faithAmountPerProductionCycleUpgraded: 5
-  productionCycleLength: 20
-  maxFaithAmount: 50
+  faithAmountPerProductionCycle: 80
+  faithAmountPerProductionCycleUpgraded: 80
+  productionCycleLength: 25
+  maxFaithAmount: 80
   faithMultiplier: 1.2
   faithCollected: 0
   faithTimer: 0
