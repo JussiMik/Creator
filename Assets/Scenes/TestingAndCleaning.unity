@@ -1104,47 +1104,47 @@ Prefab:
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
       propertyPath: goodMonkAndFarmRatio
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
       propertyPath: badMonkAndFarmRatio75
-      value: 4
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
       propertyPath: badMonkAndFarmRatio50
-      value: 6
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
       propertyPath: badMonkAndFarmRatio25
-      value: 8
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
       propertyPath: devotionIncreaseRatios.Array.data[0]
-      value: 49.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
       propertyPath: devotionIncreaseRatios.Array.data[1]
-      value: 44.6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
       propertyPath: devotionIncreaseRatios.Array.data[2]
-      value: 39.4
+      value: 8.2
       objectReference: {fileID: 0}
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
       propertyPath: devotionIncreaseRatios.Array.data[3]
-      value: 34.2
+      value: 13.4
       objectReference: {fileID: 0}
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
       propertyPath: devotionIncreaseRatios.Array.data[4]
-      value: 29
+      value: 18.6
       objectReference: {fileID: 0}
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
@@ -1154,72 +1154,77 @@ Prefab:
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
       propertyPath: devotionIncreaseRatios.Array.data[6]
-      value: 18.6
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
       propertyPath: devotionIncreaseRatios.Array.data[7]
-      value: 13.4
+      value: 34.2
       objectReference: {fileID: 0}
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
       propertyPath: devotionIncreaseRatios.Array.data[8]
-      value: 8.2
+      value: 39.4
       objectReference: {fileID: 0}
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
       propertyPath: devotionIncreaseRatios.Array.data[9]
-      value: 3
+      value: 44.6
       objectReference: {fileID: 0}
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
       propertyPath: devotionIncreaseMultipliers.Array.data[0]
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
       propertyPath: devotionIncreaseMultipliers.Array.data[1]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
-        type: 2}
-      propertyPath: devotionIncreaseMultipliers.Array.data[2]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
-        type: 2}
-      propertyPath: devotionIncreaseMultipliers.Array.data[3]
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
-        type: 2}
-      propertyPath: devotionIncreaseMultipliers.Array.data[4]
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
-        type: 2}
-      propertyPath: devotionIncreaseMultipliers.Array.data[5]
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
-        type: 2}
-      propertyPath: devotionIncreaseMultipliers.Array.data[6]
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
-        type: 2}
-      propertyPath: devotionIncreaseMultipliers.Array.data[7]
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
-        type: 2}
-      propertyPath: devotionIncreaseMultipliers.Array.data[8]
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
+      propertyPath: devotionIncreaseMultipliers.Array.data[2]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: devotionIncreaseMultipliers.Array.data[3]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: devotionIncreaseMultipliers.Array.data[4]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: devotionIncreaseMultipliers.Array.data[5]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: devotionIncreaseMultipliers.Array.data[6]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: devotionIncreaseMultipliers.Array.data[7]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: devotionIncreaseMultipliers.Array.data[8]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
       propertyPath: devotionIncreaseMultipliers.Array.data[9]
-      value: 10
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: defaultDevotionIncreaseMp
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52db2628f8d703648aea031082b57de4, type: 2}

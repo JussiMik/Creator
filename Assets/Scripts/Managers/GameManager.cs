@@ -51,12 +51,6 @@ public class GameManager : MonoBehaviour
     [Space(10)]
     public float devotionChunkIncreaseAfterKilledMonks;
 
-    /*
-    public bool devotionIncrease1;
-    public bool devotionIncrease2;
-    public bool devotionIncrease3;
-    */
-
     [Space(10)]
     public float monkFaithMultiplier;
 
@@ -89,7 +83,8 @@ public class GameManager : MonoBehaviour
     public float devotionDecreaseMp1;
     public float devotionDecreaseMp2;
     public float devotionDecreaseMp3;
-
+    [Space(10)]
+    public float defaultDevotionIncreaseMp;
     [Space(10)]
     public float defaultConstructingTimerMp;
     public float constructingTimerMp1;
@@ -105,7 +100,6 @@ public class GameManager : MonoBehaviour
     public float[] devotionIncreaseMultipliers = new float[10];
 
     public float numberOfMonksAndGardens;
-    public int index;
 
     private void Awake()
     {
@@ -133,7 +127,7 @@ public class GameManager : MonoBehaviour
 
         monks.RemoveAll(list_item => list_item == null);
 
-        
+
     }
 
     //Use collected faith for constructing and leveling up buildings
@@ -250,16 +244,6 @@ public class GameManager : MonoBehaviour
         sanctity++;
     }
 
-    /*
-    public void SpawnFarm()
-    {
-        //if (faith >= faithUseAmount && devotion >= devotionChunkDecreaseAmount)
-        {
-            GameObject spawned = Instantiate(farm, new Vector3(transform.position.x + 5, transform.position.y - 2, transform.position.z), transform.rotation);
-        }
-    }
-    */
-
     //Goes through a list of monks and destroys all of the excess ones, in Update() function destroys null objects from the list
     void KillSomeMonks()
     {
@@ -289,6 +273,7 @@ public class GameManager : MonoBehaviour
         stoneResourceTracker = GameObject.Find("StoneText").GetComponent<StoneText>();
     }
 
+    //Checks if there's enough farms per monk on the map
     public void CheckFarmCount()
     {
         if (farms.Count == 0)
@@ -305,6 +290,7 @@ public class GameManager : MonoBehaviour
         {
             if (monks.Count / farms.Count <= goodMonkAndFarmRatio)
             {
+                devotionIncreaseMp = defaultDevotionIncreaseMp;
                 constructingTimerMp = defaultConstructingTimerMp;
                 faithTimerMp = defaultFaithTimerMp;
 
@@ -315,108 +301,47 @@ public class GameManager : MonoBehaviour
                 {
                     numberOfMonksAndGardens = monks.Count / gardens.Count;
 
-                    float flöö = 0;
-
-                    foreach (float plöö in devotionIncreaseRatios)
-                    {
-                        if (flöö == numberOfMonksAndGardens) break;
-                        {
-                            devotionIncreaseMp = plöö;
-                            flöö++;
-                        }
-                    }
-                }
-
-
-                /*
-                if (gardens.Count > 0 || meditationRooms.Count > 0)
-                {
                     for (int i = 0; i < devotionIncreaseRatios.Length; i++)
                     {
-                        if (monks.Count / gardens.Count > devotionIncreaseRatios[i])
+                        if (devotionIncreaseRatios[i] <= numberOfMonksAndGardens)
                         {
-                            index += i;
-                            //devotionIncreaseMp = devotionIncreaseMultipliers[index];
-                            devotionIncreaseMp = devotionIncreaseMultipliers[index];
+                            devotionIncreaseMp = devotionIncreaseMultipliers[i];
                         }
                     }
                 }
-
-
-                if (monks.Count / gardens.Count > devotionIncreaseRatio[index] || monks.Count / meditationRooms.Count > devotionIncreaseRatio1)
-                {
-                    index++;
-                    devotionIncreaseMp[index]
-                }
-                if (monks.Count / gardens.Count > devotionIncreaseRatio2 || monks.Count / meditationRooms.Count > devotionIncreaseRatio2)
-                {
-                    devotionIncreaseMp = devotionIncreaseMp2;
-                }
-                if (monks.Count / gardens.Count > devotionIncreaseRatio3 || monks.Count / meditationRooms.Count > devotionIncreaseRatio3)
-                {
-                    devotionIncreaseMp = devotionIncreaseMp3;
-                }
-                if (monks.Count / gardens.Count > devotionIncreaseRatio4 || monks.Count / meditationRooms.Count > devotionIncreaseRatio4)
-                {
-                    devotionIncreaseMp = devotionIncreaseMp4;
-                }
-                if (monks.Count / gardens.Count > devotionIncreaseRatio5 || monks.Count / meditationRooms.Count > devotionIncreaseRatio5)
-                {
-                    devotionIncreaseMp = devotionIncreaseMp5;
-                }
-                if (monks.Count / gardens.Count > devotionIncreaseRatio6 || monks.Count / meditationRooms.Count > devotionIncreaseRatio6)
-                {
-                    devotionIncreaseMp = devotionIncreaseMp6;
-                }
-                if (monks.Count / gardens.Count > devotionIncreaseRatio7 || monks.Count / meditationRooms.Count > devotionIncreaseRatio7)
-                {
-                    devotionIncreaseMp = devotionIncreaseMp7;
-                }
-                if (monks.Count / gardens.Count > devotionIncreaseRatio8 || monks.Count / meditationRooms.Count > devotionIncreaseRatio8)
-                {
-                    devotionIncreaseMp = devotionIncreaseMp8;
-                }
-                if (monks.Count / gardens.Count > devotionIncreaseRatio9 || monks.Count / meditationRooms.Count > devotionIncreaseRatio9)
-                {
-                    devotionIncreaseMp = devotionIncreaseMp9;
-                }
-                if (monks.Count / gardens.Count <= devotionIncreaseRatio10 || monks.Count / meditationRooms.Count > devotionIncreaseRatio10)
-                {
-                    devotionIncreaseMp = devotionIncreaseMp10;
-                }
-                */
             }
+        }
 
-            if (monks.Count / farms.Count > goodMonkAndFarmRatio)
-            {
-                devotionDecreaseMp = defaultDevotionDecreaseMp;
-                constructingTimerMp = defaultConstructingTimerMp;
-                faithTimerMp = defaultFaithTimerMp;
+        if (monks.Count / farms.Count > goodMonkAndFarmRatio)
+        {
+            devotionDecreaseMp = defaultDevotionDecreaseMp;
+            constructingTimerMp = defaultConstructingTimerMp;
+            faithTimerMp = defaultFaithTimerMp;
 
-                devotionIncrease = false;
-                devotionDecrease = true;
-            }
+            devotionIncrease = false;
+            devotionDecrease = true;
+        }
 
-            if (monks.Count / farms.Count >= badMonkAndFarmRatio75)
-            {
-                devotionDecreaseMp = devotionDecreaseMp1;
-                constructingTimerMp = constructingTimerMp1;
-                faithTimerMp = faithTimerMp1;
-            }
+        if (monks.Count / farms.Count >= badMonkAndFarmRatio75)
+        {
+            devotionDecreaseMp = devotionDecreaseMp1;
+            constructingTimerMp = constructingTimerMp1;
+            faithTimerMp = faithTimerMp1;
+        }
 
-            if (monks.Count / farms.Count >= badMonkAndFarmRatio50)
-            {
-                devotionDecreaseMp = devotionDecreaseMp2;
-                constructingTimerMp = constructingTimerMp2;
-                faithTimerMp = faithTimerMp2;
-            }
+        if (monks.Count / farms.Count >= badMonkAndFarmRatio50)
+        {
+            devotionDecreaseMp = devotionDecreaseMp2;
+            constructingTimerMp = constructingTimerMp2;
+            faithTimerMp = faithTimerMp2;
+        }
 
-            if (monks.Count / farms.Count >= badMonkAndFarmRatio25)
-            {
-                devotionDecreaseMp = devotionDecreaseMp3;
-                constructingTimerMp = constructingTimerMp3;
-                faithTimerMp = faithTimerMp3;
-            }
+        if (monks.Count / farms.Count >= badMonkAndFarmRatio25)
+        {
+            devotionDecreaseMp = devotionDecreaseMp3;
+            constructingTimerMp = constructingTimerMp3;
+            faithTimerMp = faithTimerMp3;
         }
     }
 }
+
