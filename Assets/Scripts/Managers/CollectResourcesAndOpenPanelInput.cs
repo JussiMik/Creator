@@ -76,6 +76,15 @@ public class CollectResourcesAndOpenPanelInput : MonoBehaviour
                                 clickedBuilding.GetComponent<Structure>().CollectFaith();
                             }
                         }
+                        if(hitInfo.transform.tag == "ConversionTemple" && gameManager.devotion >= gameManager.minDevotionAmountCollecting)
+                        {
+                            clickedBuilding = hitInfo.transform.gameObject;
+
+                            if(clickedBuilding.GetComponent<ConversionTempleCS>().convertedMonk > 0)
+                            {
+                                clickedBuilding.GetComponent<ConversionTempleCS>().ConvertMonk();
+                            }
+                        }
 
                         if (showPanel == true)
                         {

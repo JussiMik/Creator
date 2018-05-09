@@ -1,11 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObjectiveManager : MonoBehaviour
 {
     GameManager gameManager;
-    public MysticPlaceCS mysticPlace;
+    MysticPlaceCS mysticPlace;
+    [Space(10)]
+    [Header("Meditation rooms and Gardens")]
+    public float requiredAmountOfMeditationRooms;
+    public float requiredAmountOfGardens;
+
+    [Space(10)]
+    [Header("Amount of resources")]
+    public float requiredResourceAmount;
+    [Space(10)]
     public bool checkForCompletedObjectives;
 
     public List<GameObject> shrineList = new List<GameObject>();
@@ -14,10 +24,20 @@ public class ObjectiveManager : MonoBehaviour
     public List<GameObject> templeList = new List<GameObject>();
 
     //BOOLS BITCH
-    public bool buildFourShrinesDone;
-    public bool buildOneTempleDone;
-    public bool buildThreeTemplesDone;
-    public bool mysticPlaceLevelTwoDone;
+    bool monkConversionDone;
+    bool meditationRoomAndGardensDone;
+    bool buildFourShrinesDone;
+    bool buildOneTempleDone;
+    bool buildThreeTemplesDone;
+    bool mysticPlaceLevelTwoDone;
+    bool haveAmountOfWoodDone;
+    bool haveAmountOfStoneDone;
+
+    [Space(10)]
+    public bool useMonkConvertChallenge;
+    public bool useFourShrinesChallenge;
+    public bool useMysticPlaceChallenge;
+    public bool useBuildThreeTemplesChallenge;
 
 
     void Start()
@@ -32,48 +52,101 @@ public class ObjectiveManager : MonoBehaviour
 
     public void CheckForCompletedObjectives()
     {
+        ConvertMonks();
         BuildFourShrines();
-        BuildOneTemple();
-        BuildThreeTemples();
         UpgradeMysticPlaceToLevelTwo();
-    }
-    void BuildFourShrines()
-    {
+        BuildThreeTemples();
 
-        if (shrineList.Count == 4 && buildFourShrinesDone == false)
+        /* MeditationRoomAndGardens();
+         BuildOneTemple();
+         HaveAmountOfWood();
+         HaveAmountOfStone();
+         */
+    }
+    void ConvertMonks()
+    {
+        if (useMonkConvertChallenge == true)
         {
-            Debug.Log("Cuatro santuarios");
-            buildFourShrinesDone = true;
+            if (gameManager.totalMonksConverted == 10 && monkConversionDone == false)
+            {
+                Debug.Log("Monjes convertidos");
+                monkConversionDone = true;
+            }
         }
     }
+
+    void BuildFourShrines()
+    {
+        if (useFourShrinesChallenge == true)
+        {
+            if (shrineList.Count == 4 && buildFourShrinesDone == false)
+            {
+                Debug.Log("Cuatro santuarios");
+                buildFourShrinesDone = true;
+            }
+        }
+    }
+
+    void MeditationRoomAndGardens()
+    {
+        if (meditationRoomList.Count >= requiredAmountOfMeditationRooms && gardenList.Count >= requiredAmountOfGardens && meditationRoomAndGardensDone == false)
+        {
+            Debug.Log("Meditatziuun and gäärdens");
+            meditationRoomAndGardensDone = true;
+        }
+    }
+
     void BuildOneTemple()
     {
-        if(templeList.Count == 1 && buildOneTempleDone == false)
+        if (templeList.Count == 1 && buildOneTempleDone == false)
         {
             Debug.Log("Uno templo");
             buildOneTempleDone = true;
         }
     }
+
     void BuildThreeTemples()
     {
-        if(templeList.Count == 3 && buildThreeTemplesDone == false)
+        if (useBuildThreeTemplesChallenge == true)
         {
-            Debug.Log("Tres templos");
-            buildThreeTemplesDone = true;
+            if (templeList.Count == 3 && buildThreeTemplesDone == false)
+            {
+                Debug.Log("Tres templos");
+                buildThreeTemplesDone = true;
+            }
         }
     }
+
     void UpgradeMysticPlaceToLevelTwo()
     {
-        mysticPlace = GameObject.FindGameObjectWithTag("MysticPlace").GetComponent<MysticPlaceCS>();
-        
-        if(mysticPlace.level == 2 && mysticPlaceLevelTwoDone == false)
+        if (useMysticPlaceChallenge == true)
         {
-            Debug.Log("Mystic place level TWOOOO");
-            mysticPlaceLevelTwoDone = true;
+            mysticPlace = GameObject.FindGameObjectWithTag("MysticPlace").GetComponent<MysticPlaceCS>();
+
+            if (mysticPlace.level == 2 && mysticPlaceLevelTwoDone == false)
+            {
+                Debug.Log("Mystic place level TWOOOO");
+                mysticPlaceLevelTwoDone = true;
+            }
         }
     }
-    void HaveAmountOfResource()
-    {
 
+    void HaveAmountOfWood()
+    {
+        if (gameManager.wood >= requiredResourceAmount && haveAmountOfWoodDone == false)
+        {
+            Debug.Log("Puuta ON");
+            haveAmountOfWoodDone = false;
+        }
     }
+
+    void HaveAmountOfStone()
+    {
+        if (gameManager.stone >= requiredResourceAmount && haveAmountOfStoneDone == false)
+        {
+            Debug.Log("Kiveä ON");
+            haveAmountOfStoneDone = false;
+        }
+    }
+
 }

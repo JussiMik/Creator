@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> meditationRooms = new List<GameObject>();
     public List<GameObject> monks = new List<GameObject>();
     public List<float> faithMultipliers = new List<float>();
+    public List<GameObject> convertableMonks = new List<GameObject>();
 
     FaithText faithResourceTracker;
     DevotionText devotionResourceTracker;
@@ -70,6 +71,7 @@ public class GameManager : MonoBehaviour
     MonkText monkResourceTracker;
 
     public int monkSlots;
+    public int totalMonksConverted;
 
     public float goodMonkAndFarmRatio;
 

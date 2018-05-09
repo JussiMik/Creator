@@ -27,6 +27,8 @@ public class GardenCS : Structure
         if (constructingDone == true && addedToList == false)
         {
             AddToList();
+            objectiveManager.gardenList.Add(gameObject);
+            objectiveManager.CheckForCompletedObjectives();
             gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
         }
     }
