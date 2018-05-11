@@ -11,6 +11,8 @@ public class ProgressBar : MonoBehaviour
     public float woodMaximumTime;
     public float rockTimer;
     public float rockMaximumTime;
+    public float monkTimer;
+    public float monkMaximumTime;
     Image progressBarForegroundImage;
     Image progressBarBackgroundImage;
     public float percent;
@@ -21,7 +23,6 @@ public class ProgressBar : MonoBehaviour
     string buildingType;
     string buildingName;
 
-
     // Use this for initialization
     void Awake()
     {
@@ -29,11 +30,6 @@ public class ProgressBar : MonoBehaviour
         FaithBarBackground = GameObject.Find("ProgressBarBackground");
         progressBarBackgroundImage = FaithBarBackground.GetComponent<Image>();
         canvas = GameObject.FindGameObjectWithTag("PopupMenuCanvas");
-
-    }
-    private void Start()
-    {
-
     }
     private void OnEnable()
     {
@@ -42,8 +38,6 @@ public class ProgressBar : MonoBehaviour
         faithMaximumTime = clickedObject.GetComponent<Structure>().originalFaithTargetTime;
         buildingType = clickedObject.GetComponent<Structure>().type;
         buildingName = clickedObject.GetComponent<Structure>().name;
-
-
     }
     void Update()
     {
@@ -57,7 +51,7 @@ public class ProgressBar : MonoBehaviour
 
             percent = rockTimer / rockMaximumTime;
             progressBarForegroundImage.fillAmount = Mathf.Lerp(1, 0, percent);
-            if (rockTimer == 10 && buildingDone == true)
+            if (rockTimer == rockMaximumTime && buildingDone == true)
             {
                 progressBarForegroundImage.fillAmount = 1;
             }
@@ -72,7 +66,7 @@ public class ProgressBar : MonoBehaviour
 
             percent = woodTimer / woodMaximumTime;
             progressBarForegroundImage.fillAmount = Mathf.Lerp(1, 0, percent);
-            if (woodTimer == 10 && buildingDone == true)
+            if (woodTimer == woodMaximumTime && buildingDone == true)
             {
                 progressBarForegroundImage.fillAmount = 1;
             }
@@ -89,7 +83,22 @@ public class ProgressBar : MonoBehaviour
 
             percent = faithTimer / faithMaximumTime;
             progressBarForegroundImage.fillAmount = Mathf.Lerp(1, 0, percent);
-            if (faithTimer == 10 && buildingDone == true)
+            if (faithTimer == faithMaximumTime && buildingDone == true)
+            {
+                progressBarForegroundImage.fillAmount = 1;
+            }
+        }
+        else if (buildingName == "Conversion temple")
+        {
+            monkMaximumTime = clickedObject.GetComponent<ConversionTempleCS>().originalMonkConversionTimeLength;
+            progressBarForegroundImage.enabled = true;
+            progressBarBackgroundImage.enabled = true;
+            monkTimer = clickedObject.GetComponent<Structure>().GetComponent<ConversionTempleCS>().monkConversionTimeLength;
+            buildingDone = clickedObject.GetComponent<Structure>().constructingDone;
+
+            percent = monkTimer / monkMaximumTime;
+            progressBarForegroundImage.fillAmount = Mathf.Lerp(1, 0, percent);
+            if (monkTimer == monkMaximumTime && buildingDone == true)
             {
                 progressBarForegroundImage.fillAmount = 1;
             }
@@ -99,10 +108,5 @@ public class ProgressBar : MonoBehaviour
             progressBarForegroundImage.enabled = false;
             progressBarBackgroundImage.enabled = false;
         }
-
-
-
-
-
     }
 }

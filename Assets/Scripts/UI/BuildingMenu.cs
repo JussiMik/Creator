@@ -50,7 +50,9 @@ public class BuildingMenu : MonoBehaviour {
     public Text infoBuildingRes_Faith;
     public Text infoBuildingRes_Stone;
 
-
+    [Header("Pro/Uti Button Sprites")]
+    public Sprite proButtonSpr;
+    public Sprite utiButtonSpr;
 
     void Awake()
     {
@@ -100,6 +102,7 @@ public class BuildingMenu : MonoBehaviour {
     public void ProducalToActive()
     {
         proActive = true;
+        buildGrid.GetComponent<Image>().sprite = proButtonSpr;
         for (int i = 0; i < buildingButtons.Count; i++)
         {
             if (buildingsPro.Length - 1  >= i )
@@ -119,6 +122,7 @@ public class BuildingMenu : MonoBehaviour {
     public void UtilityToActive()
     {
         proActive = false;
+        buildGrid.GetComponent<Image>().sprite = utiButtonSpr;
         for (int i = 0; i < buildingButtons.Count; i++)
         {
             if (buildingsUti.Length - 1 >= i)

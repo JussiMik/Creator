@@ -30,6 +30,8 @@ public class MeditationRoomCS : Structure
         if (constructingDone == true && addedToList == false)
         {
             AddToList();
+            objectiveManager.meditationRoomList.Add(gameObject);
+            objectiveManager.CheckForCompletedObjectives();
             gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
             faithTimer = true;
         }

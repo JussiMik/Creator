@@ -1,16 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class MonkCostText : MonoBehaviour {
+public class MonkCostText : MonoBehaviour
+{
+    float faithCost;
+    Text faithCostText;
+    public MysticPlaceCS mysticPlace;
+    void Start()
+    {
+        mysticPlace = GameObject.FindGameObjectWithTag("MysticPlace").GetComponent<MysticPlaceCS>();
+        faithCostText = gameObject.GetComponent<Text>();
+        InvokeRepeating("UpdateFaithCost", 0.1f, 0.2f);
+    }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void UpdateFaithCost()
+    {
+        faithCost = mysticPlace.monkFaithCost;
+        faithCostText.text = faithCost.ToString("F0");
+    }
 }

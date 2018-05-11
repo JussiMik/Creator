@@ -15,6 +15,15 @@ public class MysticPlaceCS : Structure
     float randomDistanceHorizontal;
     float randomDistanceVertical;
 
+    public float monkFaithBaseCost;
+    public float monkFaithCost;
+    public int monksNeededForMultiplierIncrease1;
+    public int monksNeededForMultiplierIncrease2;
+    public int monksNeededForMultiplierIncrease3;
+    public float monkFaithCostMultiplier1;
+    public float monkFaithCostMultiplier2;
+    public float monkFaithCostMultiplier3;
+
     protected override void Start()
     {
         base.Start();
@@ -27,6 +36,8 @@ public class MysticPlaceCS : Structure
         increaseMonkCost = false;
         name = "Mystic place";
         type = "Faith";
+
+        monkFaithCost = monkFaithBaseCost;
     }
 
     // Update is called once per frame
@@ -42,6 +53,7 @@ public class MysticPlaceCS : Structure
     public void AddToList()
     {
         gameManager.farms.Add(gameObject);
+        gameManager.gardens.Add(gameObject);
         gameManager.faithBuildings.Add(gameObject);
         gameManager.faithMultipliers.Add(faithMultiplier);
         addedToList = true;
@@ -49,31 +61,39 @@ public class MysticPlaceCS : Structure
     public void SpawnNewMonk()
     {
         clickedBuilding = gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().clickedBuilding;
-        if (gameManager.faith >= monkFaithCosts[monksPurchased] && gameManager.monks.Count < gameManager.monkSlots)
-        {
 
-            gameManager.UseResources(monkFaithCosts[monksPurchased], 0, 0, 0);
+        if (gameManager.faith >= monkFaithCost && gameManager.monks.Count < gameManager.monkSlots)
+        {
+            gameManager.UseResources(monkFaithCost,0, 0, 0);
+            monksPurchased++;
+            if (monksPurchased <= monksNeededForMultiplierIncrease1)
+            {
+                monkFaithCost *= monkFaithCostMultiplier1;
+            }
+            else if (monksPurchased <= monksNeededForMultiplierIncrease2)
+            {
+                monkFaithCost *= monkFaithCostMultiplier2;
+            }
+            else if (monksPurchased >= monksNeededForMultiplierIncrease3)
+            {
+                monkFaithCost *= monkFaithCostMultiplier3;
+            }
+
             randomDistanceHorizontal = Random.Range(-1.5f, 1.5f);
             randomDistanceVertical = Random.Range(-1.5f, 1.5f);
             GameObject spawnedMonk = Instantiate(monk, new Vector2(clickedBuilding.transform.position.x + randomDistanceHorizontal, clickedBuilding.transform.position.y + randomDistanceVertical), clickedBuilding.transform.rotation);
             gameManager.monks.Add(spawnedMonk);
             resourceTracker.GetComponent<MonkText>().UpdateMonkCount();
             gameManager.CheckFarmCount();
-
-            if (monksPurchased < monkFaithCosts.Length - 1)
-            {
-                increaseMonkCost = true;
-            }
         }
-        if (gameManager.faith < monkFaithCosts[monksPurchased])
+        if (gameManager.faith < monkFaithCost)
         {
             Debug.Log("Not enough faith");
         }
-        if (increaseMonkCost == true)
-        {
-            monksPurchased++;
-            increaseMonkCost = false;
-
-        }
+    }
+    public override void ChangeLevel()
+    {
+        base.ChangeLevel();
+        objectiveManager.CheckForCompletedObjectives();
     }
 }

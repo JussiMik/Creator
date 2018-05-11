@@ -9,6 +9,7 @@ public class StatueCS : Structure
     protected override void Start()
     {
         base.Start();
+
         originalFaithTargetTime = productionCycleLength;
 
         normalSpeedConstructing = true;

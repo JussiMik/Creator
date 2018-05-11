@@ -10,8 +10,18 @@ public class TouchInput : MonoBehaviour
 
     private RaycastHit2D hit;
 
+    Vector3 movement = Vector3.zero;
     public bool worldPos;
-    
+    public float zoomAmountPerStep;
+    public float cameraSizeMax = 20f;
+    public float cameraSizeMin = 1f;
+    public float orthoZoomSpeed = 0.1f;
+    float scrollSpeed = 0.5f;
+
+    public Vector2 minXValue;
+    public Vector2 maxXValue;
+    public Vector2 minYValue;
+    public Vector2 maxYValue;
     // Use this for initialization
     void Start()
     {
@@ -21,16 +31,30 @@ public class TouchInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
 #if UNITY_EDITOR
         // if unity editor
+
+
+        LimitCameraMovement();
+        //Zoom in
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            CameraZoom(Camera.main.ScreenToWorldPoint(Input.mousePosition), zoomAmountPerStep);
+        }
+
+        //Zoom out
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            CameraZoom(Camera.main.ScreenToWorldPoint(Input.mousePosition), -zoomAmountPerStep);
+        }
+
         if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0) || Input.GetMouseButtonUp(0))
         {
             touchesOld = new GameObject[touchList.Count];
             touchList.CopyTo(touchesOld);
             touchList.Clear();
 
-            if(worldPos)
+            if (worldPos)
             {
                 hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, touchInputMask);
             }
@@ -39,7 +63,6 @@ public class TouchInput : MonoBehaviour
                 hit = Physics2D.Raycast(Input.mousePosition, Vector2.zero, Mathf.Infinity, touchInputMask);
             }
 
-            
             if (hit.collider != null)
             {
                 GameObject recipient = hit.transform.gameObject;
@@ -88,7 +111,7 @@ public class TouchInput : MonoBehaviour
                 }
 
                 if (hit.collider != null)
-                    {
+                {
                     GameObject recipient = hit.transform.gameObject;
                     //touchList.Add (recipient);
 
@@ -119,5 +142,35 @@ public class TouchInput : MonoBehaviour
                 }
             }
         }
+        if(Input.touchCount == 2)
+        {
+            Touch touchZero = Input.GetTouch(0);
+            Touch touchOne = Input.GetTouch(1);
+
+            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+            float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+            float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+
+            float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
+
+            gameObject.GetComponent<Camera>().orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
+
+            gameObject.GetComponent<Camera>().orthographicSize = Mathf.Clamp(gameObject.GetComponent<Camera>().orthographicSize, cameraSizeMin, cameraSizeMax);
+        }
+    }
+
+
+    void CameraZoom(Vector3 zoomTowards, float amount)
+    {
+        float multiplier = (1.0f / gameObject.GetComponent<Camera>().orthographicSize * amount);
+        transform.position += (zoomTowards - transform.position) * multiplier;
+        gameObject.GetComponent<Camera>().orthographicSize -= amount;
+        gameObject.GetComponent<Camera>().orthographicSize = Mathf.Clamp(gameObject.GetComponent<Camera>().orthographicSize, cameraSizeMin, cameraSizeMax);
+    }
+    void LimitCameraMovement()
+    {
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, minXValue.x, maxXValue.x), Mathf.Clamp(transform.position.y, minYValue.y, maxYValue.y), transform.position.z);
     }
 }

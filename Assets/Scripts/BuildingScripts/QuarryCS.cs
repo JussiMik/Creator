@@ -117,6 +117,7 @@ public class QuarryCS : Structure
 
         gameManager.stone += gatheredStone;
         gatheredStone = 0;
+        objectiveManager.CheckForCompletedObjectives();
         gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().showPanel = false;
         stoneCollected = true;
     }
