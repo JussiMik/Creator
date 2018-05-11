@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class NaturesBlessing : MonoBehaviour
 {
+    LayoutManager layoutManager;
+    DragNDrop dragNDrop;
 
-    // Use this for initialization
     void Start()
+    {
+        layoutManager = GameObject.FindGameObjectWithTag("").GetComponent<LayoutManager>();
+        dragNDrop = GameObject.FindGameObjectWithTag("").GetComponent<DragNDrop>();
+    }
+
+    void Update()
     {
 
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SpawnTree()
     {
-
+        layoutManager.SpawnStructure(dragNDrop.curDraBuilding, dragNDrop.toBeColorized, new Vector2(2, 2));
     }
 }

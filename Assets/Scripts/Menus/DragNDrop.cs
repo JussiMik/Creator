@@ -29,7 +29,7 @@ public class DragNDrop : MonoBehaviour
 
     public Vector2 buildingSize;
 
-    private GameObject curDraBuilding;
+    public GameObject curDraBuilding;
     public Vector3 bestTarget;
 
     public List<Vector2> toBeColorized;
