@@ -7,6 +7,7 @@ public class Structure : MonoBehaviour
 {
     [HideInInspector]
     public GameManager gameManager;
+    public ObjectiveManager objectiveManager;
     [HideInInspector]
     public WoodWorkshopCS woodWorkshopCS;
     [HideInInspector]
@@ -97,6 +98,7 @@ public class Structure : MonoBehaviour
     protected virtual void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        objectiveManager = GameObject.Find("ObjectiveManager").GetComponent<ObjectiveManager>();
 
         level = 1;
 
@@ -180,7 +182,7 @@ public class Structure : MonoBehaviour
     }
 
     //Change structures level
-    public void ChangeLevel()
+    public virtual void ChangeLevel()
     {
         AddResourceCostAmountOnLevelUp();
         gameManager.UseResources(lvl2FaithUpgradeCost, lvl2DevotionUpgradeCost, lvl2WoodUpgradeCost, lvl2StoneUpgradeCost);

@@ -89,4 +89,9 @@ public class MysticPlaceCS : Structure
             Debug.Log("Not enough faith");
         }
     }
+    public override void ChangeLevel()
+    {
+        base.ChangeLevel();
+        objectiveManager.CheckForCompletedObjectives();
+    }
 }

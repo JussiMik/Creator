@@ -21,6 +21,8 @@ TagManager:
   - MysticPlace
   - HealthCanvas
   - ProductionCycleCanvas
+  - Monk
+  - ConversionTemple
   layers:
   - Default
   - TransparentFX

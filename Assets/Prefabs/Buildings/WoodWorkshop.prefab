@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1632218740180484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.069591, y: -2.4361644, z: 0}
+  m_LocalPosition: {x: 17.84975, y: -1.8400017, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4296720088501730}
@@ -140,10 +140,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.0069999695, y: -0.8698592}
-      - {x: 1.3236485, y: -0.09960079}
-      - {x: -0.022729874, y: 0.67798233}
-      - {x: -1.3190536, y: -0.08803177}
+    - - {x: 0.01259613, y: -1.1833924}
+      - {x: 1.774353, y: -0.1126647}
+      - {x: 0.0046577454, y: 0.88612485}
+      - {x: -1.7477856, y: -0.09711254}
 --- !u!60 &60884686366902698
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -208,6 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  objectiveManager: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
   levelTwoSprite: {fileID: 21300000, guid: a08fb2df51b37a94eabb981ce013e65a, type: 3}
@@ -229,10 +230,6 @@ MonoBehaviour:
   sanctityPointsOnUpgrade: 0
   constructingTimer: 0
   constructingTime: 20
-  normalSpeedConstructingMp: 4
-  lowerSpeedConstructingMp1: 3
-  lowerSpeedConstructingMp2: 2
-  lowerSpeedConstructingMp3: 1
   normalSpeedConstructing: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0
@@ -248,22 +245,18 @@ MonoBehaviour:
   faithCollected: 0
   faithTimer: 0
   originalFaithTargetTime: 0
-  defaultFaithTimer: 0
-  slowerFaithTimer1: 0
-  slowerFaithTimer2: 0
-  slowerFaithTimer3: 0
   level: 1
   lvlChange: 0
   maxLevelAmount: 2
   name: 
   type: 
   info: This is a nice wood workshop.
+  gatheredWood: 0
   woodAmountPerProductionCyclePerTree: 6
   woodProductionTimeLength: 10
   woodTimer: 0
   woodCollected: 0
   originalWoodTime: 0
-  gatheredWood: 0
   trees: 0
   totalTreeAmount: 0
   lvl1TreeAmount: 1

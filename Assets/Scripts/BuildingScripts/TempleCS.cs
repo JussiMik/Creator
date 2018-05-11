@@ -35,14 +35,11 @@ public class TempleCS : Structure
     protected override void Update()
     {
         base.Update();
-        if (Input.GetKeyDown("d"))
-        {
-            Destroy(gameObject);
-        }
 
         if (constructingDone == true && addedToList == false)
         {
             AddToList();
+            AddToObjectivesList();
             gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
             faithTimer = true;
         }
@@ -53,5 +50,10 @@ public class TempleCS : Structure
         gameManager.faithBuildings.Add(gameObject);
         gameManager.faithMultipliers.Add(faithMultiplier);
         addedToList = true;
+    }
+    private void AddToObjectivesList()
+    {
+        objectiveManager.templeList.Add(gameObject);
+        objectiveManager.CheckForCompletedObjectives();
     }
 }

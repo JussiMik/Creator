@@ -35,6 +35,7 @@ public class ShrineCS : Structure
         if (constructingDone == true && addedToList == false)
         {
             AddToList();
+            AddToObjectivesList();
             gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
             faithTimer = true;
         }
@@ -50,6 +51,12 @@ public class ShrineCS : Structure
         gameManager.faithBuildings.Add(gameObject);
         gameManager.faithMultipliers.Add(faithMultiplier);
         addedToList = true;
+    }
+
+    private void AddToObjectivesList()
+    {
+        objectiveManager.shrineList.Add(gameObject);
+        objectiveManager.CheckForCompletedObjectives();
     }
 
     public void UpdateValues()
