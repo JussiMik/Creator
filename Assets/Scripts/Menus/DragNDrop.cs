@@ -39,6 +39,8 @@ public class DragNDrop : MonoBehaviour
     //
     private GameObject worldNavigation;
 
+    public bool buildingMode = true;
+
     [SerializeField]
     private bool allow;
 
@@ -123,7 +125,7 @@ public class DragNDrop : MonoBehaviour
         StopDragging();
     }
 
-
+    //USED WHILE PLACING A BUILDING
     public void ShowToDrag(GameObject structure)
     {
         buildingSize = structure.GetComponent<Structure>().sizeOnGrid;
@@ -133,6 +135,17 @@ public class DragNDrop : MonoBehaviour
         toDrag.transform.position = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0);
         toDrag.SetActive(true);
     }
+
+    //USED WHILE USING MIRACLE
+    public void ShowToDrag()
+    {
+        buildingSize = new Vector2(2,2);
+        layoutManager.SetTestGridActive(true);
+        toDrag.transform.position = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0);
+        toDrag.SetActive(true);
+    }
+
+
 
     public void StartDragging()
     {
@@ -239,10 +252,15 @@ public class DragNDrop : MonoBehaviour
     }
     private void PlaceBuilding()
     {
-        layoutManager.SpawnStructure(curDraBuilding, toBeColorized, new Vector2(2, 2));
-        grid.CreateGrid();
-        StopDragging();
-        SwipeToEmpty();
+        if(buildingMode)
+        {
+            layoutManager.SpawnStructure(curDraBuilding, toBeColorized, new Vector2(2, 2));
+            grid.CreateGrid();
+            StopDragging();
+            SwipeToEmpty();
+        }
+
+       
     }
 
     /// SWIPES COLORIZED

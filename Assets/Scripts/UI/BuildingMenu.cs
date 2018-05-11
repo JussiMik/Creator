@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuildingMenu : MonoBehaviour {
+public class BuildingMenu : Menu {
 
     [Header("Building Lists")]
     public GameObject[] buildingsPro = new GameObject[6];
@@ -26,35 +26,13 @@ public class BuildingMenu : MonoBehaviour {
 
     public bool menuVisible = false;
 
-    private int curBlockNo = 0;
-
     public GameObject worldNavigation;
 
     public bool proActive;
 
-    public GameManager gameManager;
-
-    public bool canBuild;
-
     [Header("Menu Background Sprites")]
     public Sprite menuSpriteUti;
     public Sprite menuSpritePro;
-
-    [Header("Building Info Stuff")]
-
-    public GameObject infoBuildingSprite;
-    public GameObject infoBuildingName;
-    public GameObject infoBuildingText;
-    public GameObject infoBuildingBuild;
-
-
-    [Header("Needed Resource Texts")]
-    public Text infoBuildingRes_Wood;
-    public Text infoBuildingRes_Dev;
-    public Text infoBuildingRes_Faith;
-    public Text infoBuildingRes_Stone;
-
-
 
     void Awake()
     {
@@ -78,7 +56,8 @@ public class BuildingMenu : MonoBehaviour {
             }
         for (int i = 0; i < buildingButtons.Count; i++)
         {
-            buildingButtons[i].GetComponent<StructMenuBlock>().blockNo = i;
+            buildingButtons[i].GetComponent<GridMenuBlock>().blockNo = i;
+            buildingButtons[i].GetComponent<GridMenuBlock>().upperMenu = gameObject;
         }
 
         ProducalToActive();
@@ -90,11 +69,11 @@ public class BuildingMenu : MonoBehaviour {
         {
             if(proActive)
             {
-                CheckRecourses(buildingsPro);
+                CheckResources(buildingsPro);
             }
             else
             {
-                CheckRecourses(buildingsUti);
+                CheckResources(buildingsUti);
             }
             
         } 
@@ -190,8 +169,9 @@ public class BuildingMenu : MonoBehaviour {
         }
     }
 
-    public void SelectToDrag()
+    public override void SelectToDrag()
     {
+        base.SelectToDrag();
         if (proActive)
         {
             dragNDrop.ShowToDrag(buildingsPro[curBlockNo]);
@@ -204,22 +184,9 @@ public class BuildingMenu : MonoBehaviour {
         HideStructMenu();
     }
 
-    public void HideStructMenu()
+    public override void CheckResources(GameObject[] otherBuildingsList)
     {
-        buildGrid.active = false;
-        menuVisible = false;
-       
-    }
-    public void ShowStructMenu()
-    {
-        buildGrid.active = true;
-        menuVisible = true;
-       
-    }
-
-    void CheckRecourses(GameObject[] otherBuildingsList)
-    {
-        canBuild = true; 
+        canTakeAction = true;
 
         //TEST WOOD
         if (gameManager.wood >= otherBuildingsList[curBlockNo].GetComponent<Structure>().woodConstructingCost)
@@ -229,7 +196,7 @@ public class BuildingMenu : MonoBehaviour {
         else
         {
             infoBuildingRes_Wood.color = Color.red;
-            canBuild = false;
+            canTakeAction = false;
         }
 
         //TEST FAITH
@@ -240,7 +207,7 @@ public class BuildingMenu : MonoBehaviour {
         else
         {
             infoBuildingRes_Faith.color = Color.red;
-            canBuild = false;
+            canTakeAction = false;
         }
 
         //TEST STONE
@@ -251,7 +218,7 @@ public class BuildingMenu : MonoBehaviour {
         else
         {
             infoBuildingRes_Stone.color = Color.red;
-            canBuild = false;
+            canTakeAction = false;
         }
 
         //TEST DEVOTION
@@ -262,17 +229,28 @@ public class BuildingMenu : MonoBehaviour {
         else
         {
             infoBuildingRes_Dev.color = Color.red;
-            canBuild = false;
+            canTakeAction = false;
         }
 
-        if(canBuild)
+        if (canTakeAction)
         {
-            infoBuildingBuild.GetComponent<Image>().color = Color.green; 
+            infoBuildingBuild.GetComponent<Image>().color = Color.green;
         }
         else
         {
             infoBuildingBuild.GetComponent<Image>().color = Color.red;
         }
-         
+    }
+
+    public void HideStructMenu()
+    {
+        buildGrid.active = false;
+        menuVisible = false;
+       
+    }
+    public void ShowStructMenu()
+    {
+        buildGrid.active = true;
+        menuVisible = true;  
     }
 }
