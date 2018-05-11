@@ -84,6 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  objectiveManager: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
   levelTwoSprite: {fileID: 21300000, guid: 3bd7b93ddc8e212439f229fe32c8d77b, type: 3}
@@ -125,7 +126,7 @@ MonoBehaviour:
   maxLevelAmount: 2
   name: 
   type: 
-  info: This is a nice farm.
+  info: Feeds up to ten monks
 --- !u!212 &212849919343261006
 SpriteRenderer:
   m_ObjectHideFlags: 1

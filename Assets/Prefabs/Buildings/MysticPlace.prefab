@@ -144,14 +144,14 @@ MonoBehaviour:
   monkFaithCosts: []
   monk: {fileID: 1593562265877594, guid: f73b398545c4f6c4a85c6bcd97b1f284, type: 2}
   resourceTracker: {fileID: 0}
-  monkFaithBaseCost: 10
+  monkFaithBaseCost: 100
   monkFaithCost: 0
-  monksNeededForMultiplierIncrease1: 5
-  monksNeededForMultiplierIncrease2: 7
-  monksNeededForMultiplierIncrease3: 9
-  monkFaithCostMultiplier1: 1
-  monkFaithCostMultiplier2: 2
-  monkFaithCostMultiplier3: 3
+  monksNeededForMultiplierIncrease1: 1
+  monksNeededForMultiplierIncrease2: 1
+  monksNeededForMultiplierIncrease3: 1
+  monkFaithCostMultiplier1: 1.5
+  monkFaithCostMultiplier2: 1.5
+  monkFaithCostMultiplier3: 1.5
 --- !u!212 &212444002140258722
 SpriteRenderer:
   m_ObjectHideFlags: 1
