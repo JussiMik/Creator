@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class WoodWorkshopCS : Structure
 {
+    [Space(10)]
     public float gatheredWood;
 
     [Space(10)]
     public float woodAmountPerProductionCyclePerTree;
+    public float woodAmountPerProductionCyclePerTreeLvl2;
+    [Space(10)]
     public float woodProductionTimeLength;
 
     private bool woodTimerCollision;
@@ -97,7 +100,12 @@ public class WoodWorkshopCS : Structure
                 trees = lvl3TreeAmount;
             }
 
-            gatheredWood += woodAmountPerProductionCyclePerTree * trees;
+            if (level == 2)
+            {
+                woodAmountPerProductionCyclePerTree = woodAmountPerProductionCyclePerTreeLvl2;
+            }
+
+            gatheredWood += (woodAmountPerProductionCyclePerTree * trees) + (gameManager.monks.Count * gameManager.monkProductionMultiplier);
 
             woodTimer = false;
         }
@@ -107,6 +115,11 @@ public class WoodWorkshopCS : Structure
             woodProductionTimeLength = originalWoodTime;
             woodTimer = true;
             woodCollected = false;
+
+            if (level != 1)
+            {
+                CollectWood();
+            }
         }
     }
 

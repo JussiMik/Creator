@@ -50,9 +50,10 @@ public class GameManager : MonoBehaviour
     public float devotionChunkIncreaseAmount;
     [Space(10)]
     public float devotionChunkIncreaseAfterKilledMonks;
-
     [Space(10)]
     public float monkFaithMultiplier;
+    [Space(10)]
+    public float monkProductionMultiplier;
 
     [Space(10)]
     public List<GameObject> faithBuildings = new List<GameObject>();

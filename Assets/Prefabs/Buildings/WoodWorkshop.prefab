@@ -253,6 +253,7 @@ MonoBehaviour:
   info: This is a nice wood workshop.
   gatheredWood: 0
   woodAmountPerProductionCyclePerTree: 6
+  woodAmountPerProductionCyclePerTreeLvl2: 12
   woodProductionTimeLength: 20
   woodTimer: 0
   woodCollected: 0

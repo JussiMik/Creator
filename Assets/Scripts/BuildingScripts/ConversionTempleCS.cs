@@ -40,19 +40,20 @@ public class ConversionTempleCS : Structure
             gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
             sanctityPointsGiven = true;
             conversionTimer = true;
-
         }
 
         if (conversionTimer == true && monkCollected == true)
         {
             MonkConvsersionTimer();
         }
+
         if (testConversion == true)
         {
             ConvertMonk();
             testConversion = false;
         }
     }
+
     void MonkConvsersionTimer()
     {
         monkConversionTimeLength -= Time.deltaTime;
@@ -70,6 +71,11 @@ public class ConversionTempleCS : Structure
             monkConversionTimeLength = originalMonkConversionTimeLength;
             conversionTimer = true;
             monkCollected = false;
+
+            if (level != 1)
+            {
+                ConvertMonk();
+            }    
         }
     }
     public void ConvertMonk()
