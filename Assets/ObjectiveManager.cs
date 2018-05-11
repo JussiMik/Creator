@@ -33,6 +33,8 @@ public class ObjectiveManager : MonoBehaviour
     bool haveAmountOfWoodDone;
     bool haveAmountOfStoneDone;
 
+    public List<bool> selectedObjectives = new List<bool>();
+
     [Space(10)]
     public bool useMonkConvertChallenge;
     public bool useFourShrinesChallenge;
@@ -43,11 +45,15 @@ public class ObjectiveManager : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        CheckSelectedObjectives();
     }
 
-    void ChooseObjective()
+    void CheckSelectedObjectives()
     {
-
+        selectedObjectives.Add(useMonkConvertChallenge);
+        selectedObjectives.Add(useFourShrinesChallenge);
+        selectedObjectives.Add(useMysticPlaceChallenge);
+        selectedObjectives.Add(useBuildThreeTemplesChallenge);
     }
 
     public void CheckForCompletedObjectives()
