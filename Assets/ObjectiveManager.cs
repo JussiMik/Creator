@@ -41,6 +41,15 @@ public class ObjectiveManager : MonoBehaviour
     public bool useMysticPlaceChallenge;
     public bool useBuildThreeTemplesChallenge;
 
+    public bool monkTextUsed;
+    public bool shrineTextUsed;
+
+    public string convertMonkText;
+    public string upgradeMysticPlaceText;
+    public string buildShrinesText;
+    public string buildTempleText;
+
+    public string tutturuuVittu;
 
     void Start()
     {
@@ -58,6 +67,7 @@ public class ObjectiveManager : MonoBehaviour
 
     public void CheckForCompletedObjectives()
     {
+
         ConvertMonks();
         BuildFourShrines();
         UpgradeMysticPlaceToLevelTwo();
@@ -73,9 +83,11 @@ public class ObjectiveManager : MonoBehaviour
     {
         if (useMonkConvertChallenge == true)
         {
+            tutturuuVittu = convertMonkText;
             if (gameManager.totalMonksConverted == 10 && monkConversionDone == false)
             {
                 Debug.Log("Monjes convertidos");
+                monkTextUsed = true;
                 monkConversionDone = true;
             }
         }
@@ -88,6 +100,7 @@ public class ObjectiveManager : MonoBehaviour
             if (shrineList.Count == 4 && buildFourShrinesDone == false)
             {
                 Debug.Log("Cuatro santuarios");
+                shrineTextUsed = true;
                 buildFourShrinesDone = true;
             }
         }

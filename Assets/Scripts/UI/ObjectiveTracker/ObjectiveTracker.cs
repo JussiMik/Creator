@@ -6,33 +6,34 @@ using UnityEngine.UI;
 public class ObjectiveTracker : MonoBehaviour
 {
     ObjectiveManager objectiveManager;
-   public GameObject panel;
-    Vector2 step;
+    public GameObject panel;
+    float step;
     public float stepAmount;
     public Transform verticalPosition;
     Text textField;
-   public Text textFieldObject;
+    public Text textFieldObject;
+
+    bool monkTextUsed;
 
     // Use this for initialization
     void Start()
     {
+        step = 0;
         objectiveManager = GameObject.Find("ObjectiveManager").GetComponent<ObjectiveManager>();
-
         panel = gameObject.transform.GetChild(0).gameObject;
-        
-        step = new Vector2(0, stepAmount);
         CheckSelectedObjectives();
     }
 
     void CheckSelectedObjectives()
     {
-
-        foreach (bool item in objectiveManager.selectedObjectives)
+        foreach (bool selectedObjective in objectiveManager.selectedObjectives)
         {
-            if (item == true)
+            if (selectedObjective == true)
             {
-                textField = Instantiate(textFieldObject, transform.position + new Vector3(0, stepAmount, 0), transform.rotation);
+                textFieldObject.text = objectiveManager.tutturuuVittu;
+                textField = Instantiate(textFieldObject, panel.transform.position + new Vector3(0, step, 0), transform.rotation);
                 textField.transform.SetParent(panel.transform, true);
+                step += stepAmount;
             }
         }
     }
@@ -40,6 +41,6 @@ public class ObjectiveTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
     }
 }
