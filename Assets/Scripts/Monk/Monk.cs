@@ -35,8 +35,6 @@ public class Monk : MonoBehaviour
         {
             StartCoroutine("RefreshPath");
         }
-
-        //CheckFarmCount();
     }
 
 

@@ -82,6 +82,7 @@ public class ConversionTempleCS : Structure
             gameManager.convertableMonks.RemoveAt(0);
             gameManager.monks.Add(convertableMonk);
             gameManager.totalMonksConverted++;
+            gameManager.CheckFarmCount();
             convertableMonk.GetComponent<ConvertableMonk>().isConverted = true;
             convertableMonk.GetComponent<SpriteRenderer>().sprite = monkSprite;
 
