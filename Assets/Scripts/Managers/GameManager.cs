@@ -245,6 +245,8 @@ public class GameManager : MonoBehaviour
     private void ChangePlayerLvl()
     {
         sanctity++;
+
+        SaveAndLoad.Instance.playerLevel = sanctity;
     }
 
     //Goes through a list of monks and destroys all of the excess ones, in Update() function destroys null objects from the list
@@ -350,6 +352,7 @@ public class GameManager : MonoBehaviour
             UpdateFaithMultiplierForProductionBar();
         }
     }
+
     void UpdateFaithMultiplierForProductionBar()
     {
         foreach (ProductionBar gameObject in ProductionBar.productionBars)

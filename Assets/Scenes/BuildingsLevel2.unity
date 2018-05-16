@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 22665882}
   - component: {fileID: 22665881}
   m_Layer: 0
-  m_Name: SaveManager
+  m_Name: SaveGameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,6 +135,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0aceefc0fc3152499c89c0dcf9f7ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerLevel: 0
+  woodAmount: 0
+  stoneAmount: 0
+  lastSaveFile: 
+  lastSaveTime: 0
+  savedScene: 
 --- !u!4 &22665882
 Transform:
   m_ObjectHideFlags: 0
@@ -1034,6 +1040,22 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f73b398545c4f6c4a85c6bcd97b1f284, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1909960755 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1593562265877594, guid: f73b398545c4f6c4a85c6bcd97b1f284,
+    type: 2}
+  m_PrefabInternal: {fileID: 1566619761}
+--- !u!114 &1909960757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1909960755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe30505b8c6bf846b759897b39a6fd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1937778284
 Prefab:
   m_ObjectHideFlags: 0

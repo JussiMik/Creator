@@ -9,20 +9,27 @@ using UnityEngine.SceneManagement;
 
 public class SaveAndLoad : MonoBehaviour
 {
+    //https://www.youtube.com/watch?v=WJQuMHH0JPM
+    //https://www.youtube.com/watch?v=EoXBU0rvho8
+    //https://www.sitepoint.com/saving-data-between-scenes-in-unity/
+
     public static SaveAndLoad Instance;
 
-    public int playerLevel;
+    public List<SaveableObject> SaveableObjects { get; private set; }
 
+    [Space(10)]
+    public float playerLevel;
+    [Space(10)]
     public float woodAmount;
     public float stoneAmount;
 
+    
     public string lastSaveFile;
     public long lastSaveTime;
+    
 
     public string savedScene;
 
-
-    public GameData gameData = new GameData();
     public Scene openScene;
 
     private string savePath;
@@ -55,6 +62,8 @@ public class SaveAndLoad : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        SaveableObjects = new List<SaveableObject>();
     }
 
     public void SaveTheGame(string saveFile)
@@ -67,9 +76,11 @@ public class SaveAndLoad : MonoBehaviour
         {
             //saveFile = GenerateNewSaveName();
         }
+        */
 
         UpdateSaveData(saveFile);
 
+        /*
         string fullSavePath = SavePath + saveFile + FILE_EXTENSION;
         
 
@@ -96,15 +107,9 @@ public class SaveAndLoad : MonoBehaviour
         lastSaveTime = DateTime.Now.ToBinary();
         savedScene = SceneManager.GetActiveScene().name;
     }
-}
 
-[Serializable]
-public class GameData
-{
-
-
-    public GameData()
+    public Vector3 StringToVector(string value)
     {
-
+        return Vector3.zero;
     }
 }
