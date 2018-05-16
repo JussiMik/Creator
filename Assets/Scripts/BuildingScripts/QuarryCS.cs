@@ -9,6 +9,8 @@ public class QuarryCS : Structure
 
     [Space(10)]
     public float stoneAmountPerProductionCyclePerRock;
+    public float stoneAmountPerProductionCyclePerRockLvl2;
+    [Space(10)]
     public float stoneProductionTimeLength;
 
     private bool rockTimerCollision;
@@ -98,7 +100,12 @@ public class QuarryCS : Structure
                 rocks = lvl3RockAmount;
             }
 
-            gatheredStone += stoneAmountPerProductionCyclePerRock * rocks;
+            if (level == 2)
+            {
+                stoneAmountPerProductionCyclePerRock = stoneAmountPerProductionCyclePerRockLvl2;
+            }
+
+            gatheredStone += (stoneAmountPerProductionCyclePerRock * rocks) + (gameManager.monks.Count * gameManager.monkProductionMultiplier);
 
             rockTimer = false;
         }
@@ -108,6 +115,11 @@ public class QuarryCS : Structure
             stoneProductionTimeLength = originalstoneProductionTimeLength;
             rockTimer = true;
             stoneCollected = false;
+
+            if (level != 1)
+            {
+                CollectStone();
+            }
         }
     }
 
