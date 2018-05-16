@@ -114,11 +114,11 @@ MonoBehaviour:
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
   faithConstructingCost: 50
-  devotionConstructingCost: 20
+  devotionConstructingCost: 100
   woodConstructingCost: 0
   stoneConstructingCost: 0
-  lvl2FaithUpgradeCost: 0
-  lvl2DevotionUpgradeCost: 0
+  lvl2FaithUpgradeCost: 250
+  lvl2DevotionUpgradeCost: 250
   lvl2WoodUpgradeCost: 0
   lvl2StoneUpgradeCost: 0
   lvl3FaithUpgradeCost: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
   sanctityPointsOnConsturction: 5
   sanctityPointsOnUpgrade: 0
   constructingTimer: 0
-  constructingTime: 10
+  constructingTime: 40
   normalSpeedConstructing: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0

@@ -190,12 +190,12 @@ MonoBehaviour:
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
   faithConstructingCost: 100
-  devotionConstructingCost: 20
+  devotionConstructingCost: 100
   woodConstructingCost: 0
   stoneConstructingCost: 0
-  lvl2FaithUpgradeCost: 0
-  lvl2DevotionUpgradeCost: 0
-  lvl2WoodUpgradeCost: 0
+  lvl2FaithUpgradeCost: 500
+  lvl2DevotionUpgradeCost: 250
+  lvl2WoodUpgradeCost: 400
   lvl2StoneUpgradeCost: 0
   lvl3FaithUpgradeCost: 0
   lvl3DevotionUpgradeCost: 0
@@ -234,9 +234,9 @@ MonoBehaviour:
   originalWoodTime: 0
   trees: 0
   totalTreeAmount: 0
-  lvl1TreeAmount: 2
-  lvl2TreeAmount: 4
-  lvl3TreeAmount: 6
+  lvl1TreeAmount: 3
+  lvl2TreeAmount: 6
+  lvl3TreeAmount: 0
 --- !u!114 &114544871669537822
 MonoBehaviour:
   m_ObjectHideFlags: 1

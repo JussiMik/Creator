@@ -124,7 +124,7 @@ MonoBehaviour:
   maxLevelAmount: 2
   name: 
   type: 
-  info: Increases monk threshold
+  info: Increases monk capacity
   monkSlotsPerDormitory: 5
 --- !u!212 &212605180961649994
 SpriteRenderer:
