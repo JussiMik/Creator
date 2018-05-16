@@ -38,7 +38,6 @@ public class WorldNavigation : MonoBehaviour
         startDragPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         startCamPos = Camera.main.transform.position;
 
-
     }
     public void OnTouchUp()
     {
@@ -46,7 +45,7 @@ public class WorldNavigation : MonoBehaviour
     }
     public void OnTouchStay()
     {
-        if (!valuesReset)
+        
         {
             Debug.DrawLine(startDragPos, Camera.main.ScreenToWorldPoint(Input.mousePosition));
             dragOffset = Camera.main.ScreenToWorldPoint(Input.mousePosition) - startDragPos;
@@ -62,7 +61,12 @@ public class WorldNavigation : MonoBehaviour
     {
         startDragPos = new Vector3(0, 0, Camera.main.transform.position.z);
         dragOffset = new Vector3(0, 0, Camera.main.transform.position.z);
+        startCamPos = Vector3.zero;
         valuesReset = true;
-        
+    }
+    public void SetUnActive()
+    {
+        ResetValues();
+        gameObject.SetActive(false);
     }
 }

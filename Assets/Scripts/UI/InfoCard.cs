@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class InfoCard : MonoBehaviour {
 
-    public Menu upperMenu;
+    public Menu currentMenu;
 
     public GameObject infoText;
 
@@ -17,9 +17,9 @@ public class InfoCard : MonoBehaviour {
 
     public void Action()
     {
-        if(upperMenu.canTakeAction)
+        if(currentMenu.canTakeAction)
         {
-            upperMenu.SelectToDrag();
+            currentMenu.SelectToDrag();
             gameObject.SetActive(false);
         }
     }

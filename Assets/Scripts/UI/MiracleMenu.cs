@@ -20,10 +20,6 @@ public class MiracleMenu : Menu
 
     public DragNDrop dragNDrop;
 
-    public bool menuVisible = false;
-
-    public GameObject worldNavigation;
-
     [Header("Menu Background Sprites")]
     public Sprite menuSpriteUti;
     public Sprite menuSpritePro;
@@ -49,14 +45,6 @@ public class MiracleMenu : Menu
         }
 
     }
-    private void Update()
-    {
-        if (infoCard.active == true)
-        {
-
-
-        }
-    }
 
     public void ShowInfo(int blockNo)
     {
@@ -71,39 +59,14 @@ public class MiracleMenu : Menu
         infoBuildingRes_Faith.text = miracles[blockNo].GetComponent<Miracle>().faithNeeded.ToString();
         infoBuildingRes_Stone.text = miracles[blockNo].GetComponent<Miracle>().faithNeeded.ToString();
         infoBuildingRes_Dev.text = miracles[blockNo].GetComponent<Miracle>().faithNeeded.ToString();
+        infoCard.GetComponent<InfoCard>().currentMenu = gameObject.GetComponent<Menu>();
 
     }
-
-    public void PressStructureMenu()
-    {
-        if (menuVisible)
-        {
-            HideMiracleMenu();
-            worldNavigation.SetActive(true);
-        }
-        else
-        {
-            ShowMiracleMenu();
-            //worldNavigation;
-            worldNavigation.SetActive(false);
-        }
-
-    }
-    private void HideMiracleMenu()
-    {
-        miracleGrid.active = false;
-        menuVisible = false;
-
-    }
-    private void ShowMiracleMenu()
-    {
-        miracleGrid.active = true;
-        menuVisible = true;
-    }
+    
 
     public override void SelectToDrag()
     {
-        dragNDrop.ShowToDrag();
-        HideMiracleMenu();
+        dragNDrop.ShowToDrag(miracles[curBlockNo]);
+        HideMenu();
     }
 }

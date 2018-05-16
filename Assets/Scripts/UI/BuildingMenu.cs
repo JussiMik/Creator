@@ -24,10 +24,6 @@ public class BuildingMenu : Menu {
 
     public DragNDrop dragNDrop;
 
-    public bool menuVisible = false;
-
-    public GameObject worldNavigation;
-
     public bool proActive;
 
     [Header("Menu Background Sprites")]
@@ -123,21 +119,7 @@ public class BuildingMenu : Menu {
 
 
 
-    public void PressStructureMenu()
-    {
-        if(menuVisible)
-        {
-            HideStructMenu();
-            worldNavigation.SetActive(true);
-        }
-        else
-        {
-            ShowStructMenu();
-            //worldNavigation;
-            worldNavigation.SetActive(false);
-        }
-        
-    }
+   
     public void ShowInfo(int blockNo)
     {
         infoCard.SetActive(true);
@@ -152,7 +134,7 @@ public class BuildingMenu : Menu {
             infoBuildingRes_Faith.text = buildingsPro[blockNo].GetComponent<Structure>().faithConstructingCost.ToString();
             infoBuildingRes_Stone.text = buildingsPro[blockNo].GetComponent<Structure>().stoneConstructingCost.ToString();
             infoBuildingRes_Dev.text = buildingsPro[blockNo].GetComponent<Structure>().devotionConstructingCost.ToString();
-
+            infoCard.GetComponent<InfoCard>().currentMenu = gameObject.GetComponent<Menu>();
 
         }
         else
@@ -166,6 +148,7 @@ public class BuildingMenu : Menu {
             infoBuildingRes_Faith.text = buildingsUti[blockNo].GetComponent<Structure>().faithConstructingCost.ToString();
             infoBuildingRes_Stone.text = buildingsUti[blockNo].GetComponent<Structure>().stoneConstructingCost.ToString();
             infoBuildingRes_Dev.text = buildingsUti[blockNo].GetComponent<Structure>().devotionConstructingCost.ToString();
+            infoCard.GetComponent<InfoCard>().currentMenu = gameObject.GetComponent<Menu>();
         }
     }
 
@@ -180,8 +163,7 @@ public class BuildingMenu : Menu {
         {
             dragNDrop.ShowToDrag(buildingsUti[curBlockNo]);
         }
-
-        HideStructMenu();
+        base.HideMenu();
     }
 
     public override void CheckResources(GameObject[] otherBuildingsList)
@@ -241,16 +223,5 @@ public class BuildingMenu : Menu {
             infoBuildingBuild.GetComponent<Image>().color = Color.red;
         }
     }
-
-    public void HideStructMenu()
-    {
-        buildGrid.active = false;
-        menuVisible = false;
-       
-    }
-    public void ShowStructMenu()
-    {
-        buildGrid.active = true;
-        menuVisible = true;  
-    }
+   
 }

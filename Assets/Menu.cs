@@ -7,6 +7,9 @@ public class Menu : MonoBehaviour {
 
     [SerializeField] public bool canTakeAction = true;
     [SerializeField] public GameManager gameManager;
+    public GameObject menusGrid;
+    public bool menuVisible = false;
+    public GameObject worldNavigation;
 
     [Header("Building Info Stuff")]
 
@@ -39,4 +42,37 @@ public class Menu : MonoBehaviour {
 
     }
 
+    //PRESSING THE ACTUAL MENU BUTTON
+    protected virtual void PressStructureMenu()
+    {
+        if (menuVisible)
+        {
+            HideMenu();
+            
+        }
+        else
+        {
+            ShowMenu();
+            
+        }
+
+    }
+
+    //SHOW MENU PRESSING THE BUTTON
+    public virtual void ShowMenu()
+    {
+        menusGrid.SetActive(true);
+        menuVisible = true;
+        worldNavigation.GetComponent<WorldNavigation>().SetUnActive();
+    }
+
+    //HIDE MENU PRESSING THE BUTTON
+    public virtual void HideMenu()
+    {
+        menusGrid.SetActive(false);
+        menuVisible = false;
+        worldNavigation.SetActive(true);
+    }
+
+    
 }

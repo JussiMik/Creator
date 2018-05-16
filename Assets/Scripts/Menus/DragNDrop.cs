@@ -128,6 +128,7 @@ public class DragNDrop : MonoBehaviour
     //USED WHILE PLACING A BUILDING
     public void ShowToDrag(GameObject structure)
     {
+        worldNavigation.GetComponent<WorldNavigation>().SetUnActive();
         buildingSize = structure.GetComponent<Structure>().sizeOnGrid;
         layoutManager.SetTestGridActive(true);
         curDraBuilding = structure;
@@ -139,6 +140,7 @@ public class DragNDrop : MonoBehaviour
     //USED WHILE USING MIRACLE
     public void ShowToDrag()
     {
+        worldNavigation.GetComponent<WorldNavigation>().SetUnActive();
         buildingSize = new Vector2(2,2);
         layoutManager.SetTestGridActive(true);
         toDrag.transform.position = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0);
@@ -258,6 +260,7 @@ public class DragNDrop : MonoBehaviour
             grid.CreateGrid();
             StopDragging();
             SwipeToEmpty();
+            worldNavigation.SetActive(true);
         }
 
        

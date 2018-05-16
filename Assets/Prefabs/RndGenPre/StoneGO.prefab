@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212520883611634946}
   - component: {fileID: 60859035836516524}
   - component: {fileID: 50767908246989082}
+  - component: {fileID: 114707364564893050}
   m_Layer: 9
   m_Name: StoneGO
   m_TagString: Rock
@@ -77,8 +78,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 1.1796875}
+    pivot: {x: 0.5, y: 0.26}
+    oldSize: {x: 1.3333334, y: 1.3333334}
     newSize: {x: 5.12, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -90,6 +91,60 @@ PolygonCollider2D:
       - {x: 0.011686325, y: -0.43069983}
       - {x: 0.7441902, y: 0.00058174133}
       - {x: 0.023540497, y: 0.44644594}
+--- !u!114 &114707364564893050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1836029763304802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68b5571d8ea4444e9bfb17a18990571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  woodWorkshopCS: {fileID: 0}
+  quarryCS: {fileID: 0}
+  levelTwoSprite: {fileID: 0}
+  clickedBuilding: {fileID: 0}
+  sizeOnGrid: {x: 1, y: 1}
+  faithConstructingCost: 100
+  devotionConstructingCost: 0
+  woodConstructingCost: 0
+  stoneConstructingCost: 0
+  lvl2FaithUpgradeCost: 0
+  lvl2DevotionUpgradeCost: 0
+  lvl2WoodUpgradeCost: 0
+  lvl2StoneUpgradeCost: 0
+  lvl3FaithUpgradeCost: 0
+  lvl3DevotionUpgradeCost: 0
+  lvl3WoodUpgradeCost: 0
+  lvl3StoneUpgradeCost: 0
+  sanctityPointsOnConsturction: 0
+  sanctityPointsOnUpgrade: 0
+  constructingTimer: 0
+  constructingTime: 0
+  normalSpeedConstructing: 0
+  lowerSpeedConstructing1: 0
+  lowerSpeedConstructing2: 0
+  lowerSpeedConstructing3: 0
+  constructingDone: 0
+  changedValue: 0
+  generatedFaith: 0
+  faithAmountPerProductionCycle: 0
+  faithAmountPerProductionCycleUpgraded: 0
+  productionCycleLength: 0
+  maxFaithAmount: 0
+  faithMultiplier: 0
+  faithCollected: 0
+  faithTimer: 0
+  originalFaithTargetTime: 0
+  level: 0
+  lvlChange: 0
+  maxLevelAmount: 0
+  name: 
+  type: 
+  info: 
 --- !u!212 &212520883611634946
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -119,10 +174,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2118334017
-  m_SortingLayer: 1
+  m_SortingLayerID: 818483521
+  m_SortingLayer: 3
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 7a51693ef9268ba46b73510bf8ab4503, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fdcbdc9cfe39a5e4db8cf6993ea0a365, type: 3}
   m_Color: {r: 0.5147059, g: 0.4783737, b: 0.42387545, a: 1}
   m_FlipX: 0
   m_FlipY: 0
