@@ -80,7 +80,7 @@ public class ConversionTempleCS : Structure
     }
     public void ConvertMonk()
     {
-        if (gameManager.convertableMonks.Count != 0)
+        if (gameManager.convertableMonks.Count != 0 && gameManager.monks.Count < gameManager.monkSlots)
         {
             objectiveManager.CheckForCompletedObjectives();
             convertedMonk = 0;
