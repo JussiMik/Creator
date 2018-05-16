@@ -295,7 +295,7 @@ public class GameManager : MonoBehaviour
                 devotionIncreaseMp = defaultDevotionIncreaseMp;
                 constructingTimerMp = defaultConstructingTimerMp;
                 faithTimerMp = defaultFaithTimerMp;
-
+                UpdateFaithMultiplierForProductionBar();
                 devotionDecrease = false;
                 devotionIncrease = true;
 
@@ -322,6 +322,7 @@ public class GameManager : MonoBehaviour
 
             devotionIncrease = false;
             devotionDecrease = true;
+            
         }
 
         if (monks.Count / farms.Count >= badMonkAndFarmRatio75)
@@ -329,6 +330,7 @@ public class GameManager : MonoBehaviour
             devotionDecreaseMp = devotionDecreaseMp1;
             constructingTimerMp = constructingTimerMp1;
             faithTimerMp = faithTimerMp1;
+            UpdateFaithMultiplierForProductionBar();
         }
 
         if (monks.Count / farms.Count >= badMonkAndFarmRatio50)
@@ -336,6 +338,7 @@ public class GameManager : MonoBehaviour
             devotionDecreaseMp = devotionDecreaseMp2;
             constructingTimerMp = constructingTimerMp2;
             faithTimerMp = faithTimerMp2;
+            UpdateFaithMultiplierForProductionBar();
         }
 
         if (monks.Count / farms.Count >= badMonkAndFarmRatio25)
@@ -343,6 +346,14 @@ public class GameManager : MonoBehaviour
             devotionDecreaseMp = devotionDecreaseMp3;
             constructingTimerMp = constructingTimerMp3;
             faithTimerMp = faithTimerMp3;
+            UpdateFaithMultiplierForProductionBar();
+        }
+    }
+    void UpdateFaithMultiplierForProductionBar()
+    {
+        foreach (ProductionBar gameObject in ProductionBar.productionBars)
+        {
+            gameObject.faithMultiplier = faithTimerMp;
         }
     }
 }

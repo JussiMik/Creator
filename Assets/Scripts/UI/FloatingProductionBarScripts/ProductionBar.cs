@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 public class ProductionBar : MonoBehaviour
 {
 
     public Vector3 offset;
     Transform target;
 
+    GameManager gameManager;
     GameObject building;
     GameObject foreground;
     GameObject background;
@@ -22,7 +24,10 @@ public class ProductionBar : MonoBehaviour
     public float percent;
     public float faithMaximumTime;
     public float faithTimer;
+    public float faithMultiplier;
 
+
+    public static List<ProductionBar> productionBars = new List<ProductionBar>();
 
     private void Awake()
     {
@@ -30,10 +35,14 @@ public class ProductionBar : MonoBehaviour
     }
 
     // Use this for initialization
+
+
     void Start()
     {
+        productionBars.Add(this);
         checkForBuildingDone = true;
         faithMaximumTime = gameObject.GetComponentInParent<Structure>().originalFaithTargetTime;
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 
         background = Instantiate(backgroundObject);
         foreground = Instantiate(foregroundObject);
@@ -67,7 +76,8 @@ public class ProductionBar : MonoBehaviour
         {
             if (gameObject.GetComponent<Structure>().faithCollected == true && startTimer == false)
             {
-                faithTimer = gameObject.GetComponent<Structure>().productionCycleLength; // Sue me. 
+                faithTimer = gameObject.GetComponent<Structure>().productionCycleLength;
+                faithMultiplier = gameManager.faithTimerMp;
                 startTimer = true;
                 checkForFaithCollected = false;
             }
@@ -91,7 +101,7 @@ public class ProductionBar : MonoBehaviour
 
     void ProductionTimer()
     {
-        faithTimer -= Time.deltaTime;
+        faithTimer -= Time.deltaTime * faithMultiplier;
         progressBarForegroundImage.fillAmount = Mathf.Lerp(1, 0, percent);
         if (faithTimer <= 0)
         {
