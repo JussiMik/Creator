@@ -214,8 +214,8 @@ MonoBehaviour:
   levelTwoSprite: {fileID: 21300000, guid: a08fb2df51b37a94eabb981ce013e65a, type: 3}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
-  faithConstructingCost: 0
-  devotionConstructingCost: 0
+  faithConstructingCost: 100
+  devotionConstructingCost: 20
   woodConstructingCost: 0
   stoneConstructingCost: 0
   lvl2FaithUpgradeCost: 0
@@ -239,7 +239,7 @@ MonoBehaviour:
   generatedFaith: 0
   faithAmountPerProductionCycle: 0
   faithAmountPerProductionCycleUpgraded: 0
-  productionCycleLength: 10
+  productionCycleLength: 0
   maxFaithAmount: 0
   faithMultiplier: 0
   faithCollected: 0
@@ -253,7 +253,8 @@ MonoBehaviour:
   info: This is a nice wood workshop.
   gatheredWood: 0
   woodAmountPerProductionCyclePerTree: 6
-  woodProductionTimeLength: 10
+  woodAmountPerProductionCyclePerTreeLvl2: 12
+  woodProductionTimeLength: 20
   woodTimer: 0
   woodCollected: 0
   originalWoodTime: 0

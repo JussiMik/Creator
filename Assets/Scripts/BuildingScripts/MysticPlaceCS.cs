@@ -53,6 +53,7 @@ public class MysticPlaceCS : Structure
     public void AddToList()
     {
         gameManager.farms.Add(gameObject);
+        gameManager.gardens.Add(gameObject);
         gameManager.faithBuildings.Add(gameObject);
         gameManager.faithMultipliers.Add(faithMultiplier);
         addedToList = true;
@@ -82,6 +83,7 @@ public class MysticPlaceCS : Structure
             randomDistanceVertical = Random.Range(-1.5f, 1.5f);
             GameObject spawnedMonk = Instantiate(monk, new Vector2(clickedBuilding.transform.position.x + randomDistanceHorizontal, clickedBuilding.transform.position.y + randomDistanceVertical), clickedBuilding.transform.rotation);
             resourceTracker.GetComponent<MonkText>().UpdateMonkCount();
+            gameManager.CheckFarmCount();
         }
         if (gameManager.faith < monkFaithCost)
         {

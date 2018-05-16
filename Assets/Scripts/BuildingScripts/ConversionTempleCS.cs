@@ -40,19 +40,20 @@ public class ConversionTempleCS : Structure
             gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
             sanctityPointsGiven = true;
             conversionTimer = true;
-
         }
 
         if (conversionTimer == true && monkCollected == true)
         {
             MonkConvsersionTimer();
         }
+
         if (testConversion == true)
         {
             ConvertMonk();
             testConversion = false;
         }
     }
+
     void MonkConvsersionTimer()
     {
         monkConversionTimeLength -= Time.deltaTime;
@@ -70,11 +71,16 @@ public class ConversionTempleCS : Structure
             monkConversionTimeLength = originalMonkConversionTimeLength;
             conversionTimer = true;
             monkCollected = false;
+
+            if (level != 1)
+            {
+                ConvertMonk();
+            }    
         }
     }
     public void ConvertMonk()
     {
-        if (gameManager.convertableMonks.Count != 0)
+        if (gameManager.convertableMonks.Count != 0 && gameManager.monks.Count < gameManager.monkSlots)
         {
             objectiveManager.CheckForCompletedObjectives();
             convertedMonk = 0;
@@ -82,6 +88,7 @@ public class ConversionTempleCS : Structure
             gameManager.convertableMonks.RemoveAt(0);
             gameManager.monks.Add(convertableMonk);
             gameManager.totalMonksConverted++;
+            gameManager.CheckFarmCount();
             convertableMonk.GetComponent<ConvertableMonk>().isConverted = true;
             convertableMonk.GetComponent<SpriteRenderer>().sprite = monkSprite;
 

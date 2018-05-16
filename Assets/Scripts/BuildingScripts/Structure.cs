@@ -159,6 +159,11 @@ public class Structure : MonoBehaviour
             productionCycleLength = originalFaithTargetTime;
             faithTimer = true;
             faithCollected = false;
+
+            if (level != 1)
+            {
+                CollectFaith();
+            }
         }
     }
 
@@ -194,7 +199,7 @@ public class Structure : MonoBehaviour
                 gameManager.GiveSanctityPoints(sanctityPointsOnUpgrade);
             }
 
-            faithAmountPerProductionCycle += faithAmountPerProductionCycleUpgraded;
+            faithAmountPerProductionCycle = faithAmountPerProductionCycleUpgraded;
             level += 1;
             gameObject.GetComponent<SpriteRenderer>().sprite = levelTwoSprite;
 
