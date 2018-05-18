@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildTemple : ChallengeBase
+public class BuildShrines : ChallengeBase
 {
-    public int requiredTemples;
+    public int requiredShrines;
     // Use this for initialization
     protected override void Start()
     {
@@ -19,9 +19,9 @@ public class BuildTemple : ChallengeBase
 
     public override void Objective()
     {
-        if (objectiveManager.templeList.Count == requiredTemples && challengeDone == false)
+        if (objectiveManager.shrineList.Count == requiredShrines && challengeDone == false)
         {
-            Debug.Log("Uno templo");
+            Debug.Log("Cuatro santuarios");
             challengeDone = true;
         }
     }

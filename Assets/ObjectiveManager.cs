@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ObjectiveManager : MonoBehaviour
 {
+    ObjectiveTracker objectiveTracker;
     GameManager gameManager;
     MysticPlaceCS mysticPlace;
+    public Text textField;
+    public GameObject objectiveObject;
     [Space(10)]
     [Header("Meditation rooms and Gardens")]
     public float requiredAmountOfMeditationRooms;
@@ -33,78 +36,41 @@ public class ObjectiveManager : MonoBehaviour
     bool haveAmountOfWoodDone;
     bool haveAmountOfStoneDone;
 
-    public List<bool> selectedObjectives = new List<bool>();
+    List<bool> selectedObjectives = new List<bool>();
 
     [Space(10)]
-    public bool useMonkConvertChallenge;
-    public bool useFourShrinesChallenge;
-    public bool useMysticPlaceChallenge;
-    public bool useBuildThreeTemplesChallenge;
+ 
+    bool useMonkConvertChallenge;
+    bool useFourShrinesChallenge;
+    bool useMysticPlaceChallenge;
+    bool useBuildThreeTemplesChallenge;
 
-    public bool monkTextUsed;
-    public bool shrineTextUsed;
+    bool monkTextUsed;
+    bool shrineTextUsed;
 
-    public string convertMonkText;
-    public string upgradeMysticPlaceText;
-    public string buildShrinesText;
+    string convertMonkText;
+    string upgradeMysticPlaceText;
+    string buildShrinesText;
+
+    
     public string buildTempleText;
 
-    public string tutturuuVittu;
+    public string objectiveText;
 
-    void Start()
+    void Awake()
     {
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        CheckSelectedObjectives();
-    }
+        objectiveTracker = GameObject.Find("ObjectiveTrackerCanvas").GetComponent<ObjectiveTracker>();
+        objectiveText = objectiveObject.GetComponent<ChallengeBase>().objectiveText;
 
-    void CheckSelectedObjectives()
-    {
-        selectedObjectives.Add(useMonkConvertChallenge);
-        selectedObjectives.Add(useFourShrinesChallenge);
-        selectedObjectives.Add(useMysticPlaceChallenge);
-        selectedObjectives.Add(useBuildThreeTemplesChallenge);
     }
 
     public void CheckForCompletedObjectives()
     {
-
-        ConvertMonks();
-        BuildFourShrines();
-        UpgradeMysticPlaceToLevelTwo();
-        BuildThreeTemples();
-
-        /* MeditationRoomAndGardens();
-         BuildOneTemple();
-         HaveAmountOfWood();
-         HaveAmountOfStone();
-         */
-    }
-    void ConvertMonks()
-    {
-        if (useMonkConvertChallenge == true)
-        {
-            tutturuuVittu = convertMonkText;
-            if (gameManager.totalMonksConverted == 10 && monkConversionDone == false)
-            {
-                Debug.Log("Monjes convertidos");
-                monkTextUsed = true;
-                monkConversionDone = true;
-            }
-        }
+        objectiveObject.GetComponent<ChallengeBase>().Objective();
+        objectiveTracker.UpdateObjectiveText();
     }
 
-    void BuildFourShrines()
-    {
-        if (useFourShrinesChallenge == true)
-        {
-            if (shrineList.Count == 4 && buildFourShrinesDone == false)
-            {
-                Debug.Log("Cuatro santuarios");
-                shrineTextUsed = true;
-                buildFourShrinesDone = true;
-            }
-        }
-    }
+
 
     void MeditationRoomAndGardens()
     {

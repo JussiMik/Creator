@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildTemple : ChallengeBase
+public class UpgradeMysticPlace : ChallengeBase
 {
-    public int requiredTemples;
+    MysticPlaceCS mysticPlace;
     // Use this for initialization
     protected override void Start()
     {
@@ -16,12 +16,13 @@ public class BuildTemple : ChallengeBase
     {
 
     }
-
     public override void Objective()
     {
-        if (objectiveManager.templeList.Count == requiredTemples && challengeDone == false)
+        mysticPlace = GameObject.FindGameObjectWithTag("MysticPlace").GetComponent<MysticPlaceCS>();
+
+        if (mysticPlace.level == 2 && challengeDone == false)
         {
-            Debug.Log("Uno templo");
+            Debug.Log("Mystic place level TWOOOO");
             challengeDone = true;
         }
     }

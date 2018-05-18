@@ -7,7 +7,9 @@ public class ChallengeBase : MonoBehaviour
     protected ObjectiveManager objectiveManager;
     protected GameManager gameManager;
     public bool useChallenge;
-    protected bool challengeDone;
+    public bool challengeDone;
+
+    public string objectiveText;
 
     // Use this for initialization
     protected virtual void Start()
@@ -22,9 +24,9 @@ public class ChallengeBase : MonoBehaviour
     {
 
     }
-  /*  void CheckSelectedObjectives(bool useChallenge)
+
+    public virtual void Objective()
     {
-        objectiveManager.selectedObjectives.Add(useChallenge);
+
     }
-    */
 }

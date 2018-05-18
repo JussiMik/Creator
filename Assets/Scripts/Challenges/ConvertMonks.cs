@@ -5,29 +5,19 @@ using UnityEngine;
 public class ConvertMonks : ChallengeBase
 {
 
-
+    public int requiredMonks;
     // Use this for initialization
     protected override void Start()
     {
         base.Start();
     }
 
-    // Update is called once per frame
-    protected override void Update()
+   public override void Objective()
     {
-
-    }
-
-    void Objective()
-    {
-        if (objectiveManager.useMonkConvertChallenge == true)
+        if (gameManager.totalMonksConverted == requiredMonks && challengeDone == false)
         {
-            Debug.Log("Juhhuu");
-            if (gameManager.totalMonksConverted == 10 && challengeDone == false)
-            {
-                Debug.Log("Monjes convertidos");
-                challengeDone = true;
-            }
+            Debug.Log("Monjes convertidos");
+            challengeDone = true;
         }
     }
 }

@@ -8,6 +8,7 @@ public class Structure : MonoBehaviour
     [HideInInspector]
     public GameManager gameManager;
     public ObjectiveManager objectiveManager;
+    public ObjectiveTracker objectiveTracker;
     [HideInInspector]
     public WoodWorkshopCS woodWorkshopCS;
     [HideInInspector]
@@ -99,6 +100,7 @@ public class Structure : MonoBehaviour
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         objectiveManager = GameObject.Find("ObjectiveManager").GetComponent<ObjectiveManager>();
+        objectiveTracker = GameObject.Find("ObjectiveTrackerCanvas").GetComponent<ObjectiveTracker>();
 
         level = 1;
 

@@ -23,6 +23,7 @@ TagManager:
   - ProductionCycleCanvas
   - Monk
   - ConversionTemple
+  - ObjectiveManager
   layers:
   - Default
   - TransparentFX

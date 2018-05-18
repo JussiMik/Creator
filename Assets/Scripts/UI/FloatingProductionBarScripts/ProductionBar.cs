@@ -7,6 +7,7 @@ public class ProductionBar : MonoBehaviour
     public Vector3 offset;
     Transform target;
 
+    GameManager gameManager;
     GameObject building;
     GameObject foreground;
     GameObject background;
@@ -22,11 +23,13 @@ public class ProductionBar : MonoBehaviour
     public float percent;
     public float faithMaximumTime;
     public float faithTimer;
+    public float timeMultiplier;
 
 
     private void Awake()
     {
         target = gameObject.transform;
+        gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Use this for initialization
@@ -34,6 +37,7 @@ public class ProductionBar : MonoBehaviour
     {
         checkForBuildingDone = true;
         faithMaximumTime = gameObject.GetComponentInParent<Structure>().originalFaithTargetTime;
+
 
         background = Instantiate(backgroundObject);
         foreground = Instantiate(foregroundObject);
@@ -68,6 +72,7 @@ public class ProductionBar : MonoBehaviour
             if (gameObject.GetComponent<Structure>().faithCollected == true && startTimer == false)
             {
                 faithTimer = gameObject.GetComponent<Structure>().productionCycleLength; // Sue me. 
+                timeMultiplier = gameManager.faithTimerMp;
                 startTimer = true;
                 checkForFaithCollected = false;
             }
@@ -91,7 +96,7 @@ public class ProductionBar : MonoBehaviour
 
     void ProductionTimer()
     {
-        faithTimer -= Time.deltaTime;
+        faithTimer -= Time.deltaTime * timeMultiplier;
         progressBarForegroundImage.fillAmount = Mathf.Lerp(1, 0, percent);
         if (faithTimer <= 0)
         {
