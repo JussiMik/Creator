@@ -54,42 +54,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  objectiveManager: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
+  levelTwoSprite: {fileID: 0}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 0, y: 0}
-  sanctityPointAmount: 0
+  faithConstructingCost: 0
+  devotionConstructingCost: 0
+  woodConstructingCost: 0
+  stoneConstructingCost: 0
+  lvl2FaithUpgradeCost: 0
+  lvl2DevotionUpgradeCost: 0
+  lvl2WoodUpgradeCost: 0
+  lvl2StoneUpgradeCost: 0
+  lvl3FaithUpgradeCost: 0
+  lvl3DevotionUpgradeCost: 0
+  lvl3WoodUpgradeCost: 0
+  lvl3StoneUpgradeCost: 0
+  sanctityPointsOnConsturction: 0
+  sanctityPointsOnUpgrade: 0
   constructingTimer: 0
   constructingTime: 5
-  constructingCost: 0
-  constructingTimeSlow1: 0
-  constructingTimeSlow2: 0
-  constructingTimeSlow3: 0
   normalSpeedConstructing: 0
-  changedValue: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0
   lowerSpeedConstructing3: 0
   constructingDone: 0
+  changedValue: 0
   generatedFaith: 0
-  faithAmount: 2
-  maxFaithAmount: 4
+  faithAmountPerProductionCycle: 0
+  faithAmountPerProductionCycleUpgraded: 0
+  productionCycleLength: 0
+  maxFaithAmount: 0
   faithMultiplier: 0
   faithCollected: 0
   faithTimer: 0
-  faithTargetTime: 0
   originalFaithTargetTime: 0
-  defaultFaithGeneration: 0
-  slowerFaithGeneration1: 0
-  slowerFaithGeneration2: 0
-  slowerFaithGeneration3: 0
   level: 0
   lvlChange: 0
-  lvlUpFaithIncrease: 0
-  maxLevelAmount: 3
-  levelUpCost: 0
+  maxLevelAmount: 0
   name: 
   type: 
+  info: 
 --- !u!114 &114050202580726850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -101,42 +108,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c66a93416e89a4891e8e0ed33f4cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monk: {fileID: 1593562265877594, guid: f73b398545c4f6c4a85c6bcd97b1f284, type: 2}
-  shrine: {fileID: 0}
-  statue: {fileID: 0}
-  farm: {fileID: 0}
-  garden: {fileID: 0}
-  meditationRoom: {fileID: 0}
   sanctity: 0
   sanctityPoints: 0
   maxSanctityPoints: 0
   requiredAmountForLvlUp: 0
   requiredAmountIncrease: 0
-  faith: 20
-  wood: 0
-  stone: 0
-  devotion: 1000
+  faith: 99999
+  wood: 99999
+  stone: 99999
+  devotion: 99999
+  devotionDecrease: 0
   maxDevotionAmount: 1000
   minDevotionAmountCollecting: 0
-  devotionDecrease: 0
-  devotionChunkDecreaseAmount: 100
-  devotionDecreaseMp1: 0
-  devotionDecreaseMp2: 0
-  devotionDecreaseMp3: 0
+  devotionChunkDecreaseAmount: 1
+  devotionDecreaseMp: 1
+  devotionIncreaseMp: 0
+  constructingTimerMp: 1
+  faithTimerMp: 1
   devotionIncrease: 0
   devotionChunkIncreaseAmount: 50
-  devotionIncreaseMp1: 0
+  devotionChunkIncreaseAfterKilledMonks: 0
+  monkFaithMultiplier: 1.5
   faithBuildings: []
   farms: []
   gardens: []
   meditationRooms: []
   monks: []
   faithMultipliers: []
-  monkFaithMultiplier: 1.5
-  monkFaithMultiplierSlow1: 1.4
-  monkFaithMultiplierSlow2: 1.3
-  monkFaithMultiplierSlow3: 1.2
-  faithResourceTracker: {fileID: 0}
+  convertableMonks: []
+  monkSlots: 0
+  totalMonksConverted: 0
+  numberOfMonksToKill: 0
+  goodMonkAndFarmRatio: 4
+  badMonkAndFarmRatio75: 6
+  badMonkAndFarmRatio50: 8
+  badMonkAndFarmRatio25: 10
+  defaultDevotionDecreaseMp: 1
+  devotionDecreaseMp1: 2
+  devotionDecreaseMp2: 3
+  devotionDecreaseMp3: 4
+  defaultDevotionIncreaseMp: 1
+  defaultConstructingTimerMp: 4
+  constructingTimerMp1: 3
+  constructingTimerMp2: 2
+  constructingTimerMp3: 1
+  defaultFaithTimerMp: 4
+  faithTimerMp1: 3
+  faithTimerMp2: 2
+  faithTimerMp3: 1
+  devotionIncreaseRatios:
+  - 1
+  - 3
+  - 8.2
+  - 13.4
+  - 18.6
+  - 23.8
+  - 29
+  - 34.2
+  - 39.4
+  - 44.6
+  devotionIncreaseMultipliers:
+  - 10
+  - 9
+  - 8
+  - 7
+  - 6
+  - 5
+  - 4
+  - 3
+  - 2
+  - 1
+  numberOfMonksAndGardens: 0
 --- !u!114 &114565402898517716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -149,6 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popupMenu: {fileID: 0}
+  popupPanel: {fileID: 0}
   gameManager: {fileID: 0}
   clickedBuilding: {fileID: 0}
   showPanel: 0

@@ -36,6 +36,7 @@ public class GardenCS : Structure
     public void AddToList()
     {
         gameManager.gardens.Add(gameObject);
+        gameManager.CheckFarmCount();
         addedToList = true;
     }
 }

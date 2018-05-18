@@ -9,15 +9,22 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
+<<<<<<< HEAD
   m_RootGameObject: {fileID: 1807786361969126}
   m_IsPrefabParent: 1
 --- !u!1 &1129653517126708
+=======
+  m_RootGameObject: {fileID: 1258411623757326}
+  m_IsPrefabParent: 1
+--- !u!1 &1258411623757326
+>>>>>>> 16b698639dd3ff59d450d04ad60e2116b560965d
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 4472732442530436}
   - component: {fileID: 114451275812022230}
   m_Layer: 0
@@ -36,6 +43,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4933809253579720}
   - component: {fileID: 114354830083120292}
+=======
+  - component: {fileID: 4227269333841618}
+  - component: {fileID: 114631122636537812}
+>>>>>>> 16b698639dd3ff59d450d04ad60e2116b560965d
   m_Layer: 0
   m_Name: ObjectiveManager
   m_TagString: Untagged
@@ -43,11 +54,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!4 &4472732442530436
+=======
+--- !u!4 &4227269333841618
+>>>>>>> 16b698639dd3ff59d450d04ad60e2116b560965d
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1129653517126708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -71,25 +87,47 @@ Transform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114354830083120292
+=======
+  m_GameObject: {fileID: 1258411623757326}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -328.3128, y: -239.05211, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114631122636537812
+>>>>>>> 16b698639dd3ff59d450d04ad60e2116b560965d
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1807786361969126}
+=======
+  m_GameObject: {fileID: 1258411623757326}
+>>>>>>> 16b698639dd3ff59d450d04ad60e2116b560965d
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b93ab6b443064e4193a752a5a2ccd1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   requiredAmountOfMeditationRooms: 0
   requiredAmountOfGardens: 0
   requiredResourceAmount: 0
+=======
+  requiredAmountOfMeditationRooms: 2
+  requiredAmountOfGardens: 4
+  requiredResourceAmount: 1000
+>>>>>>> 16b698639dd3ff59d450d04ad60e2116b560965d
   checkForCompletedObjectives: 0
   shrineList: []
   gardenList: []
   meditationRoomList: []
   templeList: []
   selectedObjectives: 
+<<<<<<< HEAD
   useMonkConvertChallenge: 0
   useFourShrinesChallenge: 0
   useMysticPlaceChallenge: 0
@@ -112,3 +150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63d71dd0d145c041ac062a59d0d19b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+=======
+  useMonkConvertChallenge: 1
+  useFourShrinesChallenge: 0
+  useMysticPlaceChallenge: 0
+  useBuildThreeTemplesChallenge: 0
+>>>>>>> 16b698639dd3ff59d450d04ad60e2116b560965d

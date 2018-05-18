@@ -87,10 +87,10 @@ MonoBehaviour:
   levelTwoSprite: {fileID: 21300000, guid: 84dc1a3441c2a064fbff7d57b00343aa, type: 3}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
-  faithConstructingCost: 50
+  faithConstructingCost: 500
   devotionConstructingCost: 50
-  woodConstructingCost: 50
-  stoneConstructingCost: 50
+  woodConstructingCost: 200
+  stoneConstructingCost: 0
   lvl2FaithUpgradeCost: 0
   lvl2DevotionUpgradeCost: 0
   lvl2WoodUpgradeCost: 0
@@ -103,10 +103,6 @@ MonoBehaviour:
   sanctityPointsOnUpgrade: 0
   constructingTimer: 0
   constructingTime: 20
-  normalSpeedConstructingMp: 4
-  lowerSpeedConstructingMp1: 3
-  lowerSpeedConstructingMp2: 2
-  lowerSpeedConstructingMp3: 1
   normalSpeedConstructing: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0
@@ -122,10 +118,6 @@ MonoBehaviour:
   faithCollected: 0
   faithTimer: 0
   originalFaithTargetTime: 0
-  defaultFaithTimer: 0
-  slowerFaithTimer1: 0
-  slowerFaithTimer2: 0
-  slowerFaithTimer3: 0
   level: 1
   lvlChange: 0
   maxLevelAmount: 2

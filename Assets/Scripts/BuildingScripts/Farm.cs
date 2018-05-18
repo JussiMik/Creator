@@ -34,6 +34,7 @@ public class Farm : Structure
     public void AddToList()
     {
         gameManager.farms.Add(gameObject);
+        gameManager.CheckFarmCount();
         addedToList = true;
     }
 }

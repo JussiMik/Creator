@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     Structure structure;
+    GameObject resourceTracker;
 
     [Space(10)]
     public float sanctity;
@@ -24,36 +25,35 @@ public class GameManager : MonoBehaviour
     public float devotion;
 
     [Space(10)]
+    public bool devotionDecrease;
+    [Space(10)]
     public float maxDevotionAmount;
     public float minDevotionAmountCollecting;
 
     [Space(10)]
     public float devotionChunkDecreaseAmount;
-    
+
+    [SerializeField]
     [Space(10)]
-    public float devotionDecreaseMp;
+    private float devotionDecreaseMp;
+    [SerializeField]
+    [Space(10)]
+    private float devotionIncreaseMp;
     [Space(10)]
     public float constructingTimerMp;
     [Space(10)]
     public float faithTimerMp;
 
     [Space(10)]
-    public bool devotionDecrease;
-
+    public bool devotionIncrease;
     [Space(10)]
     public float devotionChunkIncreaseAmount;
     [Space(10)]
     public float devotionChunkIncreaseAfterKilledMonks;
     [Space(10)]
-    public float devotionIncreaseMp1;
-    [Space(10)]
-    public bool devotionIncrease;  
-    public bool devotionIncrease1;
-    public bool devotionIncrease2;
-    public bool devotionIncrease3;
-
-    [Space(10)]
     public float monkFaithMultiplier;
+    [Space(10)]
+    public float monkProductionMultiplier;
 
     [Space(10)]
     public List<GameObject> faithBuildings = new List<GameObject>();
@@ -73,11 +73,37 @@ public class GameManager : MonoBehaviour
     public int monkSlots;
     public int totalMonksConverted;
 
-    public float goodMonkAndFarmRatio;
-
     [SerializeField]
     private float numberOfMonksToKill;
-    
+
+    [Space(10)]
+    public float goodMonkAndFarmRatio;
+    public float badMonkAndFarmRatio75;
+    public float badMonkAndFarmRatio50;
+    public float badMonkAndFarmRatio25;
+    [Space(10)]
+    public float defaultDevotionDecreaseMp;
+    public float devotionDecreaseMp1;
+    public float devotionDecreaseMp2;
+    public float devotionDecreaseMp3;
+    [Space(10)]
+    public float defaultDevotionIncreaseMp;
+    [Space(10)]
+    public float defaultConstructingTimerMp;
+    public float constructingTimerMp1;
+    public float constructingTimerMp2;
+    public float constructingTimerMp3;
+    [Space(10)]
+    public float defaultFaithTimerMp;
+    public float faithTimerMp1;
+    public float faithTimerMp2;
+    public float faithTimerMp3;
+
+    public float[] devotionIncreaseRatios = new float[10];
+    public float[] devotionIncreaseMultipliers = new float[10];
+
+    public float numberOfMonksAndGardens;
+
     private void Awake()
     {
         GetResourceObjects();
@@ -86,6 +112,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         structure = gameObject.GetComponent<Structure>();
+        resourceTracker = GameObject.Find("MonkText");
         minDevotionAmountCollecting = devotionChunkDecreaseAmount;
     }
 
@@ -98,10 +125,12 @@ public class GameManager : MonoBehaviour
 
         if (devotionIncrease == true)
         {
-            DevotionIncrease();
+            DevotionIncrease(devotionIncreaseMp);
         }
 
         monks.RemoveAll(list_item => list_item == null);
+
+
     }
 
     //Use collected faith for constructing and leveling up buildings
@@ -166,14 +195,16 @@ public class GameManager : MonoBehaviour
     }
 
     //Devotion increases slowly
-    void DevotionIncrease()
+    void DevotionIncrease(float increaseAmount)
     {
-        devotion += Time.deltaTime;
+        devotion += Time.deltaTime * increaseAmount;
 
+        /*
         if (devotionIncrease1 == true)
         {
             devotion += Time.deltaTime * devotionIncreaseMp1;
         }
+        */
 
         if (devotion >= maxDevotionAmount)
         {
@@ -216,23 +247,13 @@ public class GameManager : MonoBehaviour
         sanctity++;
     }
 
-    /*
-    public void SpawnFarm()
-    {
-        //if (faith >= faithUseAmount && devotion >= devotionChunkDecreaseAmount)
-        {
-            GameObject spawned = Instantiate(farm, new Vector3(transform.position.x + 5, transform.position.y - 2, transform.position.z), transform.rotation);
-        }
-    }
-    */
-
     //Goes through a list of monks and destroys all of the excess ones, in Update() function destroys null objects from the list
     void KillSomeMonks()
     {
         numberOfMonksToKill = monks.Count - (farms.Count * goodMonkAndFarmRatio);
 
         float f = 0;
-        
+
         foreach (GameObject monksToKill in monks)
         {
             if (f == numberOfMonksToKill) break;
@@ -254,4 +275,87 @@ public class GameManager : MonoBehaviour
         woodResourceTracker = GameObject.Find("WoodText").GetComponent<WoodText>();
         stoneResourceTracker = GameObject.Find("StoneText").GetComponent<StoneText>();
     }
+
+    //Checks if there's enough farms per monk on the map
+    public void CheckFarmCount()
+    {
+        if (farms.Count == 0)
+        {
+            devotionDecrease = true;
+
+            if (monks.Count == 0)
+            {
+                devotionDecrease = false;
+            }
+        }
+
+        if (monks.Count > 0 && farms.Count > 0)
+        {
+            if (monks.Count / farms.Count <= goodMonkAndFarmRatio)
+            {
+                devotionIncreaseMp = defaultDevotionIncreaseMp;
+                constructingTimerMp = defaultConstructingTimerMp;
+                faithTimerMp = defaultFaithTimerMp;
+                UpdateFaithMultiplierForProductionBar();
+                devotionDecrease = false;
+                devotionIncrease = true;
+
+                if (gardens.Count > 0 || meditationRooms.Count > 0)
+                {
+                    numberOfMonksAndGardens = monks.Count / gardens.Count;
+
+                    for (int i = 0; i < devotionIncreaseRatios.Length; i++)
+                    {
+                        if (devotionIncreaseRatios[i] <= numberOfMonksAndGardens)
+                        {
+                            devotionIncreaseMp = devotionIncreaseMultipliers[i];
+                        }
+                    }
+                }
+            }
+        }
+
+        if (monks.Count / farms.Count > goodMonkAndFarmRatio)
+        {
+            devotionDecreaseMp = defaultDevotionDecreaseMp;
+            constructingTimerMp = defaultConstructingTimerMp;
+            faithTimerMp = defaultFaithTimerMp;
+
+            devotionIncrease = false;
+            devotionDecrease = true;
+            
+        }
+
+        if (monks.Count / farms.Count >= badMonkAndFarmRatio75)
+        {
+            devotionDecreaseMp = devotionDecreaseMp1;
+            constructingTimerMp = constructingTimerMp1;
+            faithTimerMp = faithTimerMp1;
+            UpdateFaithMultiplierForProductionBar();
+        }
+
+        if (monks.Count / farms.Count >= badMonkAndFarmRatio50)
+        {
+            devotionDecreaseMp = devotionDecreaseMp2;
+            constructingTimerMp = constructingTimerMp2;
+            faithTimerMp = faithTimerMp2;
+            UpdateFaithMultiplierForProductionBar();
+        }
+
+        if (monks.Count / farms.Count >= badMonkAndFarmRatio25)
+        {
+            devotionDecreaseMp = devotionDecreaseMp3;
+            constructingTimerMp = constructingTimerMp3;
+            faithTimerMp = faithTimerMp3;
+            UpdateFaithMultiplierForProductionBar();
+        }
+    }
+    void UpdateFaithMultiplierForProductionBar()
+    {
+        foreach (ProductionBar gameObject in ProductionBar.productionBars)
+        {
+            gameObject.faithMultiplier = faithTimerMp;
+        }
+    }
 }
+

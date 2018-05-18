@@ -18,32 +18,10 @@ public class Monk : MonoBehaviour
     Vector2[] path;
     int targetIndex;
 
-    [Space(10)]
-    public float goodMonkAndFarmRatio;
-    public float badMonkAndFarmRatio75;
-    public float badMonkAndFarmRatio50;
-    public float badMonkAndFarmRatio25;
-    [Space(10)]
-    public float defaultDevotionDecreaseMp;
-    public float devotionDecreaseMp1;
-    public float devotionDecreaseMp2;
-    public float devotionDecreaseMp3;
-    [Space(10)]
-    public float defaultConstructingTimerMp;
-    public float constructingTimerMp1;
-    public float constructingTimerMp2;
-    public float constructingTimerMp3;
-    [Space(10)]
-    public float defaultFaithTimerMp;
-    public float faithTimerMp1;
-    public float faithTimerMp2;
-    public float faithTimerMp3;
-
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         structure = GameObject.Find("Game Manager").GetComponent<Structure>();
-        gameManager.goodMonkAndFarmRatio = goodMonkAndFarmRatio;
         InvokeRepeating("CheckForNewDestination", 0.5f, 1.5f);
         InvokeRepeating("CheckDistanceFromTarget", 1f, 2.5f);
         startNewPathTimer = targetObject.GetComponent<PathfindingTargetLocation>().startNewTargetTimer;
@@ -58,8 +36,6 @@ public class Monk : MonoBehaviour
         {
             StartCoroutine("RefreshPath");
         }
-
-        CheckFarmCount();
     }
 
 
@@ -72,67 +48,6 @@ public class Monk : MonoBehaviour
       }
       */
 
-    void CheckFarmCount()
-    {
-        if (gameManager.farms.Count == 0)
-        {
-            gameManager.devotionDecrease = true;
-
-            if (gameManager.monks.Count == 0)
-            {
-                gameManager.devotionDecrease = false;
-            }
-        }
-
-        if (gameManager.monks.Count > 0 && gameManager.farms.Count > 0)
-        {
-            if (gameManager.monks.Count / gameManager.farms.Count <= goodMonkAndFarmRatio)
-            {
-                gameManager.constructingTimerMp = defaultConstructingTimerMp;
-                gameManager.faithTimerMp = defaultFaithTimerMp;
-
-                gameManager.devotionDecrease = false;
-                gameManager.devotionIncrease = true;
-
-                if (gameManager.gardens.Count > 0 || gameManager.meditationRooms.Count > 0)
-                {
-                    gameManager.devotionIncrease1 = true;
-                }
-            }
-
-            if (gameManager.monks.Count / gameManager.farms.Count > goodMonkAndFarmRatio)
-            {
-                gameManager.devotionDecreaseMp = defaultDevotionDecreaseMp;
-                gameManager.constructingTimerMp = defaultConstructingTimerMp;
-                gameManager.faithTimerMp = defaultFaithTimerMp;
-
-                gameManager.devotionIncrease = false;
-                gameManager.devotionDecrease = true;
-            }
-
-            if (gameManager.monks.Count / gameManager.farms.Count >= badMonkAndFarmRatio75)
-            {
-                gameManager.devotionDecreaseMp = devotionDecreaseMp1;
-                gameManager.constructingTimerMp = constructingTimerMp1;
-                gameManager.faithTimerMp = faithTimerMp1;
-            }
-
-            if (gameManager.monks.Count / gameManager.farms.Count >= badMonkAndFarmRatio50)
-            {
-                gameManager.devotionDecreaseMp = devotionDecreaseMp2;
-                gameManager.constructingTimerMp = constructingTimerMp2;
-                gameManager.faithTimerMp = faithTimerMp2;
-            }
-
-            if (gameManager.monks.Count / gameManager.farms.Count >= badMonkAndFarmRatio25)
-            {
-                gameManager.devotionDecreaseMp = devotionDecreaseMp3;
-                gameManager.constructingTimerMp = constructingTimerMp3;
-                gameManager.faithTimerMp = faithTimerMp3;
-            }
-        }
-
-    }
     void CheckForNewDestination()
     {
         checkForNewDestination = targetObject.GetComponent<PathfindingTargetLocation>().moveToPosition;
