@@ -26,10 +26,13 @@ public class CloudManager : MonoBehaviour
     public Sprite[] flatClouds = new Sprite[3];
     public Sprite[] fluffyClouds = new Sprite[3];
 
+    GameObject cloudFolder;
 
     // Use this for initialization
     void Start()
     {
+        cloudFolder = new GameObject("Cloud Folder");
+
         NewCloudsToLine(0);
         NewCloudsToLine(1);
         NewCloudsToLine(2);
@@ -78,6 +81,7 @@ public class CloudManager : MonoBehaviour
         {
             moveRightOnLists[line].Add(new GameObject("Cloud " +i+ " On Line " + (line + 1)));
             var newCloud = moveRightOnLists[line][moveRightOnLists[line].Count - 1];
+            newCloud.transform.SetParent(cloudFolder.transform);
 
             Vector3 newPos = new Vector3(lines[line].position.x + (linePartLength * i), lines[line].position.y, lines[line].position.z);
 

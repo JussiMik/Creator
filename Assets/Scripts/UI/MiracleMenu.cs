@@ -52,7 +52,7 @@ public class MiracleMenu : Menu
 
         curBlockNo = blockNo;
         infoBuildingSprite.GetComponent<Image>().sprite = buildingButtons[blockNo].GetComponent<Image>().sprite;
-        infoBuildingName.GetComponent<Text>().text = "miracle " + (blockNo + 1);
+        infoBuildingName.GetComponent<Text>().text = "Miracle " + (blockNo + 1);
         infoBuildingText.GetComponent<Text>().text = "Info of Miracle " + (blockNo + 1);
 
         infoBuildingRes_Wood.text = miracles[blockNo].GetComponent<Miracle>().faithNeeded.ToString();
@@ -60,7 +60,6 @@ public class MiracleMenu : Menu
         infoBuildingRes_Stone.text = miracles[blockNo].GetComponent<Miracle>().faithNeeded.ToString();
         infoBuildingRes_Dev.text = miracles[blockNo].GetComponent<Miracle>().faithNeeded.ToString();
         infoCard.GetComponent<InfoCard>().currentMenu = gameObject.GetComponent<Menu>();
-
     }
     
 
