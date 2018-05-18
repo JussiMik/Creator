@@ -68,6 +68,13 @@ public class SaveAndLoad : MonoBehaviour
 
     public void SaveTheGame(string saveFile)
     {
+        PlayerPrefs.SetInt("ObjectCount", SaveableObjects.Count);
+
+        for (int i = 0; i < SaveableObjects.Count; i++)
+        {
+            SaveableObjects[i].Save(i);
+        }
+
         /*
         //CheckDirectory();
 
@@ -98,7 +105,43 @@ public class SaveAndLoad : MonoBehaviour
 
     public void LoadTheGame(string gameName)
     {
+        foreach (SaveableObject obj in SaveableObjects)
+        {
+            if (obj == null)
+            {
+                Destroy(obj.gameObject);
+            }
+        }
 
+        SaveableObjects.Clear();
+
+        int objectCount = PlayerPrefs.GetInt("ObjectCount");
+
+        for (int i = 0; i < objectCount; i++)
+        {
+            string[] value = PlayerPrefs.GetString(i.ToString()).Split('_');
+            GameObject loadableObject = null;
+
+            switch (value[0])
+            {
+                case "Monk":
+                    loadableObject = Instantiate(Resources.Load("Monk1") as GameObject);
+                    break;
+                case "TreeTile":
+                    loadableObject = Instantiate(Resources.Load("Monk1") as GameObject);
+                    break;
+                case "RockTile":
+                    loadableObject = Instantiate(Resources.Load("Monk1") as GameObject);
+                    break;
+            }
+
+            if (loadableObject != null)
+            {
+                loadableObject.GetComponent<SaveableObject>().Load(value);
+            }
+            
+            Debug.Log(value); 
+        }
     }
 
     private void UpdateSaveData(string saveFile)
@@ -108,8 +151,15 @@ public class SaveAndLoad : MonoBehaviour
         savedScene = SceneManager.GetActiveScene().name;
     }
 
+    //Converts string to Vector3
     public Vector3 StringToVector(string value)
     {
-        return Vector3.zero;
+        value = value.Trim(new char[] { '(', ')' });
+
+        value = value.Replace(" ", "");
+
+        string[] pos = value.Split(',');
+
+        return new Vector3(float.Parse(pos[0]), float.Parse(pos[1]), float.Parse(pos[2]));
     }
 }
