@@ -124,14 +124,16 @@ public class SaveAndLoad : MonoBehaviour
 
             switch (value[0])
             {
+                /*
                 case "Monk":
                     loadableObject = Instantiate(Resources.Load("Monk1") as GameObject);
                     break;
+                    */
                 case "TreeTile":
-                    loadableObject = Instantiate(Resources.Load("Monk1") as GameObject);
+                    loadableObject = Instantiate(Resources.Load("TreeGO") as GameObject);
                     break;
                 case "RockTile":
-                    loadableObject = Instantiate(Resources.Load("Monk1") as GameObject);
+                    loadableObject = Instantiate(Resources.Load("RockGO") as GameObject);
                     break;
             }
 
@@ -161,5 +163,16 @@ public class SaveAndLoad : MonoBehaviour
         string[] pos = value.Split(',');
 
         return new Vector3(float.Parse(pos[0]), float.Parse(pos[1]), float.Parse(pos[2]));
+    }
+
+    public Quaternion StringToQuaternion(string value)
+    {
+        value = value.Trim(new char[] { '(', ')' });
+
+        value = value.Replace(" ", "");
+
+        string[] pos = value.Split(',');
+
+        return new Quaternion(float.Parse(pos[0]), float.Parse(pos[1]), float.Parse(pos[2]), float.Parse(pos[3]));
     }
 }

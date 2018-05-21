@@ -18,12 +18,14 @@ public abstract class SaveableObject : MonoBehaviour
 
     public virtual void Save(int id)
     {
-        PlayerPrefs.SetString(id.ToString(), objectType + "_" + transform.position.ToString());
+        PlayerPrefs.SetString(id.ToString(), objectType + "_" + transform.position.ToString() + "_" + transform.localScale);
     }
 
     public virtual void Load(string[] values)
     {
         transform.localPosition = SaveAndLoad.Instance.StringToVector(values[1]);
+        transform.localScale = SaveAndLoad.Instance.StringToVector(values[2]);
+        //transform.localRotation = SaveAndLoad.Instance.StringToQuaternion(values[3]);
     }
 
     public void DestroySaveable()
