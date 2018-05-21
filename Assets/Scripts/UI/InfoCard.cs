@@ -23,4 +23,5 @@ public class InfoCard : MonoBehaviour {
             gameObject.SetActive(false);
         }
     }
+
 }

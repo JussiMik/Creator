@@ -46,19 +46,31 @@ public class MiracleMenu : Menu
 
     }
 
+
+    private void Update()
+    {
+        if (infoCard.active == true)
+        {
+                CheckResources(miracles);
+        }
+    }
+    
+
     public void ShowInfo(int blockNo)
     {
         infoCard.SetActive(true);
 
         curBlockNo = blockNo;
-        infoBuildingSprite.GetComponent<Image>().sprite = buildingButtons[blockNo].GetComponent<Image>().sprite;
+        infoBuildingSprite.GetComponent<Image>().sprite = miracles[blockNo].GetComponent<SpriteRenderer>().sprite;
         infoBuildingName.GetComponent<Text>().text = "Miracle " + (blockNo + 1);
         infoBuildingText.GetComponent<Text>().text = "Info of Miracle " + (blockNo + 1);
 
-        infoBuildingRes_Wood.text = miracles[blockNo].GetComponent<Miracle>().faithNeeded.ToString();
-        infoBuildingRes_Faith.text = miracles[blockNo].GetComponent<Miracle>().faithNeeded.ToString();
-        infoBuildingRes_Stone.text = miracles[blockNo].GetComponent<Miracle>().faithNeeded.ToString();
-        infoBuildingRes_Dev.text = miracles[blockNo].GetComponent<Miracle>().faithNeeded.ToString();
+      
+            infoBuildingRes_Wood.text = "0";
+            infoBuildingRes_Faith.text = "100";
+            infoBuildingRes_Stone.text = "0";
+            infoBuildingRes_Dev.text = "0";
+
         infoCard.GetComponent<InfoCard>().currentMenu = gameObject.GetComponent<Menu>();
     }
     
