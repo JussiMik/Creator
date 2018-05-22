@@ -107,7 +107,7 @@ public class SaveAndLoad : MonoBehaviour
     {
         foreach (SaveableObject obj in SaveableObjects)
         {
-            if (obj == null)
+            if (obj != null)
             {
                 Destroy(obj.gameObject);
             }
