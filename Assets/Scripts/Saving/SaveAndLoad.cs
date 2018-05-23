@@ -16,18 +16,10 @@ public class SaveAndLoad : MonoBehaviour
     public static SaveAndLoad Instance;
 
     public List<SaveableObject> SaveableObjects { get; private set; }
-
-    [Space(10)]
-    public float playerLevel;
-    [Space(10)]
-    public float woodAmount;
-    public float stoneAmount;
-
     
     public string lastSaveFile;
     public long lastSaveTime;
     
-
     public string savedScene;
 
     public Scene openScene;

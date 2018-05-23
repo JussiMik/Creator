@@ -6,14 +6,14 @@ enum ObjectType {Monk, Tile, TreeTile, RockTile}
 
 public abstract class SaveableObject : MonoBehaviour
 {
-    protected string save;
+    protected string saveStats;
+
     [SerializeField]
     private ObjectType objectType;
 
     private void Start()
     {
         SaveAndLoad.Instance.SaveableObjects.Add(this);
-        
     }
 
     public virtual void Save(int id)
