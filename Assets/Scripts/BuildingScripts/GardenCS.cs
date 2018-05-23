@@ -6,6 +6,11 @@ public class GardenCS : Structure
 {
     private bool addedToList;
 
+    private void Awake()
+    {
+        playAudio = true;
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -18,6 +23,8 @@ public class GardenCS : Structure
 
         name = "Garden";
         type = "Devotion";
+
+        PlayAudio();
     }
 
     protected override void Update()

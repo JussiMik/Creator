@@ -31,6 +31,11 @@ public class WoodWorkshopCS : Structure
 
     private bool sanctityPointsGiven;
 
+    private void Awake()
+    {
+        playAudio = true;
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -45,6 +50,8 @@ public class WoodWorkshopCS : Structure
 
         name = "Wood workshop";
         type = "Production";
+
+        PlayAudio();
     }
 
     protected override void Update()

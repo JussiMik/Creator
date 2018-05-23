@@ -19,6 +19,11 @@ public class ConversionTempleCS : Structure
 
     public bool testConversion;
 
+    private void Awake()
+    {
+        playAudio = true;
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -29,6 +34,8 @@ public class ConversionTempleCS : Structure
 
         name = "Conversion temple";
         type = "Food";
+
+        PlayAudio();
     }
 
     protected override void Update()

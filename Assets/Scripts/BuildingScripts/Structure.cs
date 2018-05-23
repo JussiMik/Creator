@@ -96,6 +96,18 @@ public class Structure : MonoBehaviour
         }
     }
 
+    public bool playAudio;
+
+    public AudioClip placementSound;
+    public AudioClip constructingAudio;
+    public AudioClip faithCollectSound;
+
+    private void Awake()
+    {
+        //GetComponent<AudioSource>().playOnAwake = false;
+        //GetComponent<AudioSource>().clip = faithCollectSound;
+    }
+
     protected virtual void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
@@ -122,6 +134,17 @@ public class Structure : MonoBehaviour
         if (faithTimer == true && faithCollected == true)
         {
             FaithTimer(gameManager.faithTimerMp);
+        }
+    }
+
+    public void PlayAudio()
+    {
+        if (playAudio == true)
+        {
+            GetComponent<AudioSource>().PlayOneShot(placementSound);
+            GetComponent<AudioSource>().PlayOneShot(constructingAudio);
+
+            playAudio = false;
         }
     }
 
@@ -185,6 +208,9 @@ public class Structure : MonoBehaviour
         gameManager.faith += generatedFaith;
         generatedFaith = 0f;
         gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().showPanel = false;
+
+        GetComponent<AudioSource>().PlayOneShot(faithCollectSound);
+
         faithCollected = true;
     }
 

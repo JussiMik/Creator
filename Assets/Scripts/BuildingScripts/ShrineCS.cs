@@ -11,6 +11,11 @@ public class ShrineCS : Structure
     [Space(10)]
     public bool allowTempleConstructing;
 
+    private void Awake()
+    {
+        playAudio = true;
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -26,6 +31,8 @@ public class ShrineCS : Structure
 
         name = "Shrine";
         type = "Faith";
+
+        PlayAudio();
     }
 
     protected override void Update()
@@ -39,11 +46,6 @@ public class ShrineCS : Structure
             gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
             faithTimer = true;
         }
-      /*  if (Input.GetKeyDown("d"))
-        {
-            Destroy(gameObject);
-        }
-        */
     }
 
     private void AddToList()

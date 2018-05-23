@@ -6,6 +6,11 @@ public class MeditationRoomCS : Structure
 {
     private bool addedToList;
 
+    private void Awake()
+    {
+        playAudio = true;
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -21,6 +26,8 @@ public class MeditationRoomCS : Structure
 
         name = "Meditation room";
         type = "Devotion";
+
+        PlayAudio();
     }
 
     protected override void Update()

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 60744983853061038}
   - component: {fileID: 114215616270478050}
   - component: {fileID: 114040860842953902}
+  - component: {fileID: 82603316705504342}
   m_Layer: 12
   m_Name: Shrine
   m_TagString: Shrine
@@ -172,6 +173,86 @@ PolygonCollider2D:
       - {x: 0.65299225, y: 0.08975971}
       - {x: 0.019016266, y: 0.48624343}
       - {x: -0.5675678, y: 0.13988322}
+--- !u!82 &82603316705504342
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1605660245458212}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114040860842953902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -196,6 +277,8 @@ MonoBehaviour:
   percent: 0
   faithMaximumTime: 0
   faithTimer: 0
+  timeMultiplier: 0
+  faithMultiplier: 0
 --- !u!114 &114215616270478050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -209,6 +292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   objectiveManager: {fileID: 0}
+  objectiveTracker: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
   levelTwoSprite: {fileID: 21300000, guid: d63017497710a2e4093269d116958235, type: 3}
@@ -251,6 +335,10 @@ MonoBehaviour:
   name: 
   type: 
   info: Produces a lot of faith
+  playAudio: 0
+  placementSound: {fileID: 8300000, guid: d59a992b19a4a964c8dad1353c553e14, type: 3}
+  constructingAudio: {fileID: 8300000, guid: 58a651a863e62714588c7c5dcfe72910, type: 3}
+  faithCollectSound: {fileID: 8300000, guid: 49a5c2d3b71af484898499556c547c00, type: 3}
   totalShrineAmount: 0
   allowTempleConstructing: 0
 --- !u!114 &114255791115822326

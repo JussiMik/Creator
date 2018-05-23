@@ -6,6 +6,11 @@ public class Farm : Structure
 {
     private bool addedToList;
 
+    private void Awake()
+    {
+        playAudio = true;
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -18,6 +23,8 @@ public class Farm : Structure
 
         name = "Farm";
         type = "Food";
+
+        PlayAudio();
     }
 
     protected override void Update()

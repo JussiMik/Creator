@@ -7,6 +7,12 @@ public class DormitoryCS : Structure
     private bool addedToList;
     [Space(10)]
     public int monkSlotsPerDormitory;
+
+    private void Awake()
+    {
+        playAudio = true;
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -18,6 +24,8 @@ public class DormitoryCS : Structure
 
         name = "Dormitory";
         type = "Dormitory";
+
+        PlayAudio();
     }
 
     protected override void Update()

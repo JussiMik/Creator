@@ -18,7 +18,7 @@ public class QuarryCS : Structure
     public bool rockTimer, stoneCollected;
     [HideInInspector]
     public float originalstoneProductionTimeLength;
-    
+
     [Space(10)]
     public float rocks;
     [SerializeField]
@@ -31,9 +31,19 @@ public class QuarryCS : Structure
 
     private bool sanctityPointsGiven;
 
+    public AudioClip stoneCollectSound;
+
+    private void Awake()
+    {
+        playAudio = true;
+    }
+
     protected override void Start()
     {
         base.Start();
+
+        GetComponent<AudioSource>().playOnAwake = false;
+        GetComponent<AudioSource>().clip = stoneCollectSound;
 
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
@@ -45,6 +55,8 @@ public class QuarryCS : Structure
 
         name = "Quarry";
         type = "Production";
+
+        PlayAudio();
     }
 
     protected override void Update()
@@ -60,7 +72,7 @@ public class QuarryCS : Structure
             if (rockTimerCollision == true)
             {
                 rockTimer = true;
-            } 
+            }
         }
 
         if (rockTimer == true && stoneCollected == true)
@@ -131,6 +143,8 @@ public class QuarryCS : Structure
         gatheredStone = 0;
         objectiveManager.CheckForCompletedObjectives();
         gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().showPanel = false;
+
+        GetComponent<AudioSource>().PlayOneShot(stoneCollectSound);
         stoneCollected = true;
     }
 }

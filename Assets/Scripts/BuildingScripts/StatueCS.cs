@@ -6,6 +6,11 @@ public class StatueCS : Structure
 {
     private bool addedToList;
 
+    private void Awake()
+    {
+        playAudio = true;
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -20,6 +25,8 @@ public class StatueCS : Structure
 
         name = "Statue";
         type = "Faith";
+
+        PlayAudio();
     }
 
     protected override void Update()
