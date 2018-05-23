@@ -191,13 +191,13 @@ MonoBehaviour:
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
   faithConstructingCost: 250
-  devotionConstructingCost: 20
+  devotionConstructingCost: 100
   woodConstructingCost: 50
   stoneConstructingCost: 0
-  lvl2FaithUpgradeCost: 0
-  lvl2DevotionUpgradeCost: 0
-  lvl2WoodUpgradeCost: 0
-  lvl2StoneUpgradeCost: 0
+  lvl2FaithUpgradeCost: 1250
+  lvl2DevotionUpgradeCost: 250
+  lvl2WoodUpgradeCost: 250
+  lvl2StoneUpgradeCost: 200
   lvl3FaithUpgradeCost: 0
   lvl3DevotionUpgradeCost: 0
   lvl3WoodUpgradeCost: 0
@@ -226,7 +226,7 @@ MonoBehaviour:
   maxLevelAmount: 2
   name: 
   type: 
-  info: This is a nice quarry.
+  info: Produces stone when placed near a large rock
   gatheredStone: 0
   stoneAmountPerProductionCyclePerRock: 6
   stoneAmountPerProductionCyclePerRockLvl2: 12
@@ -236,9 +236,9 @@ MonoBehaviour:
   originalstoneProductionTimeLength: 0
   rocks: 0
   totalRockAmount: 0
-  lvl1RockAmount: 1
-  lvl2RockAmount: 3
-  lvl3RockAmount: 5
+  lvl1RockAmount: 3
+  lvl2RockAmount: 6
+  lvl3RockAmount: 0
 --- !u!114 &114505188927232998
 MonoBehaviour:
   m_ObjectHideFlags: 1

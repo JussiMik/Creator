@@ -82,6 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  objectiveManager: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
   levelTwoSprite: {fileID: 21300000, guid: 84dc1a3441c2a064fbff7d57b00343aa, type: 3}
@@ -123,7 +124,7 @@ MonoBehaviour:
   maxLevelAmount: 2
   name: 
   type: 
-  info: This is a nice dormitory.
+  info: Increases monk capacity
   monkSlotsPerDormitory: 5
 --- !u!212 &212605180961649994
 SpriteRenderer:

@@ -125,7 +125,7 @@ MonoBehaviour:
   maxLevelAmount: 0
   name: 
   type: 
-  info: 
+  info: Converts monks
   convertedMonk: 0
   monkConversionTimeLength: 3
   totalMonksConverted: 0

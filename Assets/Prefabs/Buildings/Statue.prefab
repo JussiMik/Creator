@@ -107,17 +107,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  objectiveManager: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
   levelTwoSprite: {fileID: 21300000, guid: a08fb2df51b37a94eabb981ce013e65a, type: 3}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
   faithConstructingCost: 50
-  devotionConstructingCost: 20
+  devotionConstructingCost: 100
   woodConstructingCost: 0
   stoneConstructingCost: 0
-  lvl2FaithUpgradeCost: 0
-  lvl2DevotionUpgradeCost: 0
+  lvl2FaithUpgradeCost: 250
+  lvl2DevotionUpgradeCost: 250
   lvl2WoodUpgradeCost: 0
   lvl2StoneUpgradeCost: 0
   lvl3FaithUpgradeCost: 0
@@ -127,7 +128,7 @@ MonoBehaviour:
   sanctityPointsOnConsturction: 5
   sanctityPointsOnUpgrade: 0
   constructingTimer: 0
-  constructingTime: 10
+  constructingTime: 40
   normalSpeedConstructing: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0
@@ -148,7 +149,7 @@ MonoBehaviour:
   maxLevelAmount: 2
   name: 
   type: 
-  info: This is a nice statue.
+  info: Produces faith
 --- !u!212 &212648406609876690
 SpriteRenderer:
   m_ObjectHideFlags: 1

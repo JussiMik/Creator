@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 60884686366902698}
   - component: {fileID: 50769514224919958}
   - component: {fileID: 114504866947670604}
-  - component: {fileID: 114306037487464390}
   m_Layer: 12
   m_Name: WoodWorkshop
   m_TagString: WoodWorkshop
@@ -69,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1632218740180484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.84975, y: -1.8400017, z: 0}
+  m_LocalPosition: {x: 15.006211, y: -1.3704994, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4296720088501730}
@@ -140,10 +139,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.01259613, y: -1.1833924}
-      - {x: 1.774353, y: -0.1126647}
-      - {x: 0.0046577454, y: 0.88612485}
-      - {x: -1.7477856, y: -0.09711254}
+    - - {x: 0.011055946, y: -1.0233347}
+      - {x: 1.5944891, y: -0.054460883}
+      - {x: 0.031437874, y: 0.849514}
+      - {x: -1.4905853, y: -0.08803177}
 --- !u!60 &60884686366902698
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -172,30 +171,6 @@ PolygonCollider2D:
       - {x: 0.6450348, y: -0.062333584}
       - {x: 0.018678665, y: 0.32095337}
       - {x: -0.62800026, y: -0.07768965}
---- !u!114 &114306037487464390
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1632218740180484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8828eaa8532246340a020044d21aabed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: {x: 0, y: 30, z: 0}
-  foregroundObject: {fileID: 1733398171417390, guid: 64bcdab38214950458388e55013e650a,
-    type: 2}
-  backgroundObject: {fileID: 1947643304754428, guid: 5637093a46a2c554b93134d0f465e1c1,
-    type: 2}
-  progressBarForegroundImage: {fileID: 0}
-  buildingDone: 0
-  checkForBuildingDone: 0
-  startTimer: 0
-  checkForFaithCollected: 0
-  percent: 0
-  faithMaximumTime: 0
-  faithTimer: 0
 --- !u!114 &114504866947670604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -215,12 +190,12 @@ MonoBehaviour:
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
   faithConstructingCost: 100
-  devotionConstructingCost: 20
+  devotionConstructingCost: 100
   woodConstructingCost: 0
   stoneConstructingCost: 0
-  lvl2FaithUpgradeCost: 0
-  lvl2DevotionUpgradeCost: 0
-  lvl2WoodUpgradeCost: 0
+  lvl2FaithUpgradeCost: 500
+  lvl2DevotionUpgradeCost: 250
+  lvl2WoodUpgradeCost: 400
   lvl2StoneUpgradeCost: 0
   lvl3FaithUpgradeCost: 0
   lvl3DevotionUpgradeCost: 0
@@ -250,7 +225,7 @@ MonoBehaviour:
   maxLevelAmount: 2
   name: 
   type: 
-  info: This is a nice wood workshop.
+  info: Produces wood when placed near trees
   gatheredWood: 0
   woodAmountPerProductionCyclePerTree: 6
   woodAmountPerProductionCyclePerTreeLvl2: 12
@@ -260,9 +235,9 @@ MonoBehaviour:
   originalWoodTime: 0
   trees: 0
   totalTreeAmount: 0
-  lvl1TreeAmount: 1
-  lvl2TreeAmount: 3
-  lvl3TreeAmount: 5
+  lvl1TreeAmount: 3
+  lvl2TreeAmount: 6
+  lvl3TreeAmount: 0
 --- !u!114 &114544871669537822
 MonoBehaviour:
   m_ObjectHideFlags: 1
