@@ -5,8 +5,7 @@ using UnityEngine;
 public class ChallengeBase : MonoBehaviour
 {
     protected ObjectiveManager objectiveManager;
-    protected GameManager gameManager;
-    public bool useChallenge;
+    public GameManager gameManager;
     public bool challengeDone;
 
     public string objectiveText;

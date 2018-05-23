@@ -59,6 +59,7 @@ public class ObjectiveManager : MonoBehaviour
 
     void Awake()
     {
+        objectiveObject = GameObject.FindGameObjectWithTag("Challenge");
         objectiveTracker = GameObject.Find("ObjectiveTrackerCanvas").GetComponent<ObjectiveTracker>();
         objectiveText = objectiveObject.GetComponent<ChallengeBase>().objectiveText;
 

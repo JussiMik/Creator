@@ -24,6 +24,7 @@ TagManager:
   - Monk
   - ConversionTemple
   - ObjectiveManager
+  - Challenge
   layers:
   - Default
   - TransparentFX
