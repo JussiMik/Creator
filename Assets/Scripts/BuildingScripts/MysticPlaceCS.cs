@@ -82,7 +82,6 @@ public class MysticPlaceCS : Structure
             randomDistanceHorizontal = Random.Range(-1.5f, 1.5f);
             randomDistanceVertical = Random.Range(-1.5f, 1.5f);
             GameObject spawnedMonk = Instantiate(monk, new Vector2(clickedBuilding.transform.position.x + randomDistanceHorizontal, clickedBuilding.transform.position.y + randomDistanceVertical), clickedBuilding.transform.rotation);
-            gameManager.monks.Add(spawnedMonk);
             resourceTracker.GetComponent<MonkText>().UpdateMonkCount();
             gameManager.CheckFarmCount();
         }

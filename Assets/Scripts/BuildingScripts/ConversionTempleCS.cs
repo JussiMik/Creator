@@ -82,7 +82,6 @@ public class ConversionTempleCS : Structure
     {
         if (gameManager.convertableMonks.Count != 0 && gameManager.monks.Count < gameManager.monkSlots)
         {
-            objectiveManager.CheckForCompletedObjectives();
             convertedMonk = 0;
             convertableMonk = gameManager.convertableMonks[0];
             gameManager.convertableMonks.RemoveAt(0);
@@ -91,9 +90,8 @@ public class ConversionTempleCS : Structure
             gameManager.CheckFarmCount();
             convertableMonk.GetComponent<ConvertableMonk>().isConverted = true;
             convertableMonk.GetComponent<SpriteRenderer>().sprite = monkSprite;
-
-            gameManager.DevotionDecreaseChunk();
             objectiveManager.CheckForCompletedObjectives();
+            gameManager.DevotionDecreaseChunk();
             gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().showPanel = false;
             monkCollected = true;
         }

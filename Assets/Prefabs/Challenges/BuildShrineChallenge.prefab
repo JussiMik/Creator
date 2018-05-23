@@ -9,57 +9,49 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1633381593910266}
+  m_RootGameObject: {fileID: 1522992155002742}
   m_IsPrefabParent: 1
---- !u!1 &1633381593910266
+--- !u!1 &1522992155002742
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4690581392016464}
-  - component: {fileID: 114669518280816210}
+  - component: {fileID: 4966418867267584}
+  - component: {fileID: 114535612504421438}
   m_Layer: 0
-  m_Name: ObjectiveManager
-  m_TagString: ObjectiveManager
+  m_Name: BuildShrineChallenge
+  m_TagString: Challenge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4690581392016464
+--- !u!4 &4966418867267584
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1633381593910266}
+  m_GameObject: {fileID: 1522992155002742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 610.04626, y: 365.91586, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114669518280816210
+--- !u!114 &114535612504421438
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1633381593910266}
+  m_GameObject: {fileID: 1522992155002742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b93ab6b443064e4193a752a5a2ccd1f, type: 3}
+  m_Script: {fileID: 11500000, guid: e11ef8e11e5665e4999562ff8549ed55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textField: {fileID: 0}
-  objectiveObject: {fileID: 0}
-  requiredAmountOfMeditationRooms: 0
-  requiredAmountOfGardens: 0
-  requiredResourceAmount: 0
-  checkForCompletedObjectives: 0
-  shrineList: []
-  gardenList: []
-  meditationRoomList: []
-  templeList: []
-  buildTempleText: 
-  objectiveText: 
+  gameManager: {fileID: 0}
+  challengeDone: 0
+  objectiveText: 'Build Shrines: '
+  requiredShrines: 4

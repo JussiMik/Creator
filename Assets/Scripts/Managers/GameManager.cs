@@ -352,7 +352,7 @@ public class GameManager : MonoBehaviour
     }
     void UpdateFaithMultiplierForProductionBar()
     {
-        foreach (ProductionBar gameObject in ProductionBar.productionBars)
+       foreach (ProductionBar gameObject in ProductionBar.productionBars)
         {
             gameObject.faithMultiplier = faithTimerMp;
         }
