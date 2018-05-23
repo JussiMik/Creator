@@ -33,10 +33,7 @@ public class Menu : MonoBehaviour {
     }
 
     // Use this for initialization
-    public virtual void CheckResources(GameObject[] otherBuildingsList)
-    {
-        
-    }
+
     public virtual void SelectToDrag()
     {
 
@@ -74,5 +71,64 @@ public class Menu : MonoBehaviour {
         worldNavigation.SetActive(true);
     }
 
-    
+    public virtual void CheckResources(GameObject[] otherBuildingsList)
+    {
+        var usedScript = otherBuildingsList[curBlockNo].GetComponent<Structure>();
+
+        canTakeAction = true;
+
+        //TEST WOOD
+        if (gameManager.wood >= usedScript.woodConstructingCost)
+        {
+            infoBuildingRes_Wood.color = Color.green;
+        }
+        else
+        {
+            infoBuildingRes_Wood.color = Color.red;
+            canTakeAction = false;
+        }
+
+        //TEST FAITH
+        if (gameManager.faith >= usedScript.faithConstructingCost)
+        {
+            infoBuildingRes_Faith.color = Color.green;
+        }
+        else
+        {
+            infoBuildingRes_Faith.color = Color.red;
+            canTakeAction = false;
+        }
+
+        //TEST STONE
+        if (gameManager.stone >= usedScript.stoneConstructingCost)
+        {
+            infoBuildingRes_Stone.color = Color.green;
+        }
+        else
+        {
+            infoBuildingRes_Stone.color = Color.red;
+            canTakeAction = false;
+        }
+
+        //TEST DEVOTION
+        if (gameManager.devotion >= usedScript.devotionConstructingCost)
+        {
+            infoBuildingRes_Dev.color = Color.green;
+        }
+        else
+        {
+            infoBuildingRes_Dev.color = Color.red;
+            canTakeAction = false;
+        }
+
+        if (canTakeAction)
+        {
+            infoBuildingBuild.GetComponent<Image>().color = Color.green;
+        }
+        else
+        {
+            infoBuildingBuild.GetComponent<Image>().color = Color.red;
+        }
+    }
+
 }

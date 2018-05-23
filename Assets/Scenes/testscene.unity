@@ -1405,8 +1405,8 @@ MonoBehaviour:
   - {fileID: 21300002, guid: 393e11cc710534b459c851f492fafdf9, type: 3}
   - {fileID: 21300004, guid: 393e11cc710534b459c851f492fafdf9, type: 3}
   - {fileID: 21300006, guid: 393e11cc710534b459c851f492fafdf9, type: 3}
-  roundCorners: 0
-  roundCornerBy: 2
+  roundCorners: 1
+  roundCornerBy: 3
   showGrid: 0
   fullColor: {r: 255, g: 255, b: 255, a: 255}
   cantBuild: {r: 0.5147059, g: 0.1703071, b: 0.1703071, a: 1}
@@ -2077,9 +2077,9 @@ MonoBehaviour:
   infoBuildingRes_Faith: {fileID: 868979972}
   infoBuildingRes_Stone: {fileID: 868979972}
   miracles:
-  - {fileID: 1354137680948214, guid: ed80e251ca308ea4b9c6c70a0bddfd62, type: 2}
   - {fileID: 1836029763304802, guid: dc7355aaabb3d6140a9642f61f8c3e1f, type: 2}
-  - {fileID: 1808343836214846, guid: ec8c7fac9dcc498449ac9e96a41856c8, type: 2}
+  - {fileID: 1354137680948214, guid: ed80e251ca308ea4b9c6c70a0bddfd62, type: 2}
+  - {fileID: 1667350591396404, guid: a81927ace3f2ec74c918bc51403379b9, type: 2}
   miracleSpr:
   - {fileID: 0}
   - {fileID: 0}

@@ -108,7 +108,7 @@ MonoBehaviour:
   levelTwoSprite: {fileID: 0}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
-  faithConstructingCost: 100
+  faithConstructingCost: 10
   devotionConstructingCost: 0
   woodConstructingCost: 0
   stoneConstructingCost: 0

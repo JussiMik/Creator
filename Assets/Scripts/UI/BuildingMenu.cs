@@ -166,62 +166,6 @@ public class BuildingMenu : Menu {
         base.HideMenu();
     }
 
-    public override void CheckResources(GameObject[] otherBuildingsList)
-    {
-        canTakeAction = true;
-
-        //TEST WOOD
-        if (gameManager.wood >= otherBuildingsList[curBlockNo].GetComponent<Structure>().woodConstructingCost)
-        {
-            infoBuildingRes_Wood.color = Color.green;
-        }
-        else
-        {
-            infoBuildingRes_Wood.color = Color.red;
-            canTakeAction = false;
-        }
-
-        //TEST FAITH
-        if (gameManager.faith >= otherBuildingsList[curBlockNo].GetComponent<Structure>().faithConstructingCost)
-        {
-            infoBuildingRes_Faith.color = Color.green;
-        }
-        else
-        {
-            infoBuildingRes_Faith.color = Color.red;
-            canTakeAction = false;
-        }
-
-        //TEST STONE
-        if (gameManager.stone >= otherBuildingsList[curBlockNo].GetComponent<Structure>().stoneConstructingCost)
-        {
-            infoBuildingRes_Stone.color = Color.green;
-        }
-        else
-        {
-            infoBuildingRes_Stone.color = Color.red;
-            canTakeAction = false;
-        }
-
-        //TEST DEVOTION
-        if (gameManager.devotion >= otherBuildingsList[curBlockNo].GetComponent<Structure>().devotionConstructingCost)
-        {
-            infoBuildingRes_Dev.color = Color.green;
-        }
-        else
-        {
-            infoBuildingRes_Dev.color = Color.red;
-            canTakeAction = false;
-        }
-
-        if (canTakeAction)
-        {
-            infoBuildingBuild.GetComponent<Image>().color = Color.green;
-        }
-        else
-        {
-            infoBuildingBuild.GetComponent<Image>().color = Color.red;
-        }
-    }
+   
    
 }

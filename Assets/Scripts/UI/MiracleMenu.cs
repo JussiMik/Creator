@@ -46,26 +46,61 @@ public class MiracleMenu : Menu
 
     }
 
+    private void Update()
+    {
+        if (infoCard.active == true)
+        {
+            CheckResources(miracles);
+        }
+    }
+
     public void ShowInfo(int blockNo)
     {
         infoCard.SetActive(true);
 
         curBlockNo = blockNo;
-        infoBuildingSprite.GetComponent<Image>().sprite = buildingButtons[blockNo].GetComponent<Image>().sprite;
-        infoBuildingName.GetComponent<Text>().text = "Miracle " + (blockNo + 1);
-        infoBuildingText.GetComponent<Text>().text = "Info of Miracle " + (blockNo + 1);
 
-        infoBuildingRes_Wood.text = miracles[blockNo].GetComponent<Miracle>().faithNeeded.ToString();
-        infoBuildingRes_Faith.text = miracles[blockNo].GetComponent<Miracle>().faithNeeded.ToString();
-        infoBuildingRes_Stone.text = miracles[blockNo].GetComponent<Miracle>().faithNeeded.ToString();
-        infoBuildingRes_Dev.text = miracles[blockNo].GetComponent<Miracle>().faithNeeded.ToString();
+        //if (curBlockNo == 0 || curBlockNo == 1)
+        {
+            infoBuildingSprite.GetComponent<Image>().sprite = miracles[blockNo].GetComponent<SpriteRenderer>().sprite;
+            infoBuildingName.GetComponent<Text>().text = "Miracle " + (blockNo + 1);
+            infoBuildingText.GetComponent<Text>().text = "Info of Miracle " + (blockNo + 1);
+
+            infoBuildingRes_Wood.text = miracles[blockNo].GetComponent<Structure>().woodConstructingCost.ToString();
+            infoBuildingRes_Faith.text = miracles[blockNo].GetComponent<Structure>().faithConstructingCost.ToString();
+            infoBuildingRes_Stone.text = miracles[blockNo].GetComponent<Structure>().stoneConstructingCost.ToString();
+            infoBuildingRes_Dev.text = miracles[blockNo].GetComponent<Structure>().devotionConstructingCost.ToString();
+            
+        }
+        //else
+        //{
+        //    infoBuildingSprite.GetComponent<Image>().sprite = miracles[blockNo].GetComponent<SpriteRenderer>().sprite;
+        //    infoBuildingName.GetComponent<Text>().text = "Miracle " + (blockNo + 1);
+        //    infoBuildingText.GetComponent<Text>().text = "Info of Miracle " + (blockNo + 1);
+
+        //    infoBuildingRes_Wood.text = miracles[blockNo].GetComponent<Miracle03>().woodConstructingCost.ToString();
+        //    infoBuildingRes_Faith.text = miracles[blockNo].GetComponent<Miracle03>().faithConstructingCost.ToString();
+        //    infoBuildingRes_Stone.text = miracles[blockNo].GetComponent<Miracle03>().stoneConstructingCost.ToString();
+        //    infoBuildingRes_Dev.text = miracles[blockNo].GetComponent<Miracle03>().devotionConstructingCost.ToString();
+            
+        //}
         infoCard.GetComponent<InfoCard>().currentMenu = gameObject.GetComponent<Menu>();
     }
+  
     
 
     public override void SelectToDrag()
     {
-        dragNDrop.ShowToDrag(miracles[curBlockNo]);
-        HideMenu();
+        if(curBlockNo == 0 || curBlockNo == 1)
+        {
+            dragNDrop.ShowToDrag(miracles[curBlockNo]);
+            HideMenu();
+        }
+        if(curBlockNo == 2)
+        {
+            HideMenu();
+            dragNDrop.layoutManager.FreeSpace();
+        }
+        
     }
 }
