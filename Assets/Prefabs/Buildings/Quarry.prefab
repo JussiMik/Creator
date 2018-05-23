@@ -227,7 +227,7 @@ MonoBehaviour:
   maxLevelAmount: 2
   name: 
   type: 
-  info: Produces stone when placed near a large rock
+  info: Produces stone when placed next to large rocks
   gatheredStone: 0
   stoneAmountPerProductionCyclePerRock: 6
   stoneAmountPerProductionCyclePerRockLvl2: 12

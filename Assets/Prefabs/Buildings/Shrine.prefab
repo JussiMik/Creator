@@ -196,6 +196,8 @@ MonoBehaviour:
   percent: 0
   faithMaximumTime: 0
   faithTimer: 0
+  timeMultiplier: 0
+  faithMultiplier: 0
 --- !u!114 &114215616270478050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -209,6 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   objectiveManager: {fileID: 0}
+  objectiveTracker: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
   levelTwoSprite: {fileID: 21300000, guid: d63017497710a2e4093269d116958235, type: 3}
@@ -218,10 +221,10 @@ MonoBehaviour:
   devotionConstructingCost: 20
   woodConstructingCost: 500
   stoneConstructingCost: 100
-  lvl2FaithUpgradeCost: 0
-  lvl2DevotionUpgradeCost: 0
-  lvl2WoodUpgradeCost: 0
-  lvl2StoneUpgradeCost: 0
+  lvl2FaithUpgradeCost: 25000
+  lvl2DevotionUpgradeCost: 250
+  lvl2WoodUpgradeCost: 2500
+  lvl2StoneUpgradeCost: 500
   lvl3FaithUpgradeCost: 0
   lvl3DevotionUpgradeCost: 0
   lvl3WoodUpgradeCost: 0

@@ -197,7 +197,7 @@ MonoBehaviour:
   lvl2FaithUpgradeCost: 500
   lvl2DevotionUpgradeCost: 250
   lvl2WoodUpgradeCost: 400
-  lvl2StoneUpgradeCost: 0
+  lvl2StoneUpgradeCost: 100
   lvl3FaithUpgradeCost: 0
   lvl3DevotionUpgradeCost: 0
   lvl3WoodUpgradeCost: 0
@@ -226,7 +226,7 @@ MonoBehaviour:
   maxLevelAmount: 2
   name: 
   type: 
-  info: Produces wood when placed near trees
+  info: Produces wood when placed next to trees
   gatheredWood: 0
   woodAmountPerProductionCyclePerTree: 6
   woodAmountPerProductionCyclePerTreeLvl2: 12

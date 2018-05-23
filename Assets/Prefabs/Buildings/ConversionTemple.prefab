@@ -90,14 +90,14 @@ MonoBehaviour:
   levelTwoSprite: {fileID: 21300000, guid: 5ed4f71181ba52f48ae3a0972fec6880, type: 3}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
-  faithConstructingCost: 0
-  devotionConstructingCost: 0
-  woodConstructingCost: 0
-  stoneConstructingCost: 0
-  lvl2FaithUpgradeCost: 0
-  lvl2DevotionUpgradeCost: 0
-  lvl2WoodUpgradeCost: 0
-  lvl2StoneUpgradeCost: 0
+  faithConstructingCost: 500
+  devotionConstructingCost: 100
+  woodConstructingCost: 100
+  stoneConstructingCost: 50
+  lvl2FaithUpgradeCost: 2500
+  lvl2DevotionUpgradeCost: 250
+  lvl2WoodUpgradeCost: 500
+  lvl2StoneUpgradeCost: 250
   lvl3FaithUpgradeCost: 0
   lvl3DevotionUpgradeCost: 0
   lvl3WoodUpgradeCost: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   sanctityPointsOnConsturction: 0
   sanctityPointsOnUpgrade: 0
   constructingTimer: 0
-  constructingTime: 5
+  constructingTime: 20
   normalSpeedConstructing: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0
@@ -123,12 +123,12 @@ MonoBehaviour:
   originalFaithTargetTime: 0
   level: 0
   lvlChange: 0
-  maxLevelAmount: 0
+  maxLevelAmount: 2
   name: 
   type: 
   info: Converts monks
   convertedMonk: 0
-  monkConversionTimeLength: 3
+  monkConversionTimeLength: 50
   totalMonksConverted: 0
   monkSprite: {fileID: 21300000, guid: 308c583a736f5914ba0370d6b31298b9, type: 3}
   convertableMonk: {fileID: 0}

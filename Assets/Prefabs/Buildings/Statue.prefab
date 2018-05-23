@@ -122,8 +122,8 @@ MonoBehaviour:
   stoneConstructingCost: 0
   lvl2FaithUpgradeCost: 250
   lvl2DevotionUpgradeCost: 250
-  lvl2WoodUpgradeCost: 0
-  lvl2StoneUpgradeCost: 0
+  lvl2WoodUpgradeCost: 100
+  lvl2StoneUpgradeCost: 80
   lvl3FaithUpgradeCost: 0
   lvl3DevotionUpgradeCost: 0
   lvl3WoodUpgradeCost: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   sanctityPointsOnConsturction: 5
   sanctityPointsOnUpgrade: 0
   constructingTimer: 0
-  constructingTime: 40
+  constructingTime: 20
   normalSpeedConstructing: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0
