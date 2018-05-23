@@ -4,6 +4,8 @@ using System.Collections;
 public class Monk : MonoBehaviour
 {
 
+    Animator animator;
+
     public Transform targetTransform;
     public GameObject targetObject;
 
@@ -15,8 +17,11 @@ public class Monk : MonoBehaviour
     bool reachedDestination;
     public float speed;
     public float movementCheckDistance;
-    Vector2[] path;
+    public Vector2[] path;
     int targetIndex;
+
+    public bool movingUp;
+    public bool movingDown;
 
     void Start()
     {
@@ -26,6 +31,7 @@ public class Monk : MonoBehaviour
         InvokeRepeating("CheckDistanceFromTarget", 1f, 2.5f);
         startNewPathTimer = targetObject.GetComponent<PathfindingTargetLocation>().startNewTargetTimer;
         gameManager.monks.Add(gameObject);
+        animator = GetComponent<Animator>();
 
         //gameManager.constructingTimerMp = defaultConstructingTimerMp;
     }
@@ -35,6 +41,14 @@ public class Monk : MonoBehaviour
         if (checkForNewDestination == true)
         {
             StartCoroutine("RefreshPath");
+        }
+        if (path.Length == 0)
+        {
+            movingUp = false;
+            movingDown = false;
+            animator.SetBool("isMoving", false);
+            animator.SetBool("movingUp", false);
+            animator.SetBool("movingDown", false);
         }
     }
 
@@ -75,6 +89,35 @@ public class Monk : MonoBehaviour
     {
         if (path.Length > 0)
         {
+            animator.SetBool("isMoving", true);
+
+            //uppuu
+            if(path[0].y > gameObject.transform.position.y)
+            {
+                movingUp = true;
+                animator.SetBool("movingUp", true);
+            }
+
+            //downuu
+            if(path[0].y < gameObject.transform.position.y)
+            {
+                movingDown = true;
+                animator.SetBool("movingDown", true);
+            }
+
+            //rightuu
+            if(path[0].x > gameObject.transform.position.x && movingUp == true)
+            {
+                Debug.Log("Saatanansaatana");
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+
+            //leftuu
+           else if(path[0].x < gameObject.transform.position.x && movingUp == false)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+
             targetIndex = 0;
             Vector2 currentWaypoint = path[0];
 
@@ -88,6 +131,7 @@ public class Monk : MonoBehaviour
                         yield return new WaitForSeconds(.25f);
                     }
                     currentWaypoint = path[targetIndex];
+
                 }
                 transform.position = Vector2.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
                 yield return null;

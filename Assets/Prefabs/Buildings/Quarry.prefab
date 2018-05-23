@@ -131,8 +131,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 1.3939394}
+    pivot: {x: 0.5, y: 0.35}
+    oldSize: {x: 2, y: 1.6993244}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -185,9 +185,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   objectiveManager: {fileID: 0}
+  objectiveTracker: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
-  levelTwoSprite: {fileID: 21300000, guid: 18c35c4cdb23bd641b83c629ab95240c, type: 3}
+  levelTwoSprite: {fileID: 21300000, guid: dc3ab5d48e9843e4aa5ce88fdf58f9f1, type: 3}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
   faithConstructingCost: 250
@@ -308,8 +309,8 @@ SpriteRenderer:
   m_SortingLayerID: 818483521
   m_SortingLayer: 3
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 18c35c4cdb23bd641b83c629ab95240c, type: 3}
-  m_Color: {r: 0.625, g: 0.625, b: 0.625, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 052e2688afce9c0488da2dffe5251635, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
