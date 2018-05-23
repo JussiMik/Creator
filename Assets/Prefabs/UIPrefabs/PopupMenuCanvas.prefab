@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickedObject: {fileID: 0}
-  dragNDrop: {fileID: 0}
+  DragNDrop: {fileID: 0}
   temple: {fileID: 1604896122853608, guid: f5c0f300b4a854849a1e68dc29dc4212, type: 2}
   levelUp: 0
 --- !u!114 &114135590257165694
@@ -526,6 +526,8 @@ MonoBehaviour:
   woodMaximumTime: 0
   rockTimer: 0
   rockMaximumTime: 0
+  monkTimer: 0
+  monkMaximumTime: 0
   percent: 0
   canvas: {fileID: 0}
   clickedObject: {fileID: 0}
@@ -750,8 +752,8 @@ MonoBehaviour:
   popupPanel: {fileID: 1753784254912228}
   buyMonkButton: {fileID: 114177447412411748}
   monkCostText: {fileID: 114875713360440668}
-  xOffset: 140
-  yOffset: 80
+  xOffset: 130
+  yOffset: 100
   clickedObjectName: 
   level: 0
   levelupCost: 0
@@ -821,6 +823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02c5cb3da60026146adcc351c3091c3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mysticPlace: {fileID: 0}
 --- !u!114 &114891039615493202
 MonoBehaviour:
   m_ObjectHideFlags: 1
