@@ -30,6 +30,7 @@ public class UpgradeButton : MonoBehaviour
     }
    public void UpgradeBuilding()
     {
+        Debug.Log("Saatanansaatana");
         clickedObject.GetComponent<Structure>().lvlChange = true;
         if (clickedObject.tag == "Shrine" && clickedObject.GetComponent<Structure>().level == 2 && clickedObject.GetComponent<ShrineCS>().allowTempleConstructing == true)
         {

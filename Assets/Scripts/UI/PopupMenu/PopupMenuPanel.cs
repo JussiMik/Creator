@@ -23,10 +23,10 @@ public class PopupMenuPanel : MonoBehaviour
     {
         // OffsetMax value is inversed in code. Top value 100 in editor is -100 in script while using offsetMax (so same as Bottom value). Left value 100 in editor is -100 in script while using offsetMax(so same as Right value).
         // Check if panel's Rect Transform top value is over the screen. 
-        if (rt.offsetMax.y >= 151f)
+        if (rt.offsetMax.y >= 65f)
         {
             overY = true;
-            rtY = 150f;
+            rtY = 65f;
         }
         // Check if panel's Rect Transform top value is under the screen.
         if (rt.offsetMax.y <= -151f)
@@ -35,16 +35,16 @@ public class PopupMenuPanel : MonoBehaviour
             rtY = -150f;
         }
         // Check if panel's Rect Transform left value is too much right.
-        if (rt.offsetMax.x <= -251f)
+        if (rt.offsetMax.x <= -150f)
         {
             overX = true;
-            rtX = -250f;
+            rtX = -200f;
         }
         // Check if panel's Rect Transform left value is too much left.
-        if (rt.offsetMax.x >= 251f)
+        if (rt.offsetMax.x >= 200f)
         {
             overX = true;
-            rtX = 250f;
+            rtX = 200f;
         }
         SetPosition();
     }
