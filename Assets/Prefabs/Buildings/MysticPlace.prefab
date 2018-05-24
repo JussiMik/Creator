@@ -58,9 +58,9 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.4}
-    oldSize: {x: 4, y: 2.783819}
-    newSize: {x: 5.12, y: 2.56}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 22.99, y: 16}
+    newSize: {x: 22.99, y: 16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   objectiveManager: {fileID: 0}
+  objectiveTracker: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
   levelTwoSprite: {fileID: 21300000, guid: fb6c5e4e1580cdf4f9d76f2c100647c0, type: 3}
@@ -184,12 +185,12 @@ SpriteRenderer:
   m_SortingLayerID: 818483521
   m_SortingLayer: 3
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 672a05e2d7371844b866ea92b3e29919, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b266ab7fd6f8cad49889346091ac7be1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.12, y: 2.56}
+  m_Size: {x: 22.99, y: 16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [Space(10)]
     public float sanctity;
     [SerializeField]
-    private float sanctityPoints;
+    public float sanctityPoints;
     public float maxSanctityPoints;
 
     [Space(10)]

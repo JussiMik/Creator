@@ -1,9 +1,24 @@
 fileFormatVersion: 2
 guid: e8d539294fe82b145b5bba3d4d0117f9
+<<<<<<< HEAD
 timeCreated: 1527065581
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName: {}
+=======
+timeCreated: 1527067532
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: MonkWalk_DownRight_0
+    21300002: MonkWalk_DownRight_1
+    21300004: MonkWalk_DownRight_2
+    21300006: MonkWalk_DownRight_3
+    21300008: MonkWalk_DownRight_4
+    21300010: MonkWalk_DownRight_5
+    21300012: MonkWalk_DownRight_6
+    21300014: MonkWalk_DownRight_7
+>>>>>>> feature/monk_animations
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -34,7 +49,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< HEAD
   spriteMode: 1
+=======
+  spriteMode: 2
+>>>>>>> feature/monk_animations
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -58,9 +77,183 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+<<<<<<< HEAD
   spriteSheet:
     serializedVersion: 2
     sprites: []
+=======
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: tvOS
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Tizen
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Samsung TV
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MonkWalk_DownRight_0
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 440
+        width: 224
+        height: 345
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MonkWalk_DownRight_1
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 436
+        width: 204
+        height: 353
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MonkWalk_DownRight_2
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 420
+        width: 202
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MonkWalk_DownRight_3
+      rect:
+        serializedVersion: 2
+        x: 1288
+        y: 408
+        width: 244
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MonkWalk_DownRight_4
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 7
+        width: 252
+        height: 378
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MonkWalk_DownRight_5
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 14
+        width: 201
+        height: 376
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MonkWalk_DownRight_6
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 24
+        width: 155
+        height: 367
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MonkWalk_DownRight_7
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 36
+        width: 208
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+>>>>>>> feature/monk_animations
     outline: []
   spritePackingTag: 
   userData: 

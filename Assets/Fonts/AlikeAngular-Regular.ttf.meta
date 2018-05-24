@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: d4da7917c147e1c4c815a73506bab38a
+timeCreated: 1527161753
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 200
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Alike Angular
+  fontNames:
+  - Alike Angular
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
