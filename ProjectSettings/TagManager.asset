@@ -19,6 +19,7 @@ TagManager:
   - Shrine
   - ShrineCollider
   - Monk
+  - Border
   layers:
   - Default
   - TransparentFX

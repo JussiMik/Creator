@@ -18,6 +18,8 @@ public class LayoutManager : MonoBehaviour
     [SerializeField]
     public Sprite[] rockTileSprites;
 
+    public List<GameObject> toBeRemoved = new List<GameObject>();
+
     bool gridDone = false;
     public bool roundCorners = false;
     public int roundCornerBy = 1;
@@ -79,11 +81,17 @@ public class LayoutManager : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
+        if(!roundCorners)
+        {
+            roundCornerBy = 0;
+        }
         gridAngle = 45 * (tileHeight / tileWidth);
         allTiles = new GameObject("AllTiles");
         //allTiles.hideFlags = HideFlags.HideInHierarchy;
         CreateGrid();
     }
+
+
 
     void CreateGrid()
     {
@@ -142,10 +150,10 @@ public class LayoutManager : MonoBehaviour
 
 
                 //NORTH
-                for (int i2 = 0; i2 < roundCornerBy; i2++)
+                for (int round = 0, ix = gridWidth - borderWidth - i - 1, iy = borderHeigth; round < i + 1; round++, ix++, iy++)
                 {
-                    PlaceRockToPlace(new Vector2(gridWidth - borderWidth - 1, borderHeigth));
-                    //Debug.Log(ix + "," + iy);
+                    PlaceRockToPlace(new Vector2(ix, iy));
+                    Debug.Log("NORTH " + ix + "," + iy);
                 }
 
                 
@@ -238,14 +246,19 @@ public class LayoutManager : MonoBehaviour
     {
         TestGridUpdate();
 
-        //CALCULATE CAP BETWEEN TILES(UNUSED)
-        if (tileCap >= (float)tileWidth / 4 + 0.01f)
+        ////CALCULATE CAP BETWEEN TILES(UNUSED)
+        //if (tileCap >= (float)tileWidth / 4 + 0.01f)
+        //{
+        //    tileCap = (float)tileWidth / 4;
+        //}
+        //if (tileCap <= 0.01f)
+        //{
+        //    tileCap = 0;
+        //}
+
+        if(toBeRemoved.Count >= 1)
         {
-            tileCap = (float)tileWidth / 4;
-        }
-        if (tileCap <= 0.01f)
-        {
-            tileCap = 0;
+            FadeRockTiles();
         }
 
         //NEW GRID SEED
@@ -303,6 +316,7 @@ public class LayoutManager : MonoBehaviour
             GameObject newRock = Instantiate(emptyPre, newPos, transform.rotation);
             newRock.name = "RockTile " + gridPos.x + ", " + gridPos.y;
             newRock.layer = LayerMask.NameToLayer("Border");
+            newRock.tag = "Border";
             newRock.transform.SetParent(solidRockFolder.transform);
 
             var rend = newRock.GetComponent<SpriteRenderer>();
@@ -457,41 +471,93 @@ public class LayoutManager : MonoBehaviour
         testGridFolder.SetActive(active);
     }
 
-    public void FreeSpace()
+    public void BorderMiracle()
     {
         
+
         //Erase upper width
-        for (int i = borderWidth; i < gridWidth - borderWidth; i++)
+        for (int i = borderWidth + roundCornerBy - 2; i < gridWidth - borderWidth - roundCornerBy + 1; i++)
         {
-            Destroy(solidRockFolder.transform.Find("RockTile " + i + ", " + (borderHeigth - 1)).gameObject);
+            toBeRemoved.Add(solidRockFolder.transform.Find("RockTile " + i + ", " + (borderHeigth - 1)).gameObject);
             SetAsZero(new Vector2(i, borderHeigth -1));
             CreateTestGridTile(new Vector2(i, borderHeigth - 1));
         }
 
         //Erase lower width
-        for (int i = borderWidth; i < gridWidth - borderWidth; i++)
+        for (int i = borderWidth + roundCornerBy - 1; i < gridWidth - borderWidth - roundCornerBy + 1; i++)
         {
-            Destroy(solidRockFolder.transform.Find("RockTile " + i + ", " + (gridHeigth - borderHeigth)).gameObject);
+            toBeRemoved.Add(solidRockFolder.transform.Find("RockTile " + i + ", " + (gridHeigth - borderHeigth)).gameObject);
             SetAsZero(new Vector2(i, gridHeigth - borderHeigth));
             CreateTestGridTile(new Vector2(i, gridHeigth - borderHeigth));
 
         }
 
         //Erase Left hight
-        for (int i = borderHeigth; i < gridHeigth - borderHeigth; i++)
+        for (int i = borderHeigth + roundCornerBy - 1; i < gridHeigth - borderHeigth - roundCornerBy + 1; i++)
         {
-            Destroy(solidRockFolder.transform.Find("RockTile " + (borderWidth - 1)  + ", " + i).gameObject);
+            toBeRemoved.Add(solidRockFolder.transform.Find("RockTile " + (borderWidth - 1)  + ", " + i).gameObject);
             SetAsZero(new Vector2((borderWidth - 1), i));
             CreateTestGridTile(new Vector2((borderWidth - 1), i));
         }
 
         //Erase Rigth hight
-        for (int i = borderHeigth; i < gridHeigth - borderHeigth; i++)
+        for (int i = borderHeigth + roundCornerBy - 1; i < gridHeigth - borderHeigth - roundCornerBy + 1; i++)
         {
-            Destroy(solidRockFolder.transform.Find("RockTile " + (gridWidth - borderWidth) + ", " + i).gameObject);
+            toBeRemoved.Add(solidRockFolder.transform.Find("RockTile " + (gridWidth - borderWidth) + ", " + i).gameObject);
             SetAsZero(new Vector2(gridWidth - borderWidth, i));
             CreateTestGridTile(new Vector2(gridWidth - borderWidth, i));
         }
+
+        //ERASE CORNERS
+        for (int i = 0; i < roundCornerBy; i++)
+        {
+            //North
+            for (int round = 0, ix = gridWidth - borderWidth - 1 - i, iy = borderHeigth ; round < i + 1; round++, ix++ ,iy++)
+            {
+                toBeRemoved.Add(solidRockFolder.transform.Find("RockTile " + ix + ", " + iy).gameObject);
+                SetAsZero(new Vector2(ix, iy));
+                CreateTestGridTile(new Vector2(ix, iy));
+                Debug.Log("Erase North " + ix + "," + iy);
+            }
+
+            //South
+            for (int round = 0, ix = borderWidth, iy = gridHeigth - borderHeigth - 1 - i; round < i + 1; round++, ix++, iy++)
+            {
+                toBeRemoved.Add(solidRockFolder.transform.Find("RockTile " + ix + ", " + iy).gameObject);
+                SetAsZero(new Vector2(ix, iy));
+                CreateTestGridTile(new Vector2(ix, iy));
+                Debug.Log("Erase South " + ix + "," + iy);
+            }
+
+            //West
+            for (int round = 0, ix = borderWidth + i, iy = borderHeigth; round < i + 1; round++, ix--, iy++)
+            {
+                toBeRemoved.Add(solidRockFolder.transform.Find("RockTile " + ix + ", " + iy).gameObject);
+                SetAsZero(new Vector2(ix, iy));
+                CreateTestGridTile(new Vector2(ix, iy));
+                Debug.Log("Erase West " + ix + "," + iy);
+            }
+
+            //East
+            for (int round = 0, ix = gridWidth - borderWidth - 1 - i, iy = gridHeigth - borderHeigth - 1; round < i + 1; round++, ix++, iy--)
+            {
+                toBeRemoved.Add(solidRockFolder.transform.Find("RockTile " + ix + ", " + iy).gameObject);
+                SetAsZero(new Vector2(ix, iy));
+                CreateTestGridTile(new Vector2(ix, iy));
+                Debug.Log("Erase East " + ix + "," + iy);
+            }
+        }
+        
+
+        //for (int i = 0; i < roundCornerBy; i++)
+        //{
+        //    //EAST
+        //    for (int round = 0, ix = borderWidth + i, iy = borderHeigth; round < i + 1; round++, ix--, iy++)
+        //    {
+        //        PlaceRockToPlace(new Vector2(ix, iy));
+        //        Debug.Log("EAST " + ix + "," + iy);
+        //    }
+
 
         borderHeigth -= 1;
         borderWidth -= 1;
@@ -506,6 +572,29 @@ public class LayoutManager : MonoBehaviour
         testGrid[(int)pos.x, (int)pos.y] = Instantiate(emptyPre, newPos, Quaternion.identity);
         testGrid[(int)pos.x, (int)pos.y].transform.SetParent(testGridFolder.transform);
         testGrid[(int)pos.x, (int)pos.y].name = pos.x + " , " + pos.y;
+    }
+
+    private void FadeRockTiles()
+    {
+        for (int i = 0; i < toBeRemoved.Count; i++)
+        {
+                Debug.Log("heerrree");
+                Color tempColor = toBeRemoved[i].GetComponent<SpriteRenderer>().color;
+                tempColor.a -= 1f;
+                toBeRemoved[i].GetComponent<SpriteRenderer>().color = tempColor;
+
+                var tempPos = toBeRemoved[i].transform.position;
+                tempPos = new Vector3(tempPos.x, tempPos.y + 0.1f, tempPos.z);
+                Debug.Log("heerrree2");
+                if (true)
+                {
+                    toBeRemoved.Remove(toBeRemoved[i]);
+                    Destroy(toBeRemoved[i]);
+                    i -= 1;
+                }
+            
+        }
+       
     }
 
 }
