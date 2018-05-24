@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Sprites/AppIcon/CreatorIcon.png.meta
 guid: 29491c94e44dfd840b2b67492eb67e1d
 timeCreated: 1527150287
+=======
+guid: 48d7d83bc073e484d9a2506519a26512
+timeCreated: 1527151502
+>>>>>>> feature/sounds:Assets/Sprites/AppIcon/CreatorIcon.png.meta
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName: {}

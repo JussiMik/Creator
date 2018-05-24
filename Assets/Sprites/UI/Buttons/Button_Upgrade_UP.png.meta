@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 7640483756cf4dc4394c58ff7f6edb92
 timeCreated: 1527065534
+=======
+guid: 470e32b670b4b9c46a6c3df16db172d6
+timeCreated: 1527151501
+>>>>>>> feature/sounds
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName: {}

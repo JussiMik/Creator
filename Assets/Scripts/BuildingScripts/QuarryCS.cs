@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class QuarryCS : Structure
 {
+    private SpriteRenderer spriteRenderer;
     [Space(10)]
     public float gatheredStone;
 
@@ -18,7 +19,7 @@ public class QuarryCS : Structure
     public bool rockTimer, stoneCollected;
     [HideInInspector]
     public float originalstoneProductionTimeLength;
-    
+
     [Space(10)]
     public float rocks;
     [SerializeField]
@@ -31,12 +32,23 @@ public class QuarryCS : Structure
 
     private bool sanctityPointsGiven;
 
+    public AudioClip stoneCollectSound;
+
+    private void Awake()
+    {
+        playAudio = true;
+    }
+
     protected override void Start()
     {
         base.Start();
 
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        GetComponent<AudioSource>().playOnAwake = false;
+        GetComponent<AudioSource>().clip = stoneCollectSound;
 
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = underConstructionSprite;
         originalstoneProductionTimeLength = stoneProductionTimeLength;
         stoneCollected = true;
         normalSpeedConstructing = true;
@@ -45,6 +57,8 @@ public class QuarryCS : Structure
 
         name = "Quarry";
         type = "Production";
+
+        PlayAudio();
     }
 
     protected override void Update()
@@ -53,6 +67,7 @@ public class QuarryCS : Structure
 
         if (constructingDone == true && sanctityPointsGiven == false)
         {
+            spriteRenderer.sprite = finishedBuildingSprite;
             gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
 
             sanctityPointsGiven = true;
@@ -60,7 +75,7 @@ public class QuarryCS : Structure
             if (rockTimerCollision == true)
             {
                 rockTimer = true;
-            } 
+            }
         }
 
         if (rockTimer == true && stoneCollected == true)
@@ -131,6 +146,8 @@ public class QuarryCS : Structure
         gatheredStone = 0;
         objectiveManager.CheckForCompletedObjectives();
         gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().showPanel = false;
+
+        GetComponent<AudioSource>().PlayOneShot(stoneCollectSound);
         stoneCollected = true;
     }
 }

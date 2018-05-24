@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class Structure : MonoBehaviour
 {
+    public Sprite underConstructionSprite;
+    public Sprite finishedBuildingSprite;
+    public Sprite levelTwoSprite;
+    [Space(10)]
     [HideInInspector]
     public GameManager gameManager;
     public ObjectiveManager objectiveManager;
@@ -14,7 +18,7 @@ public class Structure : MonoBehaviour
     [HideInInspector]
     public QuarryCS quarryCS;
 
-    public Sprite levelTwoSprite;
+    
     public GameObject clickedBuilding;
     public Vector2 sizeOnGrid;
 
@@ -96,6 +100,18 @@ public class Structure : MonoBehaviour
         }
     }
 
+    public bool playAudio;
+
+    public AudioClip placementSound;
+    public AudioClip constructingAudio;
+    public AudioClip faithCollectSound;
+
+    private void Awake()
+    {
+        //GetComponent<AudioSource>().playOnAwake = false;
+        //GetComponent<AudioSource>().clip = faithCollectSound;
+    }
+
     protected virtual void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
@@ -122,6 +138,22 @@ public class Structure : MonoBehaviour
         if (faithTimer == true && faithCollected == true)
         {
             FaithTimer(gameManager.faithTimerMp);
+        }
+    }
+
+    private void ChangeTheSprite()
+    {
+
+    }
+
+    public void PlayAudio()
+    {
+        if (playAudio == true)
+        {
+            GetComponent<AudioSource>().PlayOneShot(placementSound);
+            GetComponent<AudioSource>().PlayOneShot(constructingAudio);
+
+            playAudio = false;
         }
     }
 
@@ -180,12 +212,19 @@ public class Structure : MonoBehaviour
     //Player can collect generated faith for later use
     public void CollectFaith()
     {
-        gameManager.DevotionDecreaseChunk();
+        if (gameManager.devotion > gameManager.devotionChunkDecreaseAmount)
+        {
+            gameManager.DevotionDecreaseChunk();
 
-        gameManager.faith += generatedFaith;
-        generatedFaith = 0f;
-        gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().showPanel = false;
-        faithCollected = true;
+
+            gameManager.faith += generatedFaith;
+            generatedFaith = 0f;
+            gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().showPanel = false;
+
+            GetComponent<AudioSource>().PlayOneShot(faithCollectSound);
+
+            faithCollected = true;
+        }
     }
 
     //Change structures level

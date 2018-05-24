@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShrineCS : Structure
 {
+    private SpriteRenderer spriteRenderer;
     private bool addedToList;
 
     [Space(10)]
@@ -11,11 +12,18 @@ public class ShrineCS : Structure
     [Space(10)]
     public bool allowTempleConstructing;
 
+    private void Awake()
+    {
+        playAudio = true;
+    }
+
     protected override void Start()
     {
         base.Start();
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = underConstructionSprite;
         originalFaithTargetTime = productionCycleLength;
 
         normalSpeedConstructing = true;
@@ -26,6 +34,8 @@ public class ShrineCS : Structure
 
         name = "Shrine";
         type = "Faith";
+
+        PlayAudio();
     }
 
     protected override void Update()
@@ -34,16 +44,12 @@ public class ShrineCS : Structure
 
         if (constructingDone == true && addedToList == false)
         {
+            spriteRenderer.sprite = finishedBuildingSprite;
             AddToList();
             AddToObjectivesList();
             gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
             faithTimer = true;
         }
-      /*  if (Input.GetKeyDown("d"))
-        {
-            Destroy(gameObject);
-        }
-        */
     }
 
     private void AddToList()

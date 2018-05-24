@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ConversionTempleCS : Structure
 {
+    private SpriteRenderer spriteRenderer;
     public float convertedMonk;
     public float monkConversionTimeLength;
     public int totalMonksConverted;
@@ -19,9 +20,17 @@ public class ConversionTempleCS : Structure
 
     public bool testConversion;
 
+    private void Awake()
+    {
+        playAudio = true;
+    }
+
     protected override void Start()
     {
         base.Start();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = underConstructionSprite;
         originalMonkConversionTimeLength = monkConversionTimeLength;
         normalSpeedConstructing = true;
         monkCollected = true;
@@ -29,6 +38,8 @@ public class ConversionTempleCS : Structure
 
         name = "Conversion temple";
         type = "Food";
+
+        PlayAudio();
     }
 
     protected override void Update()
@@ -37,6 +48,7 @@ public class ConversionTempleCS : Structure
 
         if (constructingDone == true && sanctityPointsGiven == false)
         {
+            spriteRenderer.sprite = finishedBuildingSprite;
             gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
             sanctityPointsGiven = true;
             conversionTimer = true;

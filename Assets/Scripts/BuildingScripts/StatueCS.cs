@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class StatueCS : Structure
 {
+    private SpriteRenderer spriteRenderer;
     private bool addedToList;
+
+    private void Awake()
+    {
+        playAudio = true;
+    }
 
     protected override void Start()
     {
         base.Start();
 
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = underConstructionSprite;
         originalFaithTargetTime = productionCycleLength;
 
         normalSpeedConstructing = true;
@@ -20,6 +28,8 @@ public class StatueCS : Structure
 
         name = "Statue";
         type = "Faith";
+
+        PlayAudio();
     }
 
     protected override void Update()
@@ -28,6 +38,7 @@ public class StatueCS : Structure
 
         if (constructingDone == true && addedToList == false)
         {
+            spriteRenderer.sprite = finishedBuildingSprite;
             AddToList();
             gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
             faithTimer = true;

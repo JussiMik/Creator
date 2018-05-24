@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WoodWorkshopCS : Structure
 {
+    private SpriteRenderer spriteRenderer;
     [Space(10)]
     public float gatheredWood;
 
@@ -31,12 +32,23 @@ public class WoodWorkshopCS : Structure
 
     private bool sanctityPointsGiven;
 
+    public AudioClip woodCollectSound;
+
+    private void Awake()
+    {
+        playAudio = true;
+    }
+
     protected override void Start()
     {
         base.Start();
 
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
+        GetComponent<AudioSource>().playOnAwake = false;
+        GetComponent<AudioSource>().clip = woodCollectSound;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = underConstructionSprite;
         originalWoodTime = woodProductionTimeLength;
         woodCollected = true;
         normalSpeedConstructing = true;
@@ -45,6 +57,8 @@ public class WoodWorkshopCS : Structure
 
         name = "Wood workshop";
         type = "Production";
+
+        PlayAudio();
     }
 
     protected override void Update()
@@ -53,6 +67,7 @@ public class WoodWorkshopCS : Structure
 
         if (constructingDone == true && sanctityPointsGiven == false)
         {
+            spriteRenderer.sprite = finishedBuildingSprite;
             gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
 
             sanctityPointsGiven = true;
@@ -131,6 +146,8 @@ public class WoodWorkshopCS : Structure
         objectiveManager.CheckForCompletedObjectives();
         gatheredWood = 0;
         gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().showPanel = false;
+
+        GetComponent<AudioSource>().PlayOneShot(woodCollectSound);
         woodCollected = true;
     }
 }

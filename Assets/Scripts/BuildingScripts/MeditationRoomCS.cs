@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class MeditationRoomCS : Structure
 {
+    private SpriteRenderer spriteRenderer;
     private bool addedToList;
+
+    private void Awake()
+    {
+        playAudio = true;
+    }
 
     protected override void Start()
     {
         base.Start();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = underConstructionSprite;
         originalFaithTargetTime = productionCycleLength;
 
         normalSpeedConstructing = true;
@@ -21,6 +29,8 @@ public class MeditationRoomCS : Structure
 
         name = "Meditation room";
         type = "Devotion";
+
+        PlayAudio();
     }
 
     protected override void Update()
@@ -29,6 +39,7 @@ public class MeditationRoomCS : Structure
 
         if (constructingDone == true && addedToList == false)
         {
+            spriteRenderer.sprite = finishedBuildingSprite;
             AddToList();
             objectiveManager.meditationRoomList.Add(gameObject);
             objectiveManager.CheckForCompletedObjectives();

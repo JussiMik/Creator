@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50043023997098472}
   - component: {fileID: 114300564340172304}
   - component: {fileID: 114505188927232998}
+  - component: {fileID: 82881141738196912}
   m_Layer: 12
   m_Name: Quarry
   m_TagString: Quarry
@@ -131,7 +132,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.35}
+    pivot: {x: 0.5, y: 0.34}
     oldSize: {x: 2, y: 1.6993244}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
@@ -172,6 +173,86 @@ PolygonCollider2D:
       - {x: 1.8311329, y: -0.12762761}
       - {x: -0.013620377, y: 0.97530955}
       - {x: -1.8556519, y: -0.09559488}
+--- !u!82 &82881141738196912
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1216336883453896}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114300564340172304
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -183,12 +264,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4744a0a6db225bf45a21668eebb2e4bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  underConstructionSprite: {fileID: 21300000, guid: f51998b6d9c80fd40b31bd0f4be2c7d9,
+    type: 3}
+  finishedBuildingSprite: {fileID: 21300000, guid: 83499dc2baa9bc340bc7fe38f5cc5e93,
+    type: 3}
+  levelTwoSprite: {fileID: 21300000, guid: b999eba31fda97348979d9dde2762768, type: 3}
   gameManager: {fileID: 0}
   objectiveManager: {fileID: 0}
   objectiveTracker: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
-  levelTwoSprite: {fileID: 21300000, guid: dc3ab5d48e9843e4aa5ce88fdf58f9f1, type: 3}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
   faithConstructingCost: 250
@@ -228,6 +313,10 @@ MonoBehaviour:
   name: 
   type: 
   info: Produces stone when placed near a large rock
+  playAudio: 0
+  placementSound: {fileID: 8300000, guid: d59a992b19a4a964c8dad1353c553e14, type: 3}
+  constructingAudio: {fileID: 8300000, guid: 58a651a863e62714588c7c5dcfe72910, type: 3}
+  faithCollectSound: {fileID: 0}
   gatheredStone: 0
   stoneAmountPerProductionCyclePerRock: 6
   stoneAmountPerProductionCyclePerRockLvl2: 12
@@ -240,6 +329,7 @@ MonoBehaviour:
   lvl1RockAmount: 3
   lvl2RockAmount: 6
   lvl3RockAmount: 0
+  stoneCollectSound: {fileID: 8300000, guid: 87185b088c7c55e43acfbe92d509d08d, type: 3}
 --- !u!114 &114505188927232998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -309,7 +399,7 @@ SpriteRenderer:
   m_SortingLayerID: 818483521
   m_SortingLayer: 3
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 052e2688afce9c0488da2dffe5251635, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 83499dc2baa9bc340bc7fe38f5cc5e93, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

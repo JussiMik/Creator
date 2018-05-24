@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class GardenCS : Structure
 {
+    private SpriteRenderer spriteRenderer;
     private bool addedToList;
+
+    private void Awake()
+    {
+        playAudio = true;
+    }
 
     protected override void Start()
     {
         base.Start();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = underConstructionSprite;
         normalSpeedConstructing = true;
         addedToList = false;
 
@@ -18,6 +25,8 @@ public class GardenCS : Structure
 
         name = "Garden";
         type = "Devotion";
+
+        PlayAudio();
     }
 
     protected override void Update()
@@ -26,6 +35,7 @@ public class GardenCS : Structure
 
         if (constructingDone == true && addedToList == false)
         {
+            spriteRenderer.sprite = finishedBuildingSprite;
             AddToList();
             objectiveManager.gardenList.Add(gameObject);
             objectiveManager.CheckForCompletedObjectives();

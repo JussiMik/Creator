@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 82d61b09714d1764b9dd615f62764c71
 <<<<<<< HEAD
 timeCreated: 1527065543
@@ -19,6 +20,13 @@ TextureImporter:
     21300012: MonkWalk_DownRight_Gray_6
     21300014: MonkWalk_DownRight_Gray_7
 >>>>>>> feature/monk_animations
+=======
+guid: 21dcadbf58edd6842baa2a814190e42a
+timeCreated: 1527151492
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName: {}
+>>>>>>> feature/sounds
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -50,10 +58,14 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
 <<<<<<< HEAD
+<<<<<<< HEAD
   spriteMode: 1
 =======
   spriteMode: 2
 >>>>>>> feature/monk_animations
+=======
+  spriteMode: 1
+>>>>>>> feature/sounds
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -77,6 +89,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
   spriteSheet:
     serializedVersion: 2
@@ -254,6 +267,11 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
 >>>>>>> feature/monk_animations
+=======
+  spriteSheet:
+    serializedVersion: 2
+    sprites: []
+>>>>>>> feature/sounds
     outline: []
   spritePackingTag: 
   userData: 

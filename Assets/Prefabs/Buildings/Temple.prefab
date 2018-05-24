@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50765504510955102}
   - component: {fileID: 114956424039527146}
   - component: {fileID: 114082311777160790}
+  - component: {fileID: 82958976035115478}
   m_Layer: 12
   m_Name: Temple
   m_TagString: FaithBuilding
@@ -80,7 +81,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.28577548}
-    oldSize: {x: 5.226396, y: 5.433502}
+    oldSize: {x: 6.09137, y: 6.09137}
     newSize: {x: 5.226396, y: 5.433502}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -92,6 +93,86 @@ PolygonCollider2D:
       - {x: 2.1785183, y: 0.013263702}
       - {x: 0.037210464, y: 1.2674165}
       - {x: -2.1414127, y: 0.031894684}
+--- !u!82 &82958976035115478
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1604896122853608}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114082311777160790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,6 +197,8 @@ MonoBehaviour:
   percent: 0
   faithMaximumTime: 0
   faithTimer: 0
+  timeMultiplier: 0
+  faithMultiplier: 0
 --- !u!114 &114956424039527146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,10 +210,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc620cea7a31086439303571c7733882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  underConstructionSprite: {fileID: 21300000, guid: c90ec840f2ebdb04d9dbb5be2b82941e,
+    type: 3}
+  finishedBuildingSprite: {fileID: 21300000, guid: 845ada2846cabf84fa39afd32ae4c31c,
+    type: 3}
+  levelTwoSprite: {fileID: 0}
   gameManager: {fileID: 0}
+  objectiveManager: {fileID: 0}
+  objectiveTracker: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
-  levelTwoSprite: {fileID: 0}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 3, y: 3}
   faithConstructingCost: 0
@@ -170,6 +259,10 @@ MonoBehaviour:
   name: 
   type: 
   info: This is a nice temple.
+  playAudio: 0
+  placementSound: {fileID: 8300000, guid: d59a992b19a4a964c8dad1353c553e14, type: 3}
+  constructingAudio: {fileID: 8300000, guid: 58a651a863e62714588c7c5dcfe72910, type: 3}
+  faithCollectSound: {fileID: 0}
 --- !u!212 &212383087690225630
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114434509404870410}
   - component: {fileID: 60540289590645054}
   - component: {fileID: 114846904060427160}
+  - component: {fileID: 82309417391560698}
   m_Layer: 12
   m_Name: MysticPlace
   m_TagString: MysticPlace
@@ -58,9 +59,9 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 22.99, y: 16}
-    newSize: {x: 22.99, y: 16}
+    pivot: {x: 0.5, y: 0.4}
+    oldSize: {x: 4, y: 2.783819}
+    newSize: {x: 2, y: 1.3919095}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -71,6 +72,86 @@ PolygonCollider2D:
       - {x: 1.3269901, y: 0.043885827}
       - {x: -0.013223648, y: 0.8004888}
       - {x: -1.392561, y: 0.06767094}
+--- !u!82 &82309417391560698
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1173936272439816}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114434509404870410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -95,12 +176,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67313a1469251994f80f98d74e1d1ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  underConstructionSprite: {fileID: 0}
+  finishedBuildingSprite: {fileID: 0}
+  levelTwoSprite: {fileID: 21300000, guid: 6fe782525858348438b4f948854ad1e4, type: 3}
   gameManager: {fileID: 0}
   objectiveManager: {fileID: 0}
   objectiveTracker: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
-  levelTwoSprite: {fileID: 21300000, guid: fb6c5e4e1580cdf4f9d76f2c100647c0, type: 3}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 0, y: 0}
   faithConstructingCost: 0
@@ -140,6 +223,10 @@ MonoBehaviour:
   name: 
   type: 
   info: This is a nice Mystic Place.
+  playAudio: 0
+  placementSound: {fileID: 0}
+  constructingAudio: {fileID: 0}
+  faithCollectSound: {fileID: 0}
   addedMonkSlots: 2
   monksPurchased: 0
   monkFaithCosts: []
@@ -185,12 +272,12 @@ SpriteRenderer:
   m_SortingLayerID: 818483521
   m_SortingLayer: 3
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: b266ab7fd6f8cad49889346091ac7be1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: db0c5300a545b3440943a9f43bb330b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 22.99, y: 16}
+  m_Size: {x: 2, y: 1.3919095}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

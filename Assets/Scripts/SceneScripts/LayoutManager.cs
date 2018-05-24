@@ -74,8 +74,6 @@ public class LayoutManager : MonoBehaviour
 
     static Material lineMaterial;
 
-
-
     // Use this for initialization
     private void Start()
     {

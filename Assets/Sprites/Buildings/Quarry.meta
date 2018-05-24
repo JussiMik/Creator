@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 16c1c7272470c084aa98cb82cb63c80a
 folderAsset: yes
 timeCreated: 1527061754
+=======
+guid: 6caa483f124a9234fbe20ca5e658c675
+folderAsset: yes
+timeCreated: 1527151465
+>>>>>>> feature/sounds
 licenseType: Pro
 DefaultImporter:
   userData: 
