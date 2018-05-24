@@ -328,6 +328,7 @@ MonoBehaviour:
   lvl1TreeAmount: 3
   lvl2TreeAmount: 6
   lvl3TreeAmount: 0
+  woodCollectSound: {fileID: 8300000, guid: dca31f94e0d7c08489e62a55cd5055c8, type: 3}
 --- !u!114 &114544871669537822
 MonoBehaviour:
   m_ObjectHideFlags: 1

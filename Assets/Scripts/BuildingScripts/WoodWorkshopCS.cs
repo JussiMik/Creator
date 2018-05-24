@@ -32,6 +32,8 @@ public class WoodWorkshopCS : Structure
 
     private bool sanctityPointsGiven;
 
+    public AudioClip woodCollectSound;
+
     private void Awake()
     {
         playAudio = true;
@@ -43,6 +45,8 @@ public class WoodWorkshopCS : Structure
 
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
+        GetComponent<AudioSource>().playOnAwake = false;
+        GetComponent<AudioSource>().clip = woodCollectSound;
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = underConstructionSprite;
         originalWoodTime = woodProductionTimeLength;
@@ -142,6 +146,8 @@ public class WoodWorkshopCS : Structure
         objectiveManager.CheckForCompletedObjectives();
         gatheredWood = 0;
         gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().showPanel = false;
+
+        GetComponent<AudioSource>().PlayOneShot(woodCollectSound);
         woodCollected = true;
     }
 }

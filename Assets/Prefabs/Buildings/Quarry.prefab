@@ -329,7 +329,7 @@ MonoBehaviour:
   lvl1RockAmount: 3
   lvl2RockAmount: 6
   lvl3RockAmount: 0
-  stoneCollectSound: {fileID: 8300000, guid: 03729b39eff8f644fbb4d0732171582c, type: 3}
+  stoneCollectSound: {fileID: 8300000, guid: 87185b088c7c55e43acfbe92d509d08d, type: 3}
 --- !u!114 &114505188927232998
 MonoBehaviour:
   m_ObjectHideFlags: 1
