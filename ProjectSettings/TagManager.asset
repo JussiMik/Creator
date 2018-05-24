@@ -18,13 +18,8 @@ TagManager:
   - BuildingButton
   - Shrine
   - ShrineCollider
-  - MysticPlace
-  - HealthCanvas
-  - ProductionCycleCanvas
   - Monk
-  - ConversionTemple
-  - ObjectiveManager
-  - Challenge
+  - Border
   layers:
   - Default
   - TransparentFX
@@ -39,7 +34,7 @@ TagManager:
   - Unwalkable
   - PFTargetLayer
   - Building
-  - 
+  - Border
   - 
   - 
   - 

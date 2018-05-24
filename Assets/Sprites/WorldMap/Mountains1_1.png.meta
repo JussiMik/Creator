@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: 43e2c944dee491647b8db2af22974ef5
-timeCreated: 1527067553
+guid: b6c9e29adb5cd06488822f9234545f15
+timeCreated: 1525871237
 licenseType: Pro
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: MonkStop_0
-    21300002: MonkStop_1
+  fileIDToRecycleName: {}
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -36,13 +34,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.68}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -126,33 +124,7 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: MonkStop_0
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 18
-        width: 168
-        height: 371
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: MonkStop_1
-      rect:
-        serializedVersion: 2
-        x: 515
-        y: 18
-        width: 167
-        height: 371
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
+    sprites: []
     outline: []
   spritePackingTag: 
   userData: 

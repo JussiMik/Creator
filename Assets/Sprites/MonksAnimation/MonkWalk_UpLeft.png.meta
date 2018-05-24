@@ -1,13 +1,6 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 77aa4c93a6f31784290783ba043c8f16
-<<<<<<< HEAD
-timeCreated: 1527065534
-licenseType: Pro
-TextureImporter:
-  fileIDToRecycleName: {}
-=======
-timeCreated: 1527074266
+timeCreated: 1527172725
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -19,14 +12,6 @@ TextureImporter:
     21300010: MonkWalk_UpLeft_5
     21300012: MonkWalk_UpLeft_6
     21300014: MonkWalk_UpLeft_7
->>>>>>> feature/monk_animations
-=======
-guid: 1f3da4da1b7a7c24e9aba14d8a58a502
-timeCreated: 1527151485
-licenseType: Pro
-TextureImporter:
-  fileIDToRecycleName: {}
->>>>>>> feature/sounds
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -57,15 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-<<<<<<< HEAD
-<<<<<<< HEAD
-  spriteMode: 1
-=======
   spriteMode: 2
->>>>>>> feature/monk_animations
-=======
-  spriteMode: 1
->>>>>>> feature/sounds
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -89,12 +66,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-<<<<<<< HEAD
-<<<<<<< HEAD
-  spriteSheet:
-    serializedVersion: 2
-    sprites: []
-=======
   - buildTarget: Standalone
     maxTextureSize: 2048
     textureFormat: -1
@@ -266,12 +237,6 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
->>>>>>> feature/monk_animations
-=======
-  spriteSheet:
-    serializedVersion: 2
-    sprites: []
->>>>>>> feature/sounds
     outline: []
   spritePackingTag: 
   userData: 
