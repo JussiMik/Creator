@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Farm : Structure
 {
+    private SpriteRenderer spriteRenderer;
     private bool addedToList;
 
     private void Awake()
@@ -14,8 +15,10 @@ public class Farm : Structure
     protected override void Start()
     {
         base.Start();
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = underConstructionSprite;
         normalSpeedConstructing = true;
         addedToList = false;
 
@@ -33,6 +36,7 @@ public class Farm : Structure
 
         if (constructingDone == true && addedToList == false)
         {
+            spriteRenderer.sprite = finishedBuildingSprite;
             AddToList();
             gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
         }

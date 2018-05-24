@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WoodWorkshopCS : Structure
 {
+    private SpriteRenderer spriteRenderer;
     [Space(10)]
     public float gatheredWood;
 
@@ -42,6 +43,8 @@ public class WoodWorkshopCS : Structure
 
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = underConstructionSprite;
         originalWoodTime = woodProductionTimeLength;
         woodCollected = true;
         normalSpeedConstructing = true;
@@ -60,6 +63,7 @@ public class WoodWorkshopCS : Structure
 
         if (constructingDone == true && sanctityPointsGiven == false)
         {
+            spriteRenderer.sprite = finishedBuildingSprite;
             gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
 
             sanctityPointsGiven = true;

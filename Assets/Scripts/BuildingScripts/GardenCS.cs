@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GardenCS : Structure
 {
+    private SpriteRenderer spriteRenderer;
     private bool addedToList;
 
     private void Awake()
@@ -15,7 +16,8 @@ public class GardenCS : Structure
     {
         base.Start();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = underConstructionSprite;
         normalSpeedConstructing = true;
         addedToList = false;
 
@@ -33,6 +35,7 @@ public class GardenCS : Structure
 
         if (constructingDone == true && addedToList == false)
         {
+            spriteRenderer.sprite = finishedBuildingSprite;
             AddToList();
             objectiveManager.gardenList.Add(gameObject);
             objectiveManager.CheckForCompletedObjectives();

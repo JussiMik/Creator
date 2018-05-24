@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class QuarryCS : Structure
 {
+    private SpriteRenderer spriteRenderer;
     [Space(10)]
     public float gatheredStone;
 
@@ -46,7 +47,8 @@ public class QuarryCS : Structure
         GetComponent<AudioSource>().clip = stoneCollectSound;
 
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = underConstructionSprite;
         originalstoneProductionTimeLength = stoneProductionTimeLength;
         stoneCollected = true;
         normalSpeedConstructing = true;
@@ -65,6 +67,7 @@ public class QuarryCS : Structure
 
         if (constructingDone == true && sanctityPointsGiven == false)
         {
+            spriteRenderer.sprite = finishedBuildingSprite;
             gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
 
             sanctityPointsGiven = true;

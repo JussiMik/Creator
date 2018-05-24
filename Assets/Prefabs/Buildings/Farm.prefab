@@ -164,12 +164,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32da33593d807bf46aefb77a6fcae7cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  underConstructionSprite: {fileID: 21300000, guid: f51998b6d9c80fd40b31bd0f4be2c7d9,
+    type: 3}
+  finishedBuildingSprite: {fileID: 21300000, guid: 933d94250d9e108499c60055edb8d832,
+    type: 3}
+  levelTwoSprite: {fileID: 21300000, guid: 3bd7b93ddc8e212439f229fe32c8d77b, type: 3}
   gameManager: {fileID: 0}
   objectiveManager: {fileID: 0}
   objectiveTracker: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
-  levelTwoSprite: {fileID: 21300000, guid: 3bd7b93ddc8e212439f229fe32c8d77b, type: 3}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
   faithConstructingCost: 500

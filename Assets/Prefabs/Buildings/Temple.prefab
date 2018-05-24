@@ -81,7 +81,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.28577548}
-    oldSize: {x: 5.226396, y: 5.433502}
+    oldSize: {x: 6.09137, y: 6.09137}
     newSize: {x: 5.226396, y: 5.433502}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -210,12 +210,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc620cea7a31086439303571c7733882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  underConstructionSprite: {fileID: 21300000, guid: c90ec840f2ebdb04d9dbb5be2b82941e,
+    type: 3}
+  finishedBuildingSprite: {fileID: 21300000, guid: 845ada2846cabf84fa39afd32ae4c31c,
+    type: 3}
+  levelTwoSprite: {fileID: 0}
   gameManager: {fileID: 0}
   objectiveManager: {fileID: 0}
   objectiveTracker: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
-  levelTwoSprite: {fileID: 0}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 3, y: 3}
   faithConstructingCost: 0

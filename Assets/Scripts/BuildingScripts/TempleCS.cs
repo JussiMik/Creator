@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class TempleCS : Structure
 {
+    private SpriteRenderer spriteRenderer;
     private bool addedToList;
 
     protected override void Start()
     {
         base.Start();
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = underConstructionSprite;
         originalFaithTargetTime = productionCycleLength;
 
         normalSpeedConstructing = true;
@@ -38,6 +41,7 @@ public class TempleCS : Structure
 
         if (constructingDone == true && addedToList == false)
         {
+            spriteRenderer.sprite = finishedBuildingSprite;
             AddToList();
             AddToObjectivesList();
             gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);

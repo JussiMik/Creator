@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class Structure : MonoBehaviour
 {
+    public Sprite underConstructionSprite;
+    public Sprite finishedBuildingSprite;
+    public Sprite levelTwoSprite;
+    [Space(10)]
     [HideInInspector]
     public GameManager gameManager;
     public ObjectiveManager objectiveManager;
@@ -14,7 +18,7 @@ public class Structure : MonoBehaviour
     [HideInInspector]
     public QuarryCS quarryCS;
 
-    public Sprite levelTwoSprite;
+    
     public GameObject clickedBuilding;
     public Vector2 sizeOnGrid;
 
@@ -135,6 +139,11 @@ public class Structure : MonoBehaviour
         {
             FaithTimer(gameManager.faithTimerMp);
         }
+    }
+
+    private void ChangeTheSprite()
+    {
+
     }
 
     public void PlayAudio()

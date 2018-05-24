@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StatueCS : Structure
 {
+    private SpriteRenderer spriteRenderer;
     private bool addedToList;
 
     private void Awake()
@@ -15,6 +16,8 @@ public class StatueCS : Structure
     {
         base.Start();
 
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = underConstructionSprite;
         originalFaithTargetTime = productionCycleLength;
 
         normalSpeedConstructing = true;
@@ -35,6 +38,7 @@ public class StatueCS : Structure
 
         if (constructingDone == true && addedToList == false)
         {
+            spriteRenderer.sprite = finishedBuildingSprite;
             AddToList();
             gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
             faithTimer = true;

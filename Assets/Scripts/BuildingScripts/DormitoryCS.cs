@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DormitoryCS : Structure
 {
+    private SpriteRenderer spriteRenderer;
     private bool addedToList;
     [Space(10)]
     public int monkSlotsPerDormitory;
@@ -17,6 +18,8 @@ public class DormitoryCS : Structure
     {
         base.Start();
 
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = underConstructionSprite;
         normalSpeedConstructing = true;
         addedToList = false;
 
@@ -34,6 +37,7 @@ public class DormitoryCS : Structure
 
         if (constructingDone == true && addedToList == false)
         {
+            spriteRenderer.sprite = finishedBuildingSprite;
             //AddToList();
             gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
             gameManager.monkSlots += monkSlotsPerDormitory;

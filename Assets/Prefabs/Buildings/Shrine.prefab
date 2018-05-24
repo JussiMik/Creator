@@ -290,6 +290,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e2a98e80e61d3a4fabee95b44a5e4e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  underConstructionSprite: {fileID: 21300000, guid: f51998b6d9c80fd40b31bd0f4be2c7d9,
+    type: 3}
+  finishedBuildingSprite: {fileID: 21300000, guid: a8820d63c12e4e34189f8439b8fb1de2,
+    type: 3}
   gameManager: {fileID: 0}
   objectiveManager: {fileID: 0}
   objectiveTracker: {fileID: 0}
