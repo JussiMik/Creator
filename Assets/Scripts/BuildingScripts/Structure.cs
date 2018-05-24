@@ -203,15 +203,19 @@ public class Structure : MonoBehaviour
     //Player can collect generated faith for later use
     public void CollectFaith()
     {
-        gameManager.DevotionDecreaseChunk();
+        if (gameManager.devotion > gameManager.devotionChunkDecreaseAmount)
+        {
+            gameManager.DevotionDecreaseChunk();
 
-        gameManager.faith += generatedFaith;
-        generatedFaith = 0f;
-        gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().showPanel = false;
 
-        GetComponent<AudioSource>().PlayOneShot(faithCollectSound);
+            gameManager.faith += generatedFaith;
+            generatedFaith = 0f;
+            gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().showPanel = false;
 
-        faithCollected = true;
+            GetComponent<AudioSource>().PlayOneShot(faithCollectSound);
+
+            faithCollected = true;
+        }
     }
 
     //Change structures level
