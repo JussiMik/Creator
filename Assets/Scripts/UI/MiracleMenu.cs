@@ -46,19 +46,31 @@ public class MiracleMenu : Menu
 
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6fe9fb00423e5c7737e825b9fe907605e78b39ed
     private void Update()
     {
         if (infoCard.active == true)
         {
+<<<<<<< HEAD
             CheckResources(miracles);
         }
     }
+=======
+                CheckResources(miracles);
+        }
+    }
+    
+>>>>>>> 6fe9fb00423e5c7737e825b9fe907605e78b39ed
 
     public void ShowInfo(int blockNo)
     {
         infoCard.SetActive(true);
 
         curBlockNo = blockNo;
+<<<<<<< HEAD
 
         //if (curBlockNo == 0 || curBlockNo == 1)
         {
@@ -84,6 +96,18 @@ public class MiracleMenu : Menu
         //    infoBuildingRes_Dev.text = miracles[blockNo].GetComponent<Miracle03>().devotionConstructingCost.ToString();
             
         //}
+=======
+        infoBuildingSprite.GetComponent<Image>().sprite = miracles[blockNo].GetComponent<SpriteRenderer>().sprite;
+        infoBuildingName.GetComponent<Text>().text = "Miracle " + (blockNo + 1);
+        infoBuildingText.GetComponent<Text>().text = "Info of Miracle " + (blockNo + 1);
+
+      
+            infoBuildingRes_Wood.text = "0";
+            infoBuildingRes_Faith.text = "100";
+            infoBuildingRes_Stone.text = "0";
+            infoBuildingRes_Dev.text = "0";
+
+>>>>>>> 6fe9fb00423e5c7737e825b9fe907605e78b39ed
         infoCard.GetComponent<InfoCard>().currentMenu = gameObject.GetComponent<Menu>();
     }
   

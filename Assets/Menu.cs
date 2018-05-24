@@ -33,11 +33,15 @@ public class Menu : MonoBehaviour {
     }
 
     // Use this for initialization
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6fe9fb00423e5c7737e825b9fe907605e78b39ed
     public virtual void SelectToDrag()
     {
 
     }
+
 
     //PRESSING THE ACTUAL MENU BUTTON
     protected virtual void PressStructureMenu()
@@ -73,12 +77,19 @@ public class Menu : MonoBehaviour {
 
     public virtual void CheckResources(GameObject[] otherBuildingsList)
     {
+<<<<<<< HEAD
         var usedScript = otherBuildingsList[curBlockNo].GetComponent<Structure>();
 
         canTakeAction = true;
 
         //TEST WOOD
         if (gameManager.wood >= usedScript.woodConstructingCost)
+=======
+        canTakeAction = true;
+
+        //TEST WOOD
+        if (gameManager.wood >= otherBuildingsList[curBlockNo].GetComponent<Structure>().woodConstructingCost)
+>>>>>>> 6fe9fb00423e5c7737e825b9fe907605e78b39ed
         {
             infoBuildingRes_Wood.color = Color.green;
         }
@@ -89,7 +100,11 @@ public class Menu : MonoBehaviour {
         }
 
         //TEST FAITH
+<<<<<<< HEAD
         if (gameManager.faith >= usedScript.faithConstructingCost)
+=======
+        if (gameManager.faith >= otherBuildingsList[curBlockNo].GetComponent<Structure>().faithConstructingCost)
+>>>>>>> 6fe9fb00423e5c7737e825b9fe907605e78b39ed
         {
             infoBuildingRes_Faith.color = Color.green;
         }
@@ -100,7 +115,11 @@ public class Menu : MonoBehaviour {
         }
 
         //TEST STONE
+<<<<<<< HEAD
         if (gameManager.stone >= usedScript.stoneConstructingCost)
+=======
+        if (gameManager.stone >= otherBuildingsList[curBlockNo].GetComponent<Structure>().stoneConstructingCost)
+>>>>>>> 6fe9fb00423e5c7737e825b9fe907605e78b39ed
         {
             infoBuildingRes_Stone.color = Color.green;
         }
@@ -111,7 +130,11 @@ public class Menu : MonoBehaviour {
         }
 
         //TEST DEVOTION
+<<<<<<< HEAD
         if (gameManager.devotion >= usedScript.devotionConstructingCost)
+=======
+        if (gameManager.devotion >= otherBuildingsList[curBlockNo].GetComponent<Structure>().devotionConstructingCost)
+>>>>>>> 6fe9fb00423e5c7737e825b9fe907605e78b39ed
         {
             infoBuildingRes_Dev.color = Color.green;
         }
@@ -131,4 +154,8 @@ public class Menu : MonoBehaviour {
         }
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6fe9fb00423e5c7737e825b9fe907605e78b39ed
 }

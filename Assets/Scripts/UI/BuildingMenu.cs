@@ -59,6 +59,7 @@ public class BuildingMenu : Menu {
         ProducalToActive();
 
     }
+
     private void Update()
     {
         if (infoCard.active == true)
@@ -166,6 +167,10 @@ public class BuildingMenu : Menu {
         base.HideMenu();
     }
 
+<<<<<<< HEAD
    
+=======
+    
+>>>>>>> 6fe9fb00423e5c7737e825b9fe907605e78b39ed
    
 }
