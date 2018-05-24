@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 60884686366902698}
   - component: {fileID: 50769514224919958}
   - component: {fileID: 114504866947670604}
+  - component: {fileID: 114099424464598158}
   m_Layer: 12
   m_Name: WoodWorkshop
   m_TagString: WoodWorkshop
@@ -171,6 +172,30 @@ PolygonCollider2D:
       - {x: 0.6450348, y: -0.062333584}
       - {x: 0.018678665, y: 0.32095337}
       - {x: -0.62800026, y: -0.07768965}
+--- !u!114 &114099424464598158
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1632218740180484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8828eaa8532246340a020044d21aabed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 30, z: 0}
+  foregroundObject: {fileID: 1733398171417390, guid: 64bcdab38214950458388e55013e650a,
+    type: 2}
+  backgroundObject: {fileID: 1947643304754428, guid: 5637093a46a2c554b93134d0f465e1c1,
+    type: 2}
+  progressBarForegroundImage: {fileID: 0}
+  buildingDone: 0
+  checkForBuildingDone: 0
+  startTimer: 0
+  checkForFaithCollected: 0
+  percent: 0
+  faithMaximumTime: 0
+  faithTimer: 0
 --- !u!114 &114504866947670604
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -46,6 +46,7 @@ public class Monk : MonoBehaviour
         {
             movingUp = false;
             movingDown = false;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
             animator.SetBool("isMoving", false);
             animator.SetBool("movingUp", false);
             animator.SetBool("movingDown", false);
@@ -108,14 +109,13 @@ public class Monk : MonoBehaviour
             //rightuu
             if(path[0].x > gameObject.transform.position.x && movingUp == true)
             {
-                Debug.Log("Saatanansaatana");
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }
 
             //leftuu
-           else if(path[0].x < gameObject.transform.position.x && movingUp == false)
+           else if(path[0].x < gameObject.transform.position.x && movingDown == true)
             {
-                transform.rotation = Quaternion.Euler(0, 0, 0);
+                transform.rotation = Quaternion.Euler(0, 180, 0);
             }
 
             targetIndex = 0;
@@ -131,7 +131,6 @@ public class Monk : MonoBehaviour
                         yield return new WaitForSeconds(.25f);
                     }
                     currentWaypoint = path[targetIndex];
-
                 }
                 transform.position = Vector2.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
                 yield return null;

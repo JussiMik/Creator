@@ -94,7 +94,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1918646782444192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.07, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children:
   - {fileID: 4606309129537690}
@@ -187,6 +187,26 @@ MonoBehaviour:
   checkForNewDestination: 0
   speed: 0.6
   movementCheckDistance: 4
+  path: []
+  goodMonkAndFarmRatio: 0
+  badMonkAndFarmRatio75: 0
+  badMonkAndFarmRatio50: 0
+  badMonkAndFarmRatio25: 0
+  defaultDevotionDecreaseMp: 0
+  devotionDecreaseMp1: 0
+  devotionDecreaseMp2: 0
+  devotionDecreaseMp3: 0
+  defaultConstructingTimerMp: 0
+  constructingTimerMp1: 0
+  constructingTimerMp2: 0
+  constructingTimerMp3: 0
+  defaultFaithTimerMp: 0
+  faithTimerMp1: 0
+  faithTimerMp2: 0
+  faithTimerMp3: 0
+  isConverted: 0
+  movingUp: 0
+  movingDown: 0
 --- !u!212 &212088993598930406
 SpriteRenderer:
   m_ObjectHideFlags: 1
