@@ -61,8 +61,8 @@ public class ShrineCS : Structure
 
     private void AddToObjectivesList()
     {
-        objectiveManager.shrineList.Add(gameObject);
-        objectiveManager.CheckForCompletedObjectives();
+      //  objectiveManager.shrineList.Add(gameObject);
+      //  objectiveManager.CheckForCompletedObjectives();
     }
 
     public void UpdateValues()

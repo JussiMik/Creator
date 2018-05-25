@@ -25,6 +25,8 @@ public class Menu : MonoBehaviour {
     public Text infoBuildingRes_Faith;
     public Text infoBuildingRes_Stone;
 
+    public GameObject infoCard;
+
     protected int curBlockNo = 0;
 
     private void Start()
@@ -45,12 +47,10 @@ public class Menu : MonoBehaviour {
         if (menuVisible)
         {
             HideMenu();
-            
         }
         else
         {
             ShowMenu();
-            
         }
 
     }
@@ -71,63 +71,76 @@ public class Menu : MonoBehaviour {
         worldNavigation.SetActive(true);
     }
 
+    public virtual void HideMenuNavigationOff()
+    {
+        menusGrid.SetActive(false);
+        menuVisible = false;
+        worldNavigation.SetActive(false);
+    }
+
+
+
     public virtual void CheckResources(GameObject[] otherBuildingsList)
     {
         var usedScript = otherBuildingsList[curBlockNo].GetComponent<Structure>();
 
         canTakeAction = true;
+        var canColor = Color.black;
+        var cantColor = Color.gray;
 
+        Debug.Log("jjjjjjjjjjjjjj"); 
+         
         //TEST WOOD
         if (gameManager.wood >= usedScript.woodConstructingCost)
         {
-            infoBuildingRes_Wood.color = Color.green;
+            infoBuildingRes_Wood.color = canColor;
         }
         else
         {
-            infoBuildingRes_Wood.color = Color.red;
+            infoBuildingRes_Wood.color = cantColor;
             canTakeAction = false;
         }
 
         //TEST FAITH
         if (gameManager.faith >= usedScript.faithConstructingCost)
         {
-            infoBuildingRes_Faith.color = Color.green;
+            infoBuildingRes_Faith.color = canColor;
         }
         else
         {
-            infoBuildingRes_Faith.color = Color.red;
+            infoBuildingRes_Faith.color = cantColor;
             canTakeAction = false;
         }
 
         //TEST STONE
         if (gameManager.stone >= usedScript.stoneConstructingCost)
         {
-            infoBuildingRes_Stone.color = Color.green;
+            infoBuildingRes_Stone.color = canColor;
         }
         else
         {
-            infoBuildingRes_Stone.color = Color.red;
+            infoBuildingRes_Stone.color = cantColor;
             canTakeAction = false;
         }
 
         //TEST DEVOTION
         if (gameManager.devotion >= usedScript.devotionConstructingCost)
         {
-            infoBuildingRes_Dev.color = Color.green;
+            infoBuildingRes_Dev.color = canColor;
         }
         else
         {
-            infoBuildingRes_Dev.color = Color.red;
+            infoBuildingRes_Dev.color = cantColor;
             canTakeAction = false;
         }
 
         if (canTakeAction)
         {
-            infoBuildingBuild.GetComponent<Image>().color = Color.green;
+            infoBuildingBuild.GetComponent<Image>().color = Color.white;
         }
         else
         {
-            infoBuildingBuild.GetComponent<Image>().color = Color.red;
+            infoBuildingBuild.GetComponent<Image>().color = Color.gray;
         }
     }
 

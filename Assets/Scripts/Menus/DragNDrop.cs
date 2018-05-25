@@ -37,7 +37,7 @@ public class DragNDrop : MonoBehaviour
     public Vector3 toDragPos;
 
     //
-    private GameObject worldNavigation;
+    public GameObject worldNavigation;
 
     public bool buildingMode = true;
 
@@ -158,7 +158,7 @@ public class DragNDrop : MonoBehaviour
             firstRound = true;
             dragging = true;
             Debug.Log("to true");
-            worldNavigation.SetActive(false);
+            worldNavigation.GetComponent<WorldNavigation>().SetUnActive();
         }
     }
 
@@ -179,6 +179,8 @@ public class DragNDrop : MonoBehaviour
     }
     public void Dragging()
     {
+        
+
         //GET MOUSE WORLD POSITION
         v3 = Input.mousePosition;
         v3.z = 10.0f;

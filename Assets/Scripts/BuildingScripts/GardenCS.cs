@@ -37,8 +37,8 @@ public class GardenCS : Structure
         {
             spriteRenderer.sprite = finishedBuildingSprite;
             AddToList();
-            objectiveManager.gardenList.Add(gameObject);
-            objectiveManager.CheckForCompletedObjectives();
+         //   objectiveManager.gardenList.Add(gameObject);
+         //   objectiveManager.CheckForCompletedObjectives();
             gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
         }
     }

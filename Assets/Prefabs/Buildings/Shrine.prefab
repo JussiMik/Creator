@@ -294,15 +294,15 @@ MonoBehaviour:
     type: 3}
   finishedBuildingSprite: {fileID: 21300000, guid: a8820d63c12e4e34189f8439b8fb1de2,
     type: 3}
+  levelTwoSprite: {fileID: 21300000, guid: d63017497710a2e4093269d116958235, type: 3}
   gameManager: {fileID: 0}
   objectiveManager: {fileID: 0}
   objectiveTracker: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
-  levelTwoSprite: {fileID: 21300000, guid: d63017497710a2e4093269d116958235, type: 3}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
-  faithConstructingCost: 5000
+  faithConstructingCost: 50
   devotionConstructingCost: 20
   woodConstructingCost: 500
   stoneConstructingCost: 100

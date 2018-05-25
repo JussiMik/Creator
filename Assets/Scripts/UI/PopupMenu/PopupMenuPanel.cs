@@ -41,10 +41,10 @@ public class PopupMenuPanel : MonoBehaviour
             rtX = -150f;
         }
         // Check if panel's Rect Transform left value is too much left.
-        if (rt.offsetMax.x >= 150f)
+        if (rt.offsetMax.x >= 120f)
         {
             overX = true;
-            rtX = 150f;
+            rtX = 120f;
         }
         SetPosition();
     }

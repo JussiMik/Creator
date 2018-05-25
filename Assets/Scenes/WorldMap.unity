@@ -853,6 +853,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   worldPos: 1
+  zoomAmountPerStep: 0
+  cameraSizeMax: 20
+  cameraSizeMin: 1
+  orthoZoomSpeed: 0.1
+  minXValue: {x: 0, y: 0}
+  maxXValue: {x: 0, y: 0}
+  minYValue: {x: 0, y: 0}
+  maxYValue: {x: 0, y: 0}
 --- !u!1 &1373154832 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1529342627470030, guid: e539e0d9f0d8f9b4da337c97c487119d,
@@ -1826,4 +1834,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapInfo: {fileID: 911124489}
   mapName: Main Map
-  sceneName: testscene
+  sceneName: FirstPlayable1.1

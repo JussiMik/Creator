@@ -102,7 +102,7 @@ public class ConversionTempleCS : Structure
             gameManager.CheckFarmCount();
             convertableMonk.GetComponent<ConvertableMonk>().isConverted = true;
             convertableMonk.GetComponent<SpriteRenderer>().sprite = monkSprite;
-            objectiveManager.CheckForCompletedObjectives();
+         //   objectiveManager.CheckForCompletedObjectives();
             gameManager.DevotionDecreaseChunk();
             gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().showPanel = false;
             monkCollected = true;

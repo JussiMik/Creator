@@ -115,8 +115,8 @@ public class Structure : MonoBehaviour
     protected virtual void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        objectiveManager = GameObject.Find("ObjectiveManager").GetComponent<ObjectiveManager>();
-        objectiveTracker = GameObject.Find("ObjectiveTrackerCanvas").GetComponent<ObjectiveTracker>();
+      //  objectiveManager = GameObject.Find("ObjectiveManager").GetComponent<ObjectiveManager>();
+       // objectiveTracker = GameObject.Find("ObjectiveTrackerCanvas").GetComponent<ObjectiveTracker>();
 
         level = 1;
 

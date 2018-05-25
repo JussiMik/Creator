@@ -15,8 +15,17 @@ EditorBuildSettings:
     path: Assets/Scenes/PopupMenu.unity
     guid: ec5072d33e2239542b962ae602e39acf
   - enabled: 0
-    path: Assets/Scenes/FirstPlayable.unity
+    path: 
     guid: 3f3abc53eb83abd489225036428cf3f3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/FloatingProductionBar.unity
     guid: 19d1b4dfe53e1ba4b8699114a7968e99
+  - enabled: 1
+    path: Assets/Scenes/MonkAnimations.unity
+    guid: ce859ebbb09d4694396efc4003ea1598
+  - enabled: 1
+    path: Assets/Scenes/WorldMap.unity
+    guid: 02d582f7104e7774c8195e92f939afd0
+  - enabled: 1
+    path: Assets/Scenes/FirstPlayable1.1.unity
+    guid: 34e32347fa331de4da28b420d7a0a731

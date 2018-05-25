@@ -20,8 +20,6 @@ public class BuildingMenu : Menu {
 
     public GameObject buildGrid;
 
-    public GameObject infoCard;
-
     public DragNDrop dragNDrop;
 
     public bool proActive;
@@ -65,10 +63,12 @@ public class BuildingMenu : Menu {
         {
             if(proActive)
             {
+                Debug.Log("proooooooooooooo");
                 CheckResources(buildingsPro);
             }
             else
             {
+                Debug.Log("utiiiiiiiiiiiii");
                 CheckResources(buildingsUti);
             }
             
@@ -135,7 +135,6 @@ public class BuildingMenu : Menu {
             infoBuildingRes_Stone.text = buildingsPro[blockNo].GetComponent<Structure>().stoneConstructingCost.ToString();
             infoBuildingRes_Dev.text = buildingsPro[blockNo].GetComponent<Structure>().devotionConstructingCost.ToString();
             infoCard.GetComponent<InfoCard>().currentMenu = gameObject.GetComponent<Menu>();
-
         }
         else
         {
@@ -149,6 +148,7 @@ public class BuildingMenu : Menu {
             infoBuildingRes_Stone.text = buildingsUti[blockNo].GetComponent<Structure>().stoneConstructingCost.ToString();
             infoBuildingRes_Dev.text = buildingsUti[blockNo].GetComponent<Structure>().devotionConstructingCost.ToString();
             infoCard.GetComponent<InfoCard>().currentMenu = gameObject.GetComponent<Menu>();
+           
         }
     }
 
@@ -163,7 +163,7 @@ public class BuildingMenu : Menu {
         {
             dragNDrop.ShowToDrag(buildingsUti[curBlockNo]);
         }
-        base.HideMenu();
+        base.HideMenuNavigationOff();
     }
 
    

@@ -42,7 +42,7 @@ public class MeditationRoomCS : Structure
             spriteRenderer.sprite = finishedBuildingSprite;
             AddToList();
             objectiveManager.meditationRoomList.Add(gameObject);
-            objectiveManager.CheckForCompletedObjectives();
+          //  objectiveManager.CheckForCompletedObjectives();
             gameManager.GiveSanctityPoints(sanctityPointsOnConsturction);
             faithTimer = true;
         }

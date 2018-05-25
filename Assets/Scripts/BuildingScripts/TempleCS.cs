@@ -57,7 +57,7 @@ public class TempleCS : Structure
     }
     private void AddToObjectivesList()
     {
-        objectiveManager.templeList.Add(gameObject);
-        objectiveManager.CheckForCompletedObjectives();
+      //  objectiveManager.templeList.Add(gameObject);
+     //   objectiveManager.CheckForCompletedObjectives();
     }
 }

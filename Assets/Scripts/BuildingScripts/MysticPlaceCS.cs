@@ -93,6 +93,6 @@ public class MysticPlaceCS : Structure
     public override void ChangeLevel()
     {
         base.ChangeLevel();
-        objectiveManager.CheckForCompletedObjectives();
+      //  objectiveManager.CheckForCompletedObjectives();
     }
 }

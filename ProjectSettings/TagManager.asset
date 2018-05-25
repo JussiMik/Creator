@@ -20,6 +20,10 @@ TagManager:
   - ShrineCollider
   - Monk
   - Border
+  - Challenge
+  - ProductionCycleCanvas
+  - ObjectiveManager
+  - MysticPlace
   layers:
   - Default
   - TransparentFX

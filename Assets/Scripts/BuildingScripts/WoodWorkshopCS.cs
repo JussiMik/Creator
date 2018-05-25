@@ -143,7 +143,7 @@ public class WoodWorkshopCS : Structure
         gameManager.DevotionDecreaseChunk();
 
         gameManager.wood += gatheredWood;
-        objectiveManager.CheckForCompletedObjectives();
+       // objectiveManager.CheckForCompletedObjectives();
         gatheredWood = 0;
         gameManager.GetComponent<CollectResourcesAndOpenPanelInput>().showPanel = false;
 

@@ -16,8 +16,6 @@ public class MiracleMenu : Menu
 
     public GameObject miracleGrid;
 
-    public GameObject infoCard;
-
     public DragNDrop dragNDrop;
 
     [Header("Menu Background Sprites")]
@@ -60,7 +58,7 @@ public class MiracleMenu : Menu
 
         curBlockNo = blockNo;
 
-        //if (curBlockNo == 0 || curBlockNo == 1)
+        
         {
             infoBuildingSprite.GetComponent<Image>().sprite = miracles[blockNo].GetComponent<SpriteRenderer>().sprite;
             infoBuildingName.GetComponent<Text>().text = "Miracle " + (blockNo + 1);
@@ -72,18 +70,7 @@ public class MiracleMenu : Menu
             infoBuildingRes_Dev.text = miracles[blockNo].GetComponent<Structure>().devotionConstructingCost.ToString();
             
         }
-        //else
-        //{
-        //    infoBuildingSprite.GetComponent<Image>().sprite = miracles[blockNo].GetComponent<SpriteRenderer>().sprite;
-        //    infoBuildingName.GetComponent<Text>().text = "Miracle " + (blockNo + 1);
-        //    infoBuildingText.GetComponent<Text>().text = "Info of Miracle " + (blockNo + 1);
-
-        //    infoBuildingRes_Wood.text = miracles[blockNo].GetComponent<Miracle03>().woodConstructingCost.ToString();
-        //    infoBuildingRes_Faith.text = miracles[blockNo].GetComponent<Miracle03>().faithConstructingCost.ToString();
-        //    infoBuildingRes_Stone.text = miracles[blockNo].GetComponent<Miracle03>().stoneConstructingCost.ToString();
-        //    infoBuildingRes_Dev.text = miracles[blockNo].GetComponent<Miracle03>().devotionConstructingCost.ToString();
-            
-        //}
+        
         infoCard.GetComponent<InfoCard>().currentMenu = gameObject.GetComponent<Menu>();
     }
   
@@ -94,7 +81,7 @@ public class MiracleMenu : Menu
         if(curBlockNo == 0 || curBlockNo == 1)
         {
             dragNDrop.ShowToDrag(miracles[curBlockNo]);
-            HideMenu();
+            HideMenuNavigationOff();
         }
         if(curBlockNo == 2)
         {

@@ -60,16 +60,17 @@ public class ObjectiveManager : MonoBehaviour
     void Awake()
     {
         objectiveObject = GameObject.FindGameObjectWithTag("Challenge");
-        objectiveTracker = GameObject.Find("ObjectiveTrackerCanvas").GetComponent<ObjectiveTracker>();
-        objectiveText = objectiveObject.GetComponent<ChallengeBase>().objectiveText;
+      //  objectiveTracker = GameObject.Find("ObjectiveTrackerCanvas").GetComponent<ObjectiveTracker>();
+        //objectiveText = objectiveObject.GetComponent<ChallengeBase>().objectiveText;
 
     }
 
-    public void CheckForCompletedObjectives()
+  /*  public void CheckForCompletedObjectives()
     {
         objectiveObject.GetComponent<ChallengeBase>().Objective();
         objectiveTracker.UpdateObjectiveText();
     }
+    */
 
 
 
