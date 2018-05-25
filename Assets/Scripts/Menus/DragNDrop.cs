@@ -158,7 +158,7 @@ public class DragNDrop : MonoBehaviour
             firstRound = true;
             dragging = true;
             Debug.Log("to true");
-            worldNavigation.SetActive( false);
+            worldNavigation.SetActive(false);
         }
     }
 

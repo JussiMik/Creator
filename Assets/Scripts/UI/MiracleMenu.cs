@@ -99,7 +99,7 @@ public class MiracleMenu : Menu
         if(curBlockNo == 2)
         {
             HideMenu();
-            dragNDrop.layoutManager.FreeSpace();
+            dragNDrop.layoutManager.BorderMiracle();
         }
         
     }
