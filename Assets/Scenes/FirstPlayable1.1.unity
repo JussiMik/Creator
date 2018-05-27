@@ -2193,17 +2193,17 @@ Prefab:
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
       propertyPath: stone
-      value: 1000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
       propertyPath: wood
-      value: 1000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
       propertyPath: faith
-      value: 1000
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
         type: 2}
@@ -2219,6 +2219,16 @@ Prefab:
         type: 2}
       propertyPath: monkFaithMultiplier
       value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: devotionIncreaseMp
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050202580726850, guid: 52db2628f8d703648aea031082b57de4,
+        type: 2}
+      propertyPath: devotionIncrease
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52db2628f8d703648aea031082b57de4, type: 2}

@@ -302,14 +302,14 @@ MonoBehaviour:
   quarryCS: {fileID: 0}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
-  faithConstructingCost: 50
-  devotionConstructingCost: 20
+  faithConstructingCost: 1000
+  devotionConstructingCost: 100
   woodConstructingCost: 500
   stoneConstructingCost: 100
-  lvl2FaithUpgradeCost: 0
-  lvl2DevotionUpgradeCost: 0
-  lvl2WoodUpgradeCost: 0
-  lvl2StoneUpgradeCost: 0
+  lvl2FaithUpgradeCost: 5000
+  lvl2DevotionUpgradeCost: 250
+  lvl2WoodUpgradeCost: 2500
+  lvl2StoneUpgradeCost: 500
   lvl3FaithUpgradeCost: 0
   lvl3DevotionUpgradeCost: 0
   lvl3WoodUpgradeCost: 0
@@ -326,7 +326,7 @@ MonoBehaviour:
   changedValue: 0
   generatedFaith: 0
   faithAmountPerProductionCycle: 80
-  faithAmountPerProductionCycleUpgraded: 80
+  faithAmountPerProductionCycleUpgraded: 120
   productionCycleLength: 25
   maxFaithAmount: 80
   faithMultiplier: 1.2

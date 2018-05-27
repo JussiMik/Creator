@@ -307,7 +307,7 @@ MonoBehaviour:
   lvl2FaithUpgradeCost: 500
   lvl2DevotionUpgradeCost: 250
   lvl2WoodUpgradeCost: 400
-  lvl2StoneUpgradeCost: 0
+  lvl2StoneUpgradeCost: 50
   lvl3FaithUpgradeCost: 0
   lvl3DevotionUpgradeCost: 0
   lvl3WoodUpgradeCost: 0
@@ -343,7 +343,7 @@ MonoBehaviour:
   faithCollectSound: {fileID: 0}
   gatheredWood: 0
   woodAmountPerProductionCyclePerTree: 6
-  woodAmountPerProductionCyclePerTreeLvl2: 12
+  woodAmountPerProductionCyclePerTreeLvl2: 8
   woodProductionTimeLength: 20
   woodTimer: 0
   woodCollected: 0

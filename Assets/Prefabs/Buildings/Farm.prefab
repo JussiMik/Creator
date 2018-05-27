@@ -177,7 +177,7 @@ MonoBehaviour:
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
   faithConstructingCost: 500
-  devotionConstructingCost: 20
+  devotionConstructingCost: 100
   woodConstructingCost: 200
   stoneConstructingCost: 0
   lvl2FaithUpgradeCost: 0

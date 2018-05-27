@@ -193,12 +193,12 @@ MonoBehaviour:
     type: 3}
   finishedBuildingSprite: {fileID: 21300000, guid: b97e3c87e948331428721bc150093b45,
     type: 3}
+  levelTwoSprite: {fileID: 21300000, guid: a08fb2df51b37a94eabb981ce013e65a, type: 3}
   gameManager: {fileID: 0}
   objectiveManager: {fileID: 0}
   objectiveTracker: {fileID: 0}
   woodWorkshopCS: {fileID: 0}
   quarryCS: {fileID: 0}
-  levelTwoSprite: {fileID: 21300000, guid: a08fb2df51b37a94eabb981ce013e65a, type: 3}
   clickedBuilding: {fileID: 0}
   sizeOnGrid: {x: 1, y: 1}
   faithConstructingCost: 50
@@ -207,8 +207,8 @@ MonoBehaviour:
   stoneConstructingCost: 0
   lvl2FaithUpgradeCost: 250
   lvl2DevotionUpgradeCost: 250
-  lvl2WoodUpgradeCost: 0
-  lvl2StoneUpgradeCost: 0
+  lvl2WoodUpgradeCost: 100
+  lvl2StoneUpgradeCost: 50
   lvl3FaithUpgradeCost: 0
   lvl3DevotionUpgradeCost: 0
   lvl3WoodUpgradeCost: 0
@@ -216,7 +216,7 @@ MonoBehaviour:
   sanctityPointsOnConsturction: 5
   sanctityPointsOnUpgrade: 0
   constructingTimer: 0
-  constructingTime: 40
+  constructingTime: 20
   normalSpeedConstructing: 0
   lowerSpeedConstructing1: 0
   lowerSpeedConstructing2: 0
@@ -225,7 +225,7 @@ MonoBehaviour:
   changedValue: 0
   generatedFaith: 0
   faithAmountPerProductionCycle: 20
-  faithAmountPerProductionCycleUpgraded: 20
+  faithAmountPerProductionCycleUpgraded: 30
   productionCycleLength: 15
   maxFaithAmount: 20
   faithMultiplier: 1.1
